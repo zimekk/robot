@@ -1,0 +1,13 @@
+{
+  "short_name": "Hello App",
+  "name": "Hello App",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#066ace",
+  "background_color": "#202020",
+  "icons": [
+    {
+      "src": "favicon.ico"
+    }
+  ]
+}
