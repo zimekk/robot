@@ -1,98 +1,94 @@
-import path from "path";
-import webpack from "webpack";
+import { resolve } from "path";
+import { EnvironmentPlugin } from "webpack";
+import { ExpressRequestHandler } from "webpack-dev-server";
+import { CallableOption } from "webpack-cli";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "dotenv";
+import { router } from "@dev/app";
 
-env.config({ path: path.resolve(__dirname, "../../.env") });
+env.config({ path: resolve(__dirname, "../../.env") });
 
-export default (env, { mode }, dev = mode === "development") => ({
+// https://github.com/webpack/webpack-dev-middleware#server-side-rendering
+function normalizeAssets(assets) {
+  return Array.isArray(assets) ? assets : [assets];
+}
+
+const middleware: ExpressRequestHandler = (_req, res) => {
+  const { devMiddleware } = res.locals.webpack;
+  const { outputFileSystem, stats } = devMiddleware;
+  const { assetsByChunkName, outputPath } = stats.toJson();
+
+  // Then use `assetsByChunkName` for server-side rendering
+  // For example, if you have only one main chunk:
+  res.send(`
+<html>
+  <head>
+    <title>My App</title>
+    <style>
+    ${normalizeAssets(assetsByChunkName.main)
+      .filter((path) => path.endsWith(".css"))
+      .map((path) => outputFileSystem.readFileSync(path.join(outputPath, path)))
+      .join("\n")}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    ${normalizeAssets(assetsByChunkName.main)
+      .filter((path) => path.endsWith(".js"))
+      .map((path) => `<script src="${path}"></script>`)
+      .join("\n")}
+  </body>
+</html>
+  `);
+};
+
+export default (async (env, { mode }, _dev = mode === "development") => ({
   target: "web",
-  devtool: dev ? "eval-cheap-source-map" : "source-map",
+  devServer: {
+    static: false,
+    client: {
+      overlay: false,
+    },
+    devMiddleware: {
+      index: true, // specify to enable root proxying
+      serverSideRender: true,
+    },
+    setupMiddlewares: (middlewares, _devServer) =>
+      middlewares.concat(router).concat(middleware),
+  },
   entry: {
     main: require.resolve("./src"),
-    // : require.resolve("./src"),
-    sw: require.resolve("./src/service-worker"),
   },
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          {
-            loader: "sass-loader",
-            options: {
-              implementation: require("sass"),
-              sassOptions: {
-                fiber: require("fibers"),
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(mp3|ogg|png|avi)$/,
-        use: ["file-loader"],
-      },
-      {
         test: /\.tsx?$/,
-        loader: "babel-loader",
-        exclude: /node_modules/,
-        options: {
-          presets: ["@babel/preset-react", "@babel/preset-typescript"],
-          plugins: [].concat(dev ? "react-hot-loader/babel" : []),
-        },
+        loader: "ts-loader",
       },
     ],
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    alias: {
-      events: "events",
-      "react-dom": "@hot-loader/react-dom",
-    },
-    // https://webpack.js.org/configuration/resolve/#resolvefallback
-    fallback: {
-      buffer: require.resolve("buffer"),
-      stream: require.resolve("stream-browserify"),
-    },
   },
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: resolve(__dirname, "public"),
     clean: true,
   },
   plugins: [
-    new webpack.EnvironmentPlugin({}),
-    new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"],
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          context: resolve(__dirname, "src/assets"),
+          from: env.WEBPACK_SERVE ? "none" : "api/**/*.json",
+          noErrorOnMissing: true,
+        },
+      ],
     }),
-    // https://webpack.js.org/plugins/copy-webpack-plugin/
-    // new (require("copy-webpack-plugin"))({
-    //   patterns: [
-    //     { from: require.resolve("./src/manifest.json"),       },
-    //   ],
-    // }),
-    // https://github.com/jantimon/favicons-webpack-plugin#basic
-    new (require("favicons-webpack-plugin"))({
-      logo: require.resolve("./src/assets/favicon.ico"),
-      // https://web.dev/add-manifest/
-      // https://felixgerschau.com/how-to-make-your-react-app-a-progressive-web-app-pwa/#adding-a-manifest-file
-      manifest: require.resolve("./src/assets/manifest.json"),
-      mode: "light",
-    }),
+    new EnvironmentPlugin({}),
     // https://webpack.js.org/plugins/html-webpack-plugin/
-    new (require("html-webpack-plugin"))({
-      title: require("./src/assets/manifest").name,
-      excludeChunks: ["sw"],
-      // favicon: require.resolve("./src/assets/favicon.ico"),
+    new HtmlWebpackPlugin({
+      favicon: require.resolve("./src/assets/favicon.ico"),
     }),
-    // !dev &&
-    //   new (require("workbox-webpack-plugin").InjectManifest)({
-    //     swSrc: require.resolve("./src/service-worker"),
-    //     swDest: "sw.js",
-    //   }),
   ].filter(Boolean),
-});
+})) as CallableOption;

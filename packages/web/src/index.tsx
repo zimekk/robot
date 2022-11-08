@@ -1,23 +1,9 @@
 import React, { StrictMode } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./containers/App";
 
-render(
+createRoot(document.body.appendChild(document.createElement("div"))).render(
   <StrictMode>
     <App />
-  </StrictMode>,
-  document.body.appendChild(document.createElement("div"))
+  </StrictMode>
 );
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("sw.js")
-      .then((registration) => {
-        console.log("SW registered: ", registration);
-      })
-      .catch((registrationError) => {
-        console.log("SW registration failed: ", registrationError);
-      });
-  });
-}
