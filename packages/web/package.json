@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "webpack --mode production",
+    "coverage": "type-coverage && tsc --noEmit",
     "start": "webpack serve --mode development"
   },
   "dependencies": {

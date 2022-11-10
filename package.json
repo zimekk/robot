@@ -37,6 +37,7 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "clean": "rm -rf packages/*/public packages/*/lib",
+    "coverage": "yarn workspaces run coverage",
     "lint": "eslint . --ext .json,.js,.jsx,.ts,.tsx",
     "reset": "rm -rf node_modules packages/*/node_modules",
     "serve": "yarn workspace @dev/app serve",
