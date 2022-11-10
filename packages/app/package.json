@@ -44,5 +44,8 @@
   },
   "devDependencies": {
     "ts-node-dev": "^2.0.0"
+  },
+  "dependencies": {
+    "zod": "^3.19.1"
   }
 }

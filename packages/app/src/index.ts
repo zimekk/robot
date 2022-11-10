@@ -3,6 +3,7 @@ import express, { Router } from "express";
 import { createServer } from "http";
 import { AddressInfo } from "net";
 import { dirname, resolve } from "path";
+import { z } from "zod";
 
 export const router = Router().use("/api/data.json", (_req, res) =>
   res.json({ hello: "Hello" })
@@ -10,7 +11,11 @@ export const router = Router().use("/api/data.json", (_req, res) =>
 
 export const server = () => {
   const env = config({ path: resolve(__dirname, "../../../.env") });
-  const { PORT: port } = env.parsed;
+  const { PORT: port } = z
+    .object({
+      PORT: z.string().default("8080").transform(Number),
+    })
+    .parse(env.parsed);
 
   const server = createServer(
     express()

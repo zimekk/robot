@@ -10,7 +10,7 @@ import { router } from "@dev/app";
 env.config({ path: resolve(__dirname, "../../.env") });
 
 // https://github.com/webpack/webpack-dev-middleware#server-side-rendering
-function normalizeAssets(assets) {
+function normalizeAssets(assets: unknown) {
   return Array.isArray(assets) ? assets : [assets];
 }
 
@@ -43,7 +43,11 @@ const middleware: ExpressRequestHandler = (_req, res) => {
   `);
 };
 
-export default (async (env, { mode }, _dev = mode === "development") => ({
+export default (async (
+  { WEBPACK_SERVE } = {},
+  { mode },
+  _dev = mode === "development"
+) => ({
   target: "web",
   devServer: {
     static: false,
@@ -80,7 +84,7 @@ export default (async (env, { mode }, _dev = mode === "development") => ({
       patterns: [
         {
           context: resolve(__dirname, "src/assets"),
-          from: env.WEBPACK_SERVE ? "none" : "api/**/*.json",
+          from: WEBPACK_SERVE ? "none" : "api/**/*.json",
           noErrorOnMissing: true,
         },
       ],

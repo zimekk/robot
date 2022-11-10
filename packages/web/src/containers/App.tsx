@@ -3,12 +3,12 @@ import { hot } from "react-hot-loader/root";
 
 const Spinner = () => <span>Loading...</span>;
 
-const PAGES = {
+const PAGES = Object.freeze({
   hello: lazy(() => import("./Hello")),
-};
+});
 
 export default hot(function App() {
-  const page = Object.keys(PAGES)[0];
+  const page = Object.keys(PAGES)[0] as keyof typeof PAGES;
   const Page = PAGES[page];
 
   return (
