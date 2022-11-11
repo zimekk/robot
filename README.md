@@ -35,3 +35,11 @@ docker-compose up --build # app_1  | ⚡️[server]: Server is running at http:/
 ```sh
 curl http://localhost:8080 # <!DOCTYPE html>
 ```
+
+```sh
+docker-compose exec app sh
+```
+
+```sh
+docker-compose -f docker-compose.prod.yml build --no-cache && docker-compose -f docker-compose.prod.yml up -d && docker system prune
+```
