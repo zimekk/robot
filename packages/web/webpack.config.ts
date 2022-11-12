@@ -1,11 +1,10 @@
 import { resolve } from "path";
 import { EnvironmentPlugin } from "webpack";
-import { ExpressRequestHandler } from "webpack-dev-server";
+import { Configuration, ExpressRequestHandler } from "webpack-dev-server";
 import { CallableOption } from "webpack-cli";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "dotenv";
-import { router } from "@dev/app";
 
 env.config({ path: resolve(__dirname, "../../.env") });
 
@@ -47,52 +46,62 @@ export default (async (
   { WEBPACK_SERVE } = {},
   { mode },
   _dev = mode === "development"
-) => ({
-  target: "web",
-  devServer: {
-    static: false,
-    client: {
-      overlay: false,
-    },
-    devMiddleware: {
-      index: true, // specify to enable root proxying
-      serverSideRender: true,
-    },
-    setupMiddlewares: (middlewares, _devServer) =>
-      middlewares.concat(router).concat(middleware),
-  },
-  entry: {
-    main: require.resolve("./src"),
-  },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: "ts-loader",
+) =>
+  Object.assign(
+    {
+      target: "web",
+      entry: {
+        main: require.resolve("./src"),
       },
-    ],
-  },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
-  output: {
-    path: resolve(__dirname, "public"),
-    clean: true,
-  },
-  plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          context: resolve(__dirname, "src/assets"),
-          from: WEBPACK_SERVE ? "none" : "api/**/*.json",
-          noErrorOnMissing: true,
-        },
-      ],
-    }),
-    new EnvironmentPlugin({}),
-    // https://webpack.js.org/plugins/html-webpack-plugin/
-    new HtmlWebpackPlugin({
-      favicon: require.resolve("./src/assets/favicon.ico"),
-    }),
-  ].filter(Boolean),
-})) as CallableOption;
+      module: {
+        rules: [
+          {
+            test: /\.tsx?$/,
+            loader: "ts-loader",
+          },
+        ],
+      },
+      resolve: {
+        extensions: [".tsx", ".ts", ".js"],
+      },
+      output: {
+        path: resolve(__dirname, "public"),
+        clean: true,
+      },
+      plugins: [
+        new CopyWebpackPlugin({
+          patterns: [
+            {
+              context: resolve(__dirname, "src/assets"),
+              from: WEBPACK_SERVE ? "none" : "api/**/*.json",
+              noErrorOnMissing: true,
+            },
+          ],
+        }),
+        new EnvironmentPlugin({}),
+        // https://webpack.js.org/plugins/html-webpack-plugin/
+        new HtmlWebpackPlugin({
+          favicon: require.resolve("./src/assets/favicon.ico"),
+        }),
+      ].filter(Boolean),
+    },
+    WEBPACK_SERVE
+      ? {
+          devServer: {
+            static: false,
+            client: {
+              overlay: false,
+            },
+            devMiddleware: {
+              index: true, // specify to enable root proxying
+              serverSideRender: true,
+            },
+            setupMiddlewares: (
+              ({ router }) =>
+              (middlewares) =>
+                middlewares.concat(router).concat(middleware)
+            )(await import("@dev/app")),
+          } as Configuration,
+        }
+      : {}
+  )) as CallableOption;

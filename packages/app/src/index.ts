@@ -4,10 +4,11 @@ import { createServer } from "http";
 import { AddressInfo } from "net";
 import { dirname, resolve } from "path";
 import { z } from "zod";
+import { router as workerRouter } from "@dev/worker";
 
-export const router = Router().use("/api/data.json", (_req, res) =>
-  res.json({ hello: "Hello" })
-);
+export const router = Router()
+  .use("/api/data.json", (_req, res) => res.json({ hello: "Hello" }))
+  .use(workerRouter());
 
 export const server = () => {
   const env = config({ path: resolve(__dirname, "../../../.env") });

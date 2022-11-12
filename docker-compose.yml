@@ -3,8 +3,10 @@ services:
   app:
     build: .
     environment:
-      - PORT
-    ports:
-      - $PORT:$PORT
-    volumes:
-      - /app/node_modules
+      - REDIS_URL=redis://redis
+    links:
+      - redis
+    network_mode: bridge
+  redis:
+    image: redis:6.0-alpine
+    network_mode: bridge

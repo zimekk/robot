@@ -41,5 +41,17 @@ docker-compose exec app sh
 ```
 
 ```sh
-docker-compose -f docker-compose.prod.yml build --no-cache && docker-compose -f docker-compose.prod.yml up -d && docker system prune
+podman-compose up redis -d
+```
+
+```sh
+docker-compose up --build -d && docker system prune -f
+```
+
+```sh
+docker-compose -f docker-compose.yml up --build -d && docker system prune -f
+```
+
+```sh
+docker-compose -f docker-compose.yml build --no-cache && docker-compose -f docker-compose.yml up -d && docker system prune -f
 ```

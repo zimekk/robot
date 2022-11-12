@@ -6,6 +6,7 @@ WORKDIR $WORKDIR
 
 COPY . ./
 
-RUN yarn && yarn build
+RUN yarn
+RUN yarn build
 
 CMD ["yarn", "serve"]
