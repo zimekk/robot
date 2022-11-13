@@ -17,12 +17,14 @@ const { REDIS_URL, QUEUE_NAME } = z
   })
   .parse(process.env);
 
-const queue = new Queue(QUEUE_NAME, REDIS_URL);
-
 const NAME = "task";
+
+export const client = () => new Queue(QUEUE_NAME, REDIS_URL);
 
 export const broker = async (number = "1", ...args: string[]) => {
   console.log(["broker"], number, ...args);
+
+  const queue = client();
 
   await queue
     .add(
@@ -40,11 +42,17 @@ export const broker = async (number = "1", ...args: string[]) => {
   await queue.close().then(() => console.log(["close"]));
 };
 
+export const chrome = async (...args: string[]) => {
+  (await import("@dev/chrome")).chrome(...args);
+};
+
 export const router = () => {
   const BASE_PATH = "/board";
 
   const serverAdapter = new ExpressAdapter();
   serverAdapter.setBasePath(BASE_PATH);
+
+  const queue = client();
 
   createBullBoard({
     queues: [new BullAdapter(queue)],
@@ -56,6 +64,8 @@ export const router = () => {
 
 export const status = async (...args: string[]) => {
   console.log(["status"], ...args);
+
+  const queue = client();
 
   await queue.getCompleted().then((jobs) =>
     console.log(
@@ -78,6 +88,8 @@ export const status = async (...args: string[]) => {
 
 export const worker = async () => {
   console.log(["worker"]);
+
+  const queue = client();
 
   queue.process(NAME, async function ({ data }) {
     console.log(["process"], data);

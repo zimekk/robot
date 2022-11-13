@@ -12,6 +12,7 @@
   ],
   "bin": {
     "broker": "bin/broker.js",
+    "chrome": "bin/chrome.js",
     "status": "bin/status.js",
     "worker": "bin/worker.js"
   },
@@ -28,6 +29,7 @@
   "dependencies": {
     "@bull-board/api": "^4.6.3",
     "@bull-board/express": "^4.6.3",
+    "@dev/chrome": "^1.0.0",
     "bull": "^4.10.1",
     "milliseconds": "^1.0.3"
   },
