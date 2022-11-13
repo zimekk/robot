@@ -49,6 +49,10 @@ docker-compose up --build -d && docker system prune -f
 ```
 
 ```sh
+docker-compose down --remove-orphans
+```
+
+```sh
 docker-compose -f docker-compose.yml up --build -d && docker system prune -f
 ```
 

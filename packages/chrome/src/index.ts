@@ -1,17 +1,23 @@
 // https://github.com/calebj0seph/stock-checker/blob/master/src/chrome.js
 import type { HTTPRequest, HTTPResponse } from "puppeteer";
+import { config } from "dotenv";
+import { resolve } from "path";
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
+import { z } from "zod";
+
+config({ path: resolve(__dirname, "../../../.env") });
+
+const { PUPPETEER_EXECUTABLE_PATH, WORKDIR } = z
+  .object({
+    PUPPETEER_EXECUTABLE_PATH: z
+      .string()
+      .default("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"),
+    WORKDIR: z.string().default(""),
+  })
+  .parse(process.env);
 
 puppeteer.use(StealthPlugin());
-
-const config = {
-  chrome: {
-    // https://stackoverflow.com/questions/47122579/run-puppeteer-on-already-installed-chrome-on-macos
-    path: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-    args: [],
-  },
-};
 
 const delay = (timeout = 3000) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
@@ -19,8 +25,9 @@ const delay = (timeout = 3000) =>
 export async function launch() {
   // Open Chrome with the given command and arguments
   return await puppeteer.launch({
-    // executablePath: config.chrome.path,
-    // args: config.chrome.args,
+    // https://stackoverflow.com/questions/47122579/run-puppeteer-on-already-installed-chrome-on-macos
+    executablePath: PUPPETEER_EXECUTABLE_PATH,
+    args: WORKDIR ? ["--no-sandbox", "--disable-setuid-sandbox"] : [],
     // defaultViewport: {
     //   width: 2560,
     //   height: 1298,
