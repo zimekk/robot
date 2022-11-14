@@ -1,4 +1,5 @@
 import Queue from "bull";
+import { json } from "body-parser";
 import { config } from "dotenv";
 import { Router } from "express";
 import { seconds } from "milliseconds";
@@ -48,18 +49,41 @@ export const chrome = async (...args: string[]) => {
 
 export const router = () => {
   const BASE_PATH = "/board";
+  const NAME = "chrome";
 
   const serverAdapter = new ExpressAdapter();
   serverAdapter.setBasePath(BASE_PATH);
 
   const queue = client();
 
+  queue.process(NAME, async function ({ data }) {
+    console.log(["process"], data);
+    await chrome(data.url);
+  });
+
   createBullBoard({
     queues: [new BullAdapter(queue)],
     serverAdapter,
   });
 
-  return Router().use(BASE_PATH, serverAdapter.getRouter());
+  return Router()
+    .post("/process", json(), async (req, res) => {
+      const { url } = req.body;
+      console.log(req.body);
+
+      await queue.add(
+        NAME,
+        {
+          url,
+        },
+        {
+          delay: seconds(5),
+        }
+      );
+
+      return res.json({ status: "ok" });
+    })
+    .use(BASE_PATH, serverAdapter.getRouter());
 };
 
 export const status = async (...args: string[]) => {
