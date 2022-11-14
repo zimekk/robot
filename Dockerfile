@@ -15,21 +15,26 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Add user so we don't need --no-sandbox.
-RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads /app \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
+# RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
+#     && mkdir -p /home/pptruser/Downloads /app \
+#     && chown -R pptruser:pptruser /home/pptruser \
+#     && chown -R pptruser:pptruser /app
 
 # Run everything after as non-privileged user.
-USER pptruser
+# USER pptruser
 
 ENV WORKDIR=/app
-
 WORKDIR $WORKDIR
 
-COPY . ./
+COPY package.json yarn.lock ./
+COPY packages/app/package.json packages/app/
+COPY packages/chrome/package.json packages/chrome/
+COPY packages/web/package.json packages/web/
+COPY packages/worker/package.json packages/worker/
+COPY packages/worker/bin packages/worker/bin/
+RUN yarn --frozen-lockfile
 
-RUN yarn
+COPY . ./
 RUN yarn build
 
 CMD ["yarn", "serve"]

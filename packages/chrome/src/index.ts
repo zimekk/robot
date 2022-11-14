@@ -2,8 +2,9 @@
 import type { HTTPRequest, HTTPResponse } from "puppeteer";
 import { config } from "dotenv";
 import { resolve } from "path";
-import puppeteer from "puppeteer-extra";
-import StealthPlugin from "puppeteer-extra-plugin-stealth";
+import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer-extra";
+// import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import { z } from "zod";
 
 config({ path: resolve(__dirname, "../../../.env") });
@@ -17,23 +18,27 @@ const { PUPPETEER_EXECUTABLE_PATH, WORKDIR } = z
   })
   .parse(process.env);
 
-puppeteer.use(StealthPlugin());
+// puppeteer.use(StealthPlugin());
 
 const delay = (timeout = 3000) =>
   new Promise((resolve) => setTimeout(resolve, timeout));
 
 export async function launch() {
-  // Open Chrome with the given command and arguments
-  return await puppeteer.launch({
+  const config = {
     // https://stackoverflow.com/questions/47122579/run-puppeteer-on-already-installed-chrome-on-macos
     executablePath: PUPPETEER_EXECUTABLE_PATH,
-    args: WORKDIR ? ["--no-sandbox", "--disable-setuid-sandbox"] : [],
-    // defaultViewport: {
-    //   width: 2560,
-    //   height: 1298,
-    //   deviceScaleFactor: 1.5,
-    // },
-  });
+    // headless: true,
+    args: WORKDIR
+      ? [
+          "--no-sandbox",
+          "--headless",
+          "--disable-gpu",
+          "--disable-dev-shm-usage",
+        ]
+      : [],
+  };
+  // Open Chrome with the given command and arguments
+  return await puppeteer.launch(config);
 }
 
 export async function chrome(url: string = "https://zimekk.github.io/robot/") {

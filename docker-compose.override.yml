@@ -7,3 +7,6 @@ services:
       - $PORT:$PORT
     volumes:
       - /app/node_modules
+  redis:
+    ports:
+      - 6379:6379
