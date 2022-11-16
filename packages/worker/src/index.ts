@@ -18,9 +18,48 @@ const { REDIS_URL, QUEUE_NAME } = z
   })
   .parse(process.env);
 
-const NAME = "chrome";
+export const client = () => {
+  const NAME = "chrome";
+  const queue = new Queue(QUEUE_NAME, REDIS_URL);
 
-export const client = () => new Queue(QUEUE_NAME, REDIS_URL);
+  const q = {
+    async produce(
+      data: object,
+      opts = {
+        delay: seconds(1),
+        // repeat: { cron: "1 10,22 * * *" },
+      }
+    ) {
+      await queue.add(NAME, data, opts);
+      return q;
+    },
+    process() {
+      queue.process(NAME, async function (job) {
+        const { data } = job;
+
+        console.log(["process"], NAME, data);
+        await job.log(`process ${NAME}`);
+        await job.progress(50);
+
+        const returnValue = await chrome(data.url);
+
+        console.log(["success"], NAME, returnValue);
+        await job.log(`success ${NAME}`);
+        await job.progress(100);
+
+        return returnValue;
+      });
+
+      return q;
+    },
+    close() {
+      return queue.close();
+    },
+    queue,
+  };
+
+  return q;
+};
 
 export const broker = async (
   url = "https://zimekk.github.io/robot/",
@@ -28,37 +67,9 @@ export const broker = async (
 ) => {
   console.log(["broker"], url, ...args);
 
-  const queue = client();
-
-  // const NAME = "chrome";
-  // const url = 'https://www.al.to/goracy_strzal'
-  // const url = 'https://www.x-kom.pl/goracy_strzal'
-  // const url = 'http://www.makarewicz.eu'
-
-  await queue.add(
-    NAME,
-    {
-      url,
-    },
-    {
-      // delay: seconds(5),
-    }
-  );
-
-  // await queue
-  //   .add(
-  //     NAME,
-  //     {
-  //       number: Number(number),
-  //     },
-  //     {
-  //       delay: seconds(5),
-  //       // repeat: { cron: "1 10,22 * * *" },
-  //     }
-  //   )
-  //   .then(({ id, data }) => console.log(["add"], { id, data }));
-
-  await queue.close().then(() => console.log(["close"]));
+  const worker = client();
+  await worker.produce({ url });
+  await worker.close().then(() => console.log(["close"]));
 };
 
 export const chrome = async (...args: string[]) =>
@@ -66,41 +77,55 @@ export const chrome = async (...args: string[]) =>
 
 export const router = () => {
   const BASE_PATH = "/board";
-  // const NAME = "chrome";
 
   const serverAdapter = new ExpressAdapter();
   serverAdapter.setBasePath(BASE_PATH);
 
-  const queue = client();
+  const worker = client();
 
-  worker();
-  // queue.process(NAME, async function ({ data }) {
-  //   console.log(["process"], data);
-  //   return await chrome(data.url);
-  // });
+  worker.process();
 
   createBullBoard({
-    queues: [new BullAdapter(queue)],
+    queues: [new BullAdapter(worker.queue)],
     serverAdapter,
   });
 
   return Router()
     .post("/process", json(), async (req, res) => {
-      const { url } = req.body;
+      const { data, opts } = await z
+        .object({
+          data: z.object({
+            url: z.string(),
+          }),
+          opts: z
+            .object({
+              delay: z.number().default(0),
+              repeat: z
+                .object({
+                  cron: z.string().optional(),
+                })
+                .optional(),
+            })
+            .optional(),
+        })
+        .parseAsync(req.body);
       console.log(req.body);
 
-      // await queue.add(
-      //   NAME,
-      //   {
-      //     url,
-      //   },
-      //   {
-      //     // delay: seconds(5),
-      //   }
-      // );
+      await worker.produce(data, opts);
 
-      await broker(url);
-
+      return res.json({ status: "ok" });
+    })
+    .post("/cleanup", async (_req, res) => {
+      const queue = worker.queue;
+      await Promise.all(
+        (
+          await queue.getRepeatableJobs()
+        ).map(
+          async ({ key }) =>
+            Boolean(console.log(["cleanup"], { key })) ||
+            (await queue.removeRepeatableByKey(key))
+        )
+      );
       return res.json({ status: "ok" });
     })
     .use(BASE_PATH, serverAdapter.getRouter());
@@ -109,7 +134,7 @@ export const router = () => {
 export const status = async (...args: string[]) => {
   console.log(["status"], ...args);
 
-  const queue = client();
+  const queue = client().queue;
 
   await queue.getCompleted().then((jobs) =>
     console.log(
@@ -133,28 +158,5 @@ export const status = async (...args: string[]) => {
 export const worker = async () => {
   console.log(["worker"]);
 
-  const queue = client();
-
-  queue.process(NAME, async function (job) {
-    // queue.process(async function (job, done) {
-    const { data } = job;
-    console.log(["process"], NAME, data);
-    await job.log(`start processing ${NAME}`);
-    await job.progress(50);
-    const result = await chrome(data.url);
-
-    await job.progress(100);
-
-    // const result = 2;
-    await job.log(`end processing ${NAME}`);
-
-    console.log("process result", result);
-    // done(null,result)
-    return result;
-  });
-
-  // queue.process(NAME, async function ({ data }) {
-  //   console.log(["process"], data);
-  //   return data.number + 1;
-  // });
+  client().process();
 };
