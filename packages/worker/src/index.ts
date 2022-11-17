@@ -115,6 +115,26 @@ export const router = () => {
 
       return res.json({ status: "ok" });
     })
+    .post("/entries", async (_req, res) => {
+      const queue = worker.queue;
+      const entries = await queue.getCompleted().then(
+        z
+          .object({
+            id: z.string(),
+            data: z.object({
+              url: z.string(),
+            }),
+            returnvalue: z.object({
+              json: z.any(),
+            }),
+          })
+          .array().parseAsync
+      );
+      return res.json(
+        entries
+        // .filter(({ returnvalue }) => !returnvalue.json.Message)
+      );
+    })
     .post("/cleanup", async (_req, res) => {
       const queue = worker.queue;
       await Promise.all(
