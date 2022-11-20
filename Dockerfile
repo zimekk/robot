@@ -8,7 +8,12 @@ RUN apk add --no-cache \
       freetype \
       harfbuzz \
       ca-certificates \
-      ttf-freefont
+      ttf-freefont \
+      tzdata
+
+# https://stackoverflow.com/questions/68996420/how-to-set-timezone-inside-alpine-base-docker-image
+# https://docs.diladele.com/docker/timezones.html
+ENV TZ=Europe/Warsaw
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
