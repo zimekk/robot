@@ -31,7 +31,8 @@
     "@bull-board/express": "^4.6.4",
     "@dev/chrome": "^1.0.0",
     "bull": "^4.10.1",
-    "milliseconds": "^1.0.3"
+    "milliseconds": "^1.0.3",
+    "node-html-parser": "^6.1.4"
   },
   "devDependencies": {
     "@types/bull": "^4.10.0",

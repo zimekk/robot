@@ -7,6 +7,7 @@ import { resolve } from "path";
 import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
+import { parse } from "node-html-parser";
 import { z } from "zod";
 
 config({ path: resolve(__dirname, "../../../.env") });
@@ -20,7 +21,12 @@ const { REDIS_URL, QUEUE_NAME } = z
 
 export const client = () => {
   const NAME = "chrome";
-  const queue = new Queue(QUEUE_NAME, REDIS_URL);
+  const queue = new Queue(QUEUE_NAME, REDIS_URL, {
+    limiter: {
+      max: 1, // Max number of jobs processed
+      duration: 15000, // per duration in milliseconds
+    },
+  });
 
   const q = {
     async produce(
@@ -34,21 +40,62 @@ export const client = () => {
       return q;
     },
     process() {
-      queue.process(NAME, async function (job) {
-        const { data } = job;
+      queue
+        .on(
+          "completed",
+          async ({ id, name, data, opts, finishedOn }, result) => {
+            console.log(["completed"], { id, name, data, opts, finishedOn });
+            // https://www.otodom.pl/pl/oferta/nowoczesny-dom-blisko-wkd-w-komorowie-ID4h6cW
+            if (data.url.match("/oferty/sprzedaz/")) {
+              const list = z
+                .object({
+                  props: z.object({
+                    pageProps: z.object({
+                      data: z.object({
+                        searchAds: z.object({
+                          items: z
+                            .object({
+                              id: z.number(),
+                              slug: z.string(),
+                            })
+                            .array(),
+                        }),
+                      }),
+                    }),
+                  }),
+                })
+                .transform(({ props }) => props.pageProps.data.searchAds.items)
+                .parse(
+                  JSON.parse(
+                    parse(result.html).querySelector("script#__NEXT_DATA__")
+                      ?.text || "{}"
+                  )
+                )
+                .map(
+                  ({ slug }) => `${new URL(data.url).origin}/pl/oferta/${slug}`
+                )
+                .slice(0, 3);
 
-        console.log(["process"], NAME, data);
-        await job.log(`process ${NAME}`);
-        await job.progress(50);
+              await Promise.all(list.map((url) => q.produce({ url })));
+              console.log({ list });
+            }
+          }
+        )
+        .process(NAME, async function (job) {
+          const { data } = job;
 
-        const returnValue = await chrome(data.url);
+          console.log(["process"], NAME, data);
+          await job.log(`process ${NAME}`);
+          await job.progress(50);
 
-        console.log(["success"], NAME, returnValue);
-        await job.log(`success ${NAME}`);
-        await job.progress(100);
+          const returnValue = await chrome(data.url);
 
-        return returnValue;
-      });
+          console.log(["success"], NAME, returnValue);
+          await job.log(`success ${NAME}`);
+          await job.progress(100);
+
+          return returnValue;
+        });
 
       return q;
     },
@@ -125,13 +172,27 @@ export const router = () => {
               url: z.string(),
             }),
             returnvalue: z.object({
+              html: z.any(),
               json: z.any(),
             }),
           })
           .array().parseAsync
       );
       return res.json(
-        entries
+        entries.map((item) =>
+          item.returnvalue.html
+            ? Object.assign(item, {
+                returnvalue: {
+                  // ...item.returnvalue,
+                  json: JSON.parse(
+                    parse(item.returnvalue.html).querySelector(
+                      "script#__NEXT_DATA__"
+                    )?.text || "{}"
+                  ),
+                },
+              })
+            : item
+        )
         // .filter(({ returnvalue }) => !returnvalue.json.Message)
       );
     })
