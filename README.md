@@ -53,9 +53,12 @@ docker-compose down --remove-orphans
 ```
 
 ```sh
-docker-compose -f docker-compose.yml up --build -d && docker system prune -f
+docker-compose -f docker-compose.yml build --no-cache && docker-compose -f docker-compose.yml up -d && docker system prune -f
 ```
 
+## deploy
+
 ```sh
-docker-compose -f docker-compose.yml build --no-cache && docker-compose -f docker-compose.yml up -d && docker system prune -f
+git fetch && git reset --hard origin
+docker-compose -f docker-compose.yml up --build -d && docker system prune -f
 ```
