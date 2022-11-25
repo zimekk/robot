@@ -117,80 +117,106 @@ export default function Section({ version = 1 }) {
   const data = asset.read(version); // As many cache keys as you need
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
 
-  const onEntries = useCallback(
-    () =>
-      post("entries")
-        .then((response) => response.json())
-        .then(EntriesSchema.parseAsync)
-        .then(setEntries),
-    []
-  );
-
-  const onProcess = useCallback(
-    () =>
-      post("process", {
-        data: {
-          // url: "https://www.otodom.pl/pl/oferta/nowa-cena-piekny-dom-ID4hGrG",
-          url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
-        },
-        opts: {
-          delay: seconds(5),
-        },
-      }),
-    []
-  );
-
-  const onProcessRepeatable15 = useCallback(
-    () =>
-      post("process", {
-        data: {
-          url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
-        },
-        opts: {
-          repeat: { cron: "*/45 * * * *" },
-        },
-      }),
-    []
-  );
-
-  const onProcessRepeatable21 = useCallback(
-    () =>
-      post("process", {
-        data: {
-          url: "https://www.al.to/goracy_strzal",
-        },
-        opts: {
-          repeat: { cron: "1 9,21 * * *" },
-        },
-      }),
-    []
-  );
-
-  const onProcessRepeatable22 = useCallback(
-    () =>
-      post("process", {
-        data: {
-          url: "https://www.x-kom.pl/goracy_strzal",
-        },
-        opts: {
-          repeat: { cron: "1 10,22 * * *" },
-        },
-      }),
-    []
-  );
-
-  const onCleanupRepeatable = useCallback(() => post("cleanup"), []);
-
   return (
     <section>
       <h2>Hello</h2>
       <pre>{JSON.stringify(data, null, 2)}</pre>
-      <button onClick={onEntries}>entries</button>
-      <button onClick={onProcess}>process</button>
-      <button onClick={onProcessRepeatable15}>processRepeatable15</button>
-      <button onClick={onProcessRepeatable21}>processRepeatable21</button>
-      <button onClick={onProcessRepeatable22}>processRepeatable22</button>
-      <button onClick={onCleanupRepeatable}>cleanupRepeatable</button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("entries")
+              .then((response) => response.json())
+              .then(EntriesSchema.parseAsync)
+              .then(setEntries),
+          []
+        )}
+      >
+        entries
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                // url: "https://www.otodom.pl/pl/oferta/nowa-cena-piekny-dom-ID4hGrG",
+                // url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+              },
+              opts: {
+                delay: seconds(5),
+              },
+            }),
+          []
+        )}
+      >
+        process
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "*/45 * * * *" },
+              },
+            }),
+          []
+        )}
+      >
+        processRepeatable15
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                url: "https://www.x-kom.pl/promocje",
+              },
+              opts: {
+                repeat: { cron: "1 8,20 * * *" },
+              },
+            }),
+          []
+        )}
+      >
+        processRepeatable20
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                url: "https://www.al.to/goracy_strzal",
+              },
+              opts: {
+                repeat: { cron: "1 9,21 * * *" },
+              },
+            }),
+          []
+        )}
+      >
+        processRepeatable21
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                url: "https://www.x-kom.pl/goracy_strzal",
+              },
+              opts: {
+                repeat: { cron: "1 10,22 * * *" },
+              },
+            }),
+          []
+        )}
+      >
+        processRepeatable22
+      </button>
+      <button onClick={useCallback(() => post("cleanup"), [])}>
+        cleanupRepeatable
+      </button>
       <pre>{JSON.stringify(entries, null, 2)}</pre>
     </section>
   );
