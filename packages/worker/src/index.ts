@@ -7,9 +7,8 @@ import { resolve } from "path";
 import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
-import { parse } from "node-html-parser";
 import { z } from "zod";
-import { EntriesSchema } from "@dev/schema";
+import { EntriesSchema, EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
 
@@ -44,42 +43,30 @@ export const client = () => {
       queue
         .on(
           "completed",
-          async ({ id, name, data, opts, finishedOn }, result) => {
+          async ({ id, name, data, opts, finishedOn }, returnvalue) => {
             console.log(["completed"], { id, name, data, opts, finishedOn });
-            // https://www.otodom.pl/pl/oferta/nowoczesny-dom-blisko-wkd-w-komorowie-ID4h6cW
-            if (data.url.match("/oferty/sprzedaz/")) {
-              const list = z
-                .object({
-                  props: z.object({
-                    pageProps: z.object({
-                      data: z.object({
-                        searchAds: z.object({
-                          items: z
-                            .object({
-                              id: z.number(),
-                              slug: z.string(),
-                            })
-                            .array(),
-                        }),
-                      }),
-                    }),
-                  }),
-                })
-                .transform(({ props }) => props.pageProps.data.searchAds.items)
-                .parse(
-                  JSON.parse(
-                    parse(result.html).querySelector("script#__NEXT_DATA__")
-                      ?.text || "{}"
-                  )
-                )
-                .map(
-                  ({ slug }) => `${new URL(data.url).origin}/pl/oferta/${slug}`
-                )
-                .slice(0, 3);
 
-              await Promise.all(list.map((url) => q.produce({ url })));
-              console.log({ list });
-            }
+            await EntrySchema.parseAsync({ id, data, returnvalue }).then(
+              async ({ data, type, returnvalue }) => {
+                if (type === Type.OTODOM) {
+                  const { items } =
+                    returnvalue.json.props.pageProps.data?.searchAds || {};
+                  return (
+                    items &&
+                    Promise.all(
+                      items
+                        .map(
+                          ({ slug }) =>
+                            `${new URL(data.url).origin}/pl/oferta/${slug}`
+                        )
+                        .slice(0, 3)
+                    )
+                      .then((list) => (console.log({ list }), list))
+                      .then((list) => list.map((url) => q.produce({ url })))
+                  );
+                }
+              }
+            );
           }
         )
         .process(NAME, async function (job) {
@@ -91,7 +78,7 @@ export const client = () => {
 
           const returnValue = await chrome(data.url);
 
-          console.log(["success"], NAME, returnValue);
+          console.log(["success"], NAME);
           await job.log(`success ${NAME}`);
           await job.progress(100);
 

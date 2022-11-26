@@ -44,6 +44,9 @@ export const EntrySchema = z
       z
         .object({
           type: z.literal(Type.PROMO),
+          data: z.object({
+            url: z.string(),
+          }),
           returnvalue: z
             .object({
               html: z.string(),
@@ -54,18 +57,27 @@ export const EntrySchema = z
         .passthrough(),
       z.object({
         type: z.literal(Type.HOTSHOT),
+        data: z.object({
+          url: z.string(),
+        }),
         returnvalue: z.object({
           json: z.any(),
         }),
       }),
       z.object({
         type: z.literal(Type.HOTSHOT_ALTO),
+        data: z.object({
+          url: z.string(),
+        }),
         returnvalue: z.object({
           json: z.any(),
         }),
       }),
       z.object({
         type: z.literal(Type.OTODOM),
+        data: z.object({
+          url: z.string(),
+        }),
         returnvalue: z
           .object({
             html: z.string(),
@@ -74,6 +86,9 @@ export const EntrySchema = z
       }),
       z.object({
         type: z.literal(Type.OTODOM_OFFER),
+        data: z.object({
+          url: z.string(),
+        }),
         returnvalue: z
           .object({
             html: z.string(),
