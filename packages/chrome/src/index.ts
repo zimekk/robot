@@ -95,6 +95,7 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
       // timeout: 0,
     }),
   ]).then(async ([result]) => {
+    await delay();
     await page.close();
     await browser.close();
     return result;

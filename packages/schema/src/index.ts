@@ -1,0 +1,87 @@
+import { z } from "zod";
+import OtodomOfferTransform from "./otodom/offer";
+import PromoTransform from "./promo";
+
+export const Type = {
+  PROMO: "PROMO",
+  HOTSHOT: "HOTSHOT",
+  HOTSHOT_ALTO: "HOTSHOT_ALTO",
+  OTODOM: "OTODOM",
+  OTODOM_OFFER: "OTODOM_OFFER",
+} as const;
+
+// enum Type {
+// PROMO,
+// };
+
+export const EntrySchema = z
+  .preprocess(
+    z
+      .object({
+        id: z.string(),
+        data: z.object({
+          url: z.string(),
+        }),
+        returnvalue: z.object({
+          html: z.any(),
+          json: z.any(),
+        }),
+      })
+      //.passthrough()
+      .transform((item) => ({
+        type: Object.entries({
+          [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
+          [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),
+          [Type.PROMO]: new RegExp("x-kom.pl/promocje"),
+          [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
+          [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
+        })
+          .find(([_, regExp]) => regExp.test(item.data.url))
+          ?.shift(),
+        ...item,
+      })).parse,
+    z.discriminatedUnion("type", [
+      z
+        .object({
+          type: z.literal(Type.PROMO),
+          returnvalue: z
+            .object({
+              html: z.string(),
+            })
+            .transform(PromoTransform),
+        })
+        .extend({})
+        .passthrough(),
+      z.object({
+        type: z.literal(Type.HOTSHOT),
+        returnvalue: z.object({
+          json: z.any(),
+        }),
+      }),
+      z.object({
+        type: z.literal(Type.HOTSHOT_ALTO),
+        returnvalue: z.object({
+          json: z.any(),
+        }),
+      }),
+      z.object({
+        type: z.literal(Type.OTODOM),
+        returnvalue: z
+          .object({
+            html: z.string(),
+          })
+          .transform(OtodomOfferTransform),
+      }),
+      z.object({
+        type: z.literal(Type.OTODOM_OFFER),
+        returnvalue: z
+          .object({
+            html: z.string(),
+          })
+          .transform(OtodomOfferTransform),
+      }),
+    ])
+  )
+  .transform((item) => (console.log(item), item));
+
+export const EntriesSchema = EntrySchema.array();

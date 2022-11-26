@@ -1,0 +1,25 @@
+{
+  "name": "@dev/schema",
+  "version": "1.0.0",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production tsc",
+    "coverage": "type-coverage && tsc --noEmit"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.4",
+    "zod": "^3.19.1"
+  },
+  "devDependencies": {}
+}

@@ -30,6 +30,7 @@
     "@bull-board/api": "^4.6.4",
     "@bull-board/express": "^4.6.4",
     "@dev/chrome": "^1.0.0",
+    "@dev/schema": "^1.0.0",
     "bull": "^4.10.2",
     "milliseconds": "^1.0.3",
     "node-html-parser": "^6.1.4"

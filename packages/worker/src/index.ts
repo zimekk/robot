@@ -9,6 +9,7 @@ import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
 import { parse } from "node-html-parser";
 import { z } from "zod";
+import { EntriesSchema } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
 
@@ -162,40 +163,14 @@ export const router = () => {
 
       return res.json({ status: "ok" });
     })
-    .post("/entries", async (_req, res) => {
-      const queue = worker.queue;
-      const entries = await queue.getCompleted().then(
-        z
-          .object({
-            id: z.string(),
-            data: z.object({
-              url: z.string(),
-            }),
-            returnvalue: z.object({
-              html: z.any(),
-              json: z.any(),
-            }),
-          })
-          .array().parseAsync
-      );
-      return res.json(
-        entries.map((item) =>
-          item.returnvalue.html
-            ? Object.assign(item, {
-                returnvalue: {
-                  // ...item.returnvalue,
-                  json: JSON.parse(
-                    parse(item.returnvalue.html).querySelector(
-                      "script#__NEXT_DATA__"
-                    )?.text || "{}"
-                  ),
-                },
-              })
-            : item
-        )
-        // .filter(({ returnvalue }) => !returnvalue.json.Message)
-      );
-    })
+    .post(
+      "/entries",
+      async (_req, res) =>
+        await worker.queue
+          .getCompleted()
+          .then(EntriesSchema.parseAsync)
+          .then((entries) => res.json(entries))
+    )
     .post("/cleanup", async (_req, res) => {
       const queue = worker.queue;
       await Promise.all(

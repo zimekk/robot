@@ -57,7 +57,16 @@ export default (async (
         rules: [
           {
             test: /\.tsx?$/,
-            loader: "ts-loader",
+            // loader: "ts-loader",
+            loader: "babel-loader",
+            exclude: /node_modules/,
+            options: {
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-typescript",
+              ],
+            },
           },
         ],
       },

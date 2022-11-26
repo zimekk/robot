@@ -2,99 +2,44 @@ import React, { useCallback, useState } from "react";
 import { seconds } from "milliseconds";
 import { createAsset } from "use-asset";
 import { z } from "zod";
-
-const PhotoSchema = z.object({
-  Url: z.string(),
-  ThumbnailUrl: z.string(),
-  UrlTemplate: z.string().nullable(),
-});
-
-const HotShotSchema = z.object({
-  Id: z.string(),
-  Price: z.number(),
-  OldPrice: z.number(),
-  PromotionGainText: z.string(),
-  PromotionGainTextLines: z.string().array(),
-  PromotionGainValue: z.number(),
-  PromotionTotalCount: z.number(),
-  SaleCount: z.number(),
-  MaxBuyCount: z.number(),
-  PromotionName: z.string(),
-  PromotionEnd: z.string(),
-  PromotionPhoto: PhotoSchema,
-  Product: z.object({
-    AvailabilityStatus: z.enum(["Available", "Unavailable"]),
-    IsEsd: z.boolean(),
-    Name: z.string(),
-    MainPhoto: PhotoSchema,
-    // Photos: PhotoSchema.array(),
-    Price: z.number(),
-    ProducerCode: z.string(),
-    Producer: z.object({
-      Id: z.string(),
-      Name: z.string(),
-    }),
-    ProductDescription: z.string(),
-    WebUrl: z.string(),
-  }),
-});
-
-const HotShotErrorSchema = z.object({
-  Message: z.string(),
-});
-
-const OtodomSchema = z
-  .object({
-    props: z
-      .object({
-        pageProps: z.object({
-          featureFlags: z.any().transform(() => null),
-          translations: z.any().transform(() => null),
-          tracking: z.any().transform(() => null),
-          // data: z.any().transform(() => null),
-          ad: z
-            .object({
-              id: z.number(),
-              slug: z.string(),
-            })
-            .optional(),
-          data: z
-            .object({
-              searchAds: z.object({
-                items: z
-                  .object({
-                    id: z.number(),
-                    slug: z.string(),
-                  })
-                  // .passthrough()
-                  .array(), //.transform(() => null),
-              }), //.passthrough()
-            })
-            .optional(),
-        }), //.passthrough()
-      })
-      .passthrough(),
-  })
-  .passthrough();
+import { Type } from "@dev/schema";
+import { Schema as PromoSchema } from "@dev/schema/src/promo";
+import { Schema as HotshotSchema } from "@dev/schema/src/hot-shot";
+import { Schema as OtodomOfferSchema } from "@dev/schema/src/otodom/offer";
 
 const EntriesSchema = z
-  .object({
-    id: z.string(),
-    data: z.any(),
-    // returnvalue: z.any(),
-    returnvalue: z.union([
-      z.object({
-        html: z.string(),
+  .discriminatedUnion("type", [
+    z.object({
+      type: z.literal(Type.HOTSHOT),
+      returnvalue: z.object({
+        json: HotshotSchema,
       }),
-      z.object({
-        // json: z.object({}).passthrough(),
-        json: z.union([OtodomSchema, HotShotErrorSchema, HotShotSchema]),
+    }),
+    z.object({
+      type: z.literal(Type.HOTSHOT_ALTO),
+      returnvalue: z.object({
+        json: HotshotSchema,
       }),
-    ]),
-  })
-  .transform(({ returnvalue }) =>
-    "json" in returnvalue ? returnvalue.json : returnvalue.html
-  )
+    }),
+    z.object({
+      type: z.literal(Type.PROMO),
+      returnvalue: z.object({
+        json: PromoSchema,
+      }),
+    }),
+    z.object({
+      type: z.literal(Type.OTODOM),
+      returnvalue: z.object({
+        json: OtodomOfferSchema,
+      }),
+    }),
+    z.object({
+      type: z.literal(Type.OTODOM_OFFER),
+      returnvalue: z.object({
+        json: OtodomOfferSchema,
+      }),
+    }),
+  ])
   .array();
 
 // https://github.com/pmndrs/use-asset#dealing-with-async-assets
@@ -138,6 +83,7 @@ export default function Section({ version = 1 }) {
           () =>
             post("process", {
               data: {
+                url: "https://www.x-kom.pl/promocje",
                 // url: "https://www.otodom.pl/pl/oferta/nowa-cena-piekny-dom-ID4hGrG",
                 // url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
               },
