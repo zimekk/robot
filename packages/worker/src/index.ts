@@ -46,6 +46,12 @@ export const client = () => {
           async ({ id, name, data, opts, finishedOn }, returnvalue) => {
             console.log(["completed"], { id, name, data, opts, finishedOn });
 
+            const jobs = await queue.getJobs(["completed", "active"]);
+
+            const urls = jobs.map(({ data }) => data.url);
+
+            console.log(urls);
+
             await EntrySchema.parseAsync({ id, data, returnvalue }).then(
               async ({ data, type, returnvalue }) => {
                 if (type === Type.OTODOM) {
@@ -53,17 +59,32 @@ export const client = () => {
                     returnvalue.json.props.pageProps.data?.searchAds || {};
                   return (
                     items &&
-                    Promise.all(
+                    Promise.resolve(
                       items
                         .map(
                           ({ slug }) =>
                             `${new URL(data.url).origin}/pl/oferta/${slug}`
                         )
-                        .slice(0, 3)
+                        .filter((url) => !urls.includes(url))
+                        .slice(0, 15)
                     )
                       .then((list) => (console.log({ list }), list))
-                      .then((list) => list.map((url) => q.produce({ url })))
+                      .then((list) =>
+                        Promise.all(list.map((url) => q.produce({ url })))
+                      )
                   );
+                } else if (type === Type.PROMO) {
+                  return Promise.resolve(
+                    returnvalue.json.list
+                      .map(({ href }) => href)
+                      .filter((url) => new RegExp("//promocje.").test(url))
+                      .filter((url) => !urls.includes(url))
+                      .slice(0, 15)
+                  )
+                    .then((list) => (console.log({ list }), list))
+                    .then((list) =>
+                      Promise.all(list.map((url) => q.produce({ url })))
+                    );
                 }
               }
             );
@@ -76,13 +97,19 @@ export const client = () => {
           await job.log(`process ${NAME}`);
           await job.progress(50);
 
-          const returnValue = await chrome(data.url);
+          const returnvalue = await chrome(data.url);
+
+          await job.progress(100);
+
+          if (returnvalue.html && returnvalue.url !== data.url) {
+            console.log(["failure"], NAME);
+            throw new Error(`Invalid response url: ${returnvalue.url}`);
+          }
 
           console.log(["success"], NAME);
           await job.log(`success ${NAME}`);
-          await job.progress(100);
 
-          return returnValue;
+          return returnvalue;
         });
 
       return q;

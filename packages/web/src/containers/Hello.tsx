@@ -4,6 +4,7 @@ import { createAsset } from "use-asset";
 import { z } from "zod";
 import { Type } from "@dev/schema";
 import { Schema as PromoSchema } from "@dev/schema/src/promo";
+import { Schema as PromoItemSchema } from "@dev/schema/src/promo/item";
 import { Schema as HotshotSchema } from "@dev/schema/src/hot-shot";
 import { Schema as OtodomOfferSchema } from "@dev/schema/src/otodom/offer";
 
@@ -25,6 +26,12 @@ const EntriesSchema = z
       type: z.literal(Type.PROMO),
       returnvalue: z.object({
         json: PromoSchema,
+      }),
+    }),
+    z.object({
+      type: z.literal(Type.PROMO_ITEM),
+      returnvalue: z.object({
+        json: PromoItemSchema,
       }),
     }),
     z.object({
@@ -110,7 +117,23 @@ export default function Section({ version = 1 }) {
           []
         )}
       >
-        processRepeatable15
+        dom/komorow_5600
+      </button>
+      <button
+        onClick={useCallback(
+          () =>
+            post("process", {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "0 * * * *" },
+              },
+            }),
+          []
+        )}
+      >
+        dom/michalowice_62659
       </button>
       <button
         onClick={useCallback(
@@ -126,7 +149,7 @@ export default function Section({ version = 1 }) {
           []
         )}
       >
-        processRepeatable20
+        x-kom.pl/promocje
       </button>
       <button
         onClick={useCallback(
@@ -142,7 +165,7 @@ export default function Section({ version = 1 }) {
           []
         )}
       >
-        processRepeatable21
+        al.to/goracy_strzal
       </button>
       <button
         onClick={useCallback(
@@ -158,7 +181,7 @@ export default function Section({ version = 1 }) {
           []
         )}
       >
-        processRepeatable22
+        x-kom.pl/goracy_strzal
       </button>
       <button onClick={useCallback(() => post("cleanup"), [])}>
         cleanupRepeatable

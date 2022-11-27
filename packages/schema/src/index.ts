@@ -4,6 +4,7 @@ import PromoTransform from "./promo";
 
 export const Type = {
   PROMO: "PROMO",
+  PROMO_ITEM: "PROMO_ITEM",
   HOTSHOT: "HOTSHOT",
   HOTSHOT_ALTO: "HOTSHOT_ALTO",
   OTODOM: "OTODOM",
@@ -33,6 +34,7 @@ export const EntrySchema = z
           [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
           [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),
           [Type.PROMO]: new RegExp("x-kom.pl/promocje"),
+          [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/"),
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
           [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
         })
@@ -55,6 +57,15 @@ export const EntrySchema = z
         })
         .extend({})
         .passthrough(),
+      z.object({
+        type: z.literal(Type.PROMO_ITEM),
+        data: z.object({
+          url: z.string(),
+        }),
+        returnvalue: z.object({
+          json: z.any(),
+        }),
+      }),
       z.object({
         type: z.literal(Type.HOTSHOT),
         data: z.object({

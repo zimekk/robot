@@ -34,6 +34,7 @@ WORKDIR $WORKDIR
 COPY package.json yarn.lock ./
 COPY packages/app/package.json packages/app/
 COPY packages/chrome/package.json packages/chrome/
+COPY packages/schema/package.json packages/schema/
 COPY packages/web/package.json packages/web/
 COPY packages/worker/package.json packages/worker/
 COPY packages/worker/bin packages/worker/bin/

@@ -50,45 +50,50 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
   await page.setRequestInterception(true);
 
   return await Promise.all([
-    new Promise(async (resolve) =>
-      page
-        .on("request", (req: HTTPRequest) => {
-          // console.log({
-          //   req: req.url(),
-          //   headers: req.headers(),
-          //   resourceType: req.resourceType(),
-          // });
-          if (["font", "image", "stylesheet"].includes(req.resourceType())) {
-            req.abort();
-          } else {
-            req.continue();
-          }
-        })
-        .on("response", async (res: HTTPResponse) => {
-          const req = res.request();
-          const headers = res.headers();
-
-          console.log(url, req.resourceType());
-
-          if (url.match("goracy_strzal")) {
-            if (
-              ["xhr"].includes(req.resourceType()) &&
-              res.url().match("/hotShots/current")
-            ) {
-              console.log(["resolve.json"], res.url(), headers);
-              resolve({ json: await res.json() });
+    new Promise<{ url: string; html?: string; json?: object }>(
+      async (resolve) =>
+        page
+          .on("request", (req: HTTPRequest) => {
+            // console.log({
+            //   req: req.url(),
+            //   headers: req.headers(),
+            //   resourceType: req.resourceType(),
+            // });
+            if (["font", "image", "stylesheet"].includes(req.resourceType())) {
+              req.abort();
+            } else {
+              req.continue();
             }
-          } else {
-            if (
-              ["document"].includes(req.resourceType()) &&
-              !headers.location
-            ) {
-              console.log(["resolve.html"], res.url(), headers);
-              await delay();
-              resolve({ html: await res.text() });
+          })
+          .on("response", async (res: HTTPResponse) => {
+            const req = res.request();
+            const headers = res.headers();
+
+            if (["document", "fetch", "xhr"].includes(req.resourceType())) {
+              console.log(url, req.resourceType());
             }
-          }
-        })
+
+            if (url.match("/goracy_strzal|//promocje")) {
+              if (
+                ["fetch", "xhr"].includes(req.resourceType()) &&
+                res
+                  .url()
+                  .match("/get/(xkom|alto)/|/v1/(xkom|alto)/hotShots/current")
+              ) {
+                console.log(["resolve.json"], res.url(), headers);
+                resolve({ url: res.url(), json: await res.json() });
+              }
+            } else {
+              if (
+                ["document"].includes(req.resourceType()) &&
+                !headers.location
+              ) {
+                console.log(["resolve.html"], res.url(), headers);
+                await delay();
+                resolve({ url: res.url(), html: await res.text() });
+              }
+            }
+          })
     ),
     page.goto(url, {
       waitUntil: "networkidle2",
