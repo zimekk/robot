@@ -73,120 +73,191 @@ export default function Section({ version = 1 }) {
     <section>
       <h2>Hello</h2>
       <pre>{JSON.stringify(data, null, 2)}</pre>
-      <button
-        onClick={useCallback(
-          () =>
-            post("entries")
-              .then((response) => response.json())
-              .then(EntriesSchema.parseAsync)
-              .then(setEntries),
-          []
-        )}
-      >
-        entries
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.x-kom.pl/promocje",
-                // url: "https://www.otodom.pl/pl/oferta/nowa-cena-piekny-dom-ID4hGrG",
-                // url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
-              },
-              opts: {
-                delay: seconds(5),
-              },
-            }),
-          []
-        )}
-      >
-        process
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "*/45 * * * *" },
-              },
-            }),
-          []
-        )}
-      >
-        dom/komorow_5600
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "0 * * * *" },
-              },
-            }),
-          []
-        )}
-      >
-        dom/michalowice_62659
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.x-kom.pl/promocje",
-              },
-              opts: {
-                repeat: { cron: "1 8,20 * * *" },
-              },
-            }),
-          []
-        )}
-      >
-        x-kom.pl/promocje
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.al.to/goracy_strzal",
-              },
-              opts: {
-                repeat: { cron: "1 9,21 * * *" },
-              },
-            }),
-          []
-        )}
-      >
-        al.to/goracy_strzal
-      </button>
-      <button
-        onClick={useCallback(
-          () =>
-            post("process", {
-              data: {
-                url: "https://www.x-kom.pl/goracy_strzal",
-              },
-              opts: {
-                repeat: { cron: "1 10,22 * * *" },
-              },
-            }),
-          []
-        )}
-      >
-        x-kom.pl/goracy_strzal
-      </button>
-      <button onClick={useCallback(() => post("cleanup"), [])}>
-        cleanupRepeatable
-      </button>
-      <pre>{JSON.stringify(entries, null, 2)}</pre>
+      <fieldset>
+        <legend>process</legend>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          dom/komorow_5600
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          dom/michalowice_62659
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.x-kom.pl/promocje",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          x-kom.pl/promocje
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.x-kom.pl/goracy_strzal",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          x-kom.pl/goracy_strzal
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.al.to/goracy_strzal",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          al.to/goracy_strzal
+        </button>
+      </fieldset>
+      <fieldset>
+        <legend>delayed</legend>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+                },
+                opts: {
+                  repeat: { cron: "*/45 * * * *" },
+                },
+              }),
+            []
+          )}
+        >
+          dom/komorow_5600
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+                },
+                opts: {
+                  repeat: { cron: "0 * * * *" },
+                },
+              }),
+            []
+          )}
+        >
+          dom/michalowice_62659
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.x-kom.pl/promocje",
+                },
+                opts: {
+                  repeat: { cron: "1 8,20 * * *" },
+                },
+              }),
+            []
+          )}
+        >
+          x-kom.pl/promocje
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.x-kom.pl/goracy_strzal",
+                },
+                opts: {
+                  repeat: { cron: "1 10,22 * * *" },
+                },
+              }),
+            []
+          )}
+        >
+          x-kom.pl/goracy_strzal
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.al.to/goracy_strzal",
+                },
+                opts: {
+                  repeat: { cron: "1 9,21 * * *" },
+                },
+              }),
+            []
+          )}
+        >
+          al.to/goracy_strzal
+        </button>
+        <button onClick={useCallback(() => post("cleanup"), [])}>
+          cleanupRepeatable
+        </button>
+      </fieldset>
+      <fieldset>
+        <legend>entries</legend>
+        <button
+          onClick={useCallback(
+            () =>
+              post("entries")
+                .then((response) => response.json())
+                .then(EntriesSchema.parseAsync)
+                .then(setEntries),
+            []
+          )}
+        >
+          entries
+        </button>
+        <pre>{JSON.stringify(entries, null, 2)}</pre>
+      </fieldset>
     </section>
   );
 }
