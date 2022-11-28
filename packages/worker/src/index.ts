@@ -171,19 +171,23 @@ export const router = () => {
             .optional(),
         })
         .parseAsync(req.body);
-      console.log(req.body);
 
       await worker.produce(data, opts);
 
       return res.json({ status: "ok" });
     })
-    .post(
-      "/entries",
-      async (_req, res) =>
-        await worker.queue
-          .getCompleted()
-          .then(EntriesSchema.parseAsync)
-          .then((entries) => res.json(entries))
+    .post("/entries", json(), async (req, res) =>
+      z
+        .object({
+          start: z.number(),
+          limit: z.number(),
+        })
+        .parseAsync(req.body)
+        .then(({ start, limit }) =>
+          worker.queue.getCompleted(start, start + limit - 1)
+        )
+        .then(EntriesSchema.parseAsync)
+        .then((entries) => res.json(entries))
     )
     .post("/cleanup", async (_req, res) => {
       const queue = worker.queue;

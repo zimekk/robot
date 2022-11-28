@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { ChangeEventHandler, useCallback, useState } from "react";
 import { seconds } from "milliseconds";
 import { createAsset } from "use-asset";
 import { z } from "zod";
@@ -67,6 +67,10 @@ const post = (path: string, data?: object) =>
 
 export default function Section({ version = 1 }) {
   const data = asset.read(version); // As many cache keys as you need
+  const [pager, setPager] = useState(() => ({
+    start: 0,
+    limit: 10,
+  }));
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
 
   return (
@@ -244,14 +248,56 @@ export default function Section({ version = 1 }) {
       </fieldset>
       <fieldset>
         <legend>entries</legend>
+        <label>
+          <span>start</span>
+          <select
+            value={pager.start}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  start: Number(target.value),
+                })),
+              []
+            )}
+          >
+            {[0, 1, 2, 3, 4, 5]
+              .map((value) => value * pager.limit)
+              .map((value) => (
+                <option key={value} value={value}>
+                  {value}
+                </option>
+              ))}
+          </select>
+        </label>
+        <label>
+          <span>limit</span>
+          <select
+            value={pager.limit}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setPager(() => ({
+                  start: 0,
+                  limit: Number(target.value),
+                })),
+              []
+            )}
+          >
+            {[5, 10, 50, 100, 500].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
         <button
           onClick={useCallback(
             () =>
-              post("entries")
+              post("entries", pager)
                 .then((response) => response.json())
                 .then(EntriesSchema.parseAsync)
                 .then(setEntries),
-            []
+            [pager]
           )}
         >
           entries
