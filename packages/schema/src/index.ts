@@ -20,9 +20,11 @@ export const EntrySchema = z
     z
       .object({
         id: z.string(),
-        data: z.object({
-          url: z.string(),
-        }),
+        data: z
+          .object({
+            url: z.string(),
+          })
+          .passthrough(),
         returnvalue: z.object({
           html: z.any(),
           json: z.any(),
@@ -59,9 +61,16 @@ export const EntrySchema = z
         .passthrough(),
       z.object({
         type: z.literal(Type.PROMO_ITEM),
-        data: z.object({
-          url: z.string(),
-        }),
+        data: z
+          .object({
+            url: z.string(),
+          })
+          .extend({
+            code: z.string().optional(),
+            desc: z.string(),
+            href: z.string(),
+            name: z.string(),
+          }),
         returnvalue: z.object({
           json: z.any(),
         }),

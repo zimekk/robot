@@ -61,29 +61,28 @@ export const client = () => {
                     items &&
                     Promise.resolve(
                       items
-                        .map(
-                          ({ slug }) =>
-                            `${new URL(data.url).origin}/pl/oferta/${slug}`
-                        )
-                        .filter((url) => !urls.includes(url))
+                        .map(({ slug }) => ({
+                          url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
+                        }))
+                        .filter(({ url }) => !urls.includes(url))
                         .slice(0, 15)
                     )
                       .then((list) => (console.log({ list }), list))
                       .then((list) =>
-                        Promise.all(list.map((url) => q.produce({ url })))
+                        Promise.all(list.map((data) => q.produce(data)))
                       )
                   );
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list
-                      .map(({ href }) => href)
-                      .filter((url) => new RegExp("//promocje.").test(url))
-                      .filter((url) => !urls.includes(url))
+                      .map((data) => ({ ...data, url: data.href }))
+                      .filter(({ url }) => new RegExp("//promocje.").test(url))
+                      .filter(({ url }) => !urls.includes(url))
                       .slice(0, 15)
                   )
                     .then((list) => (console.log({ list }), list))
                     .then((list) =>
-                      Promise.all(list.map((url) => q.produce({ url })))
+                      Promise.all(list.map((data) => q.produce(data)))
                     );
                 }
               }

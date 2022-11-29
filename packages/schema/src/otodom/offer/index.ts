@@ -15,6 +15,7 @@ export const Schema = z
               id: z.number(),
               slug: z.string(),
             })
+            .passthrough()
             .optional(),
           data: z
             .object({

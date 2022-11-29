@@ -28,12 +28,21 @@ const EntriesSchema = z
         json: PromoSchema,
       }),
     }),
-    z.object({
-      type: z.literal(Type.PROMO_ITEM),
-      returnvalue: z.object({
-        json: PromoItemSchema,
+    z
+      .object({
+        type: z.literal(Type.PROMO_ITEM),
+        returnvalue: z.object({
+          json: PromoItemSchema,
+        }),
+      })
+      .extend({
+        data: z.object({
+          code: z.string().optional(),
+          desc: z.string(),
+          href: z.string(),
+          name: z.string(),
+        }),
       }),
-    }),
     z.object({
       type: z.literal(Type.OTODOM),
       returnvalue: z.object({
