@@ -70,6 +70,8 @@ export default function Section({ version = 1 }) {
   const [pager, setPager] = useState(() => ({
     start: 0,
     limit: 10,
+    data: false,
+    returnvalue: true,
   }));
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
 
@@ -276,7 +278,8 @@ export default function Section({ version = 1 }) {
             value={pager.limit}
             onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
               ({ target }) =>
-                setPager(() => ({
+                setPager((pager) => ({
+                  ...pager,
                   start: 0,
                   limit: Number(target.value),
                 })),
@@ -295,13 +298,47 @@ export default function Section({ version = 1 }) {
             () =>
               post("entries", pager)
                 .then((response) => response.json())
-                .then(EntriesSchema.parseAsync)
+                .then(
+                  pager.data
+                    ? z.any({}).array().parseAsync
+                    : EntriesSchema.parseAsync
+                )
                 .then(setEntries),
             [pager]
           )}
         >
           entries
         </button>
+        <label>
+          <input
+            type="checkbox"
+            checked={pager.data}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  data: target.checked,
+                })),
+              []
+            )}
+          />
+          <span>data</span>
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={pager.returnvalue}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  returnvalue: target.checked,
+                })),
+              []
+            )}
+          />
+          <span>returnvalue</span>
+        </label>
         <pre>{JSON.stringify(entries, null, 2)}</pre>
       </fieldset>
     </section>

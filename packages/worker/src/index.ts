@@ -179,14 +179,30 @@ export const router = () => {
     .post("/entries", json(), async (req, res) =>
       z
         .object({
-          start: z.number(),
-          limit: z.number(),
+          start: z.number().default(0),
+          limit: z.number().default(250),
+          data: z.boolean().default(false),
+          returnvalue: z.boolean().default(true),
         })
         .parseAsync(req.body)
-        .then(({ start, limit }) =>
-          worker.queue.getCompleted(start, start + limit - 1)
-        )
-        .then(EntriesSchema.parseAsync)
+        .then(async ({ start, limit, data }) => {
+          const list = await worker.queue.getCompleted(
+            start,
+            start + limit - 1
+          );
+          if (data) {
+            return z
+              .object({
+                id: z.string(),
+                data: z.object({
+                  url: z.string(),
+                }),
+              })
+              .array()
+              .parseAsync(list);
+          }
+          return EntriesSchema.parseAsync(list);
+        })
         .then((entries) => res.json(entries))
     )
     .post("/cleanup", async (_req, res) => {
