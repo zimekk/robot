@@ -1,5 +1,6 @@
 import Queue from "bull";
 import { json } from "body-parser";
+import { format, sub } from "date-fns";
 import { config } from "dotenv";
 import { Router } from "express";
 import { seconds } from "milliseconds";
@@ -85,7 +86,37 @@ export const client = () => {
                       Promise.all(list.map((data) => q.produce(data)))
                     );
                 } else if (type === Type.RATES) {
-                  console.log(returnvalue.json);
+                  return Promise.resolve(returnvalue.json)
+                    .then(({ date }: { date: string }) =>
+                      format(
+                        sub(new Date(date), {
+                          days: 1,
+                        }),
+                        "yyyy-MM-dd"
+                      )
+                    )
+                    .then((date) => {
+                      if (
+                        date <
+                        format(
+                          sub(new Date(), {
+                            days: 7,
+                          }),
+                          "yyyy-MM-dd"
+                        )
+                      ) {
+                        return [];
+                      }
+                      const url = new URL(data.url);
+                      url.searchParams.set("date", date);
+                      return [{ url: url.toString() }]
+                        .filter(({ url }) => !urls.includes(url))
+                        .filter(({ url }) => !urls.includes(url));
+                    })
+                    .then((list) => (console.log({ list }), list))
+                    .then((list) =>
+                      Promise.all(list.map((data) => q.produce(data)))
+                    );
                 }
               }
             );
