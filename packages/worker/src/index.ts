@@ -84,6 +84,8 @@ export const client = () => {
                     .then((list) =>
                       Promise.all(list.map((data) => q.produce(data)))
                     );
+                } else if (type === Type.RATES) {
+                  console.log(returnvalue.json);
                 }
               }
             );

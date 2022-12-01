@@ -5,6 +5,7 @@ import { z } from "zod";
 import { Type } from "@dev/schema";
 import { Schema as PromoSchema } from "@dev/schema/src/promo";
 import { Schema as PromoItemSchema } from "@dev/schema/src/promo/item";
+import { Schema as RatesSchema } from "@dev/schema/src/rates";
 import { Schema as HotshotSchema } from "@dev/schema/src/hot-shot";
 import { Schema as OtodomOfferSchema } from "@dev/schema/src/otodom/offer";
 
@@ -55,6 +56,12 @@ const EntriesSchema = z
         json: OtodomOfferSchema,
       }),
     }),
+    z.object({
+      type: z.literal(Type.RATES),
+      returnvalue: z.object({
+        json: RatesSchema,
+      }),
+    }),
   ])
   .array();
 
@@ -90,6 +97,22 @@ export default function Section({ version = 1 }) {
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <fieldset>
         <legend>process</legend>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          rest/rates
+        </button>
         <button
           onClick={useCallback(
             () =>

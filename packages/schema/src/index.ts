@@ -9,6 +9,7 @@ export const Type = {
   HOTSHOT_ALTO: "HOTSHOT_ALTO",
   OTODOM: "OTODOM",
   OTODOM_OFFER: "OTODOM_OFFER",
+  RATES: "RATES",
 } as const;
 
 // enum Type {
@@ -39,6 +40,7 @@ export const EntrySchema = z
           [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/"),
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
           [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
+          [Type.RATES]: new RegExp("pl/rest/rates/"),
         })
           .find(([_, regExp]) => regExp.test(item.data.url))
           ?.shift(),
@@ -114,6 +116,15 @@ export const EntrySchema = z
             html: z.string(),
           })
           .transform(OtodomOfferTransform),
+      }),
+      z.object({
+        type: z.literal(Type.RATES),
+        data: z.object({
+          url: z.string(),
+        }),
+        returnvalue: z.object({
+          json: z.any(),
+        }),
       }),
     ])
   )
