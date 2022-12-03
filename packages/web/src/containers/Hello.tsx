@@ -2,68 +2,7 @@ import React, { ChangeEventHandler, useCallback, useState } from "react";
 import { seconds } from "milliseconds";
 import { createAsset } from "use-asset";
 import { z } from "zod";
-import { Type } from "@dev/schema";
-import { Schema as PromoSchema } from "@dev/schema/src/promo";
-import { Schema as PromoItemSchema } from "@dev/schema/src/promo/item";
-import { Schema as RatesSchema } from "@dev/schema/src/rates";
-import { Schema as HotshotSchema } from "@dev/schema/src/hot-shot";
-import { Schema as OtodomOfferSchema } from "@dev/schema/src/otodom/offer";
-
-const EntriesSchema = z
-  .discriminatedUnion("type", [
-    z.object({
-      type: z.literal(Type.HOTSHOT),
-      returnvalue: z.object({
-        json: HotshotSchema,
-      }),
-    }),
-    z.object({
-      type: z.literal(Type.HOTSHOT_ALTO),
-      returnvalue: z.object({
-        json: HotshotSchema,
-      }),
-    }),
-    z.object({
-      type: z.literal(Type.PROMO),
-      returnvalue: z.object({
-        json: PromoSchema,
-      }),
-    }),
-    z
-      .object({
-        type: z.literal(Type.PROMO_ITEM),
-        returnvalue: z.object({
-          json: PromoItemSchema,
-        }),
-      })
-      .extend({
-        data: z.object({
-          code: z.string().optional(),
-          desc: z.string(),
-          href: z.string(),
-          name: z.string(),
-        }),
-      }),
-    z.object({
-      type: z.literal(Type.OTODOM),
-      returnvalue: z.object({
-        json: OtodomOfferSchema,
-      }),
-    }),
-    z.object({
-      type: z.literal(Type.OTODOM_OFFER),
-      returnvalue: z.object({
-        json: OtodomOfferSchema,
-      }),
-    }),
-    z.object({
-      type: z.literal(Type.RATES),
-      returnvalue: z.object({
-        json: RatesSchema,
-      }),
-    }),
-  ])
-  .array();
+import { EntriesSchema } from "@dev/schema";
 
 // https://github.com/pmndrs/use-asset#dealing-with-async-assets
 const asset = createAsset(async (version) => {
@@ -97,6 +36,22 @@ export default function Section({ version = 1 }) {
       <pre>{JSON.stringify(data, null, 2)}</pre>
       <fieldset>
         <legend>process</legend>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/2/values/?format=json&division=daily",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          tfi/fund/2
+        </button>
         <button
           onClick={useCallback(
             () =>

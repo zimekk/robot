@@ -9,7 +9,7 @@ import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
 import { z } from "zod";
-import { EntriesSchema, EntrySchema, Type } from "@dev/schema";
+import { EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
 
@@ -233,7 +233,7 @@ export const router = () => {
               .array()
               .parseAsync(list);
           }
-          return EntriesSchema.parseAsync(list);
+          return EntrySchema.array().parseAsync(list);
         })
         .then((entries) => res.json(entries))
     )
