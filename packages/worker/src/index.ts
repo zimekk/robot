@@ -58,7 +58,29 @@ export const client = () => {
 
             await EntrySchema.parseAsync({ id, data, returnvalue }).then(
               async ({ data, type, returnvalue }) => {
-                if (type === Type.OTODOM) {
+                if (type === Type.AUTOS) {
+                  const { $count } = returnvalue.json;
+
+                  return z
+                    .object({
+                      url: z.string(),
+                      body: z
+                        .object({
+                          $match: z.object({}).passthrough(),
+                          $skip: z.number(),
+                          $limit: z.number(),
+                        })
+                        .transform(({ $skip, $limit, ...body }) => ({
+                          ...body,
+                          $skip: $skip + $limit,
+                          $limit,
+                        })),
+                    })
+                    .parseAsync(data)
+                    .then((data) =>
+                      data.body.$skip < $count.$total ? q.produce(data) : null
+                    );
+                } else if (type === Type.OTODOM) {
                   const { items } =
                     returnvalue.json.props.pageProps.data?.searchAds || {};
                   return (

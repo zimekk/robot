@@ -39,7 +39,7 @@ export const ItemSchema = z
     warranty: z.number(),
     usedBrand: z.boolean(),
     reservable: z.boolean(),
-    reservationStatus: z.string(),
+    reservationStatus: z.string().optional(),
     vatReclaimable: z.boolean(),
     leasable: z.boolean(),
     leaseProduct: z
@@ -159,6 +159,10 @@ export const ItemSchema = z
   })
   .extend({
     reservationFee: z.number().optional(),
+    transactionalPriceUpdated: z.string().optional(),
+  })
+  .extend({
+    video: z.string().optional(),
   })
   .strict();
 

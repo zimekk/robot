@@ -69,6 +69,17 @@ export const EntrySchema = z
     z.discriminatedUnion("type", [
       JsonSchema.extend({
         type: z.literal(Type.AUTOS),
+        data: z
+          .object({
+            url: z.string(),
+          })
+          .extend({
+            body: z.object({
+              $match: z.object({}).passthrough(),
+              $skip: z.number(),
+              $limit: z.number(),
+            }),
+          }),
       }),
       JsonSchema.extend({
         type: z.literal(Type.FUNDS),
