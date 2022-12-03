@@ -41,6 +41,32 @@ export default function Section({ version = 1 }) {
             () =>
               post("process", {
                 data: {
+                  url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
+                  body: {
+                    $match: {
+                      transactionalPrice: {
+                        $min: 0,
+                        $max: 1790000,
+                      },
+                    },
+                    $skip: 0,
+                    $limit: 100,
+                  },
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          mini.com.pl/nowe
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
                   url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
                   body: {
                     $match: {
@@ -64,6 +90,32 @@ export default function Section({ version = 1 }) {
           )}
         >
           bmw.pl/nowe
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
+                  body: {
+                    $match: {
+                      transactionalPrice: {
+                        $min: 0,
+                        $max: 1790000,
+                      },
+                    },
+                    $skip: 0,
+                    $limit: 100,
+                  },
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          bmw.pl/uzywane
         </button>
         <button
           onClick={useCallback(

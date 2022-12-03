@@ -52,7 +52,9 @@ export const EntrySchema = z
       //.passthrough()
       .transform((item) => ({
         type: Object.entries({
-          [Type.AUTOS]: new RegExp("bmw.pl/nowe/"),
+          [Type.AUTOS]: new RegExp(
+            "mini.com.pl/nowe/|bmw.pl/nowe/|bmw.pl/uzywane/"
+          ),
           [Type.FUNDS]: new RegExp("tfi/fund/"),
           [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
           [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),

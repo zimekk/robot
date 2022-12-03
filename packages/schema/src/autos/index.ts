@@ -6,12 +6,12 @@ export const ItemSchema = z
     vin17: z.string(),
     type: z.string(),
     isNew: z.boolean(),
-    modelCode: z.string(),
+    // modelCode: z.string(),
     title: z.string(),
     brand: z.object({ id: z.number(), label: z.string() }),
-    series: z.object({ id: z.number(), label: z.string() }),
+    // series: z.object({ id: z.number(), label: z.string() }),
     bodyType: z.object({ id: z.number(), label: z.string() }),
-    seriesCode: z.string(),
+    // seriesCode: z.string(),
     productionYear: z.number(),
     mileage: z.number().optional(),
     fuel: z.object({ id: z.number(), label: z.string() }),
@@ -24,7 +24,7 @@ export const ItemSchema = z
     transmission: z.object({ id: z.number(), label: z.string() }),
     color: z
       .object({
-        labelEN: z.string(),
+        labelEN: z.string().optional(),
         code: z.string(),
         id: z.number(),
         label: z.string(),
@@ -153,6 +153,11 @@ export const ItemSchema = z
     extended: z.object({ brand: z.string(), buno: z.string() }),
   })
   .extend({
+    modelCode: z.string().optional(),
+    series: z.object({ id: z.number(), label: z.string() }).optional(),
+    seriesCode: z.string().optional(),
+  })
+  .extend({
     consumptionElectric: z.number().optional(),
     emissionMeasurementStandard: z.string().optional(),
     electricRange: z.number().optional(),
@@ -160,6 +165,11 @@ export const ItemSchema = z
   .extend({
     reservationFee: z.number().optional(),
     transactionalPriceUpdated: z.string().optional(),
+  })
+  .extend({
+    accessoriesPrice: z.number().optional(),
+    optionsPrice: z.number().optional(),
+    registration: z.string().optional(),
   })
   .extend({
     video: z.string().optional(),
