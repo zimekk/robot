@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "NODE_ENV=production tsc",
-    "coverage": "type-coverage && tsc --noEmit"
+    "coverage": "type-coverage && tsc --noEmit",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "node-html-parser": "^6.1.4",

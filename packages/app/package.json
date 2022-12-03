@@ -15,6 +15,10 @@
       "node": true
     }
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
   "scripts": {
     "build": "tsc",
     "coverage": "type-coverage && tsc --noEmit",

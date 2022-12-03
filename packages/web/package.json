@@ -8,6 +8,10 @@
       "browser": true
     }
   },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
   "scripts": {
     "build": "webpack --mode production",
     "coverage": "type-coverage && tsc --noEmit",
