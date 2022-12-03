@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Schema as AutosSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
@@ -9,6 +10,7 @@ import OtodomOfferTransform, {
 } from "./otodom/offer";
 
 export const Type = {
+  AUTOS: "AUTOS",
   FUNDS: "FUNDS",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
@@ -50,6 +52,7 @@ export const EntrySchema = z
       //.passthrough()
       .transform((item) => ({
         type: Object.entries({
+          [Type.AUTOS]: new RegExp("bmw.pl/nowe/"),
           [Type.FUNDS]: new RegExp("tfi/fund/"),
           [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
           [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),
@@ -64,6 +67,9 @@ export const EntrySchema = z
         ...item,
       })).parse,
     z.discriminatedUnion("type", [
+      JsonSchema.extend({
+        type: z.literal(Type.AUTOS),
+      }),
       JsonSchema.extend({
         type: z.literal(Type.FUNDS),
       }),
@@ -131,6 +137,12 @@ export const EntrySchema = z
 
 export const EntriesSchema = z
   .discriminatedUnion("type", [
+    z.object({
+      type: z.literal(Type.AUTOS),
+      returnvalue: z.object({
+        json: AutosSchema,
+      }),
+    }),
     z.object({
       type: z.literal(Type.FUNDS),
       returnvalue: z.object({

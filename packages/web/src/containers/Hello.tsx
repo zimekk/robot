@@ -41,6 +41,35 @@ export default function Section({ version = 1 }) {
             () =>
               post("process", {
                 data: {
+                  url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
+                  body: {
+                    $match: {
+                      transactionalPrice: {
+                        $min: 0,
+                        $max: 1790000,
+                      },
+                      // brand: 1, // BMW
+                      // brand: 65, // MINI
+                      // series :5
+                    },
+                    $skip: 0,
+                    $limit: 100,
+                  },
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          bmw.pl/nowe
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
                   url: "https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/2/values/?format=json&division=daily",
                 },
                 opts: {

@@ -1,5 +1,6 @@
 import Queue from "bull";
 import { json } from "body-parser";
+import { fetch } from "cross-fetch";
 import { format, sub } from "date-fns";
 import { config } from "dotenv";
 import { Router } from "express";
@@ -20,9 +21,11 @@ const { REDIS_URL, QUEUE_NAME } = z
   })
   .parse(process.env);
 
+type Data = { url: string; body?: object };
+
 export const client = () => {
   const NAME = "chrome";
-  const queue = new Queue(QUEUE_NAME, REDIS_URL, {
+  const queue = new Queue<Data>(QUEUE_NAME, REDIS_URL, {
     limiter: {
       max: 1, // Max number of jobs processed
       duration: 15000, // per duration in milliseconds
@@ -31,7 +34,7 @@ export const client = () => {
 
   const q = {
     async produce(
-      data: object,
+      data: Data,
       opts = {
         delay: seconds(1),
         // repeat: { cron: "1 10,22 * * *" },
@@ -129,7 +132,19 @@ export const client = () => {
           await job.log(`process ${NAME}`);
           await job.progress(50);
 
-          const returnvalue = await chrome(data.url);
+          const returnvalue = data.body
+            ? await fetch(data.url, {
+                method: "post",
+                body: JSON.stringify(data.body),
+              }).then(
+                async (res) =>
+                  ({ url: data.url, json: await res.json() } as {
+                    url: string;
+                    html?: string | undefined;
+                    json?: object | undefined;
+                  })
+              )
+            : await chrome(data.url);
 
           await job.progress(100);
 
@@ -190,6 +205,7 @@ export const router = () => {
         .object({
           data: z.object({
             url: z.string(),
+            body: z.object({}).passthrough().optional(),
           }),
           opts: z
             .object({
