@@ -154,6 +154,38 @@ export default function Section({ version = 1 }) {
             () =>
               post("process", {
                 data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          dzialka/warszawa
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/warszawa?limit=72&page=1",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          dom/warszawa
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
                   url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
                 },
                 opts: {
@@ -237,23 +269,23 @@ export default function Section({ version = 1 }) {
             () =>
               post("process", {
                 data: {
-                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
                 },
                 opts: {
-                  repeat: { cron: "*/45 * * * *" },
+                  repeat: { cron: "30 * * * *" },
                 },
               }),
             []
           )}
         >
-          dom/komorow_5600
+          dzialka/warszawa
         </button>
         <button
           onClick={useCallback(
             () =>
               post("process", {
                 data: {
-                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+                  url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/warszawa?limit=72&page=1",
                 },
                 opts: {
                   repeat: { cron: "0 * * * *" },
@@ -262,7 +294,7 @@ export default function Section({ version = 1 }) {
             []
           )}
         >
-          dom/michalowice_62659
+          dom/warszawa
         </button>
         <button
           onClick={useCallback(
