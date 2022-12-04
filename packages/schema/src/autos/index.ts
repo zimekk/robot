@@ -6,12 +6,12 @@ export const ItemSchema = z
     vin17: z.string(),
     type: z.string(),
     isNew: z.boolean(),
-    // modelCode: z.string(),
+    modelCode: z.string(),
     title: z.string(),
     brand: z.object({ id: z.number(), label: z.string() }),
-    // series: z.object({ id: z.number(), label: z.string() }),
+    series: z.object({ id: z.number(), label: z.string() }),
     bodyType: z.object({ id: z.number(), label: z.string() }),
-    // seriesCode: z.string(),
+    seriesCode: z.string(),
     productionYear: z.number(),
     mileage: z.number().optional(),
     fuel: z.object({ id: z.number(), label: z.string() }),
@@ -132,7 +132,7 @@ export const ItemSchema = z
     dealer: z
       .object({
         id: z.number(),
-        bunoBMW: z.string(),
+        bunoBMW: z.string().optional(),
         bunoMINI: z.string().optional(),
         bunoMOTORCYCLE: z.string().optional(),
         owner: z.string(),
@@ -167,7 +167,10 @@ export const ItemSchema = z
     transactionalPriceUpdated: z.string().optional(),
   })
   .extend({
+    age: z.number().optional(),
     accessoriesPrice: z.number().optional(),
+    isYUC: z.boolean().optional(),
+    newPrice: z.number().optional(),
     optionsPrice: z.number().optional(),
     registration: z.string().optional(),
   })

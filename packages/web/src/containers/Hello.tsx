@@ -363,8 +363,8 @@ export default function Section({ version = 1 }) {
               []
             )}
           >
-            {[0, 1, 2, 3, 4, 5]
-              .map((value) => value * pager.limit)
+            {[...Array(10)]
+              .map((_, value) => value * pager.limit)
               .map((value) => (
                 <option key={value} value={value}>
                   {value}
