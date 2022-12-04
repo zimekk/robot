@@ -283,6 +283,11 @@ export const router = () => {
           .then((json) => res.send(json))
       )
     )
+    .get("/delete/:id", async (req, res) =>
+      Promise.resolve(req.params).then(({ id }) =>
+        worker.queue.removeJobs(id).then(() => res.json({ status: "ok" }))
+      )
+    )
     .get("/:type/:id/", async (req, res) =>
       Promise.resolve(req.params).then(({ id, type = "" }) =>
         worker.queue

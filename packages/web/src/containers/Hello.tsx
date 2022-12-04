@@ -439,7 +439,17 @@ export default function Section({ version = 1 }) {
           />
           <span>returnvalue</span>
         </label>
-        <pre>{JSON.stringify(entries, null, 2)}</pre>
+        {entries.map((item, key) => (
+          <div>
+            <div>
+              <a href={`entry/${item.id}`}>item</a> |{" "}
+              <a href={`json/${item.id}`}>json</a> |{" "}
+              <a href={`html/${item.id}`}>html</a> |{" "}
+              <a href={`delete/${item.id}`}>delete</a>
+            </div>
+            <pre>{JSON.stringify(item, null, 2)}</pre>
+          </div>
+        ))}
       </fieldset>
     </section>
   );

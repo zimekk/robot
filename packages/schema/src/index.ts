@@ -26,6 +26,7 @@ export const Type = {
 // };
 
 const JsonSchema = z.object({
+  id: z.string(),
   data: z.object({
     url: z.string(),
   }),
@@ -88,6 +89,7 @@ export const EntrySchema = z
       }),
       z
         .object({
+          id: z.string(),
           type: z.literal(Type.PROMO),
           data: z.object({
             url: z.string(),
@@ -120,6 +122,7 @@ export const EntrySchema = z
         type: z.literal(Type.HOTSHOT_ALTO),
       }),
       z.object({
+        id: z.string(),
         type: z.literal(Type.OTODOM),
         data: z.object({
           url: z.string(),
@@ -131,6 +134,7 @@ export const EntrySchema = z
           .transform(OtodomOfferTransform),
       }),
       z.object({
+        id: z.string(),
         type: z.literal(Type.OTODOM_OFFER),
         data: z.object({
           url: z.string(),
@@ -148,66 +152,71 @@ export const EntrySchema = z
   )
   .transform((item) => (console.log(item), item));
 
+const ReturnSchema = z.object({
+  id: z.string(),
+  data: z.object({
+    url: z.string(),
+  }),
+});
+
 export const EntriesSchema = z
   .discriminatedUnion("type", [
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.AUTOS),
       returnvalue: z.object({
         json: AutosSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.FUNDS),
       returnvalue: z.object({
         json: FundsSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.HOTSHOT),
       returnvalue: z.object({
         json: HotshotSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.HOTSHOT_ALTO),
       returnvalue: z.object({
         json: HotshotSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.PROMO),
       returnvalue: z.object({
         json: PromoSchema,
       }),
     }),
-    z
-      .object({
-        type: z.literal(Type.PROMO_ITEM),
-        returnvalue: z.object({
-          json: PromoItemSchema,
-        }),
-      })
-      .extend({
-        data: z.object({
-          code: z.string().optional(),
-          desc: z.string(),
-          href: z.string(),
-          name: z.string(),
-        }),
+    ReturnSchema.extend({
+      type: z.literal(Type.PROMO_ITEM),
+      returnvalue: z.object({
+        json: PromoItemSchema,
       }),
-    z.object({
+    }).extend({
+      data: z.object({
+        code: z.string().optional(),
+        desc: z.string(),
+        href: z.string(),
+        name: z.string(),
+      }),
+    }),
+    ReturnSchema.extend({
       type: z.literal(Type.OTODOM),
       returnvalue: z.object({
         json: OtodomOfferSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.OTODOM_OFFER),
       returnvalue: z.object({
         json: OtodomOfferSchema,
       }),
     }),
-    z.object({
+    ReturnSchema.extend({
       type: z.literal(Type.RATES),
       returnvalue: z.object({
         json: RatesSchema,
