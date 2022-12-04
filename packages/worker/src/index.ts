@@ -275,6 +275,35 @@ export const router = () => {
         })
         .then((entries) => res.json(entries))
     )
+    .get("/entry/:id", async (req, res) =>
+      Promise.resolve(req.params).then(({ id }) =>
+        worker.queue
+          .getJob(id)
+          .then((item) => EntrySchema.parseAsync(item))
+          .then((json) => res.send(json))
+      )
+    )
+    .get("/:type/:id/", async (req, res) =>
+      Promise.resolve(req.params).then(({ id, type = "" }) =>
+        worker.queue
+          .getJob(id)
+          .then((job) =>
+            z
+              .union([
+                z.null(),
+                z.object({
+                  id: z.string(),
+                  name: z.string(),
+                  data: z.any(),
+                  returnvalue: z.any(),
+                }),
+              ])
+              .parseAsync(job)
+          )
+          .then((item) => (item ? item.returnvalue[type] || item : null))
+          .then((json) => (type === "html" ? res.send(json) : res.json(json)))
+      )
+    )
     .post("/cleanup", async (_req, res) => {
       const queue = worker.queue;
       await Promise.all(
