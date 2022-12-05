@@ -41,6 +41,45 @@ export default function Section({ version = 1 }) {
             () =>
               post("process", {
                 data: {
+                  url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          stations-get-stations
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
+                  url: "https://www.autocentrum.pl/ac-ajax/stations-get-station?station_id=71",
+                  station_id: 71,
+                  x: 50.09040739526325,
+                  y: 19.95947331190109,
+                  network_id: 34,
+                  network_name: "BP",
+                  map_img:
+                    "/ac-file/station-map-img/593aa6fc592c7ded238b4570/bp.png",
+                },
+                opts: {
+                  delay: seconds(5),
+                },
+              }),
+            []
+          )}
+        >
+          stations-get-station
+        </button>
+        <button
+          onClick={useCallback(
+            () =>
+              post("process", {
+                data: {
                   url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
                   body: {
                     $match: {
@@ -440,7 +479,7 @@ export default function Section({ version = 1 }) {
           <span>returnvalue</span>
         </label>
         {entries.map((item, key) => (
-          <div>
+          <div key={key}>
             <div>
               <a href={`entry/${item.id}`}>item</a> |{" "}
               <a href={`json/${item.id}`}>json</a> |{" "}

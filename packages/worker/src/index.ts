@@ -91,7 +91,7 @@ export const client = () => {
                           url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
                         }))
                         .filter(({ url }) => !urls.includes(url))
-                        .slice(0, 15)
+                      // .slice(0, 15)
                     )
                       .then((list) => (console.log({ list }), list))
                       .then((list) =>
@@ -104,7 +104,7 @@ export const client = () => {
                       .map((data) => ({ ...data, url: data.href }))
                       .filter(({ url }) => new RegExp("//promocje.").test(url))
                       .filter(({ url }) => !urls.includes(url))
-                      .slice(0, 15)
+                    // .slice(0, 15)
                   )
                     .then((list) => (console.log({ list }), list))
                     .then((list) =>
@@ -141,6 +141,25 @@ export const client = () => {
                     .then((list) => (console.log({ list }), list))
                     .then((list) =>
                       Promise.all(list.map((data) => q.produce(data)))
+                    );
+                } else if (type === Type.STATIONS) {
+                  const { url } = data;
+                  return Promise.resolve(
+                    returnvalue.json
+                      .map((data: any) => ({
+                        ...data,
+                        url: `${
+                          new URL(url).origin
+                        }/ac-ajax/stations-get-station?station_id=${
+                          data.station_id
+                        }`,
+                      }))
+                      .filter(({ url }: any) => !urls.includes(url))
+                      .slice(0, 5)
+                  )
+                    .then((list) => (console.log({ list }), list))
+                    .then((list) =>
+                      Promise.all(list.map((data: any) => q.produce(data)))
                     );
                 }
               }

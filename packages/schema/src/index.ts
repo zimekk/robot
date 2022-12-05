@@ -1,10 +1,12 @@
 import { z } from "zod";
 import { Schema as AutosSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
+import { Schema as HotshotSchema } from "./hot-shot";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
 import { Schema as RatesSchema } from "./rates";
-import { Schema as HotshotSchema } from "./hot-shot";
+import { Schema as StationsSchema } from "./stations";
+import { Schema as StationSchema } from "./stations/item";
 import OtodomOfferTransform, {
   Schema as OtodomOfferSchema,
 } from "./otodom/offer";
@@ -19,6 +21,8 @@ export const Type = {
   OTODOM: "OTODOM",
   OTODOM_OFFER: "OTODOM_OFFER",
   RATES: "RATES",
+  STATIONS: "STATIONS",
+  STATION: "STATION",
 } as const;
 
 // enum Type {
@@ -64,6 +68,8 @@ export const EntrySchema = z
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
           [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
           [Type.RATES]: new RegExp("pl/rest/rates/"),
+          [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
+          [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
         })
           .find(([_, regExp]) => regExp.test(item.data.url))
           ?.shift(),
@@ -148,6 +154,24 @@ export const EntrySchema = z
       JsonSchema.extend({
         type: z.literal(Type.RATES),
       }),
+      JsonSchema.extend({
+        type: z.literal(Type.STATIONS),
+      }),
+      JsonSchema.extend({
+        type: z.literal(Type.STATION),
+        data: z
+          .object({
+            url: z.string(),
+          })
+          .extend({
+            x: z.number(),
+            y: z.number(),
+            station_id: z.number(),
+            network_id: z.number(),
+            network_name: z.string(),
+            map_img: z.string(),
+          }),
+      }),
     ])
   )
   .transform((item) => (console.log(item), item));
@@ -220,6 +244,27 @@ export const EntriesSchema = z
       type: z.literal(Type.RATES),
       returnvalue: z.object({
         json: RatesSchema,
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.STATIONS),
+      returnvalue: z.object({
+        json: StationsSchema,
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.STATION),
+      returnvalue: z.object({
+        json: StationSchema,
+      }),
+    }).extend({
+      data: z.object({
+        x: z.number(),
+        y: z.number(),
+        station_id: z.number(),
+        network_id: z.number(),
+        network_name: z.string(),
+        map_img: z.string(),
       }),
     }),
   ])
