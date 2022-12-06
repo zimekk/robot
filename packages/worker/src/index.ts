@@ -4,6 +4,7 @@ import { fetch } from "cross-fetch";
 import { format, sub } from "date-fns";
 import { config } from "dotenv";
 import { Router } from "express";
+import { headingDistanceTo } from "geolocation-utils";
 import { seconds } from "milliseconds";
 import { resolve } from "path";
 import { createBullBoard } from "@bull-board/api";
@@ -155,7 +156,34 @@ export const client = () => {
                         }`,
                       }))
                       .filter(({ url }: any) => !urls.includes(url))
-                      .slice(0, 5)
+
+                      .filter(
+                        ({ x: lat, y: lng }: any) =>
+                          [
+                            `${52.17}:${21.06}:${10000}`,
+                            `${52.46}:${21.29}:${10000}`,
+                            `${53.12}:${23.09}:${10000}`,
+                          ]
+                            .map((line) =>
+                              z
+                                .tuple([
+                                  z.string().transform(Number),
+                                  z.string().transform(Number),
+                                  z.string().transform(Number),
+                                ])
+                                .transform(([lat, lng, $radius]) => ({
+                                  $center: { lat, lng },
+                                  $radius,
+                                }))
+                                .parse(line.split(":"))
+                            )
+                            .findIndex(
+                              ({ $center, $radius }) =>
+                                headingDistanceTo($center, { lat, lng })
+                                  .distance < $radius
+                            ) >= 0
+                      )
+                      .slice(0, 250)
                   )
                     .then((list) => (console.log({ list }), list))
                     .then((list) =>
