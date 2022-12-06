@@ -270,11 +270,12 @@ export const router = () => {
         .object({
           start: z.number().default(0),
           limit: z.number().default(250),
+          type: z.string().default(""),
           data: z.boolean().default(false),
           returnvalue: z.boolean().default(true),
         })
         .parseAsync(req.body)
-        .then(async ({ start, limit, data }) => {
+        .then(async ({ start, limit, type, data }) => {
           const list = await worker.queue.getCompleted(
             start,
             start + limit - 1
@@ -290,7 +291,11 @@ export const router = () => {
               .array()
               .parseAsync(list);
           }
-          return EntrySchema.array().parseAsync(list);
+          return EntrySchema.array()
+            .parseAsync(list)
+            .then((list) =>
+              list.filter((item) => type === "" || item.type === type)
+            );
         })
         .then((entries) => res.json(entries))
     )

@@ -2,7 +2,7 @@ import React, { ChangeEventHandler, useCallback, useState } from "react";
 import { seconds } from "milliseconds";
 import { createAsset } from "use-asset";
 import { z } from "zod";
-import { EntriesSchema } from "@dev/schema";
+import { EntriesSchema, Type } from "@dev/schema";
 
 // https://github.com/pmndrs/use-asset#dealing-with-async-assets
 const asset = createAsset(async (version) => {
@@ -25,8 +25,12 @@ export default function Section({ version = 1 }) {
   const [pager, setPager] = useState(() => ({
     start: 0,
     limit: 10,
+    type: "",
     data: false,
     returnvalue: true,
+  }));
+  const [options] = useState(() => ({
+    type: [""].concat(Object.values(Type)),
   }));
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
 
@@ -426,6 +430,26 @@ export default function Section({ version = 1 }) {
             )}
           >
             {[5, 10, 50, 100, 500].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>type</span>
+          <select
+            value={pager.type}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  type: target.value,
+                })),
+              []
+            )}
+          >
+            {options.type.map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
