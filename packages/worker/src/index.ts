@@ -293,6 +293,21 @@ export const router = () => {
 
       return res.json({ status: "ok" });
     })
+    .post("/entries/delete", json(), async (req, res) =>
+      z
+        .object({
+          selected: z.string().array(),
+        })
+        .parseAsync(req.body)
+        .then(async ({ selected }) =>
+          selected
+            .reduce(
+              (promise, id) => promise.then(() => worker.queue.removeJobs(id)),
+              Promise.resolve()
+            )
+            .then(() => res.json({ status: "ok" }))
+        )
+    )
     .post("/entries", json(), async (req, res) =>
       z
         .object({
