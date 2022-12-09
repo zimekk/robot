@@ -99,6 +99,16 @@ export const router = () => {
         })
         .then((entries) => res.json(entries))
     )
+    .post("/delayed", json(), async (req, res) =>
+      z
+        .object({})
+        .parseAsync(req.body)
+        .then(async () => {
+          const list = await worker.queue.getDelayed();
+          return z.object({}).passthrough().array().parseAsync(list);
+        })
+        .then((entries) => res.json(entries))
+    )
     .get("/entry/:id", async (req, res) =>
       Promise.resolve(req.params).then(({ id }) =>
         worker.queue

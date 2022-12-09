@@ -269,3 +269,33 @@ export const EntriesSchema = z
     }),
   ])
   .array();
+
+export const DelayedSchema = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    data: z.object({ url: z.string() }).passthrough(),
+    opts: z
+      .object({
+        repeat: z
+          .object({ count: z.number(), key: z.string(), cron: z.string() })
+          .strict()
+          .optional(),
+        jobId: z.string().optional(),
+        delay: z.number(),
+        timestamp: z.number(),
+        prevMillis: z.number().optional(),
+        attempts: z.number(),
+      })
+      .strict(),
+    progress: z.number(),
+    delay: z.number(),
+    timestamp: z.number(),
+    attemptsMade: z.number(),
+    stacktrace: z.array(z.unknown()),
+    returnvalue: z.null(),
+    finishedOn: z.null(),
+    processedOn: z.null(),
+  })
+  .strict()
+  .array();
