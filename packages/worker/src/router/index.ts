@@ -4,7 +4,7 @@ import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
 import { z } from "zod";
-import { EntrySchema } from "@dev/schema";
+import { DataSchema, EntrySchema } from "@dev/schema";
 
 import { client } from "../client";
 
@@ -27,10 +27,7 @@ export const router = () => {
     .post("/process", json(), async (req, res) => {
       const { data, opts } = await z
         .object({
-          data: z.object({
-            url: z.string(),
-            body: z.object({}).passthrough().optional(),
-          }),
+          data: DataSchema,
           opts: z
             .object({
               delay: z.number().default(0),
@@ -88,9 +85,7 @@ export const router = () => {
                 ? z
                     .object({
                       id: z.string(),
-                      data: z.object({
-                        url: z.string(),
-                      }),
+                      data: DataSchema,
                     })
                     .array()
                     .parseAsync(list)

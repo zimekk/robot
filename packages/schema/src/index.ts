@@ -29,6 +29,11 @@ export const Type = {
 // PROMO,
 // };
 
+export const DataSchema = z.object({
+  url: z.string(),
+  body: z.object({}).passthrough().optional(),
+});
+
 const JsonSchema = z.object({
   id: z.string(),
   data: z.object({
@@ -63,8 +68,8 @@ export const EntrySchema = z
           [Type.FUNDS]: new RegExp("tfi/fund/"),
           [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
           [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),
-          [Type.PROMO]: new RegExp("x-kom.pl/promocje"),
-          [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/"),
+          [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
+          [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
           [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
           [Type.RATES]: new RegExp("pl/rest/rates/"),
