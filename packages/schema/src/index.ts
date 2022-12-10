@@ -17,7 +17,6 @@ export const Type = {
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
   HOTSHOT: "HOTSHOT",
-  HOTSHOT_ALTO: "HOTSHOT_ALTO",
   OTODOM: "OTODOM",
   OTODOM_OFFER: "OTODOM_OFFER",
   RATES: "RATES",
@@ -66,8 +65,9 @@ export const EntrySchema = z
             "mini.com.pl/nowe/|bmw.pl/nowe/|bmw.pl/uzywane/"
           ),
           [Type.FUNDS]: new RegExp("tfi/fund/"),
-          [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal"),
-          [Type.HOTSHOT_ALTO]: new RegExp("al.to/goracy_strzal"),
+          [Type.HOTSHOT]: new RegExp(
+            "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
+          ),
           [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
           [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
@@ -128,9 +128,6 @@ export const EntrySchema = z
       }),
       JsonSchema.extend({
         type: z.literal(Type.HOTSHOT),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.HOTSHOT_ALTO),
       }),
       z.object({
         id: z.string(),
@@ -204,12 +201,6 @@ export const EntriesSchema = z
     }),
     ReturnSchema.extend({
       type: z.literal(Type.HOTSHOT),
-      returnvalue: z.object({
-        json: HotshotSchema,
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.HOTSHOT_ALTO),
       returnvalue: z.object({
         json: HotshotSchema,
       }),
