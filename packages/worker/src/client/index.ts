@@ -154,7 +154,6 @@ export const client = () => {
                         }`,
                       }))
                       .filter(({ url }: any) => !urls.includes(url))
-
                       .filter(
                         ({ x: lat, y: lng }: any) =>
                           [

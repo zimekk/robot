@@ -90,7 +90,12 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
               ) {
                 console.log(["resolve.html"], res.url(), headers);
                 await delay();
-                if (res.headers()["content-type"] === "application/json") {
+                if (
+                  [
+                    "application/json",
+                    "application/json; charset=utf-8",
+                  ].includes(res.headers()["content-type"])
+                ) {
                   resolve({ url: res.url(), json: await res.json() });
                 } else {
                   resolve({ url: res.url(), html: await res.text() });

@@ -4,9 +4,10 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import chunk from "chunk";
 import { seconds } from "milliseconds";
 import { z } from "zod";
-import { DataSchema } from "@dev/schema";
+import { DataSchema, OptsSchema } from "@dev/schema";
 
 export const post = (path: string, data?: object) =>
   fetch(path, {
@@ -30,169 +31,232 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       z
         .object({
           data: DataSchema,
-          opts: z
-            .object({
-              repeat: z.object({
-                cron: z.string(),
-              }),
-            })
-            .transform(
-              ({ repeat }) =>
-                ({
-                  delayed: { delay: seconds(delay) },
-                  repeatable: { repeat },
-                }[type])
-            ),
+          opts: OptsSchema.transform(
+            ({ repeat, ...opts }) =>
+              ({
+                delayed: { ...opts, delay: seconds(delay) },
+                repeatable: { ...opts, repeat },
+              }[type])
+          ),
         })
         .transform((item) => ({ ...item, id: item.data.url }))
         .array()
-        .parse([
-          {
-            data: {
-              url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
-            },
-            opts: {
-              repeat: { cron: "0 15 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
-              body: {
-                $match: {
-                  transactionalPrice: {
-                    $min: 0,
-                    $max: 1790000,
-                  },
-                  // brand: 1, // BMW
-                  // brand: 65, // MINI
-                  // series :5
-                },
-                $skip: 0,
-                $limit: 100,
+        .parse(
+          [
+            {
+              data: {
+                url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
+              },
+              opts: {
+                repeat: { cron: "0 15 * * *" },
               },
             },
-            opts: {
-              repeat: { cron: "0 11,19 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
-              body: {
-                $match: {
-                  transactionalPrice: {
-                    $min: 0,
-                    $max: 1790000,
+            {
+              data: {
+                url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
+                body: {
+                  $match: {
+                    transactionalPrice: {
+                      $min: 0,
+                      $max: 1790000,
+                    },
+                    // brand: 1, // BMW
+                    // brand: 65, // MINI
+                    // series :5
                   },
+                  $skip: 0,
+                  $limit: 100,
                 },
-                $skip: 0,
-                $limit: 100,
+              },
+              opts: {
+                repeat: { cron: "0 11,19 * * *" },
               },
             },
-            opts: {
-              repeat: { cron: "30 11,19 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
-              body: {
-                $match: {
-                  transactionalPrice: {
-                    $min: 0,
-                    $max: 1790000,
+            {
+              data: {
+                url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
+                body: {
+                  $match: {
+                    transactionalPrice: {
+                      $min: 0,
+                      $max: 1790000,
+                    },
                   },
+                  $skip: 0,
+                  $limit: 100,
                 },
-                $skip: 0,
-                $limit: 100,
+              },
+              opts: {
+                repeat: { cron: "30 11,19 * * *" },
               },
             },
-            opts: {
-              repeat: { cron: "0 14 * * *" },
+            {
+              data: {
+                url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
+                body: {
+                  $match: {
+                    transactionalPrice: {
+                      $min: 0,
+                      $max: 1790000,
+                    },
+                  },
+                  $skip: 0,
+                  $limit: 100,
+                },
+              },
+              opts: {
+                repeat: { cron: "0 14 * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
+            {
+              data: {
+                url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
+              },
+              opts: {
+                repeat: { cron: "15 8 * * *" },
+              },
             },
-            opts: {
-              repeat: { cron: "15 8 * * *" },
+            {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "30 * * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
+            {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/warszawa?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "0 * * * *" },
+              },
             },
-            opts: {
-              repeat: { cron: "30 * * * *" },
+            {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "0 7 * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/warszawa?limit=72&page=1",
+            {
+              data: {
+                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+              },
+              opts: {
+                repeat: { cron: "0 8 * * *" },
+              },
             },
-            opts: {
-              repeat: { cron: "0 * * * *" },
+            {
+              data: {
+                url: "https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/2/values/?format=json&division=daily",
+              },
+              opts: {
+                repeat: { cron: "0 13 * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
+            {
+              data: {
+                url: "https://www.x-kom.pl/promocje",
+              },
+              opts: {
+                repeat: { cron: "1 11,20 * * *" },
+              },
             },
-            opts: {
-              repeat: { cron: "0 7 * * *" },
+            {
+              data: {
+                url: "https://www.al.to/promocje",
+              },
+              opts: {
+                repeat: { cron: "1 12,19 * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
+            {
+              data: {
+                url: "https://www.x-kom.pl/goracy_strzal",
+              },
+              opts: {
+                // removeOnComplete: 2,
+                repeat: { cron: "1 10,22 * * *" },
+              },
             },
-            opts: {
-              repeat: { cron: "0 8 * * *" },
+            {
+              data: {
+                url: "https://www.al.to/goracy_strzal",
+              },
+              opts: {
+                repeat: { cron: "1 9,21 * * *" },
+              },
             },
-          },
-          {
-            data: {
-              url: "https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/2/values/?format=json&division=daily",
-            },
-            opts: {
-              repeat: { cron: "0 13 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://www.x-kom.pl/promocje",
-            },
-            opts: {
-              repeat: { cron: "1 11,20 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://www.al.to/promocje",
-            },
-            opts: {
-              repeat: { cron: "1 12,19 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://www.x-kom.pl/goracy_strzal",
-            },
-            opts: {
-              repeat: { cron: "1 10,22 * * *" },
-            },
-          },
-          {
-            data: {
-              url: "https://www.al.to/goracy_strzal",
-            },
-            opts: {
-              repeat: { cron: "1 9,21 * * *" },
-            },
-          },
-        ]),
+          ].concat(
+            chunk(
+              [
+                "9NKX70BBCDRN",
+                "9Z1W36CRQ9DF",
+                "B4X7PC56X1VV",
+                "9MTLKM2DJMZ2",
+                "C08JXNK0VG5L",
+                "9N9J38LPVSM3",
+                "9P6SRW1HVW9K",
+                "BVH2R2SBWL51",
+                "9PNJXVCVWD4K",
+                "9MZ0SR207MG8",
+                "9P4SH7HLMLFS",
+                "9N1CS194W1Q6",
+                "9P1HX37NMJLT",
+                "BRZZLBF5T245",
+                "9P513P4MWC71",
+                "C2MBDNDS3H5W",
+                "BWVBNCMF22ZK",
+                "9N6J02VPG635",
+                "BS5RXLL3WQ2J",
+                "C2HQVXVVLMKG",
+                "BVJLKDG2TX8H",
+                "C4VKLMG1HLZW",
+                "9N04KQK2LBZL",
+                "9NMBJQ0265ZK",
+                "BSMZH25V6V46",
+                "9N9QFGPBH418",
+                "9NS86BQ33SPX",
+                "9NXPBSMHPLTV",
+                "9N8VG0B7TDZ0",
+                "9PH3RR8MVFJL",
+                "9NM0CRXJ389D",
+                "BNNMLWZRNQF6",
+                "9P778MQ2JPKC",
+                "9NH5HN11FG4M",
+                "C348248BJZCQ",
+                "9PGPQK0XTHRZ",
+                "9PG5Q9HGZXQ2",
+                "9MTJ74MKQM46",
+                "9NHXSG62QD2L",
+                "9NC7XRNRMNFH",
+                "9NRX3HRMZQ7Z",
+                "9NFM39PSFXJD",
+                "9NDDMHZRZ0R6",
+                "9NP5S7RDH5QB",
+                "9NNF99GPP4XW",
+                "9PMQDM08SNK9",
+              ],
+              5
+            )
+              .map((ids) => {
+                const mscv = "DGU1mcuYo0WMMp+F.1";
+                return `https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(
+                  ","
+                )}&market=PL&languages=pl-pl&MS-CV=${mscv}`;
+              })
+              .map((url) => ({
+                data: {
+                  url,
+                },
+                opts: {
+                  repeat: { cron: "0 16 * * *" },
+                },
+              }))
+          )
+        ),
     [type, delay]
   );
 

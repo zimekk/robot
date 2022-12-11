@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { Schema as AutosSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
+import { Schema as GamesSchema } from "./games";
 import { Schema as HotshotSchema } from "./hot-shot";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
@@ -14,6 +15,7 @@ import OtodomOfferTransform, {
 export const Type = {
   AUTOS: "AUTOS",
   FUNDS: "FUNDS",
+  GAMES: "GAMES",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
   HOTSHOT: "HOTSHOT",
@@ -22,6 +24,7 @@ export const Type = {
   RATES: "RATES",
   STATIONS: "STATIONS",
   STATION: "STATION",
+  UNKNOWN: "UNKNOWN",
 } as const;
 
 // enum Type {
@@ -31,6 +34,16 @@ export const Type = {
 export const DataSchema = z.object({
   url: z.string(),
   body: z.object({}).passthrough().optional(),
+});
+
+export const OptsSchema = z.object({
+  delay: z.number().default(0),
+  removeOnComplete: z.union([z.boolean(), z.number()]).optional(),
+  repeat: z
+    .object({
+      cron: z.string().optional(),
+    })
+    .optional(),
 });
 
 const JsonSchema = z.object({
@@ -65,6 +78,7 @@ export const EntrySchema = z
             "mini.com.pl/nowe/|bmw.pl/nowe/|bmw.pl/uzywane/"
           ),
           [Type.FUNDS]: new RegExp("tfi/fund/"),
+          [Type.GAMES]: new RegExp("mp.microsoft.com/"),
           [Type.HOTSHOT]: new RegExp(
             "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
           ),
@@ -75,6 +89,7 @@ export const EntrySchema = z
           [Type.RATES]: new RegExp("pl/rest/rates/"),
           [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
           [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+          [Type.UNKNOWN]: new RegExp(""),
         })
           .find(([_, regExp]) => regExp.test(item.data.url))
           ?.shift(),
@@ -97,6 +112,9 @@ export const EntrySchema = z
       }),
       JsonSchema.extend({
         type: z.literal(Type.FUNDS),
+      }),
+      JsonSchema.extend({
+        type: z.literal(Type.GAMES),
       }),
       z
         .object({
@@ -174,6 +192,10 @@ export const EntrySchema = z
             map_img: z.string(),
           }),
       }),
+      JsonSchema.extend({
+        type: z.literal(Type.UNKNOWN),
+        returnvalue: z.any(),
+      }),
     ])
   )
   .transform((item) => (console.log(item), item));
@@ -197,6 +219,12 @@ export const EntriesSchema = z
       type: z.literal(Type.FUNDS),
       returnvalue: z.object({
         json: FundsSchema,
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.GAMES),
+      returnvalue: z.object({
+        json: GamesSchema,
       }),
     }),
     ReturnSchema.extend({
@@ -263,6 +291,10 @@ export const EntriesSchema = z
         map_img: z.string(),
       }),
     }),
+    ReturnSchema.extend({
+      type: z.literal(Type.UNKNOWN),
+      returnvalue: z.any({}),
+    }),
   ])
   .array();
 
@@ -271,19 +303,18 @@ export const DelayedSchema = z
     id: z.string(),
     name: z.string(),
     data: z.object({ url: z.string() }).passthrough(),
-    opts: z
-      .object({
-        repeat: z
-          .object({ count: z.number(), key: z.string(), cron: z.string() })
-          .strict()
-          .optional(),
-        jobId: z.string().optional(),
-        delay: z.number(),
-        timestamp: z.number(),
-        prevMillis: z.number().optional(),
-        attempts: z.number(),
-      })
-      .strict(),
+    opts: OptsSchema.extend({
+      removeOnComplete: z.union([z.boolean(), z.number()]).optional(),
+      repeat: z
+        .object({ count: z.number(), key: z.string(), cron: z.string() })
+        .strict()
+        .optional(),
+      jobId: z.string().optional(),
+      delay: z.number(),
+      timestamp: z.number(),
+      prevMillis: z.number().optional(),
+      attempts: z.number(),
+    }).strict(),
     progress: z.number(),
     delay: z.number(),
     timestamp: z.number(),
