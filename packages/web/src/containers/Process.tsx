@@ -150,14 +150,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
-                url: "https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/2/values/?format=json&division=daily",
-              },
-              opts: {
-                repeat: { cron: "0 13 * * *" },
-              },
-            },
-            {
-              data: {
                 url: "https://www.x-kom.pl/promocje",
               },
               opts: {
@@ -189,73 +181,96 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 repeat: { cron: "1 9,21 * * *" },
               },
             },
-          ].concat(
-            chunk(
+          ]
+            .concat(
               [
-                "9NKX70BBCDRN",
-                "9Z1W36CRQ9DF",
-                "B4X7PC56X1VV",
-                "9MTLKM2DJMZ2",
-                "C08JXNK0VG5L",
-                "9N9J38LPVSM3",
-                "9P6SRW1HVW9K",
-                "BVH2R2SBWL51",
-                "9PNJXVCVWD4K",
-                "9MZ0SR207MG8",
-                "9P4SH7HLMLFS",
-                "9N1CS194W1Q6",
-                "9P1HX37NMJLT",
-                "BRZZLBF5T245",
-                "9P513P4MWC71",
-                "C2MBDNDS3H5W",
-                "BWVBNCMF22ZK",
-                "9N6J02VPG635",
-                "BS5RXLL3WQ2J",
-                "C2HQVXVVLMKG",
-                "BVJLKDG2TX8H",
-                "C4VKLMG1HLZW",
-                "9N04KQK2LBZL",
-                "9NMBJQ0265ZK",
-                "BSMZH25V6V46",
-                "9N9QFGPBH418",
-                "9NS86BQ33SPX",
-                "9NXPBSMHPLTV",
-                "9N8VG0B7TDZ0",
-                "9PH3RR8MVFJL",
-                "9NM0CRXJ389D",
-                "BNNMLWZRNQF6",
-                "9P778MQ2JPKC",
-                "9NH5HN11FG4M",
-                "C348248BJZCQ",
-                "9PGPQK0XTHRZ",
-                "9PG5Q9HGZXQ2",
-                "9MTJ74MKQM46",
-                "9NHXSG62QD2L",
-                "9NC7XRNRMNFH",
-                "9NRX3HRMZQ7Z",
-                "9NFM39PSFXJD",
-                "9NDDMHZRZ0R6",
-                "9NP5S7RDH5QB",
-                "9NNF99GPP4XW",
-                "9PMQDM08SNK9",
-              ],
-              5
+                2, 4, 5,
+                // 6,
+                8,
+                // 10, 30,
+                33, 34, 35, 36, 37, 43, 44, 73, 74, 75, 77, 79, 80, 82, 84, 91,
+                103, 104, 105, 106, 107, 112, 113, 114, 117, 119,
+              ]
+                .map(
+                  (fund) =>
+                    `https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/${fund}/values/?format=json&division=daily`
+                )
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 13 * * *` },
+                  },
+                }))
             )
-              .map((ids) => {
-                const mscv = "DGU1mcuYo0WMMp+F.1";
-                return `https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(
-                  ","
-                )}&market=PL&languages=pl-pl&MS-CV=${mscv}`;
-              })
-              .map((url) => ({
-                data: {
-                  url,
-                },
-                opts: {
-                  repeat: { cron: "0 16 * * *" },
-                },
-              }))
-          )
+            .concat(
+              chunk(
+                [
+                  "9NKX70BBCDRN",
+                  "9Z1W36CRQ9DF",
+                  "B4X7PC56X1VV",
+                  "9MTLKM2DJMZ2",
+                  "C08JXNK0VG5L",
+                  "9N9J38LPVSM3",
+                  "9P6SRW1HVW9K",
+                  "BVH2R2SBWL51",
+                  "9PNJXVCVWD4K",
+                  "9MZ0SR207MG8",
+                  "9P4SH7HLMLFS",
+                  "9N1CS194W1Q6",
+                  "9P1HX37NMJLT",
+                  "BRZZLBF5T245",
+                  "9P513P4MWC71",
+                  "C2MBDNDS3H5W",
+                  "BWVBNCMF22ZK",
+                  "9N6J02VPG635",
+                  "BS5RXLL3WQ2J",
+                  "C2HQVXVVLMKG",
+                  "BVJLKDG2TX8H",
+                  "C4VKLMG1HLZW",
+                  "9N04KQK2LBZL",
+                  "9NMBJQ0265ZK",
+                  "BSMZH25V6V46",
+                  "9N9QFGPBH418",
+                  "9NS86BQ33SPX",
+                  "9NXPBSMHPLTV",
+                  "9N8VG0B7TDZ0",
+                  "9PH3RR8MVFJL",
+                  "9NM0CRXJ389D",
+                  "BNNMLWZRNQF6",
+                  "9P778MQ2JPKC",
+                  "9NH5HN11FG4M",
+                  "C348248BJZCQ",
+                  "9PGPQK0XTHRZ",
+                  "9PG5Q9HGZXQ2",
+                  "9MTJ74MKQM46",
+                  "9NHXSG62QD2L",
+                  "9NC7XRNRMNFH",
+                  "9NRX3HRMZQ7Z",
+                  "9NFM39PSFXJD",
+                  "9NDDMHZRZ0R6",
+                  "9NP5S7RDH5QB",
+                  "9NNF99GPP4XW",
+                  "9PMQDM08SNK9",
+                ],
+                5
+              )
+                .map((ids) => {
+                  const mscv = "DGU1mcuYo0WMMp+F.1";
+                  return `https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(
+                    ","
+                  )}&market=PL&languages=pl-pl&MS-CV=${mscv}`;
+                })
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 16 * * *` },
+                  },
+                }))
+            )
         ),
     [type, delay]
   );
