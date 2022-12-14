@@ -81,7 +81,7 @@ export const client = () => {
                     );
                 } else if (type === Type.OTODOM) {
                   const { items } =
-                    returnvalue.json.props.pageProps.data?.searchAds || {};
+                    returnvalue.json.props?.pageProps.data?.searchAds || {};
                   return (
                     items &&
                     Promise.resolve(

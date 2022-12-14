@@ -32,7 +32,8 @@ export const Schema = z
             .optional(),
         }), //.passthrough()
       })
-      .passthrough(),
+      .passthrough()
+      .optional(),
   })
   .passthrough();
 
