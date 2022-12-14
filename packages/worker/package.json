@@ -41,7 +41,7 @@
   "devDependencies": {
     "@types/bull": "^4.10.0",
     "@types/milliseconds": "^0.0.30",
-    "@types/node": "^18.11.11",
+    "@types/node": "^18.11.15",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0"
   }
