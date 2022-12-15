@@ -19,6 +19,49 @@ const { REDIS_URL, QUEUE_NAME } = z
 
 type Data = { url: string; body?: object };
 
+export const AutosSchema = z
+  .object({
+    data: z.object({
+      url: z.string(),
+      body: z
+        .object({
+          $match: z.object({}).passthrough(),
+          $skip: z.number(),
+          $limit: z.number(),
+        })
+        .transform(({ $skip, $limit, ...body }) => ({
+          ...body,
+          $skip: $skip + $limit,
+          $limit,
+        })),
+    }),
+    returnvalue: z.object({
+      json: z.object({
+        $count: z.object({
+          $total: z.number(),
+        }),
+        $list: z
+          .object({
+            id: z.number(),
+          })
+          .array(),
+      }),
+    }),
+  })
+  .transform(
+    ({
+      data,
+      returnvalue: {
+        json: { $count, $list },
+      },
+    }) => ({
+      next: data.body.$skip < $count.$total ? data : null,
+      list: $list.map(({ id }) => ({
+        url: data.url.replace(/\/search$/, `/vehicle/${id}/`),
+      })),
+    })
+  );
+
 export const chrome = async (...args: string[]) =>
   (await import("@dev/chrome")).chrome(...args);
 
@@ -58,27 +101,16 @@ export const client = () => {
             await EntrySchema.parseAsync({ id, data, returnvalue }).then(
               async ({ data, type, returnvalue }) => {
                 if (type === Type.AUTOS) {
-                  const { $count } = returnvalue.json;
-
-                  return z
-                    .object({
-                      url: z.string(),
-                      body: z
-                        .object({
-                          $match: z.object({}).passthrough(),
-                          $skip: z.number(),
-                          $limit: z.number(),
-                        })
-                        .transform(({ $skip, $limit, ...body }) => ({
-                          ...body,
-                          $skip: $skip + $limit,
-                          $limit,
-                        })),
-                    })
-                    .parseAsync(data)
-                    .then((data) =>
-                      data.body.$skip < $count.$total ? q.produce(data) : null
+                  return AutosSchema.parseAsync({
+                    data,
+                    type,
+                    returnvalue,
+                  }).then(({ list, next }) => {
+                    console.log({ next, list });
+                    return Promise.all(
+                      (next ? [next] : []).map((data) => q.produce(data))
                     );
+                  });
                 } else if (type === Type.OTODOM) {
                   const { items } =
                     returnvalue.json.props?.pageProps.data?.searchAds || {};
