@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Schema as AutosSchema } from "./autos";
+import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
 import { Schema as HotshotSchema } from "./hot-shot";
@@ -14,6 +14,7 @@ import OtodomOfferTransform, {
 
 export const Type = {
   AUTOS: "AUTOS",
+  AUTOS_ITEM: "AUTOS_ITEM",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   PROMO: "PROMO",
@@ -74,9 +75,8 @@ export const EntrySchema = z
       //.passthrough()
       .transform((item) => ({
         type: Object.entries({
-          [Type.AUTOS]: new RegExp(
-            "mini.com.pl/nowe/|bmw.pl/nowe/|bmw.pl/uzywane/"
-          ),
+          [Type.AUTOS]: new RegExp("pl_PL/search"),
+          [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
           [Type.FUNDS]: new RegExp("tfi/fund/"),
           [Type.GAMES]: new RegExp("mp.microsoft.com/"),
           [Type.HOTSHOT]: new RegExp(
@@ -109,6 +109,9 @@ export const EntrySchema = z
               $limit: z.number(),
             }),
           }),
+      }),
+      JsonSchema.extend({
+        type: z.literal(Type.AUTOS_ITEM),
       }),
       JsonSchema.extend({
         type: z.literal(Type.FUNDS),
@@ -213,6 +216,12 @@ export const EntriesSchema = z
       type: z.literal(Type.AUTOS),
       returnvalue: z.object({
         json: AutosSchema,
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.AUTOS_ITEM),
+      returnvalue: z.object({
+        json: AutosItemSchema,
       }),
     }),
     ReturnSchema.extend({

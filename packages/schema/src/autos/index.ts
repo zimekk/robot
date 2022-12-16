@@ -179,6 +179,61 @@ export const ItemSchema = z
   })
   .strict();
 
+export const AutosItemSchema = ItemSchema.omit({
+  extended: true,
+  reserved: true,
+}).extend({
+  market: z.string(),
+  variant: z.object({ id: z.number(), label: z.string() }),
+  drive: z.object({ id: z.number(), label: z.string() }),
+  doors: z.number(),
+  seats: z.number(),
+  metallic: z.boolean(),
+  upholstery: z.object({ id: z.number(), label: z.string() }),
+  genericEquipment: z.array(
+    z.object({
+      equipmentGroupId: z.number(),
+      id: z.number(),
+      label: z.string(),
+    })
+  ),
+  equipment: z.array(
+    z.union([
+      z.object({
+        genericEquipmentIds: z.array(z.number()),
+        label: z.string(),
+        equipmentGroupId: z.number(),
+      }),
+      z.object({ label: z.string(), equipmentGroupId: z.number() }),
+    ])
+  ),
+  equipmentGroup: z.array(z.object({ id: z.number(), label: z.string() })),
+  dealer: z.object({
+    market: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    urlWebsite: z.string(),
+    businessHours: z.string(),
+    id: z.number(),
+    bunoBMW: z.string(),
+    bunoMINI: z.string(),
+    bunoMOTORCYCLE: z.string(),
+    owner: z.string(),
+    ownerName: z.string(),
+    name: z.string(),
+    legalName: z.string(),
+    street: z.string(),
+    zip: z.string(),
+    city: z.string(),
+    lat: z.number(),
+    lng: z.number(),
+  }),
+  owner: z.string(),
+  available: z.string(),
+  leaseProduct: z.string(),
+  comfortLeaseProduct: z.string(),
+});
+
 export const Schema = z.object({
   $list: ItemSchema.array(),
   $count: z.object({
