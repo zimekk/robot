@@ -1,4 +1,4 @@
-import { AutosSchema } from "..";
+import { AutosSchema, limiter } from "..";
 
 describe("client", () => {
   it("AutosSchema", () =>
@@ -97,5 +97,45 @@ describe("client", () => {
       },
     ].forEach(({ item, next, list }) =>
       expect(AutosSchema.parse(item)).toEqual({ next, list })
+    ));
+
+  it("limiter", () =>
+    [
+      {
+        jobs: [
+          {
+            data: {
+              url: "url1",
+            },
+            opts: {
+              timestamp: 0,
+            },
+          },
+        ],
+        data: {
+          url: "url1",
+        },
+        period: 3600 * 1000,
+        result: true,
+      },
+      {
+        jobs: [
+          {
+            data: {
+              url: "url1",
+            },
+            opts: {
+              timestamp: Date.now(),
+            },
+          },
+        ],
+        data: {
+          url: "url1",
+        },
+        period: 3600 * 1000,
+        result: false,
+      },
+    ].forEach(({ jobs, data, period, result }) =>
+      expect(limiter(jobs, period)(data)).toEqual(result)
     ));
 });
