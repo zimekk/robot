@@ -208,6 +208,7 @@ export const AutosItemSchema = ItemSchema.omit({
     ])
   ),
   equipmentGroup: z.array(z.object({ id: z.number(), label: z.string() })),
+  equipmentText: z.string().optional(),
   dealer: z.object({
     market: z.string(),
     email: z.string(),
@@ -217,7 +218,7 @@ export const AutosItemSchema = ItemSchema.omit({
     id: z.number(),
     bunoBMW: z.string(),
     bunoMINI: z.string(),
-    bunoMOTORCYCLE: z.string(),
+    bunoMOTORCYCLE: z.string().optional(),
     owner: z.string(),
     ownerName: z.string(),
     name: z.string(),

@@ -3,10 +3,10 @@ import { fetch } from "cross-fetch";
 import { format, sub } from "date-fns";
 import { config } from "dotenv";
 import { headingDistanceTo } from "geolocation-utils";
-import { seconds } from "milliseconds";
+import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
-import { EntrySchema, Type } from "@dev/schema";
+import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
 
@@ -62,6 +62,18 @@ export const AutosSchema = z
     })
   );
 
+export const limiter = (jobs: unknown, period: number) => {
+  const Schema = CompletedSchema.transform(
+    ({ timestamp, url }) =>
+      `${format(timestamp - (timestamp % period), "yyyyMMdd_HHmmss")}:${url}`
+  );
+
+  const urls = Schema.array().parse(jobs);
+  console.log(urls);
+
+  return (data: unknown) => !urls.includes(Schema.parse({ data }));
+};
+
 export const chrome = async (...args: string[]) =>
   (await import("@dev/chrome")).chrome(...args);
 
@@ -94,53 +106,37 @@ export const client = () => {
 
             const jobs = await queue.getJobs(["completed", "active"]);
 
-            const urls = jobs.map(({ data }) => data.url);
-
-            console.log(urls);
-
-            await EntrySchema.parseAsync({ id, data, returnvalue }).then(
-              async ({ data, type, returnvalue }) => {
+            await EntrySchema.parseAsync({ id, data, returnvalue })
+              .then(async ({ data, type, returnvalue }) => {
                 if (type === Type.AUTOS) {
                   return AutosSchema.parseAsync({
                     data,
                     type,
                     returnvalue,
-                  }).then(({ list, next }) => {
-                    console.log({ next, list });
-                    return Promise.all(
-                      (next ? [next] : []).map((data) => q.produce(data))
-                    );
-                  });
+                  }).then(({ list, next }) =>
+                    list
+                      .filter(limiter(jobs, days(7)))
+                      .slice(0, 150)
+                      .concat(next ? [next] : [])
+                  );
                 } else if (type === Type.OTODOM) {
-                  const { items } =
+                  const { items = [] } =
                     returnvalue.json.props?.pageProps.data?.searchAds || {};
-                  return (
-                    items &&
-                    Promise.resolve(
-                      items
-                        .map(({ slug }) => ({
-                          url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
-                        }))
-                        .filter(({ url }) => !urls.includes(url))
-                      // .slice(0, 15)
-                    )
-                      .then((list) => (console.log({ list }), list))
-                      .then((list) =>
-                        Promise.all(list.map((data) => q.produce(data)))
-                      )
+                  return Promise.resolve(
+                    items
+                      .map(({ slug }) => ({
+                        url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
+                      }))
+                      .filter(limiter(jobs, days(7)))
+                      .slice(0, 150)
                   );
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list
                       .map((data) => ({ ...data, url: data.href }))
                       .filter(({ url }) => new RegExp("//promocje.").test(url))
-                      .filter(({ url }) => !urls.includes(url))
-                    // .slice(0, 15)
-                  )
-                    .then((list) => (console.log({ list }), list))
-                    .then((list) =>
-                      Promise.all(list.map((data) => q.produce(data)))
-                    );
+                      .filter(limiter(jobs, days(7)))
+                  );
                 } else if (type === Type.RATES) {
                   return Promise.resolve(returnvalue.json)
                     .then(({ date }: { date: string }) =>
@@ -165,14 +161,10 @@ export const client = () => {
                       }
                       const url = new URL(data.url);
                       url.searchParams.set("date", date);
-                      return [{ url: url.toString() }]
-                        .filter(({ url }) => !urls.includes(url))
-                        .filter(({ url }) => !urls.includes(url));
-                    })
-                    .then((list) => (console.log({ list }), list))
-                    .then((list) =>
-                      Promise.all(list.map((data) => q.produce(data)))
-                    );
+                      return [{ url: url.toString() }].filter(
+                        limiter(jobs, days(7))
+                      );
+                    });
                 } else if (type === Type.STATIONS) {
                   const { url } = data;
                   return Promise.resolve(
@@ -185,7 +177,6 @@ export const client = () => {
                           data.station_id
                         }`,
                       }))
-                      .filter(({ url }: any) => !urls.includes(url))
                       .filter(
                         ({ x: lat, y: lng }: any) =>
                           [
@@ -212,15 +203,17 @@ export const client = () => {
                                   .distance < $radius
                             ) >= 0
                       )
-                      .slice(0, 250)
-                  )
-                    .then((list) => (console.log({ list }), list))
-                    .then((list) =>
-                      Promise.all(list.map((data: any) => q.produce(data)))
-                    );
+                      .filter(limiter(jobs, days(1)))
+                      .slice(0, 550)
+                  );
                 }
-              }
-            );
+                return [];
+              })
+              .then((list) =>
+                Promise.all(
+                  list.map((data: { url: string }) => q.produce(data))
+                )
+              );
           }
         )
         .process(NAME, async function (job) {

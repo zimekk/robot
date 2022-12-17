@@ -62,6 +62,85 @@ describe("schema", () => {
         },
         type: Type.RATES,
       },
+      {
+        data: {
+          id: "",
+          data: {
+            url: "https://www.x-kom.pl/goracy_strzal",
+          },
+          returnvalue: {
+            json: {},
+          },
+        },
+        type: Type.HOTSHOT,
+      },
+      {
+        data: {
+          id: "",
+          data: {
+            url: "https://www.al.to/goracy_strzal",
+          },
+          returnvalue: {
+            json: {},
+          },
+        },
+        type: Type.HOTSHOT,
+      },
+      {
+        data: {
+          id: "",
+          data: {
+            url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
+          },
+          returnvalue: {
+            html: "",
+          },
+        },
+        type: Type.OTODOM,
+      },
+      {
+        data: {
+          id: "",
+          data: {
+            url: "https://www.otodom.pl/pl/oferta/przestronne-segmenty-w-sercu-starej-milosnej-ID4i4sj",
+          },
+          returnvalue: {
+            html: "",
+          },
+        },
+        type: Type.OTODOM_OFFER,
+      },
+      {
+        data: {
+          id: "",
+          data: {
+            url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
+          },
+          returnvalue: {
+            json: {},
+          },
+        },
+        type: Type.STATIONS,
+      },
+      {
+        data: {
+          id: "6844",
+          data: {
+            url: "https://www.autocentrum.pl/ac-ajax/stations-get-station?station_id=9768",
+            x: 52.46227735918557,
+            y: 21.222321240159772,
+            station_id: 9768,
+            network_id: 248,
+            network_name: "Stacja LPG",
+            map_img:
+              "/system/assets/images/fuel-station/network/map/no-map-45x60.png",
+          },
+          returnvalue: {
+            json: {},
+          },
+        },
+        type: Type.STATION,
+      },
     ].forEach(({ data, type }) =>
       expect(EntrySchema.parse(data).type).toEqual(type)
     ));

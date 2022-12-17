@@ -77,6 +77,7 @@ export const router = () => {
                     .object({
                       id: z.string(),
                       data: DataSchema,
+                      opts: OptsSchema.optional(),
                     })
                     .array()
                     .parseAsync(list)

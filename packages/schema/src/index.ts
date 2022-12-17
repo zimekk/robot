@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { format } from "date-fns";
 import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
@@ -45,6 +46,7 @@ export const OptsSchema = z.object({
       cron: z.string().optional(),
     })
     .optional(),
+  timestamp: z.number().optional(),
 });
 
 const JsonSchema = z.object({
@@ -52,10 +54,21 @@ const JsonSchema = z.object({
   data: z.object({
     url: z.string(),
   }),
+  opts: z.any(),
   returnvalue: z.object({
     json: z.any(),
   }),
 });
+
+export const CompletedSchema = z
+  .object({
+    data: z.object({ url: z.string() }),
+    opts: OptsSchema.default({}),
+  })
+  .transform(({ data: { url }, opts: { timestamp = Date.now() } }) => ({
+    timestamp,
+    url,
+  }));
 
 export const EntrySchema = z
   .preprocess(
@@ -67,6 +80,7 @@ export const EntrySchema = z
             url: z.string(),
           })
           .passthrough(),
+        opts: z.any(),
         returnvalue: z.object({
           html: z.any(),
           json: z.any(),
@@ -126,6 +140,7 @@ export const EntrySchema = z
           data: z.object({
             url: z.string(),
           }),
+          opts: z.any(),
           returnvalue: z
             .object({
               html: z.string(),
@@ -156,6 +171,7 @@ export const EntrySchema = z
         data: z.object({
           url: z.string(),
         }),
+        opts: z.any(),
         returnvalue: z
           .object({
             html: z.string(),
@@ -168,6 +184,7 @@ export const EntrySchema = z
         data: z.object({
           url: z.string(),
         }),
+        opts: z.any(),
         returnvalue: z
           .object({
             html: z.string(),
