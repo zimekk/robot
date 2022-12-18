@@ -1,5 +1,35 @@
 import { z } from "zod";
 
+export const LeaseProductSchema = z
+  .object({
+    type: z.string(),
+    label: z.string(),
+    downPaymentLimits: z
+      .object({
+        min: z.number(),
+        max: z.number(),
+        step: z.number(),
+        default: z.number(),
+      })
+      .strict(),
+    termLimits: z
+      .object({
+        min: z.number(),
+        max: z.number(),
+        step: z.number(),
+        default: z.number(),
+      })
+      .strict(),
+    totalAgeLimit: z.number(),
+    // residualValueFactorLimits: z.array(
+    //   z.object({ term: z.number(), min: z.number(), max: z.number() })
+    // ),
+    // residualValueStep: z.number(),
+    // residualValueDefault: z.string(),
+    interestRates: z.array(z.object({ term: z.number(), value: z.number() })),
+  })
+  .strict();
+
 export const ItemSchema = z
   .object({
     id: z.number(),
@@ -42,88 +72,70 @@ export const ItemSchema = z
     reservationStatus: z.string().optional(),
     vatReclaimable: z.boolean(),
     leasable: z.boolean(),
-    leaseProduct: z
-      .object({
-        type: z.string(),
-        label: z.string(),
-        downPaymentLimits: z.object({
-          min: z.number(),
-          max: z.number(),
-          step: z.number(),
-          default: z.number(),
-        }),
-        termLimits: z.object({
-          min: z.number(),
-          max: z.number(),
-          step: z.number(),
-          default: z.number(),
-        }),
-        totalAgeLimit: z.number(),
-        residualValueFactorLimits: z.array(
-          z.object({ term: z.number(), min: z.number(), max: z.number() })
-        ),
-        residualValueStep: z.number(),
-        residualValueDefault: z.string(),
-        interestRates: z.array(
-          z.object({ term: z.number(), value: z.number() })
-        ),
-      })
+    leaseProduct: LeaseProductSchema.extend({
+      residualValueFactorLimits: z.array(
+        z.object({ term: z.number(), min: z.number(), max: z.number() })
+      ),
+      residualValueStep: z.number(),
+      residualValueDefault: z.string(),
+    })
+      .or(z.string())
       .optional(),
-    comfortLeaseProduct: z
-      .object({
-        type: z.string(),
-        label: z.string(),
-        calculationMode: z.string(),
-        downPaymentLimits: z
-          .object({
-            min: z.number(),
-            max: z.number(),
-            step: z.number(),
-            default: z.number(),
-          })
-          .strict(),
-        termLimits: z
-          .object({
-            min: z.number(),
-            max: z.number(),
-            step: z.number(),
-            default: z.number(),
-          })
-          .strict(),
-        totalAgeLimit: z.number(),
-        annualMileageLimits: z
-          .object({
-            min: z.number(),
-            max: z.number(),
-            step: z.number(),
-            default: z.number(),
-          })
-          .strict(),
-        interestRates: z.array(
-          z.object({ term: z.number(), value: z.number() })
-        ),
-        tarRvMod: z
-          .object({
-            id: z.number(),
-            tmdate: z.string(),
-            accessoryLimit: z.number(),
-            rvValue: z.number(),
-            brvValue: z.number(),
-            rvValueUsed: z.number(),
-            brvValueUsed: z.number(),
-            carSegmentId: z.string(),
-          })
-          .strict(),
-        tarRvDev: z
-          .object({
-            term: z.number(),
-            totalMileage: z.number(),
-            rvDev: z.number(),
-            rvDevUsed: z.number(),
-          })
-          .strict(),
-      })
+    comfortLeaseProduct: LeaseProductSchema.extend({
+      // type: z.string(),
+      // label: z.string(),
+      calculationMode: z.string(),
+      // downPaymentLimits: z
+      //   .object({
+      //     min: z.number(),
+      //     max: z.number(),
+      //     step: z.number(),
+      //     default: z.number(),
+      //   })
+      //   .strict(),
+      // termLimits: z
+      //   .object({
+      //     min: z.number(),
+      //     max: z.number(),
+      //     step: z.number(),
+      //     default: z.number(),
+      //   })
+      //   .strict(),
+      // totalAgeLimit: z.number(),
+      annualMileageLimits: z
+        .object({
+          min: z.number(),
+          max: z.number(),
+          step: z.number(),
+          default: z.number(),
+        })
+        .strict(),
+      // interestRates: z.array(
+      //   z.object({ term: z.number(), value: z.number() })
+      // ),
+      tarRvMod: z
+        .object({
+          id: z.number(),
+          tmdate: z.string(),
+          accessoryLimit: z.number(),
+          rvValue: z.number(),
+          brvValue: z.number(),
+          rvValueUsed: z.number(),
+          brvValueUsed: z.number(),
+          carSegmentId: z.string(),
+        })
+        .strict(),
+      tarRvDev: z
+        .object({
+          term: z.number(),
+          totalMileage: z.number(),
+          rvDev: z.number(),
+          rvDevUsed: z.number(),
+        })
+        .strict(),
+    })
       .strict()
+      .or(z.string())
       .optional(),
     newPrice: z.number(),
     optionsPrice: z.number(),
@@ -149,8 +161,8 @@ export const ItemSchema = z
     created: z.string(),
     age: z.number(),
     isYUC: z.boolean(),
-    reserved: z.boolean(),
-    extended: z.object({ brand: z.string(), buno: z.string() }),
+    reserved: z.boolean().optional(),
+    extended: z.object({ brand: z.string(), buno: z.string() }).optional(),
   })
   .extend({
     modelCode: z.string().optional(),
@@ -179,10 +191,7 @@ export const ItemSchema = z
   })
   .strict();
 
-export const AutosItemSchema = ItemSchema.omit({
-  extended: true,
-  reserved: true,
-}).extend({
+export const AutosItemSchema = ItemSchema.extend({
   market: z.string(),
   variant: z.object({ id: z.number(), label: z.string() }),
   drive: z.object({ id: z.number(), label: z.string() }),
@@ -209,30 +218,20 @@ export const AutosItemSchema = ItemSchema.omit({
   ),
   equipmentGroup: z.array(z.object({ id: z.number(), label: z.string() })),
   equipmentText: z.string().optional(),
-  dealer: z.object({
+  dealer: ItemSchema.shape.dealer.extend({
     market: z.string(),
     email: z.string(),
     phone: z.string(),
+    fax: z.string().optional(),
     urlWebsite: z.string(),
+    urlImprint: z.string().optional(),
+    urlTermsConditions: z.string().optional(),
     businessHours: z.string(),
-    id: z.number(),
-    bunoBMW: z.string(),
-    bunoMINI: z.string(),
-    bunoMOTORCYCLE: z.string().optional(),
-    owner: z.string(),
-    ownerName: z.string(),
-    name: z.string(),
-    legalName: z.string(),
-    street: z.string(),
-    zip: z.string(),
-    city: z.string(),
-    lat: z.number(),
-    lng: z.number(),
   }),
   owner: z.string(),
   available: z.string(),
-  leaseProduct: z.string(),
-  comfortLeaseProduct: z.string(),
+  // leaseProduct: z.string().optional(),
+  // comfortLeaseProduct: z.string().optional(),
 });
 
 export const Schema = z.object({

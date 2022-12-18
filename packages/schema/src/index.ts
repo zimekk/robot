@@ -348,7 +348,7 @@ export const DelayedSchema = z
     stacktrace: z.array(z.unknown()),
     returnvalue: z.null(),
     finishedOn: z.null(),
-    processedOn: z.null(),
+    processedOn: z.number().nullable(),
   })
   .strict()
   .array();
