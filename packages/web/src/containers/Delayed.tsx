@@ -89,7 +89,8 @@ function Delayed({
               />
               <span>{item.id}</span>
             </label>{" "}
-            | <a href={`delete/${item.id}`}>delete</a>
+            | <a href={item.data.url}>open</a> |{" "}
+            <a href={`delete/${item.id}`}>delete</a>
           </div>
           <pre>
             {JSON.stringify(

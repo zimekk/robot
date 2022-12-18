@@ -23,6 +23,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rxjs": "^7.8.0",
+    "styled-components": "^5.3.6",
     "use-asset": "^1.0.4"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@types/node": "^18.11.15",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@types/styled-components": "^5.1.26",
     "babel-loader": "^9.1.0",
     "copy-webpack-plugin": "^11.0.0",
     "dotenv": "^16.0.3",

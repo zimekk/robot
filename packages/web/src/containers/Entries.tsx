@@ -10,6 +10,7 @@ import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { EntriesSchema, Type } from "@dev/schema";
 
+import { Spinner } from "../components/Spinner";
 import { post } from "./Process";
 
 export default function Entries() {
@@ -26,6 +27,7 @@ export default function Entries() {
   const [options] = useState(() => ({
     type: [""].concat(Object.values(Type)),
   }));
+  const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState(() => match);
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
   const [selected, setSelected] = useState<string[]>(() => []);
@@ -124,9 +126,10 @@ export default function Entries() {
           </select>
         </label>
         <button
+          disabled={loading}
           onClick={useCallback(
             () =>
-              post("entries", pager)
+              (setLoading(true), post("entries", pager))
                 .then((response) => response.json())
                 .then(
                   pager.data
@@ -134,7 +137,7 @@ export default function Entries() {
                     : EntriesSchema.parseAsync
                 )
                 .then(setEntries)
-                .then(() => setSelected([])),
+                .then(() => (setLoading(false), setSelected([]))),
             [pager]
           )}
         >
@@ -170,6 +173,7 @@ export default function Entries() {
           />
           <span>returnvalue</span>
         </label>
+        {loading && <Spinner />}
       </div>
       <div>
         <label>
@@ -254,6 +258,7 @@ export default function Entries() {
             | <a href={`entry/${item.id}`}>item</a> |{" "}
             <a href={`json/${item.id}`}>json</a> |{" "}
             <a href={`html/${item.id}`}>html</a> |{" "}
+            <a href={item.data.url}>open</a> |{" "}
             <a href={`delete/${item.id}`}>delete</a>
           </div>
           {selected.includes(item.id) ? (
