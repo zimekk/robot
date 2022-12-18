@@ -271,7 +271,7 @@ export const EntriesSchema = z
         json: PromoItemSchema,
       }),
     }).extend({
-      data: z.object({
+      data: ReturnSchema.shape.data.extend({
         code: z.string().optional(),
         desc: z.string(),
         href: z.string(),
@@ -308,7 +308,7 @@ export const EntriesSchema = z
         json: StationSchema,
       }),
     }).extend({
-      data: z.object({
+      data: ReturnSchema.shape.data.extend({
         x: z.number(),
         y: z.number(),
         station_id: z.number(),

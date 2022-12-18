@@ -371,7 +371,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               <span>{item.id}</span>
             </label>
           </div>
-          <pre>{JSON.stringify(item, null, 2)}</pre>
+          {selected.includes(item.id) && (
+            <pre>{JSON.stringify(item, null, 2)}</pre>
+          )}
         </div>
       ))}
     </fieldset>

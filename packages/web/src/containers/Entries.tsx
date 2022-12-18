@@ -1,4 +1,12 @@
-import React, { type ChangeEventHandler, useCallback, useState } from "react";
+import React, {
+  type ChangeEventHandler,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { EntriesSchema, Type } from "@dev/schema";
 
@@ -7,14 +15,18 @@ import { post } from "./Process";
 export default function Entries() {
   const [pager, setPager] = useState(() => ({
     start: 0,
-    limit: 10,
-    type: "",
+    limit: 500,
     data: false,
     returnvalue: true,
+  }));
+  const [match, setMatch] = useState(() => ({
+    type: "",
+    query: "",
   }));
   const [options] = useState(() => ({
     type: [""].concat(Object.values(Type)),
   }));
+  const [filters, setFilters] = useState(() => match);
   const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
   const [selected, setSelected] = useState<string[]>(() => []);
 
@@ -27,6 +39,43 @@ export default function Entries() {
       ),
     []
   );
+
+  const filters$ = useMemo(() => new Subject<typeof filters>(), []);
+
+  useEffect(() => {
+    const subscription = filters$
+      .pipe(
+        map(({ query, ...match }) =>
+          JSON.stringify({
+            ...match,
+            query: query.toLowerCase().trim(),
+          })
+        ),
+        distinctUntilChanged(),
+        debounceTime(400)
+      )
+      .subscribe((filters) =>
+        setFilters((queries) => ({ ...queries, ...JSON.parse(filters) }))
+      );
+    return () => subscription.unsubscribe();
+  }, [filters$]);
+
+  useEffect(() => {
+    filters$.next(match);
+  }, [match]);
+
+  const list = useMemo(
+    () => (
+      console.log(filters),
+      entries.filter(
+        (item) =>
+          (filters.type === "" || filters.type === item.type) &&
+          (filters.query === "" || item.data.url.match(filters.query))
+      )
+    ),
+    [entries, filters]
+  );
+
   return (
     <fieldset>
       <legend>entries</legend>
@@ -68,26 +117,6 @@ export default function Entries() {
             )}
           >
             {[5, 10, 50, 100, 500].map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          <span>type</span>
-          <select
-            value={pager.type}
-            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
-              ({ target }) =>
-                setPager((pager) => ({
-                  ...pager,
-                  type: target.value,
-                })),
-              []
-            )}
-          >
-            {options.type.map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
@@ -144,14 +173,50 @@ export default function Entries() {
       </div>
       <div>
         <label>
+          <span>type</span>
+          <select
+            value={match.type}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setMatch((match) => ({
+                  ...match,
+                  type: target.value,
+                })),
+              []
+            )}
+          >
+            {options.type.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <span>query</span>
           <input
-            type="checkbox"
-            checked={entries.length > 0 && selected.length === entries.length}
-            disabled={entries.length === 0}
+            value={match.query}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>
-                setSelected(target.checked ? entries.map(({ id }) => id) : []),
-              [entries]
+                setMatch((match) => ({
+                  ...match,
+                  query: target.value,
+                })),
+              []
+            )}
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={list.length > 0 && selected.length === list.length}
+            disabled={list.length === 0}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setSelected(target.checked ? list.map(({ id }) => id) : []),
+              [list]
             )}
           />
         </label>
@@ -174,7 +239,7 @@ export default function Entries() {
           delete
         </button>
       </div>
-      {entries.map((item) => (
+      {list.map((item) => (
         <div key={item.id}>
           <div>
             <label>
@@ -191,7 +256,27 @@ export default function Entries() {
             <a href={`html/${item.id}`}>html</a> |{" "}
             <a href={`delete/${item.id}`}>delete</a>
           </div>
-          <pre>{JSON.stringify(item, null, 2)}</pre>
+          {selected.includes(item.id) ? (
+            <pre>{JSON.stringify(item, null, 2)}</pre>
+          ) : (
+            <pre>
+              {JSON.stringify(
+                z
+                  .object({
+                    id: z.string(),
+                    data: z
+                      .object({
+                        // url: z.string()
+                      })
+                      .passthrough(),
+                    type: z.string(),
+                  })
+                  .parse(item),
+                null,
+                2
+              )}
+            </pre>
+          )}
         </div>
       ))}
     </fieldset>

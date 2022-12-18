@@ -22,6 +22,7 @@
     "milliseconds": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rxjs": "^7.8.0",
     "use-asset": "^1.0.4"
   },
   "devDependencies": {
