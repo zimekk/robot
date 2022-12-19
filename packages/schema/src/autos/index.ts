@@ -193,7 +193,7 @@ export const ItemSchema = z
 
 export const AutosItemSchema = ItemSchema.extend({
   market: z.string(),
-  variant: z.object({ id: z.number(), label: z.string() }),
+  variant: z.object({ id: z.number(), label: z.string() }).optional(),
   drive: z.object({ id: z.number(), label: z.string() }),
   doors: z.number(),
   seats: z.number(),

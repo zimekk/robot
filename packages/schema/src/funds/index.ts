@@ -16,7 +16,7 @@ export const Schema = z.object({
     roi: z.number(),
     start_date: z.string(),
     start_value: z.number(),
-    synthetic_value_to: z.null(),
+    synthetic_value_to: z.string().nullable(),
     total_count: z.number(),
   }),
   objects: z.array(
