@@ -150,6 +150,22 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
+                url: "https://www.otomoto.pl/osobowe/bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
+              },
+              opts: {
+                repeat: { cron: "0 9 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.otomoto.pl/osobowe/honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
+              },
+              opts: {
+                repeat: { cron: "0 10 * * *" },
+              },
+            },
+            {
+              data: {
                 url: "https://www.x-kom.pl/promocje",
               },
               opts: {

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { format } from "date-fns";
 import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
@@ -7,11 +6,15 @@ import { Schema as HotshotSchema } from "./hot-shot";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
 import { Schema as RatesSchema } from "./rates";
-import { Schema as StationsSchema } from "./stations";
-import { Schema as StationSchema } from "./stations/item";
+// import { Schema as StationsSchema } from "./stations";
+// import { Schema as StationSchema } from "./stations/item";
 import OtodomOfferTransform, {
   Schema as OtodomOfferSchema,
 } from "./otodom/offer";
+import OtomotoTransform from // Schema as OtomotoSchema,
+"./otomoto";
+import OtomotoOfferTransform from // Schema as OtomotoOfferSchema,
+"./otomoto/offer";
 
 export const Type = {
   AUTOS: "AUTOS",
@@ -23,6 +26,8 @@ export const Type = {
   HOTSHOT: "HOTSHOT",
   OTODOM: "OTODOM",
   OTODOM_OFFER: "OTODOM_OFFER",
+  OTOMOTO: "OTOMOTO",
+  OTOMOTO_OFFER: "OTOMOTO_OFFER",
   RATES: "RATES",
   STATIONS: "STATIONS",
   STATION: "STATION",
@@ -100,6 +105,8 @@ export const EntrySchema = z
           [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
           [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
           [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
+          [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
+          [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
           [Type.RATES]: new RegExp("pl/rest/rates/"),
           [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
           [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
@@ -190,6 +197,32 @@ export const EntrySchema = z
             html: z.string(),
           })
           .transform(OtodomOfferTransform),
+      }),
+      z.object({
+        id: z.string(),
+        type: z.literal(Type.OTOMOTO),
+        data: z.object({
+          url: z.string(),
+        }),
+        opts: z.any(),
+        returnvalue: z
+          .object({
+            html: z.string(),
+          })
+          .transform(OtomotoTransform),
+      }),
+      z.object({
+        id: z.string(),
+        type: z.literal(Type.OTOMOTO_OFFER),
+        data: z.object({
+          url: z.string(),
+        }),
+        opts: z.any(),
+        returnvalue: z
+          .object({
+            html: z.string(),
+          })
+          .transform(OtomotoOfferTransform),
       }),
       JsonSchema.extend({
         type: z.literal(Type.RATES),
@@ -291,6 +324,20 @@ export const EntriesSchema = z
       }),
     }),
     ReturnSchema.extend({
+      type: z.literal(Type.OTOMOTO),
+      returnvalue: z.object({
+        // json: OtomotoSchema,
+        json: z.any(),
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.OTOMOTO_OFFER),
+      returnvalue: z.object({
+        // json: OtomotoOfferSchema,
+        json: z.any(),
+      }),
+    }),
+    ReturnSchema.extend({
       type: z.literal(Type.RATES),
       returnvalue: z.object({
         json: RatesSchema,
@@ -299,13 +346,13 @@ export const EntriesSchema = z
     ReturnSchema.extend({
       type: z.literal(Type.STATIONS),
       returnvalue: z.object({
-        json: StationsSchema,
+        json: z.any(),
       }),
     }),
     ReturnSchema.extend({
       type: z.literal(Type.STATION),
       returnvalue: z.object({
-        json: StationSchema,
+        json: z.any(),
       }),
     }).extend({
       data: ReturnSchema.shape.data.extend({

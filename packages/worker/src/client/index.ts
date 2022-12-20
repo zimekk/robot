@@ -82,7 +82,7 @@ export const client = () => {
   const queue = new Queue<Data>(QUEUE_NAME, REDIS_URL, {
     limiter: {
       max: 1, // Max number of jobs processed
-      duration: 15000, // per duration in milliseconds
+      duration: seconds(15), // per duration in milliseconds
     },
   });
 
@@ -126,6 +126,17 @@ export const client = () => {
                     items
                       .map(({ slug }) => ({
                         url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
+                      }))
+                      .filter(limiter(jobs, days(7)))
+                      .slice(0, 150)
+                  );
+                } else if (type === Type.OTOMOTO) {
+                  const { list = [] } =
+                    returnvalue.json.props?.pageProps.urqlState || {};
+                  return Promise.resolve(
+                    list
+                      .map(({ url }) => ({
+                        url,
                       }))
                       .filter(limiter(jobs, days(7)))
                       .slice(0, 150)
@@ -204,7 +215,6 @@ export const client = () => {
                             ) >= 0
                       )
                       .filter(limiter(jobs, days(1)))
-                      .slice(0, 550)
                   );
                 }
                 return [];
