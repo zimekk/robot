@@ -197,6 +197,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 repeat: { cron: "1 9,21 * * *" },
               },
             },
+            {
+              data: {
+                url: "https://www.xbox.com/pl-PL/xbox-game-pass",
+              },
+              opts: {
+                repeat: { cron: "30 13 * * *" },
+              },
+            },
           ]
             .concat(
               [
@@ -216,7 +224,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                     url,
                   },
                   opts: {
-                    repeat: { cron: `${i} 13 * * *` },
+                    repeat: { cron: `${i} 14 * * *` },
                   },
                 }))
             )
@@ -283,7 +291,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                     url,
                   },
                   opts: {
-                    repeat: { cron: `${i} 16 * * *` },
+                    repeat: { cron: `${i} 13 * * *` },
                   },
                 }))
             )

@@ -2,6 +2,7 @@ import { z } from "zod";
 import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
+import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
@@ -11,16 +12,15 @@ import { Schema as RatesSchema } from "./rates";
 import OtodomOfferTransform, {
   Schema as OtodomOfferSchema,
 } from "./otodom/offer";
-import OtomotoTransform from // Schema as OtomotoSchema,
-"./otomoto";
-import OtomotoOfferTransform from // Schema as OtomotoOfferSchema,
-"./otomoto/offer";
+import OtomotoTransform from "./otomoto"; // Schema as OtomotoSchema,
+import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSchema,
 
 export const Type = {
   AUTOS: "AUTOS",
   AUTOS_ITEM: "AUTOS_ITEM",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
+  GPASS: "GPASS",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
   HOTSHOT: "HOTSHOT",
@@ -75,183 +75,187 @@ export const CompletedSchema = z
     url,
   }));
 
-export const EntrySchema = z
-  .preprocess(
+export const EntrySchema = z.preprocess(
+  z
+    .object({
+      id: z.string(),
+      data: z
+        .object({
+          url: z.string(),
+        })
+        .passthrough(),
+      opts: z.any(),
+      returnvalue: z.object({
+        html: z.any(),
+        json: z.any(),
+      }),
+    })
+    //.passthrough()
+    .transform((item) => ({
+      type: Object.entries({
+        [Type.AUTOS]: new RegExp("pl_PL/search"),
+        [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
+        [Type.FUNDS]: new RegExp("tfi/fund/"),
+        [Type.GAMES]: new RegExp("mp.microsoft.com/"),
+        [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
+        [Type.HOTSHOT]: new RegExp(
+          "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
+        ),
+        [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
+        [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
+        [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
+        [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
+        [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
+        [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
+        [Type.RATES]: new RegExp("pl/rest/rates/"),
+        [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
+        [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+        [Type.UNKNOWN]: new RegExp(""),
+      })
+        .find(([_, regExp]) => regExp.test(item.data.url))
+        ?.shift(),
+      ...item,
+    })).parse,
+  z.discriminatedUnion("type", [
+    JsonSchema.extend({
+      type: z.literal(Type.AUTOS),
+      data: z
+        .object({
+          url: z.string(),
+        })
+        .extend({
+          body: z.object({
+            $match: z.object({}).passthrough(),
+            $skip: z.number(),
+            $limit: z.number(),
+          }),
+        }),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.AUTOS_ITEM),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.FUNDS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.GAMES),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.GPASS),
+      returnvalue: GpassTransformSchema,
+    }),
     z
       .object({
         id: z.string(),
-        data: z
-          .object({
-            url: z.string(),
-          })
-          .passthrough(),
-        opts: z.any(),
-        returnvalue: z.object({
-          html: z.any(),
-          json: z.any(),
+        type: z.literal(Type.PROMO),
+        data: z.object({
+          url: z.string(),
         }),
+        opts: z.any(),
+        returnvalue: z
+          .object({
+            html: z.string(),
+          })
+          .transform(PromoTransform),
       })
-      //.passthrough()
-      .transform((item) => ({
-        type: Object.entries({
-          [Type.AUTOS]: new RegExp("pl_PL/search"),
-          [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
-          [Type.FUNDS]: new RegExp("tfi/fund/"),
-          [Type.GAMES]: new RegExp("mp.microsoft.com/"),
-          [Type.HOTSHOT]: new RegExp(
-            "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
-          ),
-          [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
-          [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
-          [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
-          [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
-          [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
-          [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
-          [Type.RATES]: new RegExp("pl/rest/rates/"),
-          [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
-          [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
-          [Type.UNKNOWN]: new RegExp(""),
-        })
-          .find(([_, regExp]) => regExp.test(item.data.url))
-          ?.shift(),
-        ...item,
-      })).parse,
-    z.discriminatedUnion("type", [
-      JsonSchema.extend({
-        type: z.literal(Type.AUTOS),
-        data: z
-          .object({
-            url: z.string(),
-          })
-          .extend({
-            body: z.object({
-              $match: z.object({}).passthrough(),
-              $skip: z.number(),
-              $limit: z.number(),
-            }),
-          }),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.AUTOS_ITEM),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.FUNDS),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.GAMES),
-      }),
-      z
+      .extend({})
+      .passthrough(),
+    JsonSchema.extend({
+      type: z.literal(Type.PROMO_ITEM),
+      data: z
         .object({
-          id: z.string(),
-          type: z.literal(Type.PROMO),
-          data: z.object({
-            url: z.string(),
-          }),
-          opts: z.any(),
-          returnvalue: z
-            .object({
-              html: z.string(),
-            })
-            .transform(PromoTransform),
+          url: z.string(),
         })
-        .extend({})
-        .passthrough(),
-      JsonSchema.extend({
-        type: z.literal(Type.PROMO_ITEM),
-        data: z
-          .object({
-            url: z.string(),
-          })
-          .extend({
-            code: z.string().optional(),
-            desc: z.string(),
-            href: z.string(),
-            name: z.string(),
-          }),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.HOTSHOT),
-      }),
-      z.object({
-        id: z.string(),
-        type: z.literal(Type.OTODOM),
-        data: z.object({
-          url: z.string(),
+        .extend({
+          code: z.string().optional(),
+          desc: z.string(),
+          href: z.string(),
+          name: z.string(),
         }),
-        opts: z.any(),
-        returnvalue: z
-          .object({
-            html: z.string(),
-          })
-          .transform(OtodomOfferTransform),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.HOTSHOT),
+    }),
+    z.object({
+      id: z.string(),
+      type: z.literal(Type.OTODOM),
+      data: z.object({
+        url: z.string(),
       }),
-      z.object({
-        id: z.string(),
-        type: z.literal(Type.OTODOM_OFFER),
-        data: z.object({
+      opts: z.any(),
+      returnvalue: z
+        .object({
+          html: z.string(),
+        })
+        .transform(OtodomOfferTransform),
+    }),
+    z.object({
+      id: z.string(),
+      type: z.literal(Type.OTODOM_OFFER),
+      data: z.object({
+        url: z.string(),
+      }),
+      opts: z.any(),
+      returnvalue: z
+        .object({
+          html: z.string(),
+        })
+        .transform(OtodomOfferTransform),
+    }),
+    z.object({
+      id: z.string(),
+      type: z.literal(Type.OTOMOTO),
+      data: z.object({
+        url: z.string(),
+      }),
+      opts: z.any(),
+      returnvalue: z
+        .object({
+          html: z.string(),
+        })
+        .transform(OtomotoTransform),
+    }),
+    z.object({
+      id: z.string(),
+      type: z.literal(Type.OTOMOTO_OFFER),
+      data: z.object({
+        url: z.string(),
+      }),
+      opts: z.any(),
+      returnvalue: z
+        .object({
+          html: z.string(),
+        })
+        .transform(OtomotoOfferTransform),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.RATES),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.STATIONS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.STATION),
+      data: z
+        .object({
           url: z.string(),
+        })
+        .extend({
+          x: z.number(),
+          y: z.number(),
+          station_id: z.number(),
+          network_id: z.number(),
+          network_name: z.string(),
+          map_img: z.string(),
         }),
-        opts: z.any(),
-        returnvalue: z
-          .object({
-            html: z.string(),
-          })
-          .transform(OtodomOfferTransform),
-      }),
-      z.object({
-        id: z.string(),
-        type: z.literal(Type.OTOMOTO),
-        data: z.object({
-          url: z.string(),
-        }),
-        opts: z.any(),
-        returnvalue: z
-          .object({
-            html: z.string(),
-          })
-          .transform(OtomotoTransform),
-      }),
-      z.object({
-        id: z.string(),
-        type: z.literal(Type.OTOMOTO_OFFER),
-        data: z.object({
-          url: z.string(),
-        }),
-        opts: z.any(),
-        returnvalue: z
-          .object({
-            html: z.string(),
-          })
-          .transform(OtomotoOfferTransform),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.RATES),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.STATIONS),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.STATION),
-        data: z
-          .object({
-            url: z.string(),
-          })
-          .extend({
-            x: z.number(),
-            y: z.number(),
-            station_id: z.number(),
-            network_id: z.number(),
-            network_name: z.string(),
-            map_img: z.string(),
-          }),
-      }),
-      JsonSchema.extend({
-        type: z.literal(Type.UNKNOWN),
-        returnvalue: z.any(),
-      }),
-    ])
-  )
-  .transform((item) => (console.log(item), item));
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.UNKNOWN),
+      returnvalue: z.any(),
+    }),
+  ])
+);
+// .transform((item) => (console.log(item), item));
 
 const ReturnSchema = z.object({
   id: z.string(),
@@ -285,6 +289,10 @@ export const EntriesSchema = z
       returnvalue: z.object({
         json: GamesSchema,
       }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.GPASS),
+      returnvalue: GpassReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.HOTSHOT),
