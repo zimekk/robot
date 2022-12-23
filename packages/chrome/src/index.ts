@@ -70,15 +70,17 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
             const headers = res.headers();
 
             if (["document", "fetch", "xhr"].includes(req.resourceType())) {
-              console.log(url, req.resourceType());
+              console.log(url, req.resourceType(), req.url());
             }
 
-            if (url.match("/goracy_strzal|//promocje")) {
+            if (url.match("/goracy_strzal|/szukaj|//promocje")) {
               if (
                 ["fetch", "xhr"].includes(req.resourceType()) &&
                 res
                   .url()
-                  .match("/get/(xkom|alto)/|/v1/(xkom|alto)/hotShots/current")
+                  .match(
+                    "/get/(xkom|alto)/|/v1/(xkom|alto)/hotShots/current|/v1/(xkom|alto)/products/searchHints"
+                  )
               ) {
                 console.log(["resolve.json"], res.url(), headers);
                 resolve({ url: res.url(), json: await res.json() });

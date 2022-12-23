@@ -105,7 +105,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 },
               },
               opts: {
-                repeat: { cron: "0 14 * * *" },
+                repeat: { cron: "0 12 * * *" },
               },
             },
             {
@@ -292,6 +292,45 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                   },
                   opts: {
                     repeat: { cron: `${i} 13 * * *` },
+                  },
+                }))
+            )
+            .concat(
+              chunk(
+                [
+                  "592143",
+                  "681134",
+                  "681136",
+                  "681152",
+                  "730554",
+                  "730597",
+                  "1070889",
+                ],
+                1
+              )
+                .map((ids) => {
+                  return `https://www.x-kom.pl/szukaj?q=${ids.join("+")}`;
+                })
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 16 * * *` },
+                  },
+                }))
+            )
+            .concat(
+              chunk(["1022668"], 1)
+                .map((ids) => {
+                  return `https://www.al.to/szukaj?q=${ids.join("+")}`;
+                })
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 17 * * *` },
                   },
                 }))
             )

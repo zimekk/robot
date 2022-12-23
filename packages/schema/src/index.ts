@@ -4,6 +4,7 @@ import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
+import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
 import { Schema as RatesSchema } from "./rates";
@@ -28,6 +29,7 @@ export const Type = {
   OTODOM_OFFER: "OTODOM_OFFER",
   OTOMOTO: "OTOMOTO",
   OTOMOTO_OFFER: "OTOMOTO_OFFER",
+  PRODUCTS: "PRODUCTS",
   RATES: "RATES",
   STATIONS: "STATIONS",
   STATION: "STATION",
@@ -101,6 +103,7 @@ export const EntrySchema = z.preprocess(
         [Type.HOTSHOT]: new RegExp(
           "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
         ),
+        [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
         [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
         [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
         [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
@@ -229,6 +232,9 @@ export const EntrySchema = z.preprocess(
         .transform(OtomotoOfferTransform),
     }),
     JsonSchema.extend({
+      type: z.literal(Type.PRODUCTS),
+    }),
+    JsonSchema.extend({
       type: z.literal(Type.RATES),
     }),
     JsonSchema.extend({
@@ -343,6 +349,12 @@ export const EntriesSchema = z
       returnvalue: z.object({
         // json: OtomotoOfferSchema,
         json: z.any(),
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.PRODUCTS),
+      returnvalue: z.object({
+        json: ProductsSchema,
       }),
     }),
     ReturnSchema.extend({

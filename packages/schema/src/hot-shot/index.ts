@@ -1,10 +1,5 @@
 import { z } from "zod";
-
-const PhotoSchema = z.object({
-  Url: z.string(),
-  ThumbnailUrl: z.string(),
-  UrlTemplate: z.string().nullable(),
-});
+import { PhotoSchema } from "../products";
 
 const HotShotSchema = z.object({
   Id: z.string(),
