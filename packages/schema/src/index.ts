@@ -8,6 +8,7 @@ import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
 import { Schema as RatesSchema } from "./rates";
+import { Schema as RoomsReturnSchema } from "./rooms";
 // import { Schema as StationsSchema } from "./stations";
 // import { Schema as StationSchema } from "./stations/item";
 import OtodomOfferTransform, {
@@ -31,6 +32,7 @@ export const Type = {
   OTOMOTO_OFFER: "OTOMOTO_OFFER",
   PRODUCTS: "PRODUCTS",
   RATES: "RATES",
+  ROOMS: "ROOMS",
   STATIONS: "STATIONS",
   STATION: "STATION",
   UNKNOWN: "UNKNOWN",
@@ -111,6 +113,7 @@ export const EntrySchema = z.preprocess(
         [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
         [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
         [Type.RATES]: new RegExp("pl/rest/rates/"),
+        [Type.ROOMS]: new RegExp("api/\\w+/details"),
         [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
         [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
         [Type.UNKNOWN]: new RegExp(""),
@@ -238,6 +241,9 @@ export const EntrySchema = z.preprocess(
       type: z.literal(Type.RATES),
     }),
     JsonSchema.extend({
+      type: z.literal(Type.ROOMS),
+    }),
+    JsonSchema.extend({
       type: z.literal(Type.STATIONS),
     }),
     JsonSchema.extend({
@@ -362,6 +368,10 @@ export const EntriesSchema = z
       returnvalue: z.object({
         json: RatesSchema,
       }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.ROOMS),
+      returnvalue: RoomsReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.STATIONS),

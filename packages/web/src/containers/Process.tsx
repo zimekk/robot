@@ -1,11 +1,14 @@
 import React, {
   type ChangeEventHandler,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from "react";
 import chunk from "chunk";
 import { seconds } from "milliseconds";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { DataSchema, OptsSchema } from "@dev/schema";
 
@@ -26,7 +29,37 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [selected, setSelected] = useState<string[]>(() => []);
   const [type, setType] = useState<typeof TYPE[number]>(() => TYPE[0]);
   const [delay, setDelay] = useState<typeof DELAY[number]>(() => DELAY[0]);
-  const list = useMemo(
+  const [match, setMatch] = useState(() => ({
+    type: "",
+    query: "",
+  }));
+  const [filters, setFilters] = useState(() => match);
+
+  const filters$ = useMemo(() => new Subject<typeof filters>(), []);
+
+  useEffect(() => {
+    const subscription = filters$
+      .pipe(
+        map(({ query, ...match }) =>
+          JSON.stringify({
+            ...match,
+            query: query.toLowerCase().trim(),
+          })
+        ),
+        distinctUntilChanged(),
+        debounceTime(400)
+      )
+      .subscribe((filters) =>
+        setFilters((queries) => ({ ...queries, ...JSON.parse(filters) }))
+      );
+    return () => subscription.unsubscribe();
+  }, [filters$]);
+
+  useEffect(() => {
+    filters$.next(match);
+  }, [match]);
+
+  const entries = useMemo(
     () =>
       z
         .object({
@@ -334,8 +367,84 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                   },
                 }))
             )
+            .concat(
+              [
+                "aparthotelczarnagora",
+                "aparthotelgiewont1",
+                "belwederhotel",
+                "bluemountainresort",
+                "czarnygron",
+                "grandhotelstamary",
+                "grenohotelspa",
+                "greenmountainhotel",
+                "hotelaquarion",
+                "hotelbaniathermalski",
+                "hotelbukovina",
+                "hotelcrocus",
+                "hotelczarnypotokresortspakrynica",
+                "hotelharnas",
+                "hotelklimczok",
+                "hotelkrysztal4",
+                "hoteloliviamedicalspa",
+                "hotelskalny",
+                "hotelpegaz",
+                "hotelpiotrspawellness",
+                "hotelperlapoludnia1",
+                "hotelprezydentmedicalspawellness",
+                "hotelprzedwiosnie1",
+                "hotelsasanka",
+                "hotelspadrirenaeriskrynicazdroj",
+                "hotelspadrirenaerispolanicazdrj",
+                "hotelspadrirenaeriswzgorzadylewskie",
+                "hotelstok",
+                "hoteltoporow",
+                "hotelwierchomla",
+                "hotelzbjnicwka",
+                "hotelzywieckimedicalspasport",
+                "interferieaquaparksporthotelmalachit",
+                "interferiesporthotelbornit",
+                "kompleksszkoleniowowypoczynkowyskalnyspa",
+                "lemonresort",
+                "mazowszemedispa1",
+                "modrzewieparkhotel1",
+                "nosalowydworresort1",
+                "odysseyclubhotel",
+                "osadasniezka",
+                "willabelweder",
+                "zamekksiezagora",
+              ]
+                .map((name) => {
+                  return [
+                    // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
+                    // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
+                    `https://booking.profitroom.com/api/${name}/details`,
+                    // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
+                  ];
+                })
+                .flat()
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 18 * * *` },
+                  },
+                }))
+            )
         ),
     [type, delay]
+  );
+
+  const list = useMemo(
+    () => (
+      console.log(filters),
+      entries.filter(
+        (item) =>
+          // (filters.type === "" || filters.type === item.type) &&
+          filters.query === "" || item.data.url.match(filters.query)
+      )
+    ),
+    [entries, filters]
   );
 
   const onSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -371,6 +480,20 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           />
         </label>
         <span>{`${selected.length} / ${list.length}`}</span>{" "}
+        <label>
+          <span>query</span>
+          <input
+            value={match.query}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setMatch((match) => ({
+                  ...match,
+                  query: target.value,
+                })),
+              []
+            )}
+          />
+        </label>
         <label>
           <span>type</span>
           <select
