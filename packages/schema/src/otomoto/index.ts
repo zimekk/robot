@@ -198,6 +198,9 @@ const UrqlState = z
             ({
               node: {
                 id,
+                location,
+                parameters,
+                shortDescription,
                 thumbnail,
                 title,
                 price: {
@@ -207,7 +210,15 @@ const UrqlState = z
               },
             }) =>
               Object.assign(
-                { id, price, title, url },
+                {
+                  id,
+                  location,
+                  parameters,
+                  price,
+                  shortDescription,
+                  title,
+                  url,
+                },
                 thumbnail && (({ x1: thumbnail }) => ({ thumbnail }))(thumbnail)
               )
           ),
