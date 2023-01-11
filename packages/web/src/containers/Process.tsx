@@ -27,8 +27,8 @@ const DELAY = [5, 10, 15, 30] as const;
 
 export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [selected, setSelected] = useState<string[]>(() => []);
-  const [type, setType] = useState<typeof TYPE[number]>(() => TYPE[0]);
-  const [delay, setDelay] = useState<typeof DELAY[number]>(() => DELAY[0]);
+  const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[0]);
+  const [delay, setDelay] = useState<(typeof DELAY)[number]>(() => DELAY[0]);
   const [match, setMatch] = useState(() => ({
     type: "",
     query: "",
@@ -228,6 +228,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               },
               opts: {
                 repeat: { cron: "1 9,21 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://ursynow.leclerc.pl/",
+              },
+              opts: {
+                repeat: { cron: "0 10,20 * * *" },
               },
             },
             {
@@ -458,7 +466,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   );
 
   const onChangeDelay = useCallback<ChangeEventHandler<HTMLSelectElement>>(
-    ({ target }) => setDelay(Number(target.value) as typeof DELAY[number]),
+    ({ target }) => setDelay(Number(target.value) as (typeof DELAY)[number]),
     []
   );
 
@@ -499,7 +507,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           <select
             value={type}
             onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
-              ({ target }) => setType(target.value as typeof TYPE[number]),
+              ({ target }) => setType(target.value as (typeof TYPE)[number]),
               []
             )}
           >
