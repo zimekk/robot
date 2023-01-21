@@ -4,11 +4,14 @@ import React, {
   type SetStateAction,
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from "react";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { DelayedSchema } from "@dev/schema";
-
+import { Fieldset } from "../components/Fieldset";
 import Process, { post } from "./Process";
 
 type DelayedType = z.infer<typeof DelayedSchema>;
@@ -26,6 +29,36 @@ function Delayed({
   selected: string[];
   setSelected: Dispatch<SetStateAction<string[]>>;
 }) {
+  const [match, setMatch] = useState(() => ({
+    query: "",
+  }));
+
+  const [filters, setFilters] = useState(() => match);
+
+  const filters$ = useMemo(() => new Subject<typeof filters>(), []);
+
+  useEffect(() => {
+    const subscription = filters$
+      .pipe(
+        map(({ query, ...match }) =>
+          JSON.stringify({
+            ...match,
+            query: query.toLowerCase().trim(),
+          })
+        ),
+        distinctUntilChanged(),
+        debounceTime(400)
+      )
+      .subscribe((filters) =>
+        setFilters((queries) => ({ ...queries, ...JSON.parse(filters) }))
+      );
+    return () => subscription.unsubscribe();
+  }, [filters$]);
+
+  useEffect(() => {
+    filters$.next(match);
+  }, [match]);
+
   useEffect(() => {
     getDelayed();
   }, []);
@@ -40,9 +73,20 @@ function Delayed({
     []
   );
 
+  const list = useMemo(
+    () => (
+      console.log(filters),
+      delayed.filter(
+        (item) =>
+          // (filters.type === "" || filters.type === item.type) &&
+          filters.query === "" || item.data.url.match(filters.query)
+      )
+    ),
+    [delayed, filters]
+  );
+
   return (
-    <fieldset>
-      <legend>delayed</legend>
+    <Fieldset legend="delayed">
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
       <div>
         <label>
@@ -58,6 +102,20 @@ function Delayed({
           />
         </label>
         <span>{`${selected.length} / ${delayed.length}`}</span>{" "}
+        <label>
+          <span>query</span>
+          <input
+            value={match.query}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setMatch((match) => ({
+                  ...match,
+                  query: target.value,
+                })),
+              []
+            )}
+          />
+        </label>
         <button
           disabled={selected.length === 0}
           onClick={useCallback(
@@ -77,7 +135,7 @@ function Delayed({
         </button>
         <button onClick={useCallback(getDelayed, [])}>refresh</button>
       </div>
-      {delayed.map((item) => (
+      {list.map((item) => (
         <div key={item.id}>
           <div>
             <label>
@@ -107,7 +165,7 @@ function Delayed({
           </pre>
         </div>
       ))}
-    </fieldset>
+    </Fieldset>
   );
 }
 

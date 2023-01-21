@@ -11,6 +11,7 @@ import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { DataSchema, OptsSchema } from "@dev/schema";
+import { Fieldset } from "../components/Fieldset";
 
 export const post = (path: string, data?: object) =>
   fetch(path, {
@@ -495,8 +496,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   );
 
   return (
-    <fieldset>
-      <legend>process</legend>
+    <Fieldset legend="process">
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
       <div>
         <label>
@@ -594,6 +594,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           )}
         </div>
       ))}
-    </fieldset>
+    </Fieldset>
   );
 }
