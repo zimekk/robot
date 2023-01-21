@@ -21,6 +21,7 @@ import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSc
 export const Type = {
   AUTOS: "AUTOS",
   AUTOS_ITEM: "AUTOS_ITEM",
+  DIRECTIONS: "DIRECTIONS",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   GPASS: "GPASS",
@@ -101,6 +102,7 @@ export const EntrySchema = z.preprocess(
       type: Object.entries({
         [Type.AUTOS]: new RegExp("pl_PL/search"),
         [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
+        [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
         [Type.FUNDS]: new RegExp("tfi/fund/"),
         [Type.GAMES]: new RegExp("mp.microsoft.com/"),
         [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
@@ -142,6 +144,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.AUTOS_ITEM),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.DIRECTIONS),
     }),
     JsonSchema.extend({
       type: z.literal(Type.FUNDS),
@@ -295,6 +300,12 @@ export const EntriesSchema = z
       type: z.literal(Type.AUTOS_ITEM),
       returnvalue: z.object({
         json: AutosItemSchema,
+      }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.DIRECTIONS),
+      returnvalue: z.object({
+        json: z.any(),
       }),
     }),
     ReturnSchema.extend({

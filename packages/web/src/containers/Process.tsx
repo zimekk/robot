@@ -439,6 +439,30 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                   },
                 }))
             )
+            .concat(
+              [
+                [52.2329397, 21.2251979],
+                [52.2329397, 21.2251979, "transit"],
+              ]
+                // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
+                .map(
+                  ([lat, lng, travelmode = "driving"]) =>
+                    // `https://www.google.com/maps/dir/${lat},${lng}/52.2268,20.9921/data=!4m2!4m1!3e0`
+                    `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
+                      [lat, lng].join(",")
+                    )}&destination=${encodeURIComponent(
+                      [52.2268, 20.9921].join(",")
+                    )}&travelmode=${encodeURIComponent(travelmode)}&hl=pl`
+                )
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 19 * * *` },
+                  },
+                }))
+            )
         ),
     [type, delay]
   );

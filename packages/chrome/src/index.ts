@@ -92,7 +92,23 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
               ) {
                 console.log(["resolve.html"], res.url(), headers);
                 await delay();
-                if (
+
+                if (url.match("/maps/dir/")) {
+                  console.log(res.url());
+                  if (res.url().match("//consent\\.")) {
+                    const b = 'button[aria-label="Odrzuć wszystko"]';
+                    console.log(["page.waitForSelector"], b);
+                    await page.waitForSelector(b);
+                    console.log(["page.click"], b);
+                    await page.click(b);
+                  } else {
+                    const e = "APP_INITIALIZATION_STATE[3][4].substr(5)";
+                    console.log(["page.evaluate"], e);
+                    const json = JSON.parse(await page.evaluate(e));
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
+                  }
+                } else if (
                   [
                     "application/json",
                     "application/json; charset=utf-8",
