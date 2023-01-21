@@ -145,7 +145,9 @@ export const client = () => {
                   return Promise.resolve(
                     returnvalue.json.list
                       .map((data) => ({ ...data, url: data.href }))
-                      .filter(({ url }) => new RegExp("//promocje.").test(url))
+                      .filter(
+                        ({ url }) => url && new RegExp("//promocje.").test(url)
+                      )
                       .filter(limiter(jobs, days(7)))
                   );
                 } else if (type === Type.RATES) {

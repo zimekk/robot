@@ -6,7 +6,7 @@ export const Schema = z.object({
     .object({
       name: z.string(),
       desc: z.string(),
-      href: z.string(),
+      href: z.string().optional(),
       code: z.string().optional(),
     })
     .array(),
