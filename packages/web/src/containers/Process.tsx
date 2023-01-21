@@ -515,6 +515,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         <label>
           <span>query</span>
           <input
+            type="search"
             value={match.query}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>

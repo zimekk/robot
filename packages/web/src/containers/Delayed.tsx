@@ -105,6 +105,7 @@ function Delayed({
         <label>
           <span>query</span>
           <input
+            type="search"
             value={match.query}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>
