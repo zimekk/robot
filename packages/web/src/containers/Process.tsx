@@ -152,6 +152,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/warszawa/",
+              },
+              opts: {
+                repeat: { cron: "15 * * * *" },
+              },
+            },
+            {
+              data: {
                 url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
               },
               opts: {

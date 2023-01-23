@@ -61,6 +61,13 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
             // });
             if (["font", "image", "stylesheet"].includes(req.resourceType())) {
               req.abort();
+            } else if (["script"].includes(req.resourceType())) {
+              if (req.url().match("pl/app/static/js/")) {
+                // console.log(req.url());
+                req.abort();
+              } else {
+                req.continue();
+              }
             } else {
               req.continue();
             }
@@ -93,7 +100,14 @@ export async function chrome(url: string = "https://zimekk.github.io/robot/") {
                 console.log(["resolve.html"], res.url(), headers);
                 await delay();
 
-                if (url.match("/maps/dir/")) {
+                if (url.match("pl/d/nieruchomosci/")) {
+                  console.log(res.url());
+                  const e = "__PRERENDERED_STATE__";
+                  console.log(["page.evaluate"], e);
+                  const json = JSON.parse(await page.evaluate(e));
+                  console.log({ json });
+                  resolve({ url: res.url(), json });
+                } else if (url.match("/maps/dir/")) {
                   console.log(res.url());
                   if (res.url().match("//consent\\.")) {
                     const b = 'button[aria-label="Odrzuć wszystko"]';
