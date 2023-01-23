@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { Schema as AutosSchema, AutosItemSchema } from "./autos";
+import { Schema as DirectionsReturnSchema } from "./directions";
 import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
@@ -304,9 +305,7 @@ export const EntriesSchema = z
     }),
     ReturnSchema.extend({
       type: z.literal(Type.DIRECTIONS),
-      returnvalue: z.object({
-        json: z.any(),
-      }),
+      returnvalue: DirectionsReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.FUNDS),
