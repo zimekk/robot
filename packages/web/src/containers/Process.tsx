@@ -152,10 +152,42 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/warszawa/",
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/komorow_117329/",
               },
               opts: {
-                repeat: { cron: "15 * * * *" },
+                repeat: { cron: "5 9 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/konstancin-jeziorna/",
+              },
+              opts: {
+                repeat: { cron: "10 9 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/podkowa-lesna/",
+              },
+              opts: {
+                repeat: { cron: "15 9 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/warszawa/",
+              },
+              opts: {
+                repeat: { cron: "20 9,17 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/zalesie-gorne/",
+              },
+              opts: {
+                repeat: { cron: "25 9 * * *" },
               },
             },
             {

@@ -6,6 +6,7 @@ import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
+import { Schema as PlotsReturnSchema } from "./plots";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
@@ -26,6 +27,7 @@ export const Type = {
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   GPASS: "GPASS",
+  PLOTS: "PLOTS",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
   HOTSHOT: "HOTSHOT",
@@ -111,6 +113,7 @@ export const EntrySchema = z.preprocess(
           "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
         ),
         [Type.LECLERC]: new RegExp("leclerc.pl/"),
+        [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
         [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
         [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
         [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
@@ -158,6 +161,9 @@ export const EntrySchema = z.preprocess(
     JsonSchema.extend({
       type: z.literal(Type.GPASS),
       returnvalue: GpassTransformSchema,
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.PLOTS),
     }),
     z
       .object({
@@ -332,6 +338,10 @@ export const EntriesSchema = z
     ReturnSchema.extend({
       type: z.literal(Type.LECLERC),
       returnvalue: z.any(),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.PLOTS),
+      returnvalue: PlotsReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.PROMO),
