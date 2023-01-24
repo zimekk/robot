@@ -482,8 +482,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             )
             .concat(
               [
-                [52.2329397, 21.2251979],
-                [52.2329397, 21.2251979, "transit"],
+                [52.2329, 21.2252],
+                [52.2329, 21.2252, "transit"],
+                [52.1722, 21.1723],
+                [52.1722, 21.1723, "transit"],
+                [52.202, 21.1559],
+                [52.202, 21.1559, "transit"],
+                [52.201, 21.1294],
+                [52.201, 21.1294, "transit"],
               ]
                 // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
                 .map(
