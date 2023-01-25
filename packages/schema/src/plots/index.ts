@@ -154,7 +154,7 @@ const JsonSchema = z.object({
         spellCheckerQuery: z.null(),
         searchSuggestion: z
           .object({
-            type: z.enum(["extended_distance"]),
+            type: z.enum(["extended_distance", "no_results_distance"]),
             url: z.string(),
             changes: z.object({}),
           })
@@ -180,8 +180,8 @@ const JsonSchema = z.object({
             .array(),
         }),
         searchReason: z.object({
-          promoted: z.number().array(),
-          organic: z.number().array(),
+          promoted: z.number().array().optional(),
+          organic: z.number().array().optional(),
         }),
         subSections: z.unknown().array(),
         search_request_id: z.string(),
