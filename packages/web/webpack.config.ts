@@ -1,7 +1,10 @@
 import { resolve } from "path";
 import { EnvironmentPlugin } from "webpack";
-import { Configuration, ExpressRequestHandler } from "webpack-dev-server";
-import { CallableOption } from "webpack-cli";
+import {
+  type Configuration,
+  type ExpressRequestHandler,
+} from "webpack-dev-server";
+import { type CallableOption } from "webpack-cli";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "dotenv";

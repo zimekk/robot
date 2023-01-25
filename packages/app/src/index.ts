@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import express, { Router } from "express";
 import { createServer } from "http";
-import { AddressInfo } from "net";
+import { type AddressInfo } from "net";
 import { dirname, resolve } from "path";
 import { z } from "zod";
 import { router as workerRouter } from "@dev/worker";

@@ -9,16 +9,27 @@
     "node": "^14"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jest/globals": true,
+      "node": true
+    },
     "extends": [
       "eslint:recommended",
-      "plugin:react/recommended"
+      "plugin:@typescript-eslint/recommended"
     ],
-    "root": true,
     "parser": "@typescript-eslint/parser",
     "plugins": [
       "@typescript-eslint",
+      "jest",
       "prettier"
     ],
+    "root": true,
+    "rules": {
+      "@typescript-eslint/consistent-type-imports": "warn",
+      "@typescript-eslint/no-empty-function": "warn",
+      "@typescript-eslint/no-var-requires": "warn"
+    },
     "settings": {
       "react": {
         "version": "detect"
@@ -60,6 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "eslint": "^8.32.0",
+    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.1",
     "husky": "^8.0.3",
