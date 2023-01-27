@@ -257,9 +257,15 @@ export default function Entries() {
                 checked={selected.includes(item.id)}
                 onChange={onSelect}
               />
-              <span>{item.id}</span>
-              {" - "}
-              <span>{format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}</span>
+              <span>
+                {[item.id]
+                  .concat(
+                    item.timestamp
+                      ? format(item.timestamp, "yyyy-MM-dd HH:mm:ss")
+                      : []
+                  )
+                  .join(" - ")}
+              </span>
             </label>{" "}
             | <a href={`entry/${item.id}`}>item</a> |{" "}
             <a href={`json/${item.id}`}>json</a> |{" "}

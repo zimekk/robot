@@ -144,6 +144,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
+                url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
+              },
+              opts: {
+                repeat: { cron: "5 12 * * *" },
+              },
+            },
+            {
+              data: {
                 url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
               },
               opts: {

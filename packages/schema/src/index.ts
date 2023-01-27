@@ -6,6 +6,7 @@ import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
+import MacanReturnSchema from "./macan";
 import { Schema as PlotsReturnSchema } from "./plots";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
@@ -27,11 +28,12 @@ export const Type = {
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   GPASS: "GPASS",
+  HOTSHOT: "HOTSHOT",
+  LECLERC: "LECLERC",
+  MACAN: "MACAN",
   PLOTS: "PLOTS",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
-  HOTSHOT: "HOTSHOT",
-  LECLERC: "LECLERC",
   OTODOM: "OTODOM",
   OTODOM_OFFER: "OTODOM_OFFER",
   OTOMOTO: "OTOMOTO",
@@ -73,7 +75,7 @@ const JsonSchema = z.object({
   returnvalue: z.object({
     json: z.any(),
   }),
-  timestamp: z.number(),
+  timestamp: z.number().optional(),
 });
 
 const ReturnSchema = z.object({
@@ -81,7 +83,7 @@ const ReturnSchema = z.object({
   data: z.object({
     url: z.string(),
   }),
-  timestamp: z.number(),
+  timestamp: z.number().optional(),
 });
 
 export const CompletedSchema = z
@@ -122,6 +124,7 @@ export const EntrySchema = z.preprocess(
           "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
         ),
         [Type.LECLERC]: new RegExp("leclerc.pl/"),
+        [Type.MACAN]: new RegExp("porsche.com/"),
         [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
         [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
         [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
@@ -172,6 +175,9 @@ export const EntrySchema = z.preprocess(
       returnvalue: GpassTransformSchema,
     }),
     JsonSchema.extend({
+      type: z.literal(Type.MACAN),
+    }),
+    JsonSchema.extend({
       type: z.literal(Type.PLOTS),
     }),
     JsonSchema.extend({
@@ -181,7 +187,7 @@ export const EntrySchema = z.preprocess(
           html: z.string(),
         })
         .transform(PromoTransform),
-    }).passthrough(),
+    }),
     JsonSchema.extend({
       type: z.literal(Type.PROMO_ITEM),
       data: z
@@ -312,6 +318,10 @@ export const EntriesSchema = z
     ReturnSchema.extend({
       type: z.literal(Type.LECLERC),
       returnvalue: z.any(),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.MACAN),
+      returnvalue: MacanReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.PLOTS),

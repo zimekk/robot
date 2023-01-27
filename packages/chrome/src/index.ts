@@ -99,7 +99,16 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
               console.log(["resolve.html"], res.url(), headers);
               await delay();
 
-              if (url.match("pl/d/nieruchomosci/")) {
+              if (url.match("finder.*.com/pl/pl-PL/search")) {
+                console.log(res.url());
+                const s = "script#__NEXT_DATA__";
+                console.log(["page.waitForSelector"], s);
+                const e = "__NEXT_DATA__";
+                console.log(["page.evaluate"], e);
+                const json = await page.evaluate(e);
+                console.log({ json });
+                resolve({ url: res.url(), json });
+              } else if (url.match("/maps/dir/")) {
                 console.log(res.url());
                 const e = "__PRERENDERED_STATE__";
                 console.log(["page.evaluate"], e);
