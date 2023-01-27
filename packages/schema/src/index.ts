@@ -73,6 +73,15 @@ const JsonSchema = z.object({
   returnvalue: z.object({
     json: z.any(),
   }),
+  timestamp: z.number(),
+});
+
+const ReturnSchema = z.object({
+  id: z.string(),
+  data: z.object({
+    url: z.string(),
+  }),
+  timestamp: z.number(),
 });
 
 export const CompletedSchema = z
@@ -100,7 +109,7 @@ export const EntrySchema = z.preprocess(
         json: z.any(),
       }),
     })
-    //.passthrough()
+    .passthrough()
     .transform((item) => ({
       type: Object.entries({
         [Type.AUTOS]: new RegExp("pl_PL/search"),
@@ -165,22 +174,14 @@ export const EntrySchema = z.preprocess(
     JsonSchema.extend({
       type: z.literal(Type.PLOTS),
     }),
-    z
-      .object({
-        id: z.string(),
-        type: z.literal(Type.PROMO),
-        data: z.object({
-          url: z.string(),
-        }),
-        opts: z.any(),
-        returnvalue: z
-          .object({
-            html: z.string(),
-          })
-          .transform(PromoTransform),
-      })
-      .extend({})
-      .passthrough(),
+    JsonSchema.extend({
+      type: z.literal(Type.PROMO),
+      returnvalue: z
+        .object({
+          html: z.string(),
+        })
+        .transform(PromoTransform),
+    }).passthrough(),
     JsonSchema.extend({
       type: z.literal(Type.PROMO_ITEM),
       data: z
@@ -201,52 +202,32 @@ export const EntrySchema = z.preprocess(
       type: z.literal(Type.LECLERC),
       returnvalue: LeclercTransformSchema,
     }),
-    z.object({
-      id: z.string(),
+    JsonSchema.extend({
       type: z.literal(Type.OTODOM),
-      data: z.object({
-        url: z.string(),
-      }),
-      opts: z.any(),
       returnvalue: z
         .object({
           html: z.string(),
         })
         .transform(OtodomOfferTransform),
     }),
-    z.object({
-      id: z.string(),
+    JsonSchema.extend({
       type: z.literal(Type.OTODOM_OFFER),
-      data: z.object({
-        url: z.string(),
-      }),
-      opts: z.any(),
       returnvalue: z
         .object({
           html: z.string(),
         })
         .transform(OtodomOfferTransform),
     }),
-    z.object({
-      id: z.string(),
+    JsonSchema.extend({
       type: z.literal(Type.OTOMOTO),
-      data: z.object({
-        url: z.string(),
-      }),
-      opts: z.any(),
       returnvalue: z
         .object({
           html: z.string(),
         })
         .transform(OtomotoTransform),
     }),
-    z.object({
-      id: z.string(),
+    JsonSchema.extend({
       type: z.literal(Type.OTOMOTO_OFFER),
-      data: z.object({
-        url: z.string(),
-      }),
-      opts: z.any(),
       returnvalue: z
         .object({
           html: z.string(),
@@ -287,13 +268,6 @@ export const EntrySchema = z.preprocess(
   ])
 );
 // .transform((item) => (console.log(item), item));
-
-const ReturnSchema = z.object({
-  id: z.string(),
-  data: z.object({
-    url: z.string(),
-  }),
-});
 
 export const EntriesSchema = z
   .discriminatedUnion("type", [

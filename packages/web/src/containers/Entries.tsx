@@ -5,6 +5,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { format } from "date-fns";
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
@@ -16,7 +17,7 @@ import { post } from "./Process";
 export default function Entries() {
   const [pager, setPager] = useState(() => ({
     start: 0,
-    limit: 500,
+    limit: 100,
     data: false,
     returnvalue: true,
   }));
@@ -78,6 +79,8 @@ export default function Entries() {
     [entries, filters]
   );
 
+  console.log(list);
+
   return (
     <fieldset>
       <legend>entries</legend>
@@ -95,7 +98,7 @@ export default function Entries() {
               []
             )}
           >
-            {[...Array(10)]
+            {[...Array(25)]
               .map((_, value) => value * pager.limit)
               .map((value) => (
                 <option key={value} value={value}>
@@ -118,7 +121,7 @@ export default function Entries() {
               []
             )}
           >
-            {[5, 10, 50, 100, 500].map((value) => (
+            {[5, 10, 50, 100, 250, 500].map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
@@ -255,6 +258,8 @@ export default function Entries() {
                 onChange={onSelect}
               />
               <span>{item.id}</span>
+              {" - "}
+              <span>{format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}</span>
             </label>{" "}
             | <a href={`entry/${item.id}`}>item</a> |{" "}
             <a href={`json/${item.id}`}>json</a> |{" "}
@@ -262,27 +267,25 @@ export default function Entries() {
             <a href={item.data.url}>open</a> |{" "}
             <a href={`delete/${item.id}`}>delete</a>
           </div>
-          {selected.includes(item.id) ? (
-            <pre>{JSON.stringify(item, null, 2)}</pre>
-          ) : (
-            <pre>
-              {JSON.stringify(
-                z
-                  .object({
-                    id: z.string(),
-                    data: z
-                      .object({
-                        // url: z.string()
-                      })
-                      .passthrough(),
-                    type: z.string(),
-                  })
-                  .parse(item),
-                null,
-                2
-              )}
-            </pre>
-          )}
+          <pre>
+            {JSON.stringify(
+              selected.includes(item.id)
+                ? item
+                : z
+                    .object({
+                      id: z.string(),
+                      data: z
+                        .object({
+                          // url: z.string()
+                        })
+                        .passthrough(),
+                      type: z.string(),
+                    })
+                    .parse(item),
+              null,
+              2
+            )}
+          </pre>
         </div>
       ))}
     </fieldset>

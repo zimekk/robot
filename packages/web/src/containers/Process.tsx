@@ -155,7 +155,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/komorow_117329/",
               },
               opts: {
-                repeat: { cron: "5 9 * * *" },
+                repeat: { cron: "5 9,17 * * *" },
               },
             },
             {
@@ -163,7 +163,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/konstancin-jeziorna/",
               },
               opts: {
-                repeat: { cron: "10 9 * * *" },
+                repeat: { cron: "10 9,17 * * *" },
               },
             },
             {
@@ -171,7 +171,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/podkowa-lesna/",
               },
               opts: {
-                repeat: { cron: "15 9 * * *" },
+                repeat: { cron: "15 9,17 * * *" },
               },
             },
             {
@@ -187,7 +187,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/zalesie-gorne/",
               },
               opts: {
-                repeat: { cron: "25 9 * * *" },
+                repeat: { cron: "25 9,17 * * *" },
               },
             },
             {
@@ -235,7 +235,15 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 url: "https://www.otomoto.pl/osobowe/honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
               },
               opts: {
-                repeat: { cron: "0 10 * * *" },
+                repeat: { cron: "5 9 * * *" },
+              },
+            },
+            {
+              data: {
+                url: "https://www.otomoto.pl/osobowe/porsche/macan",
+              },
+              opts: {
+                repeat: { cron: "10 9 * * *" },
               },
             },
             {

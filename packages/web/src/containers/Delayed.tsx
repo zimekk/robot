@@ -153,13 +153,15 @@ function Delayed({
           </div>
           <pre>
             {JSON.stringify(
-              z
-                .object({
-                  id: z.string(),
-                  name: z.string(),
-                  data: z.object({ url: z.string() }),
-                })
-                .parse(item),
+              selected.includes(item.id)
+                ? item
+                : z
+                    .object({
+                      id: z.string(),
+                      // name: z.string(),
+                      data: z.object({ url: z.string() }),
+                    })
+                    .parse(item),
               null,
               2
             )}

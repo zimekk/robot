@@ -142,6 +142,11 @@ describe("schema", () => {
         type: Type.STATION,
       },
     ].forEach(({ data, type }) =>
-      expect(EntrySchema.parse(data).type).toEqual(type)
+      expect(
+        EntrySchema.parse({
+          timestamp: 1674684317544,
+          ...data,
+        }).type
+      ).toEqual(type)
     ));
 });
