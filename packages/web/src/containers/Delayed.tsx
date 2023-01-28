@@ -159,7 +159,9 @@ function Delayed({
                     .object({
                       id: z.string(),
                       // name: z.string(),
-                      data: z.object({ url: z.string() }),
+                      data: z
+                        .object({ url: z.string() })
+                        .transform(({ url }) => url),
                     })
                     .parse(item),
               null,

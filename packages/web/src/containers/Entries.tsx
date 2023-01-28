@@ -86,6 +86,27 @@ export default function Entries() {
       <legend>entries</legend>
       <div>
         <label>
+          <span>limit</span>
+          <select
+            value={pager.limit}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  start: 0,
+                  limit: Number(target.value),
+                })),
+              []
+            )}
+          >
+            {[5, 10, 25, 50, 100, 250, 500, 1000].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           <span>start</span>
           <select
             value={pager.start}
@@ -100,32 +121,12 @@ export default function Entries() {
           >
             {[...Array(25)]
               .map((_, value) => value * pager.limit)
+              .filter((value) => value < 10000)
               .map((value) => (
                 <option key={value} value={value}>
                   {value}
                 </option>
               ))}
-          </select>
-        </label>
-        <label>
-          <span>limit</span>
-          <select
-            value={pager.limit}
-            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
-              ({ target }) =>
-                setPager((pager) => ({
-                  ...pager,
-                  start: 0,
-                  limit: Number(target.value),
-                })),
-              []
-            )}
-          >
-            {[5, 10, 50, 100, 250, 500].map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
           </select>
         </label>
         <button
@@ -257,15 +258,9 @@ export default function Entries() {
                 checked={selected.includes(item.id)}
                 onChange={onSelect}
               />
-              <span>
-                {[item.id]
-                  .concat(
-                    item.timestamp
-                      ? format(item.timestamp, "yyyy-MM-dd HH:mm:ss")
-                      : []
-                  )
-                  .join(" - ")}
-              </span>
+              {item.timestamp && (
+                <span>{format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}</span>
+              )}
             </label>{" "}
             | <a href={`entry/${item.id}`}>item</a> |{" "}
             <a href={`json/${item.id}`}>json</a> |{" "}
@@ -282,9 +277,9 @@ export default function Entries() {
                       id: z.string(),
                       data: z
                         .object({
-                          // url: z.string()
+                          url: z.string(),
                         })
-                        .passthrough(),
+                        .transform(({ url }) => url),
                       type: z.string(),
                     })
                     .parse(item),
