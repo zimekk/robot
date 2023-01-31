@@ -12,6 +12,7 @@ import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { DataSchema, OptsSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
+import { Link } from "../components/Link";
 
 export const post = (path: string, data?: object) =>
   fetch(path, {
@@ -160,102 +161,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
             {
               data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/komorow_117329/",
-              },
-              opts: {
-                repeat: { cron: "5 9,17 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/konstancin-jeziorna/",
-              },
-              opts: {
-                repeat: { cron: "10 9,17 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/podkowa-lesna/",
-              },
-              opts: {
-                repeat: { cron: "15 9,17 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/warszawa/",
-              },
-              opts: {
-                repeat: { cron: "20 9,17 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/zalesie-gorne/",
-              },
-              opts: {
-                repeat: { cron: "25 9,17 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dzialka/warszawa?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "30 * * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/warszawa?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "0 * * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/komorow_5600?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "0 7 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otodom.pl/pl/oferty/sprzedaz/dom/michalowice_62659?limit=72&page=1",
-              },
-              opts: {
-                repeat: { cron: "0 8 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otomoto.pl/osobowe/bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
-              },
-              opts: {
-                repeat: { cron: "0 9 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otomoto.pl/osobowe/honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
-              },
-              opts: {
-                repeat: { cron: "5 9 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.otomoto.pl/osobowe/porsche/macan",
-              },
-              opts: {
-                repeat: { cron: "10 9 * * *" },
-              },
-            },
-            {
-              data: {
                 url: "https://www.x-kom.pl/promocje",
               },
               opts: {
@@ -304,6 +209,72 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               },
             },
           ]
+            .concat(
+              [
+                "granica_45581",
+                "kanie_134919",
+                "komorow_117329",
+                "konstancin-jeziorna",
+                "nowa-wies_139387",
+                "otrebusy",
+                "pecice",
+                "podkowa-lesna",
+                "stare-babice",
+                "warszawa",
+                "zalesie-gorne",
+              ]
+                .map(
+                  (cat) =>
+                    `https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/${cat}/`
+                )
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 9,17 * * *` },
+                  },
+                }))
+            )
+            .concat(
+              [
+                "dom/komorow_5600",
+                "dom/michalowice_62659",
+                "dom/warszawa",
+                "dzialka/komorow_5600",
+                "dzialka/michalowice_62659",
+                "dzialka/warszawa",
+                "dzialka/zalesie-gorne",
+              ]
+                .map(
+                  (cat) =>
+                    `https://www.otodom.pl/pl/oferty/sprzedaz/${cat}?limit=72&page=1`
+                )
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i + 30} 10,18 * * *` },
+                  },
+                }))
+            )
+            .concat(
+              [
+                "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
+                "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
+                "porsche/macan",
+              ]
+                .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i + 30} 9 * * *` },
+                  },
+                }))
+            )
             .concat(
               [
                 2, 4, 5,
@@ -649,7 +620,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 checked={selected.includes(item.id)}
                 onChange={onSelect}
               />
-              <span>{item.id}</span>
+              <Link href={item.id}>{item.id}</Link>
             </label>
           </div>
           {selected.includes(item.id) && (
