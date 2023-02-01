@@ -51,7 +51,7 @@ export const router = () => {
             .then(() => res.json({ status: "ok" }))
         )
     )
-    .post("/entries", json(), async (req, res) =>
+    .post("/entries", json(), async (req, res, next) =>
       z
         .object({
           start: z.number().default(0),
@@ -86,6 +86,7 @@ export const router = () => {
             );
         })
         .then((entries) => res.json(entries))
+        .catch(next)
     )
     .post("/delayed", json(), async (req, res) =>
       z

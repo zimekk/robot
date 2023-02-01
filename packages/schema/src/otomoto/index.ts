@@ -271,7 +271,7 @@ export const Schema = z.object({
       _sentryBaggage: z.string(),
     }),
     $_optimusContextProps: z.object({
-      featureFlags: z.record(z.boolean()),
+      featureFlags: z.record(z.any()),
       cookies: z.any(),
       experimentCookie: z.string(),
     }),
