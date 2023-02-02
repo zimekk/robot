@@ -103,7 +103,7 @@ const DirectionsSchema = z
                     z.null(),
                     z.any(),
                   ]),
-                z // [0][1][x][0]
+                z // [0][1][x][1]
                   .tuple([
                     TravelModeSchema,
                     z.string().nullable(),
@@ -124,7 +124,19 @@ const DirectionsSchema = z
                       ]),
                     ]),
                     z.null(),
-                    z.null(),
+                    z
+                      .tuple([
+                        z
+                          .tuple([
+                            z.number(),
+                            z.literal(
+                              "Ta trasa obejmuje drogi prywatne lub o ograniczonym dostępie."
+                            ),
+                            z.null(),
+                          ])
+                          .rest(z.any()),
+                      ])
+                      .nullable(),
                     z
                       .tuple([
                         DurationSchema,
@@ -163,7 +175,8 @@ const DirectionsSchema = z
           ])
           .rest(z.any())
           .transform((t) => t[0])
-          .array(),
+          .array()
+          .nullable(),
       ])
       .rest(z.any()),
   ])
