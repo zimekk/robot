@@ -286,7 +286,13 @@ export const EntriesSchema = z
     ReturnSchema.extend({
       type: z.literal(Type.AUTOS_ITEM),
       returnvalue: z.object({
-        json: AutosItemSchema,
+        json: AutosItemSchema.or(
+          z.object({
+            success: z.literal(false),
+            status: z.number(),
+            message: z.literal("Error"),
+          })
+        ),
       }),
     }),
     ReturnSchema.extend({
