@@ -29,6 +29,7 @@ const DELAY = [5, 10, 15, 30] as const;
 
 export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [selected, setSelected] = useState<string[]>(() => []);
+  const [priority, setPriority] = useState<boolean>(() => false);
   const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[0]);
   const [delay, setDelay] = useState<(typeof DELAY)[number]>(() => DELAY[0]);
   const [match, setMatch] = useState(() => ({
@@ -66,7 +67,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       z
         .object({
           data: DataSchema,
-          opts: OptsSchema.transform(
+          opts: OptsSchema.extend(
+            priority
+              ? {
+                  priority: z.number().default(1),
+                }
+              : {}
+          ).transform(
             ({ repeat, ...opts }) =>
               ({
                 delayed: { ...opts, delay: seconds(delay) },
@@ -498,7 +505,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 }))
             )
         ),
-    [type, delay]
+    [type, delay, priority]
   );
 
   const list = useMemo(
@@ -588,6 +595,17 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             </select>
           </label>
         )}
+        <label>
+          <input
+            type="checkbox"
+            checked={priority}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) => setPriority(target.checked),
+              []
+            )}
+          />
+          <span>priority</span>
+        </label>
         <button
           onClick={useCallback(
             () =>

@@ -57,6 +57,7 @@ export const DataSchema = z.object({
 
 export const OptsSchema = z.object({
   delay: z.number().default(0),
+  priority: z.number().optional(),
   removeOnComplete: z.union([z.boolean(), z.number()]).optional(),
   repeat: z
     .object({
