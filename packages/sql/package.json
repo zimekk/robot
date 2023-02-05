@@ -1,5 +1,5 @@
 {
-  "name": "@dev/schema",
+  "name": "@dev/sql",
   "version": "1.0.0",
   "license": "MIT",
   "publishConfig": {
@@ -19,9 +19,10 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@dev/plots-api": "^1.0.0",
-    "node-html-parser": "^6.1.4",
-    "zod": "^3.20.2"
+    "pg": "^8.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.7",
+    "@types/pg": "^8.6.6"
+  }
 }

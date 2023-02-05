@@ -7,7 +7,7 @@ import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
 import MacanReturnSchema from "./macan";
-import { Schema as PlotsReturnSchema } from "./plots";
+import { Schema as PlotsReturnSchema } from "@dev/plots-api/schema";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";

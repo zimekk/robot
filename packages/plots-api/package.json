@@ -1,0 +1,26 @@
+{
+  "name": "@dev/plots-api",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "private": true,
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "type-coverage && tsc --noEmit"
+  },
+  "dependencies": {
+    "@dev/notify": "^1.0.0",
+    "@dev/sql": "^1.0.0"
+  },
+  "peerDependencies": {
+    "express": "^4.18.2",
+    "zod": "^3.20.2"
+  }
+}

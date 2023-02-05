@@ -3,10 +3,20 @@ services:
   app:
     build: .
     environment:
+      - DATABASE_URL=postgresql://postgres:${DB_PASSWORD}@sql:5432/${DB_NAME}
       - REDIS_URL=redis://redis
     links:
       - redis
+      - sql
     network_mode: bridge
   redis:
     image: redis:6.0-alpine
     network_mode: bridge
+  sql:
+    image: postgres:15.1-alpine
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    network_mode: bridge
+    volumes:
+      - ./packages/sql/initdb.d:/docker-entrypoint-initdb.d

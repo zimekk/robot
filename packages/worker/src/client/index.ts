@@ -6,7 +6,7 @@ import { headingDistanceTo } from "geolocation-utils";
 import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
-import { notify } from "@dev/notify";
+import { update } from "@dev/plots-api";
 import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
@@ -143,7 +143,7 @@ export const client = () => {
                       .slice(0, 150)
                   );
                 } else if (type === Type.PLOTS) {
-                  notify(id, data);
+                  update(id, data, returnvalue);
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list

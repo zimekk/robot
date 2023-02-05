@@ -10,3 +10,6 @@ services:
   redis:
     ports:
       - 6379:6379
+  sql:
+    ports:
+      - 5432:5432
