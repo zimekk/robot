@@ -372,6 +372,26 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 }))
             )
             .concat(
+              [
+                "g-2/c/1329-notebooki-laptopy-13-3.html?producent=357-apple",
+                "g-2/c/2980-notebooki-laptopy-14-0.html?producent=357-apple",
+                "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
+                "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
+                "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
+              ]
+                .map((path) => {
+                  return `https://www.x-kom.pl/${path}`;
+                })
+                .map((url, i) => ({
+                  data: {
+                    url,
+                  },
+                  opts: {
+                    repeat: { cron: `${i} 15 * * *` },
+                  },
+                }))
+            )
+            .concat(
               chunk(
                 [
                   "592143",
