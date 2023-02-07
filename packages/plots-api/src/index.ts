@@ -43,7 +43,7 @@ export const update = async (
               "insert into plots (id, json) values ($1, $2)",
               [item.id, item]
             );
-            notify(id, data);
+            // return notify(id, data);
           }
         }),
       Promise.resolve()

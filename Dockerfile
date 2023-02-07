@@ -37,6 +37,7 @@ COPY packages/chrome/package.json packages/chrome/
 COPY packages/notify/package.json packages/notify/
 COPY packages/plots-api/package.json packages/plots-api/
 COPY packages/plots/package.json packages/plots/
+COPY packages/products/package.json packages/products/
 COPY packages/schema/package.json packages/schema/
 COPY packages/sql/package.json packages/sql/
 COPY packages/web/package.json packages/web/

@@ -16,6 +16,8 @@
   "scripts": {
     "build": "NODE_ENV=production tsc",
     "coverage": "type-coverage && tsc --noEmit",
+    "migrate": "node-pg-migrate",
+    "migrate:up": "node-pg-migrate up --envPath ../../.env",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.7",
-    "@types/pg": "^8.6.6"
+    "@types/pg": "^8.6.6",
+    "node-pg-migrate": "^6.2.2"
   }
 }

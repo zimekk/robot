@@ -1,0 +1,35 @@
+{
+  "name": "@dev/products",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "private": true,
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "type-coverage && tsc --noEmit"
+  },
+  "dependencies": {
+    "use-asset": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/styled-components": "^5.1.26"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

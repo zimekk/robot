@@ -7,6 +7,7 @@ import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
 import { update } from "@dev/plots-api";
+import { update as updateProducts } from "@dev/products/api";
 import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
@@ -144,6 +145,8 @@ export const client = () => {
                   );
                 } else if (type === Type.PLOTS) {
                   update(id, data, returnvalue);
+                } else if (type === Type.PRODUCTS2) {
+                  updateProducts(id, data, returnvalue);
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list

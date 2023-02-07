@@ -8,6 +8,7 @@ import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
 import MacanReturnSchema from "./macan";
 import { Schema as PlotsReturnSchema } from "@dev/plots-api/schema";
+import { Schema as ProductsReturnSchema } from "@dev/products/schema";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as PromoItemSchema } from "./promo/item";
@@ -39,6 +40,7 @@ export const Type = {
   OTOMOTO: "OTOMOTO",
   OTOMOTO_OFFER: "OTOMOTO_OFFER",
   PRODUCTS: "PRODUCTS",
+  PRODUCTS2: "PRODUCTS2",
   RATES: "RATES",
   ROOMS: "ROOMS",
   STATIONS: "STATIONS",
@@ -128,6 +130,7 @@ export const EntrySchema = z.preprocess(
         [Type.MACAN]: new RegExp("porsche.com/"),
         [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
         [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
+        [Type.PRODUCTS2]: new RegExp("kom.pl/.+/c/"),
         [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
         [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
         [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
@@ -243,6 +246,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.PRODUCTS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.PRODUCTS2),
     }),
     JsonSchema.extend({
       type: z.literal(Type.RATES),
@@ -384,6 +390,10 @@ export const EntriesSchema = z
       returnvalue: z.object({
         json: ProductsSchema,
       }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.PRODUCTS2),
+      returnvalue: ProductsReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.RATES),

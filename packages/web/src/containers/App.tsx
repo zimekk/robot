@@ -7,12 +7,14 @@ const Spinner = () => <span>Loading...</span>;
 const PAGES = Object.freeze({
   hello: lazy(() => import("./Hello")),
   plots: lazy(() => import("@dev/plots")),
+  products: lazy(() => import("@dev/products")),
 });
 
 const getPage = (location: { hash: string }) => {
-  const [path, hash = Object.keys(PAGES)[0]] =
-    decodeURI(location.hash).match(/^#([-\w]+)/) || [];
-  return hash as keyof typeof PAGES;
+  const [_, hash] = decodeURI(location.hash).match(/^#([-\w]+)/) || [];
+  return ((keys) => (keys.includes(hash) ? hash : keys[0]))(
+    Object.keys(PAGES)
+  ) as keyof typeof PAGES;
 };
 
 export default hot(function App() {

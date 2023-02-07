@@ -20,6 +20,7 @@
   "dependencies": {
     "@dev/app": "^1.0.0",
     "@dev/plots": "^1.0.0",
+    "@dev/products": "^1.0.0",
     "@dev/schema": "^1.0.0",
     "chunk": "^0.0.3",
     "date-fns": "^2.29.3",
