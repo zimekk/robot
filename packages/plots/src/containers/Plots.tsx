@@ -1,16 +1,20 @@
 import React, { useCallback } from "react";
-import { useAsset } from "use-asset";
+import { createAsset } from "use-asset";
 
 interface Plot {
   id: number;
   data: any;
 }
 
+// https://github.com/pmndrs/use-asset
+const asset = createAsset(() =>
+  fetch("plots")
+    .then((res) => res.json())
+    .then<Plot[]>(({ result }) => result)
+);
+
 export default function Section() {
-  // https://github.com/pmndrs/suspend-react
-  const { result } = useAsset<{ result: Plot[] }, []>(() =>
-    fetch("plots").then((res) => res.json())
-  );
+  const result = asset.read();
 
   console.log({ result });
 

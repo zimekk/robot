@@ -1,12 +1,16 @@
 import React, { useCallback } from "react";
-import { useAsset } from "use-asset";
+import { createAsset } from "use-asset";
 import { type Product } from "../schema";
 
+// https://github.com/pmndrs/suspend-react
+const asset = createAsset(() =>
+  fetch("products")
+    .then((res) => res.json())
+    .then<Product[]>(({ result }) => result)
+);
+
 export default function Section() {
-  // https://github.com/pmndrs/suspend-react
-  const { result } = useAsset<{ result: Product[] }, []>(() =>
-    fetch("products").then((res) => res.json())
-  );
+  const result = asset.read();
 
   console.log({ result });
 
