@@ -398,7 +398,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                     url,
                   },
                   opts: {
-                    repeat: { cron: `${i} 15 * * *` },
+                    repeat: { cron: `${i + 1} 15 * * *` },
                   },
                 }))
             )
