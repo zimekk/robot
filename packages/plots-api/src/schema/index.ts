@@ -207,7 +207,7 @@ const JsonSchema = z.object({
         params: z.object({}),
         options: z.object({
           spellCheckerDisabledByExperiment: z.boolean(),
-          mWebAdlimitPerPageVariant: z.string(),
+          mWebAdlimitPerPageVariant: z.string().optional(),
         }),
       }),
       categoryId: z.number(),
