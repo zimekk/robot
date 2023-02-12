@@ -172,9 +172,23 @@ const DirectionsSchema = z
                   }
                 )
               ),
+            z.any(),
+            z.null(),
+            z.any(),
+            z.string(), // [0][1][x][4]
+            z.string(), // [0][1][x][5]
+            z.null(), // [0][1][x][6]
+            z.string().nullable(), // [0][1][x][7]
+            z.number(), // [0][1][x][8]
+            z.null(), // [0][1][x][9]
+            z.null(), // [0][1][x][10]
+            z.literal("PL").array(), // [0][1][x][11]
+            z.number().nullable(), // [0][1][x][12]
+            z.null(), // [0][1][x][13]
+            DurationSchema.nullable(), // [0][1][x][14]
           ])
           .rest(z.any())
-          .transform((t) => t[0])
+          .transform((t) => ({ ...t[0], walk: t[14] }))
           .array()
           .nullable(),
       ])
