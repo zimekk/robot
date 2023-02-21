@@ -81,6 +81,19 @@ export default function Entries() {
 
   console.log(list);
 
+  const grouped = useMemo(
+    () =>
+      list.reduce(
+        (grouped: Record<string, object[]>, item: any) =>
+          ((group) =>
+            Object.assign(grouped, {
+              [group]: (grouped[group] || []).concat(item),
+            }))(item.timestamp ? format(item.timestamp, "yyyy-MM-dd") : ""),
+        {}
+      ),
+    [list]
+  );
+
   return (
     <fieldset>
       <legend>entries</legend>
@@ -248,46 +261,56 @@ export default function Entries() {
           delete
         </button>
       </div>
-      {list.map((item) => (
-        <div key={item.id}>
+
+      {Object.entries(grouped).map(([group, list]) => (
+        <section key={group}>
+          {group && <strong>{group}</strong>}
           <div>
-            <label>
-              <input
-                type="checkbox"
-                value={item.id}
-                checked={selected.includes(item.id)}
-                onChange={onSelect}
-              />
-              {item.timestamp && (
-                <span>{format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}</span>
-              )}
-            </label>{" "}
-            | <a href={`entry/${item.id}`}>item</a> |{" "}
-            <a href={`json/${item.id}`}>json</a> |{" "}
-            <a href={`html/${item.id}`}>html</a> |{" "}
-            <a href={item.data.url}>open</a> |{" "}
-            <a href={`delete/${item.id}`}>delete</a>
+            {list.map((item) => (
+              <div key={item.id}>
+                <div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      value={item.id}
+                      checked={selected.includes(item.id)}
+                      onChange={onSelect}
+                    />
+                    {item.timestamp && (
+                      <span>
+                        {format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}
+                      </span>
+                    )}
+                  </label>{" "}
+                  | <a href={`entry/${item.id}`}>item</a> |{" "}
+                  <a href={`json/${item.id}`}>json</a> |{" "}
+                  <a href={`html/${item.id}`}>html</a> |{" "}
+                  <a href={item.data.url}>open</a> |{" "}
+                  <a href={`delete/${item.id}`}>delete</a>
+                </div>
+                <pre>
+                  {JSON.stringify(
+                    selected.includes(item.id)
+                      ? item
+                      : z
+                          .object({
+                            id: z.string(),
+                            data: z
+                              .object({
+                                url: z.string(),
+                              })
+                              .transform(({ url }) => url),
+                            type: z.string(),
+                          })
+                          .parse(item),
+                    null,
+                    2
+                  )}
+                </pre>
+              </div>
+            ))}
           </div>
-          <pre>
-            {JSON.stringify(
-              selected.includes(item.id)
-                ? item
-                : z
-                    .object({
-                      id: z.string(),
-                      data: z
-                        .object({
-                          url: z.string(),
-                        })
-                        .transform(({ url }) => url),
-                      type: z.string(),
-                    })
-                    .parse(item),
-              null,
-              2
-            )}
-          </pre>
-        </div>
+        </section>
       ))}
     </fieldset>
   );
