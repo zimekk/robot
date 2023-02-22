@@ -162,7 +162,9 @@ export const ItemSchema = z
     age: z.number(),
     isYUC: z.boolean(),
     reserved: z.boolean().optional(),
-    extended: z.object({ brand: z.string(), buno: z.string() }).optional(),
+    extended: z
+      .object({ brand: z.string(), buno: z.string().nullable() })
+      .optional(),
   })
   .extend({
     modelCode: z.string().optional(),
