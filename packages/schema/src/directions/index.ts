@@ -180,15 +180,24 @@ const DirectionsSchema = z
             z.null(), // [0][1][x][6]
             z.string().nullable(), // [0][1][x][7]
             z.number(), // [0][1][x][8]
-            z.null(), // [0][1][x][9]
+            DurationSchema.transform(
+              (t_0_1_x_9) => (console.log({ t_0_1_x_9 }), t_0_1_x_9)
+            ).nullable(), // [0][1][x][9]
             z.null(), // [0][1][x][10]
             z.literal("PL").array(), // [0][1][x][11]
             z.number().nullable(), // [0][1][x][12]
-            z.null(), // [0][1][x][13]
+            DurationSchema.transform(
+              (t_0_1_x_13) => (console.log({ t_0_1_x_13 }), t_0_1_x_13)
+            ).nullable(), // [0][1][x][13]
             DurationSchema.nullable(), // [0][1][x][14]
           ])
           .rest(z.any())
-          .transform((t) => ({ ...t[0], walk: t[14] }))
+          .transform((t) => ({
+            ...t[0],
+            t_0_1_x_9: t[9],
+            t_0_1_x_13: t[13],
+            t_0_1_x_14_walk: t[14],
+          }))
           .array()
           .nullable(),
       ])
@@ -196,14 +205,12 @@ const DirectionsSchema = z
   ])
   .rest(z.any())
   // .transform(t => (console.log(t), t))
-  .transform(
-    (t) => (
-      console.log(t),
-      {
-        // DirectionsRoute
-        directions: t[0][1],
-      }
-    )
+  .transform((t) =>
+    // console.log(t),
+    ({
+      // DirectionsRoute
+      directions: t[0][1],
+    })
   )
   .transform((t) => (console.log(t), t));
 
