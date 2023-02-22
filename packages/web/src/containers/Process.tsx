@@ -62,6 +62,460 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
     filters$.next(match);
   }, [match]);
 
+  const [records, setRecords] = useState(() =>
+    [
+      {
+        data: {
+          url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
+        },
+        opts: {
+          repeat: { cron: "0 15 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
+          body: {
+            $match: {
+              transactionalPrice: {
+                $min: 0,
+                $max: 1790000,
+              },
+              // brand: 1, // BMW
+              // brand: 65, // MINI
+              // series :5
+            },
+            $skip: 0,
+            $limit: 100,
+          },
+        },
+        opts: {
+          repeat: { cron: "0 11,19 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
+          body: {
+            $match: {
+              transactionalPrice: {
+                $min: 0,
+                $max: 1790000,
+              },
+            },
+            $skip: 0,
+            $limit: 100,
+          },
+        },
+        opts: {
+          repeat: { cron: "30 11,19 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
+          body: {
+            $match: {
+              transactionalPrice: {
+                $min: 0,
+                $max: 1790000,
+              },
+            },
+            $skip: 0,
+            $limit: 100,
+          },
+        },
+        opts: {
+          repeat: { cron: "0 12 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
+        },
+        opts: {
+          repeat: { cron: "5 12 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
+        },
+        opts: {
+          repeat: { cron: "15 8 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.x-kom.pl/promocje",
+        },
+        opts: {
+          repeat: { cron: "1 11,20 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.al.to/promocje",
+        },
+        opts: {
+          repeat: { cron: "1 12,19 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.x-kom.pl/goracy_strzal",
+        },
+        opts: {
+          // removeOnComplete: 2,
+          repeat: { cron: "1 10,22 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.al.to/goracy_strzal",
+        },
+        opts: {
+          repeat: { cron: "1 9,21 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://ursynow.leclerc.pl/",
+        },
+        opts: {
+          repeat: { cron: "0 10,20 * * *" },
+        },
+      },
+      {
+        data: {
+          url: "https://www.xbox.com/pl-PL/xbox-game-pass",
+        },
+        opts: {
+          repeat: { cron: "30 13 * * *" },
+        },
+      },
+    ]
+      .concat(
+        [
+          "granica_45581",
+          "kanie_134919",
+          "komorow_117329",
+          "konstancin-jeziorna",
+          "nowa-wies_139387",
+          "otrebusy",
+          "pecice",
+          "podkowa-lesna",
+          "stare-babice",
+          "warszawa",
+          "zalesie-gorne",
+        ]
+          .map(
+            (cat) =>
+              `https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/${cat}/`
+          )
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 9,17 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          "dom/komorow_5600",
+          "dom/michalowice_62659",
+          "dom/warszawa",
+          "dzialka/komorow_5600",
+          "dzialka/michalowice_62659",
+          "dzialka/warszawa",
+          "dzialka/zalesie-gorne",
+        ]
+          .map(
+            (cat) =>
+              `https://www.otodom.pl/pl/oferty/sprzedaz/${cat}?limit=72&page=1`
+          )
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 30} 10,18 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
+          "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
+          "porsche/macan",
+        ]
+          .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 30} 9 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          2, 4, 5,
+          // 6,
+          8,
+          // 10, 30,
+          33, 34, 35, 36, 37, 43, 44, 73, 74, 75, 77, 79, 80, 82, 84, 91, 103,
+          104, 105, 106, 107, 112, 113, 114, 117, 119,
+        ]
+          .map(
+            (fund) =>
+              `https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/${fund}/values/?format=json&division=daily`
+          )
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 14 * * *` },
+            },
+          }))
+      )
+      .concat(
+        chunk(
+          [
+            "9NKX70BBCDRN",
+            "9Z1W36CRQ9DF",
+            "B4X7PC56X1VV",
+            "9MTLKM2DJMZ2",
+            "C08JXNK0VG5L",
+            "9N9J38LPVSM3",
+            "9P6SRW1HVW9K",
+            "BVH2R2SBWL51",
+            "9PNJXVCVWD4K",
+            "9MZ0SR207MG8",
+            "9P4SH7HLMLFS",
+            "9N1CS194W1Q6",
+            "9P1HX37NMJLT",
+            "BRZZLBF5T245",
+            "9P513P4MWC71",
+            "C2MBDNDS3H5W",
+            "BWVBNCMF22ZK",
+            "9N6J02VPG635",
+            "BS5RXLL3WQ2J",
+            "C2HQVXVVLMKG",
+            "BVJLKDG2TX8H",
+            "C4VKLMG1HLZW",
+            "9N04KQK2LBZL",
+            "9NMBJQ0265ZK",
+            "BSMZH25V6V46",
+            "9N9QFGPBH418",
+            "9NS86BQ33SPX",
+            "9NXPBSMHPLTV",
+            "9N8VG0B7TDZ0",
+            "9PH3RR8MVFJL",
+            "9NM0CRXJ389D",
+            "BNNMLWZRNQF6",
+            "9P778MQ2JPKC",
+            "9NH5HN11FG4M",
+            "C348248BJZCQ",
+            "9PGPQK0XTHRZ",
+            "9PG5Q9HGZXQ2",
+            "9MTJ74MKQM46",
+            "9NHXSG62QD2L",
+            "9NC7XRNRMNFH",
+            "9NRX3HRMZQ7Z",
+            "9NFM39PSFXJD",
+            "9NDDMHZRZ0R6",
+            "9NP5S7RDH5QB",
+            "9NNF99GPP4XW",
+            "9PMQDM08SNK9",
+          ],
+          5
+        )
+          .map((ids) => {
+            const mscv = "DGU1mcuYo0WMMp+F.1";
+            return `https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(
+              ","
+            )}&market=PL&languages=pl-pl&MS-CV=${mscv}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 13 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          "g-2/c/1329-notebooki-laptopy-13-3.html?producent=357-apple",
+          "g-2/c/2980-notebooki-laptopy-14-0.html?producent=357-apple",
+          "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
+          "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
+          "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
+          "g-5/c/346-karty-graficzne-nvidia.html?producent=27-asus",
+          "g-5/c/346-karty-graficzne-nvidia.html?producent=57-gigabyte",
+          "g-5/c/346-karty-graficzne-nvidia.html?producent=1126-inno3d",
+          "g-5/c/1779-dyski-ssd.html?producent=29-samsung",
+          "g-5/c/1779-dyski-ssd.html?producent=59-kingston",
+          "g-5/c/1779-dyski-ssd.html?producent=506-crucial",
+          "g-5/c/2997-procesory-amd-ryzen-5.html?producent=3-amd",
+          "g-5/c/3402-pamieci-ram-ddr5.html?producent=2484-kingston-fury",
+          "g-5/c/3618-plyty-glowne-socket-am5.html",
+          "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
+          "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
+        ]
+          .map((path) => {
+            return `https://www.x-kom.pl/${path}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 15 * * *` },
+            },
+          }))
+      )
+      .concat(
+        chunk(
+          [
+            "592143",
+            "681134",
+            "681136",
+            "681152",
+            "730554",
+            "730597",
+            "1070889",
+          ],
+          1
+        )
+          .map((ids) => {
+            return `https://www.x-kom.pl/szukaj?q=${ids.join("+")}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 16 * * *` },
+            },
+          }))
+      )
+      .concat(
+        chunk(["1022668"], 1)
+          .map((ids) => {
+            return `https://www.al.to/szukaj?q=${ids.join("+")}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 17 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          "aparthotelczarnagora",
+          "aparthotelgiewont1",
+          "belwederhotel",
+          "bluemountainresort",
+          "czarnygron",
+          "grandhotelstamary",
+          "grenohotelspa",
+          "greenmountainhotel",
+          "hotelaquarion",
+          "hotelbaniathermalski",
+          "hotelbukovina",
+          "hotelcrocus",
+          "hotelczarnypotokresortspakrynica",
+          "hotelharnas",
+          "hotelklimczok",
+          "hotelkrysztal4",
+          "hoteloliviamedicalspa",
+          "hotelskalny",
+          "hotelpegaz",
+          "hotelpiotrspawellness",
+          "hotelperlapoludnia1",
+          "hotelprezydentmedicalspawellness",
+          "hotelprzedwiosnie1",
+          "hotelsasanka",
+          "hotelspadrirenaeriskrynicazdroj",
+          "hotelspadrirenaerispolanicazdrj",
+          "hotelspadrirenaeriswzgorzadylewskie",
+          "hotelstok",
+          "hoteltoporow",
+          "hotelwierchomla",
+          "hotelzbjnicwka",
+          "hotelzywieckimedicalspasport",
+          "interferieaquaparksporthotelmalachit",
+          "interferiesporthotelbornit",
+          "kompleksszkoleniowowypoczynkowyskalnyspa",
+          "lemonresort",
+          "mazowszemedispa1",
+          "modrzewieparkhotel1",
+          "nosalowydworresort1",
+          "odysseyclubhotel",
+          "osadasniezka",
+          "willabelweder",
+          "zamekksiezagora",
+        ]
+          .map((name) => {
+            return [
+              // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
+              // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
+              `https://booking.profitroom.com/api/${name}/details`,
+              // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
+            ];
+          })
+          .flat()
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 18 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          [52.2329, 21.2252],
+          [52.2329, 21.2252, "transit"],
+          [52.1722, 21.1723],
+          [52.1722, 21.1723, "transit"],
+          [52.202, 21.1559],
+          [52.202, 21.1559, "transit"],
+          [52.201, 21.1294],
+          [52.201, 21.1294, "transit"],
+        ]
+          // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
+          .map(
+            ([lat, lng, travelmode = "driving"]) =>
+              // `https://www.google.com/maps/dir/${lat},${lng}/52.2268,20.9921/data=!4m2!4m1!3e0`
+              `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
+                [lat, lng].join(",")
+              )}&destination=${encodeURIComponent(
+                [52.2268, 20.9921].join(",")
+              )}&travelmode=${encodeURIComponent(travelmode)}&hl=pl`
+          )
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 19 * * *` },
+            },
+          }))
+      )
+  );
+
   const entries = useMemo(
     () =>
       z
@@ -83,460 +537,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         })
         .transform((item) => ({ ...item, id: item.data.url }))
         .array()
-        .parse(
-          [
-            {
-              data: {
-                url: "https://www.autocentrum.pl/ac-ajax/stations-get-stations?zoom=6",
-              },
-              opts: {
-                repeat: { cron: "0 15 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
-                body: {
-                  $match: {
-                    transactionalPrice: {
-                      $min: 0,
-                      $max: 1790000,
-                    },
-                    // brand: 1, // BMW
-                    // brand: 65, // MINI
-                    // series :5
-                  },
-                  $skip: 0,
-                  $limit: 100,
-                },
-              },
-              opts: {
-                repeat: { cron: "0 11,19 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
-                body: {
-                  $match: {
-                    transactionalPrice: {
-                      $min: 0,
-                      $max: 1790000,
-                    },
-                  },
-                  $skip: 0,
-                  $limit: 100,
-                },
-              },
-              opts: {
-                repeat: { cron: "30 11,19 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
-                body: {
-                  $match: {
-                    transactionalPrice: {
-                      $min: 0,
-                      $max: 1790000,
-                    },
-                  },
-                  $skip: 0,
-                  $limit: 100,
-                },
-              },
-              opts: {
-                repeat: { cron: "0 12 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
-              },
-              opts: {
-                repeat: { cron: "5 12 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
-              },
-              opts: {
-                repeat: { cron: "15 8 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.x-kom.pl/promocje",
-              },
-              opts: {
-                repeat: { cron: "1 11,20 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.al.to/promocje",
-              },
-              opts: {
-                repeat: { cron: "1 12,19 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.x-kom.pl/goracy_strzal",
-              },
-              opts: {
-                // removeOnComplete: 2,
-                repeat: { cron: "1 10,22 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.al.to/goracy_strzal",
-              },
-              opts: {
-                repeat: { cron: "1 9,21 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://ursynow.leclerc.pl/",
-              },
-              opts: {
-                repeat: { cron: "0 10,20 * * *" },
-              },
-            },
-            {
-              data: {
-                url: "https://www.xbox.com/pl-PL/xbox-game-pass",
-              },
-              opts: {
-                repeat: { cron: "30 13 * * *" },
-              },
-            },
-          ]
-            .concat(
-              [
-                "granica_45581",
-                "kanie_134919",
-                "komorow_117329",
-                "konstancin-jeziorna",
-                "nowa-wies_139387",
-                "otrebusy",
-                "pecice",
-                "podkowa-lesna",
-                "stare-babice",
-                "warszawa",
-                "zalesie-gorne",
-              ]
-                .map(
-                  (cat) =>
-                    `https://www.olx.pl/d/nieruchomosci/dzialki/sprzedaz/${cat}/`
-                )
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 9,17 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                "dom/komorow_5600",
-                "dom/michalowice_62659",
-                "dom/warszawa",
-                "dzialka/komorow_5600",
-                "dzialka/michalowice_62659",
-                "dzialka/warszawa",
-                "dzialka/zalesie-gorne",
-              ]
-                .map(
-                  (cat) =>
-                    `https://www.otodom.pl/pl/oferty/sprzedaz/${cat}?limit=72&page=1`
-                )
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i + 30} 10,18 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
-                "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
-                "porsche/macan",
-              ]
-                .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i + 30} 9 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                2, 4, 5,
-                // 6,
-                8,
-                // 10, 30,
-                33, 34, 35, 36, 37, 43, 44, 73, 74, 75, 77, 79, 80, 82, 84, 91,
-                103, 104, 105, 106, 107, 112, 113, 114, 117, 119,
-              ]
-                .map(
-                  (fund) =>
-                    `https://www.pkotfi.pl/_ajax/rest/v2/tfi/fund/${fund}/values/?format=json&division=daily`
-                )
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 14 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              chunk(
-                [
-                  "9NKX70BBCDRN",
-                  "9Z1W36CRQ9DF",
-                  "B4X7PC56X1VV",
-                  "9MTLKM2DJMZ2",
-                  "C08JXNK0VG5L",
-                  "9N9J38LPVSM3",
-                  "9P6SRW1HVW9K",
-                  "BVH2R2SBWL51",
-                  "9PNJXVCVWD4K",
-                  "9MZ0SR207MG8",
-                  "9P4SH7HLMLFS",
-                  "9N1CS194W1Q6",
-                  "9P1HX37NMJLT",
-                  "BRZZLBF5T245",
-                  "9P513P4MWC71",
-                  "C2MBDNDS3H5W",
-                  "BWVBNCMF22ZK",
-                  "9N6J02VPG635",
-                  "BS5RXLL3WQ2J",
-                  "C2HQVXVVLMKG",
-                  "BVJLKDG2TX8H",
-                  "C4VKLMG1HLZW",
-                  "9N04KQK2LBZL",
-                  "9NMBJQ0265ZK",
-                  "BSMZH25V6V46",
-                  "9N9QFGPBH418",
-                  "9NS86BQ33SPX",
-                  "9NXPBSMHPLTV",
-                  "9N8VG0B7TDZ0",
-                  "9PH3RR8MVFJL",
-                  "9NM0CRXJ389D",
-                  "BNNMLWZRNQF6",
-                  "9P778MQ2JPKC",
-                  "9NH5HN11FG4M",
-                  "C348248BJZCQ",
-                  "9PGPQK0XTHRZ",
-                  "9PG5Q9HGZXQ2",
-                  "9MTJ74MKQM46",
-                  "9NHXSG62QD2L",
-                  "9NC7XRNRMNFH",
-                  "9NRX3HRMZQ7Z",
-                  "9NFM39PSFXJD",
-                  "9NDDMHZRZ0R6",
-                  "9NP5S7RDH5QB",
-                  "9NNF99GPP4XW",
-                  "9PMQDM08SNK9",
-                ],
-                5
-              )
-                .map((ids) => {
-                  const mscv = "DGU1mcuYo0WMMp+F.1";
-                  return `https://displaycatalog.mp.microsoft.com/v7.0/products?bigIds=${ids.join(
-                    ","
-                  )}&market=PL&languages=pl-pl&MS-CV=${mscv}`;
-                })
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 13 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                "g-2/c/1329-notebooki-laptopy-13-3.html?producent=357-apple",
-                "g-2/c/2980-notebooki-laptopy-14-0.html?producent=357-apple",
-                "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
-                "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
-                "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
-                "g-5/c/346-karty-graficzne-nvidia.html?producent=27-asus",
-                "g-5/c/346-karty-graficzne-nvidia.html?producent=57-gigabyte",
-                "g-5/c/346-karty-graficzne-nvidia.html?producent=1126-inno3d",
-                "g-5/c/1779-dyski-ssd.html?producent=29-samsung",
-                "g-5/c/1779-dyski-ssd.html?producent=59-kingston",
-                "g-5/c/1779-dyski-ssd.html?producent=506-crucial",
-                "g-5/c/2997-procesory-amd-ryzen-5.html?producent=3-amd",
-                "g-5/c/3402-pamieci-ram-ddr5.html?producent=2484-kingston-fury",
-                "g-5/c/3618-plyty-glowne-socket-am5.html",
-                "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
-                "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
-              ]
-                .map((path) => {
-                  return `https://www.x-kom.pl/${path}`;
-                })
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i + 1} 15 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              chunk(
-                [
-                  "592143",
-                  "681134",
-                  "681136",
-                  "681152",
-                  "730554",
-                  "730597",
-                  "1070889",
-                ],
-                1
-              )
-                .map((ids) => {
-                  return `https://www.x-kom.pl/szukaj?q=${ids.join("+")}`;
-                })
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 16 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              chunk(["1022668"], 1)
-                .map((ids) => {
-                  return `https://www.al.to/szukaj?q=${ids.join("+")}`;
-                })
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 17 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                "aparthotelczarnagora",
-                "aparthotelgiewont1",
-                "belwederhotel",
-                "bluemountainresort",
-                "czarnygron",
-                "grandhotelstamary",
-                "grenohotelspa",
-                "greenmountainhotel",
-                "hotelaquarion",
-                "hotelbaniathermalski",
-                "hotelbukovina",
-                "hotelcrocus",
-                "hotelczarnypotokresortspakrynica",
-                "hotelharnas",
-                "hotelklimczok",
-                "hotelkrysztal4",
-                "hoteloliviamedicalspa",
-                "hotelskalny",
-                "hotelpegaz",
-                "hotelpiotrspawellness",
-                "hotelperlapoludnia1",
-                "hotelprezydentmedicalspawellness",
-                "hotelprzedwiosnie1",
-                "hotelsasanka",
-                "hotelspadrirenaeriskrynicazdroj",
-                "hotelspadrirenaerispolanicazdrj",
-                "hotelspadrirenaeriswzgorzadylewskie",
-                "hotelstok",
-                "hoteltoporow",
-                "hotelwierchomla",
-                "hotelzbjnicwka",
-                "hotelzywieckimedicalspasport",
-                "interferieaquaparksporthotelmalachit",
-                "interferiesporthotelbornit",
-                "kompleksszkoleniowowypoczynkowyskalnyspa",
-                "lemonresort",
-                "mazowszemedispa1",
-                "modrzewieparkhotel1",
-                "nosalowydworresort1",
-                "odysseyclubhotel",
-                "osadasniezka",
-                "willabelweder",
-                "zamekksiezagora",
-              ]
-                .map((name) => {
-                  return [
-                    // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
-                    // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
-                    `https://booking.profitroom.com/api/${name}/details`,
-                    // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
-                  ];
-                })
-                .flat()
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 18 * * *` },
-                  },
-                }))
-            )
-            .concat(
-              [
-                [52.2329, 21.2252],
-                [52.2329, 21.2252, "transit"],
-                [52.1722, 21.1723],
-                [52.1722, 21.1723, "transit"],
-                [52.202, 21.1559],
-                [52.202, 21.1559, "transit"],
-                [52.201, 21.1294],
-                [52.201, 21.1294, "transit"],
-              ]
-                // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
-                .map(
-                  ([lat, lng, travelmode = "driving"]) =>
-                    // `https://www.google.com/maps/dir/${lat},${lng}/52.2268,20.9921/data=!4m2!4m1!3e0`
-                    `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
-                      [lat, lng].join(",")
-                    )}&destination=${encodeURIComponent(
-                      [52.2268, 20.9921].join(",")
-                    )}&travelmode=${encodeURIComponent(travelmode)}&hl=pl`
-                )
-                .map((url, i) => ({
-                  data: {
-                    url,
-                  },
-                  opts: {
-                    repeat: { cron: `${i} 19 * * *` },
-                  },
-                }))
-            )
-        ),
-    [type, delay, priority]
+        .parse(records),
+    [type, delay, priority, records]
   );
 
   const list = useMemo(
@@ -651,12 +653,35 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             [list, selected]
           )}
         >
-          add
+          process
         </button>
         <button
           onClick={useCallback(() => post("cleanup").then(getDelayed), [])}
         >
           cleanup
+        </button>
+        <button
+          onClick={useCallback(() => {
+            const url = prompt("Url:", "https://");
+
+            if (url) {
+              setRecords((records) =>
+                [
+                  {
+                    data: {
+                      url,
+                    },
+                    opts: {
+                      repeat: { cron: `0 19 * * *` },
+                    },
+                  },
+                ].concat(records)
+              );
+              setSelected([url]);
+            }
+          }, [])}
+        >
+          append url
         </button>
       </div>
       {list.map((item) => (
