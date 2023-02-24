@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  MouseEventHandler,
 } from "react";
 import { format } from "date-fns";
 import { Subject } from "rxjs";
@@ -14,6 +15,11 @@ import { EntriesSchema, Type } from "@dev/schema";
 import { Spinner } from "../components/Spinner";
 import { post } from "./Process";
 
+const GROUP_BY = {
+  _date: "date",
+  _url: "url",
+};
+
 export default function Entries() {
   const [pager, setPager] = useState(() => ({
     start: 0,
@@ -22,6 +28,7 @@ export default function Entries() {
     returnvalue: true,
   }));
   const [match, setMatch] = useState(() => ({
+    groupBy: Object.keys(GROUP_BY)[0],
     type: "",
     query: "",
   }));
@@ -83,15 +90,36 @@ export default function Entries() {
 
   const grouped = useMemo(
     () =>
-      list.reduce(
-        (grouped: Record<string, object[]>, item: any) =>
-          ((group) =>
-            Object.assign(grouped, {
-              [group]: (grouped[group] || []).concat(item),
-            }))(item.timestamp ? format(item.timestamp, "yyyy-MM-dd") : ""),
-        {}
-      ),
-    [list]
+      list
+        .map((item) => ({
+          ...item,
+          _date: item.timestamp ? format(item.timestamp, "yyyy-MM-dd") : "",
+          _url: item.data.url || "",
+        }))
+        .reduce(
+          (grouped: Record<string, object[]>, item: any) =>
+            ((group) =>
+              Object.assign(grouped, {
+                [group]: (grouped[group] || []).concat(item),
+              }))(item[match.groupBy]),
+          {}
+        ),
+    [list, match.groupBy]
+  );
+
+  const onSelectGroup = useCallback<MouseEventHandler<HTMLAnchorElement>>(
+    (event) => (
+      event.preventDefault(),
+      ((ids) =>
+        setSelected((selected) =>
+          selected.filter((id) => !ids.includes(id)).concat(ids)
+        ))(
+        event.target.dataset
+          ? grouped[event.target.dataset.group].map((item) => item.id)
+          : []
+      )
+    ),
+    [grouped]
   );
 
   return (
@@ -220,6 +248,26 @@ export default function Entries() {
       </div>
       <div>
         <label>
+          <span>groupby</span>
+          <select
+            value={match.groupBy}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setMatch((match) => ({
+                  ...match,
+                  groupBy: target.value,
+                })),
+              []
+            )}
+          >
+            {Object.entries(GROUP_BY).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           <span>type</span>
           <select
             value={match.type}
@@ -290,7 +338,13 @@ export default function Entries() {
       <div style={loading ? { opacity: 0.5 } : {}}>
         {Object.entries(grouped).map(([group, list]) => (
           <section key={group}>
-            {group && <strong>{group}</strong>}
+            {group && (
+              <strong>
+                <a href="#" onClick={onSelectGroup} data-group={group}>
+                  {group}
+                </a>
+              </strong>
+            )}
             <div>
               {list.map((item) => (
                 <div key={item.id}>
