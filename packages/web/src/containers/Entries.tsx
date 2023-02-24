@@ -112,7 +112,7 @@ export default function Entries() {
               []
             )}
           >
-            {[5, 10, 25, 50, 100, 250, 500, 1000].map((value) => (
+            {[1, 5, 10, 25, 50, 100, 250, 500, 1000].map((value) => (
               <option key={value} value={value}>
                 {value}
               </option>
@@ -121,6 +121,19 @@ export default function Entries() {
         </label>
         <label>
           <span>start</span>
+          <button
+            disabled={pager.start == 0}
+            onClick={useCallback(
+              () =>
+                setPager((pager) => ({
+                  ...pager,
+                  start: pager.start - pager.limit,
+                })),
+              []
+            )}
+          >
+            &lsaquo;
+          </button>
           <select
             value={pager.start}
             onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
@@ -141,6 +154,19 @@ export default function Entries() {
                 </option>
               ))}
           </select>
+          <button
+            disabled={pager.start === pager.limit * 24}
+            onClick={useCallback(
+              () =>
+                setPager((pager) => ({
+                  ...pager,
+                  start: pager.start + pager.limit,
+                })),
+              []
+            )}
+          >
+            &rsaquo;
+          </button>
         </label>
         <button
           disabled={loading}
@@ -261,57 +287,58 @@ export default function Entries() {
           delete
         </button>
       </div>
-
-      {Object.entries(grouped).map(([group, list]) => (
-        <section key={group}>
-          {group && <strong>{group}</strong>}
-          <div>
-            {list.map((item) => (
-              <div key={item.id}>
-                <div>
-                  <label>
-                    <input
-                      type="checkbox"
-                      value={item.id}
-                      checked={selected.includes(item.id)}
-                      onChange={onSelect}
-                    />
-                    {item.timestamp && (
-                      <span>
-                        {format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}
-                      </span>
+      <div style={loading ? { opacity: 0.5 } : {}}>
+        {Object.entries(grouped).map(([group, list]) => (
+          <section key={group}>
+            {group && <strong>{group}</strong>}
+            <div>
+              {list.map((item) => (
+                <div key={item.id}>
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={item.id}
+                        checked={selected.includes(item.id)}
+                        onChange={onSelect}
+                      />
+                      {item.timestamp && (
+                        <span>
+                          {format(item.timestamp, "yyyy-MM-dd HH:mm:ss")}
+                        </span>
+                      )}
+                    </label>{" "}
+                    | <a href={`entry/${item.id}`}>item</a> |{" "}
+                    <a href={`json/${item.id}`}>json</a> |{" "}
+                    <a href={`html/${item.id}`}>html</a> |{" "}
+                    <a href={item.data.url}>open</a> |{" "}
+                    <a href={`delete/${item.id}`}>delete</a>
+                  </div>
+                  <pre>
+                    {JSON.stringify(
+                      selected.includes(item.id)
+                        ? item
+                        : z
+                            .object({
+                              id: z.string(),
+                              data: z
+                                .object({
+                                  url: z.string(),
+                                })
+                                .transform(({ url }) => url),
+                              type: z.string(),
+                            })
+                            .parse(item),
+                      null,
+                      2
                     )}
-                  </label>{" "}
-                  | <a href={`entry/${item.id}`}>item</a> |{" "}
-                  <a href={`json/${item.id}`}>json</a> |{" "}
-                  <a href={`html/${item.id}`}>html</a> |{" "}
-                  <a href={item.data.url}>open</a> |{" "}
-                  <a href={`delete/${item.id}`}>delete</a>
+                  </pre>
                 </div>
-                <pre>
-                  {JSON.stringify(
-                    selected.includes(item.id)
-                      ? item
-                      : z
-                          .object({
-                            id: z.string(),
-                            data: z
-                              .object({
-                                url: z.string(),
-                              })
-                              .transform(({ url }) => url),
-                            type: z.string(),
-                          })
-                          .parse(item),
-                    null,
-                    2
-                  )}
-                </pre>
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </fieldset>
   );
 }
