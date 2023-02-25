@@ -279,7 +279,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               url,
             },
             opts: {
-              repeat: { cron: `${i} 14 * * *` },
+              repeat: { cron: `${i + 1} 14 * * *` },
             },
           }))
       )
@@ -346,7 +346,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               url,
             },
             opts: {
-              repeat: { cron: `${i} 13 * * *` },
+              repeat: { cron: `${i + 1} 13 * * *` },
             },
           }))
       )
@@ -377,7 +377,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               url,
             },
             opts: {
-              repeat: { cron: `${i + 1} 14 * * *` },
+              repeat: { cron: `${i + 1} 7,14 * * *` },
             },
           }))
       )
@@ -394,7 +394,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               url,
             },
             opts: {
-              repeat: { cron: `${i + 1} 15 * * *` },
+              repeat: { cron: `${i + 1} 8,15 * * *` },
             },
           }))
       )
