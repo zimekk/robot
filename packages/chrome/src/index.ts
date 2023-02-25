@@ -112,7 +112,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     const json = await page.evaluate(e);
                     console.log({ json });
                     resolve({ url: res.url(), json });
-                  } else if (url.match("kom.pl/.+/c/")) {
+                  } else if (url.match("(al.to|kom.pl)/.+/c/")) {
                     console.log(res.url());
                     const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);

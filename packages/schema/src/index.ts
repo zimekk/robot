@@ -130,7 +130,7 @@ export const EntrySchema = z.preprocess(
         [Type.MACAN]: new RegExp("porsche.com/"),
         [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
         [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
-        [Type.PRODUCTS2]: new RegExp("kom.pl/.+/c/"),
+        [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
         [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
         [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
         [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),

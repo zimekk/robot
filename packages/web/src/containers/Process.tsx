@@ -377,6 +377,23 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               url,
             },
             opts: {
+              repeat: { cron: `${i + 1} 14 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
+          "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
+          "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens",
+        ]
+          .map((path) => {
+            return `https://www.al.to/${path}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
               repeat: { cron: `${i + 1} 15 * * *` },
             },
           }))
