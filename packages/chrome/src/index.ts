@@ -100,7 +100,17 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                   ["document"].includes(req.resourceType()) &&
                   !headers.location
                 ) {
-                  console.log(["resolve.html"], res.url(), headers);
+                  console.log(
+                    ["resolve.html"],
+                    res.url(),
+                    res.status(),
+                    headers
+                  );
+
+                  if (res.status() !== 200) {
+                    throw new Error(`${res.status()} ${res.statusText()}`);
+                  }
+
                   await delay();
 
                   if (url.match("finder.*.com/pl/pl-PL/search")) {
