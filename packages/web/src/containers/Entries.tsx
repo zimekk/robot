@@ -97,11 +97,11 @@ export default function Entries() {
           _url: item.data.url || "",
         }))
         .reduce(
-          (grouped: Record<string, object[]>, item: any) =>
+          (grouped: Record<string, typeof list>, item) =>
             ((group) =>
               Object.assign(grouped, {
                 [group]: (grouped[group] || []).concat(item),
-              }))(item[match.groupBy]),
+              }))(item[match.groupBy as keyof typeof GROUP_BY]),
           {}
         ),
     [list, match.groupBy]
@@ -114,7 +114,9 @@ export default function Entries() {
         setSelected((selected) =>
           selected.filter((id) => !ids.includes(id)).concat(ids)
         ))(
-        event.target.dataset
+        event.target instanceof HTMLAnchorElement &&
+          event.target.dataset &&
+          event.target.dataset.group
           ? grouped[event.target.dataset.group].map((item) => item.id)
           : []
       )
