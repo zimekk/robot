@@ -129,7 +129,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     const json = await page.evaluate(e);
                     console.log({ json });
                     resolve({ url: res.url(), json });
-                  } else if (url.match("pl/d/nieruchomosci/")) {
+                  } else if (
+                    url.match("pl/d/nieruchomosci/") ||
+                    url.match("pl/nieruchomosci/")
+                  ) {
                     console.log(res.url());
                     const e = "__PRERENDERED_STATE__";
                     console.log(["page.evaluate"], e);

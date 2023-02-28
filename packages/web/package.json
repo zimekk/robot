@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@dev/app": "^1.0.0",
+    "@dev/depots": "^1.0.0",
     "@dev/plots": "^1.0.0",
     "@dev/products": "^1.0.0",
     "@dev/schema": "^1.0.0",

@@ -6,6 +6,7 @@ import { headingDistanceTo } from "geolocation-utils";
 import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
+import { update as updateDepots } from "@dev/depots/api";
 import { update } from "@dev/plots-api";
 import { update as updateProducts } from "@dev/products/api";
 import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
@@ -143,6 +144,8 @@ export const client = () => {
                       .filter(limiter(jobs, days(7)))
                       .slice(0, 150)
                   );
+                } else if (type === Type.DEPOT) {
+                  updateDepots(id, data, returnvalue);
                 } else if (type === Type.PLOTS) {
                   update(id, data, returnvalue);
                 } else if (type === Type.PRODUCTS2) {

@@ -197,6 +197,22 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
     ]
       .concat(
         [
+          "hale-magazyny/wynajem/mazowieckie",
+          "hale-magazyny/wynajem/stare-babice",
+          "hale-magazyny/wynajem/zielonki-parcela",
+        ]
+          .map((cat) => `https://www.olx.pl/nieruchomosci/${cat}/`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 9,18 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
           "granica_45581",
           "kanie_134919",
           "komorow_117329",

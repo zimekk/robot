@@ -94,7 +94,7 @@ const AdSchema = z.object({
     id: z.number(),
     name: z.string(),
     photo: z.string().nullable(),
-    logo: z.null(),
+    logo: z.string().nullable(),
     otherAdsEnabled: z.boolean(),
     socialNetworkAccountType: z.string().nullable(),
     isOnline: z.boolean(),
@@ -107,7 +107,7 @@ const AdSchema = z.object({
     sellerType: z.null(),
     uuid: z.string(),
   }),
-  shop: z.object({ subdomain: z.null() }),
+  shop: z.object({ subdomain: z.string().nullable() }),
   safedeal: z.object({
     weight: z.number(),
     weight_grams: z.number(),
@@ -162,14 +162,16 @@ const JsonSchema = z.object({
         favSearchNewAds: z.unknown().array(),
         location: z.null(),
         facets: z.object({
-          district: z.array(
-            z.object({
-              id: z.number(),
-              count: z.number(),
-              label: z.string(),
-              url: z.string(),
-            })
-          ),
+          district: z
+            .array(
+              z.object({
+                id: z.number(),
+                count: z.number(),
+                label: z.string(),
+                url: z.string(),
+              })
+            )
+            .optional(),
           category_without_exclusions: z
             .object({
               id: z.number(),
@@ -196,7 +198,7 @@ const JsonSchema = z.object({
         limit: z.number(),
         category_id: z.number(),
         region_id: z.number(),
-        city_id: z.number(),
+        city_id: z.number().optional(),
         filter_refiners: z.string(),
         facets: z.string(),
       }),
@@ -238,15 +240,17 @@ const JsonSchema = z.object({
       })
       .array(),
     locationNames: z.object({
-      city: z.object({
-        id: z.number(),
-        name: z.string(),
-        normalized_name: z.string(),
-        lat: z.number(),
-        lon: z.number(),
-      }),
-      municipality: z.object({ name: z.string() }),
-      county: z.object({ name: z.string() }),
+      city: z
+        .object({
+          id: z.number(),
+          name: z.string(),
+          normalized_name: z.string(),
+          lat: z.number(),
+          lon: z.number(),
+        })
+        .optional(),
+      municipality: z.object({ name: z.string() }).optional(),
+      county: z.object({ name: z.string() }).optional(),
       region: z.object({
         id: z.number(),
         name: z.string(),

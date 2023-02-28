@@ -26,6 +26,7 @@
     "start": "ts-node-dev server"
   },
   "dependencies": {
+    "@dev/depots": "1.0.0",
     "@dev/plots-api": "1.0.0",
     "@dev/products": "1.0.0",
     "@dev/web": "1.0.0",
