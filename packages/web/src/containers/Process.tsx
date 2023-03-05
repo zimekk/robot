@@ -213,6 +213,23 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "backpacks/laptop-backpacks",
+          "bike-rack",
+          "cargo-carrier/car-top-carrier",
+          "roof-rack/car-roof-racks",
+        ]
+          .map((cat) => `https://www.thule.com/pl-pl/${cat}`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 21 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
           "granica_45581",
           "kanie_134919",
           "komorow_117329",

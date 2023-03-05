@@ -21,6 +21,7 @@ import OtodomOfferTransform, {
 } from "./otodom/offer";
 import OtomotoTransform from "./otomoto"; // Schema as OtomotoSchema,
 import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSchema,
+import { Schema as ThuleReturnSchema } from "@dev/thule/schema";
 
 export const Type = {
   AUTOS: "AUTOS",
@@ -46,6 +47,7 @@ export const Type = {
   ROOMS: "ROOMS",
   STATIONS: "STATIONS",
   STATION: "STATION",
+  THULE: "THULE",
   UNKNOWN: "UNKNOWN",
 } as const;
 
@@ -143,6 +145,7 @@ export const EntrySchema = z.preprocess(
         [Type.ROOMS]: new RegExp("api/\\w+/details"),
         [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
         [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+        [Type.THULE]: new RegExp("thule.com/pl-pl/"),
         [Type.UNKNOWN]: new RegExp(""),
       })
         .find(([_, regExp]) => regExp.test(item.data.url))
@@ -278,6 +281,9 @@ export const EntrySchema = z.preprocess(
           network_name: z.string(),
           map_img: z.string(),
         }),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.THULE),
     }),
     JsonSchema.extend({
       type: z.literal(Type.UNKNOWN),
@@ -434,6 +440,10 @@ export const EntriesSchema = z
         network_name: z.string(),
         map_img: z.string(),
       }),
+    }),
+    ReturnSchema.extend({
+      type: z.literal(Type.THULE),
+      returnvalue: ThuleReturnSchema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.UNKNOWN),

@@ -7,6 +7,7 @@ import { z } from "zod";
 import { router as depotsRouter } from "@dev/depots/api";
 import { router as plotsRouter } from "@dev/plots-api";
 import { router as productsRouter } from "@dev/products/api";
+import { router as thuleRouter } from "@dev/thule/api";
 import { router as workerRouter } from "@dev/worker";
 
 export const router = Router()
@@ -14,6 +15,7 @@ export const router = Router()
   .use(depotsRouter())
   .use(plotsRouter())
   .use(productsRouter())
+  .use(thuleRouter())
   .use(workerRouter());
 
 export const server = () => {

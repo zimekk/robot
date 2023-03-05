@@ -41,6 +41,7 @@ COPY packages/plots/package.json packages/plots/
 COPY packages/products/package.json packages/products/
 COPY packages/schema/package.json packages/schema/
 COPY packages/sql/package.json packages/sql/
+COPY packages/thule/package.json packages/thule/
 COPY packages/web/package.json packages/web/
 COPY packages/worker/package.json packages/worker/
 COPY packages/worker/bin packages/worker/bin/

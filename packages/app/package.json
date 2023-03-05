@@ -29,6 +29,7 @@
     "@dev/depots": "1.0.0",
     "@dev/plots-api": "1.0.0",
     "@dev/products": "1.0.0",
+    "@dev/thule": "1.0.0",
     "@dev/web": "1.0.0",
     "@dev/worker": "1.0.0",
     "body-parser": "^1.20.2",
