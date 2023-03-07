@@ -22,7 +22,7 @@
     "@dev/plots-api": "^1.0.0",
     "@dev/products": "^1.0.0",
     "node-html-parser": "^6.1.5",
-    "zod": "^3.21.0"
+    "zod": "^3.21.4"
   },
   "devDependencies": {}
 }
