@@ -6,9 +6,6 @@ import { headingDistanceTo } from "geolocation-utils";
 import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
-import { update as updateDepots } from "@dev/depots/api";
-import { update } from "@dev/plots-api";
-import { update as updateProducts } from "@dev/products/api";
 import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
@@ -145,11 +142,25 @@ export const client = () => {
                       .slice(0, 150)
                   );
                 } else if (type === Type.DEPOT) {
-                  updateDepots(id, data, returnvalue);
+                  return require("@dev/depots/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.PLOTS) {
-                  update(id, data, returnvalue);
+                  return require("@dev/plots-api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.PRODUCTS2) {
-                  updateProducts(id, data, returnvalue);
+                  return require("@dev/products/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.ROSSM) {
+                  return require("@dev/rossm/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.THULE) {
+                  return require("@dev/thule/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list

@@ -433,6 +433,24 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
+        [
+          "alouette%20papier%20toaletowy",
+          "purina%20gourmet%20gold",
+          "purina%20one",
+        ]
+          .map((path) => {
+            return `https://www.rossmann.pl/szukaj?Page=1&PageSize=24&Search=${path}`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 7 * * *` },
+            },
+          }))
+      )
+      .concat(
         chunk(
           [
             "592143",

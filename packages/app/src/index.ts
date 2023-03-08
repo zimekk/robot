@@ -4,19 +4,15 @@ import { createServer } from "http";
 import { type AddressInfo } from "net";
 import { dirname, resolve } from "path";
 import { z } from "zod";
-import { router as depotsRouter } from "@dev/depots/api";
-import { router as plotsRouter } from "@dev/plots-api";
-import { router as productsRouter } from "@dev/products/api";
-import { router as thuleRouter } from "@dev/thule/api";
-import { router as workerRouter } from "@dev/worker";
 
 export const router = Router()
   .use("/api/data.json", (_req, res) => res.json({ hello: "Hello" }))
-  .use(depotsRouter())
-  .use(plotsRouter())
-  .use(productsRouter())
-  .use(thuleRouter())
-  .use(workerRouter());
+  .use(require("@dev/depots/api").router())
+  .use(require("@dev/plots-api").router())
+  .use(require("@dev/products/api").router())
+  .use(require("@dev/rossm/api").router())
+  .use(require("@dev/thule/api").router())
+  .use(require("@dev/worker").router());
 
 export const server = () => {
   const env = config({ path: resolve(__dirname, "../../../.env") });

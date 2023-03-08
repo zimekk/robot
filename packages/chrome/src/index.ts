@@ -81,9 +81,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                 console.log(url, req.resourceType(), req.url());
               }
 
-              if (
-                url.match("/goracy_strzal|/pl/\\w+/-home|/szukaj|//promocje")
-              ) {
+              if (url.match("/goracy_strzal|/pl/\\w+/-home|//promocje")) {
                 if (
                   ["fetch", "xhr"].includes(req.resourceType()) &&
                   res
@@ -98,6 +96,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
               } else {
                 if (
                   ["document"].includes(req.resourceType()) &&
+                  url === res.url() &&
                   !headers.location
                 ) {
                   console.log(
@@ -154,6 +153,13 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                       console.log({ json });
                       resolve({ url: res.url(), json });
                     }
+                  } else if (url.match("smann.pl/szukaj\\?")) {
+                    console.log(res.url());
+                    const e = "__NEXT_DATA__";
+                    console.log(["page.evaluate"], e);
+                    const json = await page.evaluate(e);
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
                   } else if (url.match("thule.com/pl-pl/")) {
                     console.log(res.url());
                     const e = "_THULEDATA";
