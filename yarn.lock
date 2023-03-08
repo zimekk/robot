@@ -1000,29 +1000,29 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bull-board/api@4.12.2", "@bull-board/api@^4.12.2":
-  version "4.12.2"
-  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-4.12.2.tgz#d025de77ccb1b454c583184b27bc939d2e845838"
-  integrity sha512-efF8K1pvfEEft2ELQwCBe/a225vHufCjM2hfcyvmIG/SUX6TlKQFUFZ1+KV0wenD9wxvUVb5wxUu6on+HrZiVg==
+"@bull-board/api@5.0.0", "@bull-board/api@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-5.0.0.tgz#665e0a79aff95d19989509d4267e2344f961bf59"
+  integrity sha512-nOB8TUSeX8h2wgMxmPZwy0p3XqRX/DotR71M5FT5OS/bZCZIKRpEc36TIeKPimZli6voFyX+rsEqVhGenpIKUQ==
   dependencies:
     redis-info "^3.0.8"
 
-"@bull-board/express@^4.12.2":
-  version "4.12.2"
-  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-4.12.2.tgz#7ba43d079497dbc20d7085ae5ca658fb12bda1bf"
-  integrity sha512-Y/pzCtQoxvLyioiNYLKKgxslccV+7dyTy4qCGAXyUbAuOaav+U4tbfWNcZYaMSkr/1gg0m/6S/qf+xn2vAsDkQ==
+"@bull-board/express@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-5.0.0.tgz#edde833fcd86e267235c7ecdfbd4ed5f6320a9a4"
+  integrity sha512-Cda6Mpeh30HqemuNhutulVmaDr09Bt8FQapNq3uMcXOfzw8uWESNdO/B14/I5lZ+/3Qeyn26uOBdOQQXp4a4bQ==
   dependencies:
-    "@bull-board/api" "4.12.2"
-    "@bull-board/ui" "4.12.2"
+    "@bull-board/api" "5.0.0"
+    "@bull-board/ui" "5.0.0"
     ejs "3.1.7"
     express "4.17.3"
 
-"@bull-board/ui@4.12.2":
-  version "4.12.2"
-  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-4.12.2.tgz#0002ca3b095109bc83b78e186c8c6c87f65f68b1"
-  integrity sha512-jB/OOEhg+DUL6ssmtQYTK+iYd3iy68bbozOp+q2xVUC4V7zeFmYF25sIApYFTNfbjuUMesAVOiX4u0gNEo/J7w==
+"@bull-board/ui@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-5.0.0.tgz#ca117b3e3a9e379dd318a5e40dd696006685a408"
+  integrity sha512-WznLX8dGthUWimZDqN5Zft3Axp6SStlI244BhiQYXB7xXZRMgaihNZxh7vgpwg0Osmw/gPFvAI+NFVGc3tvj9g==
   dependencies:
-    "@bull-board/api" "4.12.2"
+    "@bull-board/api" "5.0.0"
 
 "@commitlint/cli@^17.4.4":
   version "17.4.4"
@@ -7766,10 +7766,10 @@ webpack-sources@^3.2.3:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack@^5.75.0:
-  version "5.75.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.75.0.tgz#1e440468647b2505860e94c9ff3e44d5b582c152"
-  integrity sha512-piaIaoVJlqMsPtX/+3KTTO6jfvrSYgauFVdt8cr9LTHKmcq/AMd4mhzsiP7ZF/PGRNPGA8336jldh9l2Kt2ogQ==
+webpack@^5.76.0:
+  version "5.76.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.76.0.tgz#f9fb9fb8c4a7dbdcd0d56a98e56b8a942ee2692c"
+  integrity sha512-l5sOdYBDunyf72HW8dF23rFtWq/7Zgvt/9ftMof71E/yUb1YLOBmTgA2K4vQthB3kotMrSj609txVE0dnr2fjA==
   dependencies:
     "@types/eslint-scope" "^3.7.3"
     "@types/estree" "^0.0.51"

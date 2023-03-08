@@ -22,8 +22,8 @@
     "@dev/depots": "^1.0.0",
     "@dev/plots": "^1.0.0",
     "@dev/products": "^1.0.0",
-    "@dev/schema": "^1.0.0",
     "@dev/rossm": "^1.0.0",
+    "@dev/schema": "^1.0.0",
     "@dev/thule": "^1.0.0",
     "chunk": "^0.0.3",
     "date-fns": "^2.29.3",
@@ -50,7 +50,7 @@
     "html-webpack-plugin": "^5.5.0",
     "react-hot-loader": "^4.13.1",
     "ts-loader": "^9.4.2",
-    "webpack": "^5.75.0",
+    "webpack": "^5.76.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   }
