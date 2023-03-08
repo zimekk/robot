@@ -1,9 +1,10 @@
 import React, { useCallback } from "react";
 import { createAsset } from "use-asset";
+import { ProductType } from "../schema";
 
 interface Thule {
-  id: number;
-  data: any;
+  id: string;
+  data: ProductType;
 }
 
 // https://github.com/pmndrs/use-asset
@@ -20,12 +21,7 @@ export default function Section() {
 
   return (
     <section>
-      <h2>
-        Thule
-        <button onClick={useCallback(() => fetch("thule/insert"), [])}>
-          insert
-        </button>
-      </h2>
+      <h2>Thule</h2>
       <ol>
         {result.map((item) => (
           <li key={item.id}>

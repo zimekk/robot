@@ -18,6 +18,7 @@
     "coverage": "type-coverage && tsc --noEmit",
     "migrate": "node-pg-migrate",
     "migrate:up": "node-pg-migrate up --envPath ../../.env",
+    "migrate:down": "node-pg-migrate down --envPath ../../.env",
     "test:watch": "jest --watch"
   },
   "dependencies": {
