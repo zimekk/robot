@@ -38,8 +38,7 @@ curl http://localhost:8080 # <!DOCTYPE html>
 
 ```sh
 docker-compose exec app sh
-/app/packages/sql # cd packages/sql
-/app/packages/sql # yarn migrate:up
+/app # yarn workspace @dev/sql run migrate:up
 ```
 
 ```sh
