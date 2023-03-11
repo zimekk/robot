@@ -131,16 +131,19 @@ export const client = () => {
                       .slice(0, 150)
                   );
                 } else if (type === Type.OTOMOTO) {
-                  const { list = [] } =
-                    returnvalue.json.props?.pageProps.urqlState || {};
-                  return Promise.resolve(
-                    list
-                      .map(({ url }) => ({
-                        url,
-                      }))
-                      .filter(limiter(jobs, days(7)))
-                      .slice(0, 150)
-                  );
+                  return require("@dev/moto/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                  // const { list = [] } =
+                  //   returnvalue.json.props?.pageProps.urqlState || {};
+                  // return Promise.resolve(
+                  //   list
+                  //     .map(({ url }) => ({
+                  //       url,
+                  //     }))
+                  //     .filter(limiter(jobs, days(7)))
+                  //     .slice(0, 150)
+                  // );
                 } else if (type === Type.DEPOT) {
                   return require("@dev/depots/api")
                     .update(id, data, returnvalue)

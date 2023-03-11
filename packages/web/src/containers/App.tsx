@@ -7,6 +7,7 @@ const Spinner = () => <span>Loading...</span>;
 const PAGES = Object.freeze({
   hello: lazy(() => import("./Hello")),
   depots: lazy(() => import("@dev/depots")),
+  moto: lazy(() => import("@dev/moto")),
   plots: lazy(() => import("@dev/plots")),
   products: lazy(() => import("@dev/products")),
   rossm: lazy(() => import("@dev/rossm")),

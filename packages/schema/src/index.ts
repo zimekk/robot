@@ -19,7 +19,6 @@ import { Schema as RoomsReturnSchema } from "./rooms";
 import OtodomOfferTransform, {
   Schema as OtodomOfferSchema,
 } from "./otodom/offer";
-import OtomotoTransform from "./otomoto"; // Schema as OtomotoSchema,
 import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSchema,
 
 export const Type = {
@@ -239,11 +238,6 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.OTOMOTO),
-      returnvalue: z
-        .object({
-          html: z.string(),
-        })
-        .transform(OtomotoTransform),
     }),
     JsonSchema.extend({
       type: z.literal(Type.OTOMOTO_OFFER),
@@ -392,10 +386,7 @@ export const EntriesSchema = z
     }),
     ReturnSchema.extend({
       type: z.literal(Type.OTOMOTO),
-      returnvalue: z.object({
-        // json: OtomotoSchema,
-        json: z.any(),
-      }),
+      returnvalue: require("@dev/moto/schema").Schema,
     }),
     ReturnSchema.extend({
       type: z.literal(Type.OTOMOTO_OFFER),
@@ -407,7 +398,7 @@ export const EntriesSchema = z
     ReturnSchema.extend({
       type: z.literal(Type.PRODUCTS),
       returnvalue: z.object({
-        json: ProductsSchema,
+        json: ProductsSchema.optional(),
       }),
     }),
     ReturnSchema.extend({
