@@ -1,1 +1,1 @@
-export { default } from "./containers/Thule";
+export { default } from "./containers";

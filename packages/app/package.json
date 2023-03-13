@@ -31,6 +31,7 @@
     "@dev/plots-api": "1.0.0",
     "@dev/products": "1.0.0",
     "@dev/rossm": "1.0.0",
+    "@dev/status": "1.0.0",
     "@dev/thule": "1.0.0",
     "@dev/web": "1.0.0",
     "@dev/worker": "1.0.0",

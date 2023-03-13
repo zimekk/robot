@@ -1,1 +1,1 @@
-export { default } from "./containers/Plots";
+export { default } from "./containers";

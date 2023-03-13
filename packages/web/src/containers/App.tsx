@@ -12,6 +12,7 @@ const PAGES = Object.freeze({
   products: lazy(() => import("@dev/products")),
   rossm: lazy(() => import("@dev/rossm")),
   thule: lazy(() => import("@dev/thule")),
+  status: lazy(() => import("@dev/status")),
 });
 
 const getPage = (location: { hash: string }) => {

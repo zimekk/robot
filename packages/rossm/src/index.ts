@@ -1,1 +1,1 @@
-export { default } from "./containers/Rossm";
+export { default } from "./containers";

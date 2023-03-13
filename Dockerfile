@@ -43,6 +43,7 @@ COPY packages/products/package.json packages/products/
 COPY packages/rossm/package.json packages/rossm/
 COPY packages/schema/package.json packages/schema/
 COPY packages/sql/package.json packages/sql/
+COPY packages/status/package.json packages/status/
 COPY packages/thule/package.json packages/thule/
 COPY packages/web/package.json packages/web/
 COPY packages/worker/package.json packages/worker/

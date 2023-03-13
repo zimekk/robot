@@ -12,6 +12,7 @@ export const router = Router()
   .use(require("@dev/plots-api").router())
   .use(require("@dev/products/api").router())
   .use(require("@dev/rossm/api").router())
+  .use(require("@dev/status/api").router())
   .use(require("@dev/thule/api").router())
   .use(require("@dev/worker").router());
 
