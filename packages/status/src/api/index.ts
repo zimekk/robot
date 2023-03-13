@@ -2,6 +2,7 @@ import { Router } from "express";
 import { query } from "@dev/sql";
 import { exec } from "child_process";
 import os from "os";
+import sslChecker from "ssl-checker";
 
 const diskFree = () =>
   new Promise((resolve, reject) =>
@@ -20,8 +21,15 @@ export const router = () =>
         "SELECT pg_database.datname AS name, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database",
         []
       ),
+      // https://stackoverflow.com/questions/56771030/node-js-how-to-check-get-ssl-certificate-expiry-date
+      Promise.all(
+        [
+          // "badssl.com",
+          // "expired.badssl.com",
+        ].map((hostname) => sslChecker(hostname, { method: "GET", port: 443 }))
+      ),
     ])
-      .then(([usage, data]) =>
+      .then(([usage, data, ssl]) =>
         res.json({
           result: {
             databases: data.rows,
@@ -34,6 +42,7 @@ export const router = () =>
             type: os.type(),
             uptime: os.uptime(),
             usage,
+            ssl,
           },
         })
       )

@@ -24,6 +24,7 @@
     "dayjs": "^1.11.7",
     "pretty-bytes": "^6.1.0",
     "pretty-ms": "^8.0.0",
+    "ssl-checker": "^2.0.8",
     "use-asset": "^1.0.4"
   },
   "devDependencies": {
