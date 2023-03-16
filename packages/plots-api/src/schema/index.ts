@@ -163,14 +163,13 @@ const JsonSchema = z.object({
         location: z.null(),
         facets: z.object({
           district: z
-            .array(
-              z.object({
-                id: z.number(),
-                count: z.number(),
-                label: z.string(),
-                url: z.string(),
-              })
-            )
+            .object({
+              id: z.number(),
+              count: z.number(),
+              label: z.string(),
+              url: z.string(),
+            })
+            .array()
             .optional(),
           category_without_exclusions: z
             .object({
@@ -179,19 +178,20 @@ const JsonSchema = z.object({
               label: z.string(),
               url: z.string(),
             })
-            .array(),
+            .array()
+            .optional(),
         }),
         searchReason: z.object({
           promoted: z.number().array().optional(),
           organic: z.number().array().optional(),
         }),
         subSections: z.unknown().array(),
-        search_request_id: z.string(),
+        search_request_id: z.string().optional(),
       }),
       links: z.object({
-        self: z.string(),
+        self: z.string().optional(),
         next: z.string().optional(),
-        first: z.string(),
+        first: z.string().optional(),
       }),
       params: z.object({
         offset: z.number(),
