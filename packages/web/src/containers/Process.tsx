@@ -388,20 +388,25 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           "g-2/c/1329-notebooki-laptopy-13-3.html?producent=357-apple",
+          "g-2/c/1663-tablety.html?producent=357-apple",
           "g-2/c/2980-notebooki-laptopy-14-0.html?producent=357-apple",
           "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
           "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
           "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
+          "g-5/c/158-zasilacze-do-komputera.html?producent=368-nzxt",
           "g-5/c/346-karty-graficzne-nvidia.html?producent=27-asus",
           "g-5/c/346-karty-graficzne-nvidia.html?producent=57-gigabyte",
           "g-5/c/346-karty-graficzne-nvidia.html?producent=1126-inno3d",
+          "g-5/c/388-obudowy-komputerowe.html?producent=368-nzxt",
           "g-5/c/1779-dyski-ssd.html?producent=29-samsung",
           "g-5/c/1779-dyski-ssd.html?producent=59-kingston",
           "g-5/c/1779-dyski-ssd.html?producent=506-crucial",
+          "g-5/c/2599-chlodzenia-komputerowe.html?producent=368-nzxt",
           "g-5/c/2997-procesory-amd-ryzen-5.html?producent=3-amd",
           "g-5/c/3402-pamieci-ram-ddr5.html?producent=2484-kingston-fury",
           "g-5/c/3618-plyty-glowne-socket-am5.html",
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
+          "g-7/c/171-joysticki.html?producent=896-thrustmaster",
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
         ]
           .map((path) => {
