@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export const PhotoSchema = z.object({
-  url: z.string(),
-  thumbnailUrl: z.string(),
-  urlTemplate: z.string(),
+  url: z.string().optional(),
+  thumbnailUrl: z.string().optional(),
+  urlTemplate: z.string().optional(),
 });
 
 export const ProductSchema = z
