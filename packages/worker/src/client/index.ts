@@ -248,7 +248,8 @@ export const client = () => {
                 Promise.all(
                   list.map((data: { url: string }) => q.produce(data))
                 )
-              );
+              )
+              .catch(console.error);
           }
         )
         .process(NAME, async function (job) {
