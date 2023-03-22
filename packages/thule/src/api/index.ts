@@ -7,16 +7,16 @@ import { Schema } from "../schema";
 
 export const router = () =>
   Router()
-    .get("/thule", async (_req, res) => {
-      const data = await query("select * from thule", []);
-
-      return res.json({ result: data.rows });
-    })
-    .get("/thule/delete", async (req, res) => {
-      const data = await query("delete from thule where id=$1", [req.query.id]);
-      console.log(data);
-      return res.json({ status: "ok" });
-    });
+    .get("/thule", (_req, res, next) =>
+      query("select * from thule", [])
+        .then((data) => (console.log(data), res.json({ result: data.rows })))
+        .catch(next)
+    )
+    .get("/thule/delete", (req, res, next) =>
+      query("delete from thule where id=$1", [req.query.id])
+        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .catch(next)
+    );
 
 export const update = async (
   _id: string | number,

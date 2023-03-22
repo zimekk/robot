@@ -4,25 +4,21 @@ import { Schema } from "../schema";
 
 export const router = () =>
   Router()
-    .get("/depots", async (_req, res) => {
-      const data = await query("select * from depots", []);
-
-      return res.json({ result: data.rows });
-    })
-    .get("/depots/insert", async (_req, res) => {
-      const data = await query("insert into depots (json) values ($1)", [
-        { test: { key: 2 } },
-      ]);
-      console.log(data);
-      return res.json({ status: "ok" });
-    })
-    .get("/depots/delete", async (req, res) => {
-      const data = await query("delete from depots where id=$1", [
-        req.query.id,
-      ]);
-      console.log(data);
-      return res.json({ status: "ok" });
-    });
+    .get("/depots", (_req, res, next) =>
+      query("select * from depots", [])
+        .then((data) => (console.log(data), res.json({ result: data.rows })))
+        .catch(next)
+    )
+    .get("/depots/insert", (_req, res, next) =>
+      query("insert into depots (json) values ($1)", [{ test: { key: 2 } }])
+        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .catch(next)
+    )
+    .get("/depots/delete", (req, res, next) =>
+      query("delete from depots where id=$1", [req.query.id])
+        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .catch(next)
+    );
 
 export const update = async (
   id: string | number,

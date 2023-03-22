@@ -11,6 +11,7 @@ const asset = createAsset(() =>
   fetch("depots")
     .then((res) => res.json())
     .then<Depot[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {

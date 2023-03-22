@@ -9,6 +9,23 @@ const asset = createAsset(() =>
   fetch("status")
     .then((res) => res.json())
     .then<StatusType>(({ result }) => result)
+    .catch(
+      (error) => (
+        console.error(error),
+        {
+          databases: [],
+          usage: [],
+          cpus: [],
+          hostname: null,
+          platform: null,
+          type: null,
+          loadavg: null,
+          freemem: 0,
+          totalmem: 0,
+          uptime: 0,
+        }
+      )
+    )
 );
 
 export default function Section() {

@@ -12,6 +12,7 @@ const asset = createAsset(() =>
   fetch("rossm")
     .then((res) => res.json())
     .then<Rossm[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {

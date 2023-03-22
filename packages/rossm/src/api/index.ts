@@ -7,16 +7,16 @@ import { Schema } from "../schema";
 
 export const router = () =>
   Router()
-    .get("/rossm", async (_req, res) => {
-      const data = await query("select * from rossm", []);
-
-      return res.json({ result: data.rows });
-    })
-    .get("/rossm/delete", async (req, res) => {
-      const data = await query("delete from rossm where id=$1", [req.query.id]);
-      console.log(data);
-      return res.json({ status: "ok" });
-    });
+    .get("/rossm", (_req, res, next) =>
+      query("select * from rossm", [])
+        .then((data) => (console.log(data), res.json({ result: data.rows })))
+        .catch(next)
+    )
+    .get("/rossm/delete", (req, res, next) =>
+      query("delete from rossm where id=$1", [req.query.id])
+        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .catch(next)
+    );
 
 export const update = async (
   _id: string | number,

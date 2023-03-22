@@ -12,6 +12,7 @@ const asset = createAsset(() =>
   fetch("moto")
     .then((res) => res.json())
     .then<Item[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {

@@ -11,6 +11,7 @@ const asset = createAsset(() =>
   fetch("plots")
     .then((res) => res.json())
     .then<Plot[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {

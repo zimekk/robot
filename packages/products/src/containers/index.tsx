@@ -7,6 +7,7 @@ const asset = createAsset(() =>
   fetch("products")
     .then((res) => res.json())
     .then<Product[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {

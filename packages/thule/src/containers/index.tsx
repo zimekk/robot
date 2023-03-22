@@ -12,6 +12,7 @@ const asset = createAsset(() =>
   fetch("thule")
     .then((res) => res.json())
     .then<Thule[]>(({ result }) => result)
+    .catch((error) => (console.error(error), []))
 );
 
 export default function Section() {
