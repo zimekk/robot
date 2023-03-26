@@ -408,6 +408,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
+          "g-64/c/2294-drony.html?producent=1009-dji",
+          "g-64/c/2582-gimbale.html?producent=1009-dji",
         ]
           .map((path) => {
             return `https://www.x-kom.pl/${path}`;
@@ -424,7 +426,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
+          "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens",
+          "g-19/c/2362-akcesoria-do-kuchni.html?producent=3035-girmi",
         ]
           .map((path) => {
             return `https://www.al.to/${path}`;
