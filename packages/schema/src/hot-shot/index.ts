@@ -26,7 +26,7 @@ const HotShotSchema = z.object({
       Id: z.string(),
       Name: z.string(),
     }),
-    ProductDescription: z.string(),
+    ProductDescription: z.string().nullable(),
     WebUrl: z.string(),
   }),
 });
