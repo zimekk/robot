@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
-import { EntriesSchema, Type } from "@dev/schema";
+import { EntriesSchema, ReturnSchema, Type } from "@dev/schema";
 
 import { Spinner } from "../components/Spinner";
 import { post } from "./Process";
@@ -37,7 +37,9 @@ export default function Entries() {
   }));
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState(() => match);
-  const [entries, setEntries] = useState<z.infer<typeof EntriesSchema>>([]);
+  const [entries, setEntries] = useState<
+    (z.infer<typeof EntriesSchema> & { error?: string })[]
+  >([]);
   const [selected, setSelected] = useState<string[]>(() => []);
 
   const onSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -204,10 +206,23 @@ export default function Entries() {
             () =>
               (setLoading(true), post("entries", pager))
                 .then((response) => response.json())
-                .then(
+                .then((list) =>
                   pager.data
-                    ? z.any({}).array().parseAsync
-                    : EntriesSchema.parseAsync
+                    ? z.any({}).array().parseAsync(list)
+                    : Promise.all(
+                        list.map((item: unknown, key: number) =>
+                          EntriesSchema.parseAsync(item).catch(
+                            (error) => (
+                              console.info(key),
+                              console.error(error),
+                              ReturnSchema.extend({
+                                type: z.string(),
+                                error: z.string().default(String(error)),
+                              }).parseAsync(item)
+                            )
+                          )
+                        )
+                      )
                 )
                 .then(setEntries)
                 .then(() => (setLoading(false), setSelected([]))),
@@ -348,8 +363,8 @@ export default function Entries() {
               </strong>
             )}
             <div>
-              {list.map((item) => (
-                <div key={item.id}>
+              {list.map(({ error, ...item }) => (
+                <div key={item.id} style={error ? { color: "red" } : {}}>
                   <div>
                     <label>
                       <input
@@ -389,6 +404,7 @@ export default function Entries() {
                       2
                     )}
                   </pre>
+                  {error && selected.includes(item.id) && <pre>{error}</pre>}
                 </div>
               ))}
             </div>

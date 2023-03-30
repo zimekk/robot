@@ -83,7 +83,7 @@ const JsonSchema = z.object({
   timestamp: z.number().optional(),
 });
 
-const ReturnSchema = z.object({
+export const ReturnSchema = z.object({
   id: z.string(),
   data: z.object({
     url: z.string(),
@@ -291,165 +291,163 @@ export const EntrySchema = z.preprocess(
 );
 // .transform((item) => (console.log(item), item));
 
-export const EntriesSchema = z
-  .discriminatedUnion("type", [
-    ReturnSchema.extend({
-      type: z.literal(Type.AUTOS),
-      returnvalue: z.object({
-        json: AutosSchema,
-      }),
+export const EntriesSchema = z.discriminatedUnion("type", [
+  ReturnSchema.extend({
+    type: z.literal(Type.AUTOS),
+    returnvalue: z.object({
+      json: AutosSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.AUTOS_ITEM),
-      returnvalue: z.object({
-        json: AutosItemSchema.or(
-          z.object({
-            success: z.literal(false),
-            status: z.number(),
-            message: z.literal("Error"),
-          })
-        ),
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.AUTOS_ITEM),
+    returnvalue: z.object({
+      json: AutosItemSchema.or(
+        z.object({
+          success: z.literal(false),
+          status: z.number(),
+          message: z.literal("Error"),
+        })
+      ),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.DEPOT),
-      returnvalue: PlotsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.DEPOT),
+    returnvalue: PlotsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.DIRECTIONS),
+    returnvalue: DirectionsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.FUNDS),
+    returnvalue: z.object({
+      json: FundsSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.DIRECTIONS),
-      returnvalue: DirectionsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.GAMES),
+    returnvalue: z.object({
+      json: GamesSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.FUNDS),
-      returnvalue: z.object({
-        json: FundsSchema,
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.GPASS),
+    returnvalue: GpassReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.HOTSHOT),
+    returnvalue: z.object({
+      json: HotshotSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.GAMES),
-      returnvalue: z.object({
-        json: GamesSchema,
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.LECLERC),
+    returnvalue: z.any(),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.MACAN),
+    returnvalue: MacanReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.PLOTS),
+    returnvalue: PlotsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.PROMO),
+    returnvalue: z.object({
+      json: PromoSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.GPASS),
-      returnvalue: GpassReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.PROMO_ITEM),
+    returnvalue: z.object({
+      json: PromoItemSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.HOTSHOT),
-      returnvalue: z.object({
-        json: HotshotSchema,
-      }),
+  }).extend({
+    data: ReturnSchema.shape.data.extend({
+      code: z.string().optional(),
+      desc: z.string(),
+      href: z.string(),
+      name: z.string(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.LECLERC),
-      returnvalue: z.any(),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.OTODOM),
+    returnvalue: z.object({
+      json: OtodomOfferSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.MACAN),
-      returnvalue: MacanReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.OTODOM_OFFER),
+    returnvalue: z.object({
+      json: OtodomOfferSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.PLOTS),
-      returnvalue: PlotsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.OTOMOTO),
+    returnvalue: require("@dev/moto/schema").Schema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.OTOMOTO_OFFER),
+    returnvalue: z.object({
+      // json: OtomotoOfferSchema,
+      json: z.any(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.PROMO),
-      returnvalue: z.object({
-        json: PromoSchema,
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.PRODUCTS),
+    returnvalue: z.object({
+      json: ProductsSchema.optional(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.PROMO_ITEM),
-      returnvalue: z.object({
-        json: PromoItemSchema,
-      }),
-    }).extend({
-      data: ReturnSchema.shape.data.extend({
-        code: z.string().optional(),
-        desc: z.string(),
-        href: z.string(),
-        name: z.string(),
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.PRODUCTS2),
+    returnvalue: ProductsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.RATES),
+    returnvalue: z.object({
+      json: RatesSchema,
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.OTODOM),
-      returnvalue: z.object({
-        json: OtodomOfferSchema,
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.ROOMS),
+    returnvalue: RoomsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.STATIONS),
+    returnvalue: z.object({
+      json: z.any(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.OTODOM_OFFER),
-      returnvalue: z.object({
-        json: OtodomOfferSchema,
-      }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.STATION),
+    returnvalue: z.object({
+      json: z.any(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.OTOMOTO),
-      returnvalue: require("@dev/moto/schema").Schema,
+  }).extend({
+    data: ReturnSchema.shape.data.extend({
+      x: z.number(),
+      y: z.number(),
+      station_id: z.number(),
+      network_id: z.number(),
+      network_name: z.string(),
+      map_img: z.string(),
     }),
-    ReturnSchema.extend({
-      type: z.literal(Type.OTOMOTO_OFFER),
-      returnvalue: z.object({
-        // json: OtomotoOfferSchema,
-        json: z.any(),
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.PRODUCTS),
-      returnvalue: z.object({
-        json: ProductsSchema.optional(),
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.PRODUCTS2),
-      returnvalue: ProductsReturnSchema,
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.RATES),
-      returnvalue: z.object({
-        json: RatesSchema,
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.ROOMS),
-      returnvalue: RoomsReturnSchema,
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.STATIONS),
-      returnvalue: z.object({
-        json: z.any(),
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.STATION),
-      returnvalue: z.object({
-        json: z.any(),
-      }),
-    }).extend({
-      data: ReturnSchema.shape.data.extend({
-        x: z.number(),
-        y: z.number(),
-        station_id: z.number(),
-        network_id: z.number(),
-        network_name: z.string(),
-        map_img: z.string(),
-      }),
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.ROSSM),
-      returnvalue: require("@dev/rossm/schema").Schema,
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.THULE),
-      returnvalue: require("@dev/thule/schema").Schema,
-    }),
-    ReturnSchema.extend({
-      type: z.literal(Type.UNKNOWN),
-      returnvalue: z.any({}),
-    }),
-  ])
-  .array();
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.ROSSM),
+    returnvalue: require("@dev/rossm/schema").Schema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.THULE),
+    returnvalue: require("@dev/thule/schema").Schema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.UNKNOWN),
+    returnvalue: z.any({}),
+  }),
+]);
 
 export const DelayedSchema = z
   .object({
