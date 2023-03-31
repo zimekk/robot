@@ -167,7 +167,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         },
         opts: {
           // removeOnComplete: 2,
-          repeat: { cron: "1 10,22 * * *" },
+          repeat: { cron: "15 10,22 * * *" },
         },
       },
       {
@@ -175,7 +175,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           url: "https://www.al.to/goracy_strzal",
         },
         opts: {
-          repeat: { cron: "1 9,21 * * *" },
+          repeat: { cron: "5 9,21 * * *" },
         },
       },
       {
