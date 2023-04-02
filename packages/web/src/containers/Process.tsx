@@ -461,6 +461,20 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
+        ["sale/skiing/boots/shopby/medium_16458", "outlet/shoes"]
+          .map((path) => {
+            return `https://www.salomon.com/pl-pl/shop-emea/promotions/${path}.html`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 8 * * *` },
+            },
+          }))
+      )
+      .concat(
         chunk(
           [
             "592143",

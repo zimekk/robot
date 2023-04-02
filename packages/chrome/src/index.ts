@@ -168,6 +168,13 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                       console.log({ json });
                       resolve({ url: res.url(), json });
                     }
+                  } else if (url.match("lomon.com/pl-pl/shop")) {
+                    console.log(res.url());
+                    const e = "adobeLaunchCategoryViewEvents";
+                    console.log(["page.evaluate"], e);
+                    const json = await page.evaluate(e);
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
                   } else if (url.match("thule.com/pl-pl/")) {
                     console.log(res.url());
                     const e = "_THULEDATA";
