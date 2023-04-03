@@ -41,6 +41,7 @@ COPY packages/plots-api/package.json packages/plots-api/
 COPY packages/plots/package.json packages/plots/
 COPY packages/products/package.json packages/products/
 COPY packages/rossm/package.json packages/rossm/
+COPY packages/salom/package.json packages/salom/
 COPY packages/schema/package.json packages/schema/
 COPY packages/sql/package.json packages/sql/
 COPY packages/status/package.json packages/status/
