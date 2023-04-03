@@ -160,6 +160,10 @@ export const client = () => {
                   return require("@dev/rossm/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
+                } else if (type === Type.SALOM) {
+                  return require("@dev/salom/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.THULE) {
                   return require("@dev/thule/api")
                     .update(id, data, returnvalue)

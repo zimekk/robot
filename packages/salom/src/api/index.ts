@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { diffString } from "json-diff";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
@@ -8,12 +9,12 @@ import { Schema } from "../schema";
 export const router = () =>
   Router()
     .get("/salom", (_req, res, next) =>
-      query("select * from rossm", [])
+      query("select * from salom order by created desc", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
     .get("/salom/delete", (req, res, next) =>
-      query("delete from rossm where id=$1", [req.query.id])
+      query("delete from salom where id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
         .catch(next)
     );
@@ -31,12 +32,19 @@ export const update = async (
         .reduce(
           (result, item) =>
             result.then(async () => {
-              const result = await query("select id from rossm where id=$1", [
-                item.id,
-              ]);
-              if (result.rowCount === 0) {
+              const result = await query(
+                "select * from salom where item=$1 order by created desc limit 1",
+                [item.id]
+              );
+              if (result.rowCount > 0) {
+                console.info(diffString(result.rows[0].data, item));
+              }
+              if (
+                result.rowCount === 0 ||
+                diffString(result.rows[0].data, item)
+              ) {
                 const result = await query(
-                  "insert into rossm (id, json) values ($1, $2)",
+                  "insert into salom (item, data) values ($1, $2)",
                   [item.id, item]
                 );
               }
