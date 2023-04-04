@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { diffString } from "json-diff";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
@@ -8,7 +9,7 @@ import { Schema } from "../schema";
 export const router = () =>
   Router()
     .get("/rossm", (_req, res, next) =>
-      query("select * from rossm", [])
+      query("select * from rossm order by created desc", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
@@ -24,17 +25,24 @@ export const update = async (
   { json }: any
 ) =>
   Schema.transform(
-    ({ json: products }) => (
-      console.log({ products }),
-      products.reduce(
+    ({ json: list }) => (
+      console.log({ list }),
+      list.reduce(
         (result, item) =>
           result.then(async () => {
-            const result = await query("select id from rossm where id=$1", [
-              item.id,
-            ]);
-            if (result.rowCount === 0) {
+            const result = await query(
+              "select * from rossm where item=$1 order by created desc limit 1",
+              [item.id]
+            );
+            if (result.rowCount > 0) {
+              console.info(diffString(result.rows[0].data, item));
+            }
+            if (
+              result.rowCount === 0 ||
+              diffString(result.rows[0].data, item)
+            ) {
               const result = await query(
-                "insert into rossm (id, json) values ($1, $2)",
+                "insert into rossm (item, data) values ($1, $2)",
                 [item.id, item]
               );
             }

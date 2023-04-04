@@ -21,6 +21,7 @@
     "coverage": "type-coverage && tsc --noEmit"
   },
   "dependencies": {
+    "json-diff": "^1.0.3",
     "use-asset": "^1.0.4"
   },
   "devDependencies": {

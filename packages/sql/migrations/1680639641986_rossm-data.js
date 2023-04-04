@@ -1,12 +1,11 @@
-/* eslint-disable camelcase */
-
 exports.shorthands = undefined;
 
-// https://github.com/salsita/node-pg-migrate#quick-example
 exports.up = (pgm) => {
+  pgm.dropTable("rossm");
   pgm.createTable("rossm", {
     id: "id",
-    json: { type: "jsonb", notNull: true },
+    item: { type: "varchar(128)", notNull: true },
+    data: { type: "jsonb", notNull: true },
     created: {
       type: "timestamp",
       notNull: true,
@@ -15,6 +14,4 @@ exports.up = (pgm) => {
   });
 };
 
-exports.down = (pgm) => {
-  pgm.dropTable("rossm");
-};
+exports.down = (pgm) => {};

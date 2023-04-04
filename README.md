@@ -42,6 +42,10 @@ docker-compose exec app sh
 ```
 
 ```sh
+docker-compose exec app yarn workspace @dev/sql run migrate:up
+```
+
+```sh
 podman-compose up redis -d
 ```
 
@@ -67,4 +71,8 @@ docker-compose -f docker-compose.yml up --build -d && docker system prune -f
 ```sh
 docker-compose logs -f app
 docker-compose exec app sh
+```
+
+```sh
+docker-compose exec sql psql robot -U postgres
 ```
