@@ -1,11 +1,12 @@
 import { Router } from "express";
+import { diffString } from "json-diff";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
 export const router = () =>
   Router()
     .get("/products", (_req, res, next) =>
-      query("select * from products", [])
+      query("select * from products order by created desc", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
@@ -16,24 +17,38 @@ export const router = () =>
     );
 
 export const update = async (
-  id: string | number,
-  data: { url: string },
+  _id: string | number,
+  _data: { url: string },
   { json }: any
 ) =>
-  Schema.parseAsync({ json }).then(({ json }) =>
-    Object.values(json.app.products).reduce(
-      (result, item) =>
-        result.then(async () => {
-          const result = await query("select id from products where id=$1", [
-            item.id,
-          ]);
-          if (result.rowCount === 0) {
+  Schema.transform(
+    ({
+      json: {
+        app: { products },
+      },
+    }) => (
+      console.log({ products }),
+      Object.values(products).reduce(
+        (result, item) =>
+          result.then(async () => {
             const result = await query(
-              "insert into products (id, json) values ($1, $2)",
-              [item.id, item]
+              "select * from products where item=$1 order by created desc limit 1",
+              [item.id]
             );
-          }
-        }),
-      Promise.resolve()
+            if (result.rowCount > 0) {
+              console.info(diffString(result.rows[0].data, item));
+            }
+            if (
+              result.rowCount === 0 ||
+              diffString(result.rows[0].data, item)
+            ) {
+              const result = await query(
+                "insert into products (item, data) values ($1, $2)",
+                [item.id, item]
+              );
+            }
+          }),
+        Promise.resolve()
+      )
     )
-  );
+  ).parseAsync({ json });
