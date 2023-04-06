@@ -119,6 +119,10 @@ export const client = () => {
                       .slice(0, 150)
                       .concat(next ? [next] : [])
                   );
+                } else if (type === Type.AUTOS_ITEM) {
+                  return require("@dev/vehicles/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.OTODOM) {
                   const { items = [] } =
                     returnvalue.json.props?.pageProps.data?.searchAds || {};
