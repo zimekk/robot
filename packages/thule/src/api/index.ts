@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { diffString } from "json-diff";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
@@ -8,7 +9,7 @@ import { Schema } from "../schema";
 export const router = () =>
   Router()
     .get("/thule", (_req, res, next) =>
-      query("select * from thule", [])
+      query("select * from thule order by created desc", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
@@ -26,16 +27,24 @@ export const update = async (
   Schema.transform(
     ({ json: products }) => (
       console.log({ products }),
-      products.reduce(
+      Object.values(products).reduce(
         (result, item) =>
           result.then(async () => {
-            const result = await query("select id from thule where id=$1", [
-              item.ProductId,
-            ]);
-            if (result.rowCount === 0) {
+            const { ProductId: id } = item;
+            const result = await query(
+              "select * from products where item=$1 order by created desc limit 1",
+              [id]
+            );
+            if (result.rowCount > 0) {
+              console.info(diffString(result.rows[0].data, item));
+            }
+            if (
+              result.rowCount === 0 ||
+              diffString(result.rows[0].data, item)
+            ) {
               const result = await query(
-                "insert into thule (id, data) values ($1, $2)",
-                [item.ProductId, item]
+                "insert into products (item, data) values ($1, $2)",
+                [id, item]
               );
             }
           }),
