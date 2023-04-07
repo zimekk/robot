@@ -236,7 +236,15 @@ export const AutosItemSchema = ItemSchema.extend({
   // comfortLeaseProduct: z.string().optional(),
 });
 
-export type Vehicle = z.infer<typeof AutosItemSchema>;
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof AutosItemSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
 
 export const Schema = z.object({
   json: AutosItemSchema,
