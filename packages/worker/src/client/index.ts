@@ -123,6 +123,10 @@ export const client = () => {
                   return require("@dev/vehicles/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
+                } else if (type === Type.HOTSHOT) {
+                  return require("@dev/shots/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.OTODOM) {
                   const { items = [] } =
                     returnvalue.json.props?.pageProps.data?.searchAds || {};

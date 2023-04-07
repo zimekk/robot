@@ -26,6 +26,7 @@
     "@dev/rossm": "^1.0.0",
     "@dev/salom": "^1.0.0",
     "@dev/schema": "^1.0.0",
+    "@dev/shots": "^1.0.0",
     "@dev/status": "^1.0.0",
     "@dev/thule": "^1.0.0",
     "@dev/vehicles": "^1.0.0",
