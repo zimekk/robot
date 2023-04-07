@@ -1,17 +1,12 @@
 import React, { useCallback } from "react";
 import { createAsset } from "use-asset";
-import { ProductType } from "../schema";
-
-interface Thule {
-  id: string;
-  data: ProductType;
-}
+import { type Item } from "../schema";
 
 // https://github.com/pmndrs/use-asset
 const asset = createAsset(() =>
   fetch("thule")
     .then((res) => res.json())
-    .then<Thule[]>(({ result }) => result)
+    .then<Item[]>(({ result }) => result)
     .catch((error) => (console.error(error), []))
 );
 

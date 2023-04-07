@@ -3,18 +3,15 @@ import { diffString } from "json-diff";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
-// yarn workspace @dev/sql run migrate create create thule
-// yarn workspace @dev/sql run migrate:up
-
 export const router = () =>
   Router()
     .get("/thule", (_req, res, next) =>
-      query("select * from thule order by created desc", [])
+      query("SELECT * FROM thule ORDER BY created DESC", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
     .get("/thule/delete", (req, res, next) =>
-      query("delete from thule where id=$1", [req.query.id])
+      query("DELETE FROM thule WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
         .catch(next)
     );
@@ -24,31 +21,38 @@ export const update = async (
   _data: { url: string },
   { json }: any
 ) =>
-  Schema.transform(
-    ({ json: products }) => (
-      console.log({ products }),
-      Object.values(products).reduce(
-        (result, item) =>
-          result.then(async () => {
-            const { ProductId: id } = item;
-            const result = await query(
-              "select * from products where item=$1 order by created desc limit 1",
-              [id]
-            );
-            if (result.rowCount > 0) {
-              console.info(diffString(result.rows[0].data, item));
-            }
-            if (
-              result.rowCount === 0 ||
-              diffString(result.rows[0].data, item)
-            ) {
-              const result = await query(
-                "insert into products (item, data) values ($1, $2)",
-                [id, item]
+  Schema.transform(({ json: products }) =>
+    Object.values(products).reduce(
+      (result, item) =>
+        result.then(async () => {
+          const { ProductId: id } = item;
+          console.log({ id, item });
+          const result = await query(
+            "SELECT * FROM thule WHERE item=$1 ORDER BY created DESC LIMIT 1",
+            [id]
+          );
+          if (result.rowCount > 0) {
+            const { id, data } = result.rows[0];
+            const diff = diffString(data, item);
+            console.info({ id, diff });
+            if (!diff) {
+              await query(
+                "UPDATE thule SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                [id]
               );
+              return;
             }
-          }),
-        Promise.resolve()
-      )
+            // await query(
+            //   "UPDATE thule SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+            //   [item, id]
+            // );
+            // return;
+          }
+          await query("INSERT INTO thule (item, data) VALUES ($1, $2)", [
+            id,
+            item,
+          ]);
+        }),
+      Promise.resolve()
     )
   ).parseAsync({ json });
