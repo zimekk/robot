@@ -177,7 +177,7 @@ export default function Entries() {
               []
             )}
           >
-            {[...Array(25)]
+            {[...Array(51)]
               .map((_, value) => value * pager.limit)
               .filter((value) => value < 10000)
               .map((value) => (
