@@ -1,5 +1,10 @@
 import { z } from "zod";
-import { PhotoSchema } from "@dev/products/schema";
+
+export const PhotoSchema = z.object({
+  Url: z.string(),
+  ThumbnailUrl: z.string(),
+  UrlTemplate: z.string().nullable(),
+});
 
 export const HotShotSchema = z.object({
   Id: z.string(),
@@ -31,15 +36,15 @@ export const HotShotSchema = z.object({
   }),
 });
 
-export type Item = {
+export interface Item {
   id: number;
   item: string;
   data: z.infer<typeof HotShotSchema>;
-  created: string | null;
+  created: string;
   checked: string | null;
   updated: string | null;
   removed: string | null;
-};
+}
 
 export const Schema = z.object({
   json: HotShotSchema,
