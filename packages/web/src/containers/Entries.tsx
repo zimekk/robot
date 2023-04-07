@@ -19,6 +19,7 @@ const GROUP_BY = {
   _date: "date",
   _url: "url",
 };
+const PAGES = 50;
 
 export default function Entries() {
   const [pager, setPager] = useState(() => ({
@@ -177,7 +178,7 @@ export default function Entries() {
               []
             )}
           >
-            {[...Array(51)]
+            {[...Array(PAGES + 1)]
               .map((_, value) => value * pager.limit)
               .filter((value) => value < 10000)
               .map((value) => (
@@ -187,7 +188,7 @@ export default function Entries() {
               ))}
           </select>
           <button
-            disabled={pager.start === pager.limit * 24}
+            disabled={pager.start === pager.limit * PAGES}
             onClick={useCallback(
               () =>
                 setPager((pager) => ({
