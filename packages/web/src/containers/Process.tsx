@@ -461,9 +461,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
-        ["sale/skiing/boots/shopby/medium_16458", "outlet/shoes"]
+        [
+          "kids/shoes/hiking-shoes",
+          // "promotions/outlet/shoes",
+          "promotions/sale/skiing/boots/shopby/medium_16458",
+        ]
           .map((path) => {
-            return `https://www.salomon.com/pl-pl/shop-emea/promotions/${path}.html`;
+            return `https://www.salomon.com/pl-pl/shop-emea/${path}.html`;
           })
           .map((url, i) => ({
             data: {

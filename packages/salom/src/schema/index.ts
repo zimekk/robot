@@ -13,7 +13,15 @@ const ProductSchema = z.object({
   }),
 });
 
-export type ProductType = z.infer<typeof ProductSchema>;
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof ProductSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
 
 export const Schema = z.object({
   json: z
