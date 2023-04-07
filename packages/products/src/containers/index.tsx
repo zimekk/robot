@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { createAsset } from "use-asset";
-import { type Product } from "../schema";
+import { type Item } from "../schema";
 
 // https://github.com/pmndrs/suspend-react
 const asset = createAsset(() =>
   fetch("products")
     .then((res) => res.json())
-    .then<Product[]>(({ result }) => result)
+    .then<Item[]>(({ result }) => result)
     .catch((error) => (console.error(error), []))
 );
 

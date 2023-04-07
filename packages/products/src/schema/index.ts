@@ -54,7 +54,15 @@ export const ProductSchema = z
   })
   .strict();
 
-export type Product = z.infer<typeof ProductSchema>;
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof ProductSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
 
 const JsonSchema = z.object({
   app: z.object({

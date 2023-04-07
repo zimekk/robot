@@ -6,12 +6,12 @@ import { Schema } from "../schema";
 export const router = () =>
   Router()
     .get("/products", (_req, res, next) =>
-      query("select * from products order by created desc", [])
+      query("SELECT * FROM products ORDER BY created DESC", [])
         .then((data) => (console.log(data), res.json({ result: data.rows })))
         .catch(next)
     )
     .get("/products/delete", (req, res, next) =>
-      query("delete from products where id=$1", [req.query.id])
+      query("DELETE FROM products WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
         .catch(next)
     );
@@ -26,29 +26,38 @@ export const update = async (
       json: {
         app: { products },
       },
-    }) => (
-      console.log({ products }),
+    }) =>
       Object.values(products).reduce(
         (result, item) =>
           result.then(async () => {
+            const { id } = item;
+            console.log({ id, item });
             const result = await query(
-              "select * from products where item=$1 order by created desc limit 1",
-              [item.id]
+              "SELECT * FROM products WHERE item=$1 ORDER BY created DESC LIMIT 1",
+              [id]
             );
             if (result.rowCount > 0) {
-              console.info(diffString(result.rows[0].data, item));
+              const { id, data } = result.rows[0];
+              const diff = diffString(data, item);
+              console.info({ id, diff });
+              if (!diff) {
+                await query(
+                  "UPDATE products SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                  [id]
+                );
+                return;
+              }
+              // await query(
+              //   "UPDATE products SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+              //   [item, id]
+              // );
+              // return;
             }
-            if (
-              result.rowCount === 0 ||
-              diffString(result.rows[0].data, item)
-            ) {
-              const result = await query(
-                "insert into products (item, data) values ($1, $2)",
-                [item.id, item]
-              );
-            }
+            await query("INSERT INTO products (item, data) VALUES ($1, $2)", [
+              id,
+              item,
+            ]);
           }),
         Promise.resolve()
       )
-    )
   ).parseAsync({ json });
