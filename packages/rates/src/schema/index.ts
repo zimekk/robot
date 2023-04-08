@@ -10,8 +10,22 @@ export const RateSchema = z.object({
   time: z.string(),
 });
 
-export const Schema = z.object({
+export const RatesSchema = z.object({
   date: z.string(),
   rates: z.record(RateSchema.array()),
   range: z.object({ minRateDate: z.string(), maxRateDate: z.string() }),
+});
+
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof RatesSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
+
+export const Schema = z.object({
+  json: RatesSchema,
 });

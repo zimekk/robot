@@ -35,6 +35,7 @@
     "@dev/plots": "^1.0.0",
     "@dev/products": "^1.0.0",
     "@dev/promo": "^1.0.0",
+    "@dev/rates": "^1.0.0",
     "@dev/rossm": "^1.0.0",
     "@dev/salom": "^1.0.0",
     "@dev/schema": "^1.0.0",

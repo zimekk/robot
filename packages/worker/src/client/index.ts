@@ -190,7 +190,9 @@ export const client = () => {
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.RATES) {
-                  return Promise.resolve(returnvalue.json)
+                  return require("@dev/rates/api")
+                    .update(id, data, returnvalue)
+                    .then(() => returnvalue.json)
                     .then(({ date }: { date: string }) =>
                       format(
                         sub(new Date(date), {
@@ -199,7 +201,7 @@ export const client = () => {
                         "yyyy-MM-dd"
                       )
                     )
-                    .then((date) => {
+                    .then((date: string) => {
                       if (
                         date <
                         format(

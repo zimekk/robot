@@ -11,6 +11,7 @@ const PAGES = Object.freeze({
   plots: lazy(() => import("@dev/plots")),
   products: lazy(() => import("@dev/products")),
   promo: lazy(() => import("@dev/promo")),
+  rates: lazy(() => import("@dev/rates")),
   rossm: lazy(() => import("@dev/rossm")),
   salom: lazy(() => import("@dev/salom")),
   shots: lazy(() => import("@dev/shots")),
@@ -41,7 +42,7 @@ export default hot(function App() {
       <h1>Robot [{page}]</h1>
       <div>
         {Object.keys(PAGES).map((page) => (
-          <span key={page} style={{ padding: "1em" }}>
+          <span key={page} style={{ padding: ".25em" }}>
             <a href={`#${page}`}>{page}</a>
           </span>
         ))}

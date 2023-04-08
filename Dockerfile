@@ -40,6 +40,7 @@ COPY packages/notify/package.json packages/notify/
 COPY packages/plots/package.json packages/plots/
 COPY packages/products/package.json packages/products/
 COPY packages/promo/package.json packages/promo/
+COPY packages/rates/package.json packages/rates/
 COPY packages/rossm/package.json packages/rossm/
 COPY packages/salom/package.json packages/salom/
 COPY packages/schema/package.json packages/schema/

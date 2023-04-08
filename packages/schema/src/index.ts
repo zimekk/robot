@@ -9,7 +9,6 @@ import LeclercTransformSchema from "./leclerc";
 import MacanReturnSchema from "./macan";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
-import { Schema as RatesSchema } from "./rates";
 import { Schema as RoomsReturnSchema } from "./rooms";
 // import { Schema as StationsSchema } from "./stations";
 // import { Schema as StationSchema } from "./stations/item";
@@ -406,9 +405,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.RATES),
-    returnvalue: z.object({
-      json: RatesSchema,
-    }),
+    returnvalue: require("@dev/rates/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.ROOMS),
