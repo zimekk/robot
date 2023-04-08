@@ -21,13 +21,15 @@ const GROUP_BY = {
 };
 const PAGES = 50;
 
+const PAGER = {
+  start: 0,
+  limit: 100,
+  data: false,
+  returnvalue: true,
+};
+
 export default function Entries() {
-  const [pager, setPager] = useState(() => ({
-    start: 0,
-    limit: 100,
-    data: false,
-    returnvalue: true,
-  }));
+  const [pager, setPager] = useState(() => PAGER);
   const [match, setMatch] = useState(() => ({
     groupBy: Object.keys(GROUP_BY)[0],
     type: "",
@@ -127,6 +129,33 @@ export default function Entries() {
     [grouped]
   );
 
+  const fetchEntries = useCallback(
+    (pager: typeof PAGER) =>
+      (setLoading(true), post("entries", pager))
+        .then((response) => response.json())
+        .then((list) =>
+          pager.data
+            ? z.any({}).array().parseAsync(list)
+            : Promise.all(
+                list.map((item: unknown, key: number) =>
+                  EntriesSchema.parseAsync(item).catch(
+                    (error) => (
+                      console.info(key),
+                      console.error(error),
+                      ReturnSchema.extend({
+                        type: z.string(),
+                        error: z.string().default(String(error)),
+                      }).parseAsync(item)
+                    )
+                  )
+                )
+              )
+        )
+        .then(setEntries)
+        .then(() => (setLoading(false), setSelected([]))),
+    []
+  );
+
   return (
     <fieldset>
       <legend>entries</legend>
@@ -201,35 +230,7 @@ export default function Entries() {
             &rsaquo;
           </button>
         </label>
-        <button
-          disabled={loading}
-          onClick={useCallback(
-            () =>
-              (setLoading(true), post("entries", pager))
-                .then((response) => response.json())
-                .then((list) =>
-                  pager.data
-                    ? z.any({}).array().parseAsync(list)
-                    : Promise.all(
-                        list.map((item: unknown, key: number) =>
-                          EntriesSchema.parseAsync(item).catch(
-                            (error) => (
-                              console.info(key),
-                              console.error(error),
-                              ReturnSchema.extend({
-                                type: z.string(),
-                                error: z.string().default(String(error)),
-                              }).parseAsync(item)
-                            )
-                          )
-                        )
-                      )
-                )
-                .then(setEntries)
-                .then(() => (setLoading(false), setSelected([]))),
-            [pager]
-          )}
-        >
+        <button disabled={loading} onClick={() => fetchEntries(pager)}>
           entries
         </button>
         <label>
@@ -262,6 +263,34 @@ export default function Entries() {
           />
           <span>returnvalue</span>
         </label>
+        <button
+          disabled={loading}
+          onClick={() =>
+            setPager((pager) =>
+              ((pager) => (fetchEntries(pager), pager))({
+                ...pager,
+                start: 0,
+                limit: 5,
+              })
+            )
+          }
+        >
+          top 5
+        </button>
+        <button
+          disabled={loading}
+          onClick={() =>
+            setPager((pager) =>
+              ((pager) => (fetchEntries(pager), pager))({
+                ...pager,
+                start: 5000,
+                limit: 100,
+              })
+            )
+          }
+        >
+          5000+
+        </button>
         {loading && <Spinner />}
       </div>
       <div>

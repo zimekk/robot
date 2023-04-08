@@ -12,17 +12,22 @@ import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { DelayedSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
+import { Spinner } from "../components/Spinner";
 import Process, { post } from "./Process";
 
 type DelayedType = z.infer<typeof DelayedSchema>;
 
 function Delayed({
+  loading,
+  setLoading,
   delayed,
   setDelayed,
   getDelayed,
   selected,
   setSelected,
 }: {
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
   delayed: DelayedType;
   setDelayed: Dispatch<SetStateAction<DelayedType>>;
   getDelayed: () => void;
@@ -118,23 +123,26 @@ function Delayed({
           />
         </label>
         <button
-          disabled={selected.length === 0}
+          disabled={selected.length === 0 || loading}
           onClick={useCallback(
             () =>
-              post("entries/delete", { selected })
+              (setLoading(true), post("entries/delete", { selected }))
                 .then((response) => response.json())
                 .then(() =>
                   setDelayed((delayed) =>
                     delayed.filter(({ id }) => !selected.includes(id))
                   )
                 )
-                .then(() => setSelected([])),
+                .then(() => (setLoading(false), setSelected([]))),
             [selected]
           )}
         >
           delete
         </button>
-        <button onClick={useCallback(getDelayed, [])}>refresh</button>
+        <button disabled={loading} onClick={useCallback(getDelayed, [])}>
+          refresh
+        </button>
+        {loading && <Spinner />}
       </div>
       {list.map((item) => (
         <div key={item.id}>
@@ -175,24 +183,26 @@ function Delayed({
 }
 
 export default function Section() {
+  const [selected, setSelected] = useState<string[]>(() => []);
+  const [loading, setLoading] = useState(false);
   const [delayed, setDelayed] = useState<z.infer<typeof DelayedSchema>>(
     () => []
   );
-  const [selected, setSelected] = useState<string[]>(() => []);
-
   const getDelayed = useCallback(
     () =>
-      post("delayed", {})
+      (setLoading(true), post("delayed", {}))
         .then((response) => response.json())
         .then(DelayedSchema.parseAsync)
         .then(setDelayed)
-        .then(() => setSelected([])),
+        .then(() => (setLoading(false), setSelected([]))),
     []
   );
 
   return (
     <>
       <Delayed
+        loading={loading}
+        setLoading={setLoading}
         delayed={delayed}
         setDelayed={setDelayed}
         getDelayed={getDelayed}
