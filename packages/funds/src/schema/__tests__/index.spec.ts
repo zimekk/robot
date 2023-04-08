@@ -1,7 +1,7 @@
-import { Schema } from "..";
+import { FundsSchema } from "..";
 
 describe("funds", () => {
-  it("Schema", () =>
+  it("schema", () =>
     [
       {
         json: require("./values"),
@@ -25,6 +25,6 @@ describe("funds", () => {
         },
       },
     ].forEach(({ json, meta }) =>
-      expect(Schema.parse(json).meta).toEqual(meta)
+      expect(FundsSchema.parse(json).meta).toEqual(meta)
     ));
 });

@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as DirectionsReturnSchema } from "./directions";
-import { Schema as FundsSchema } from "./funds";
 import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
@@ -321,9 +320,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.FUNDS),
-    returnvalue: z.object({
-      json: FundsSchema,
-    }),
+    returnvalue: require("@dev/funds/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.GAMES),

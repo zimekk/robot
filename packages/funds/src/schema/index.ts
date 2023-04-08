@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const Schema = z.object({
+export const FundsSchema = z.object({
   meta: z.object({
     currency: z.string(),
     division: z.string(),
@@ -27,4 +27,18 @@ export const Schema = z.object({
       value: z.number(),
     })
   ),
+});
+
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof FundsSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
+
+export const Schema = z.object({
+  json: FundsSchema,
 });
