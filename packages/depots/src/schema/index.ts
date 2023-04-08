@@ -1,1 +1,1 @@
-export { Schema } from "@dev/plots-api/schema";
+export { Schema } from "@dev/plots/schema";

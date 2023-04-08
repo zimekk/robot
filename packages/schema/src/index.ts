@@ -7,7 +7,6 @@ import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
 import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
 import MacanReturnSchema from "./macan";
-import { Schema as PlotsReturnSchema } from "@dev/plots-api/schema";
 import { Schema as ProductsReturnSchema } from "@dev/products/schema";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
@@ -317,7 +316,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.DEPOT),
-    returnvalue: PlotsReturnSchema,
+    returnvalue: require("@dev/depots/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.DIRECTIONS),
@@ -355,7 +354,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.PLOTS),
-    returnvalue: PlotsReturnSchema,
+    returnvalue: require("@dev/plots/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.PROMO),

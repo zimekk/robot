@@ -1,7 +1,7 @@
 import { Router } from "express";
 // import { notify } from "@dev/notify";
 import { query } from "@dev/sql";
-import { Schema } from "./schema";
+import { Schema } from "../schema";
 
 export const router = () =>
   Router()

@@ -157,7 +157,7 @@ export const client = () => {
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.PLOTS) {
-                  return require("@dev/plots-api")
+                  return require("@dev/plots/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.PRODUCTS2) {
