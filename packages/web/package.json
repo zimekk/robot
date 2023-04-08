@@ -39,7 +39,8 @@
     "react-dom": "^18.2.0",
     "rxjs": "^7.8.0",
     "styled-components": "^5.3.9",
-    "use-asset": "^1.0.4"
+    "use-asset": "^1.0.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",

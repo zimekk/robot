@@ -3,7 +3,7 @@ import { createAsset } from "use-asset";
 
 interface Plot {
   id: number;
-  data: any;
+  data: unknown;
 }
 
 // https://github.com/pmndrs/use-asset

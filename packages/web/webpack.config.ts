@@ -5,9 +5,11 @@ import {
   type ExpressRequestHandler,
 } from "webpack-dev-server";
 import { type CallableOption } from "webpack-cli";
-import CopyWebpackPlugin from "copy-webpack-plugin";
+// import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "dotenv";
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 env.config({ path: resolve(__dirname, "../../.env") });
 

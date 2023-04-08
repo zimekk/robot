@@ -2,7 +2,7 @@ import React from "react";
 import prettyMilliseconds from "pretty-ms";
 import prettyBytes from "pretty-bytes";
 import { createAsset } from "use-asset";
-import { StatusType } from "../schema";
+import type { StatusType } from "../schema";
 
 // https://github.com/pmndrs/use-asset
 const asset = createAsset(() =>

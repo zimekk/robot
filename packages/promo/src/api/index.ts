@@ -19,7 +19,7 @@ export const router = () =>
 export const update = async (
   _id: string | number,
   _data: { url: string },
-  { json }: any
+  { json }: { json: unknown }
 ) =>
   Schema.transform(({ json: { data } }) =>
     [data].reduce(

@@ -17,6 +17,8 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Check type coverage
         run: yarn coverage
+      - name: Run linter
+        run: yarn lint
       - name: Run tests
         run: yarn test
       - name: Build application

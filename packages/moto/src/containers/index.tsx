@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { createAsset } from "use-asset";
-import { DataType } from "../schema";
+import type { DataType } from "../schema";
 
 interface Item {
   id: number;

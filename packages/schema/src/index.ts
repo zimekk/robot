@@ -147,7 +147,7 @@ export const EntrySchema = z.preprocess(
         [Type.THULE]: new RegExp("thule.com/pl-pl/"),
         [Type.UNKNOWN]: new RegExp(""),
       })
-        .find(([_, regExp]) => regExp.test(item.data.url))
+        .find(([, regExp]) => regExp.test(item.data.url))
         ?.shift(),
       ...item,
     })).parse,

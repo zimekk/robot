@@ -24,7 +24,7 @@ export default ({ html }: { html: string }) => ({
       }))
       .map((item) => ({
         ...item,
-        ...(([_, code]) => (code ? { code } : {}))(
+        ...(([, code]) => (code ? { code } : {}))(
           item.desc.match(/Twój kod rabatowy: (.+)/) || []
         ),
       }))

@@ -21,9 +21,9 @@ export const router = () =>
     );
 
 export const update = async (
-  id: string | number,
-  data: { url: string },
-  { json }: any
+  _id: string | number,
+  _data: { url: string },
+  { json }: { json: unknown }
 ) =>
   Schema.parseAsync({ json }).then(({ json }) =>
     json.listing.listing.ads.reduce(
@@ -36,10 +36,10 @@ export const update = async (
             item.id,
           ]);
           if (result.rowCount === 0) {
-            const result = await query(
-              "insert into depots (id, json) values ($1, $2)",
-              [item.id, item]
-            );
+            await query("insert into depots (id, json) values ($1, $2)", [
+              item.id,
+              item,
+            ]);
             // return notify(id, data);
           }
         }),

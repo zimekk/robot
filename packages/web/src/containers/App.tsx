@@ -20,7 +20,7 @@ const PAGES = Object.freeze({
 });
 
 const getPage = (location: { hash: string }) => {
-  const [_, hash] = decodeURI(location.hash).match(/^#([-\w]+)/) || [];
+  const [, hash] = decodeURI(location.hash).match(/^#([-\w]+)/) || [];
   return ((keys) => (keys.includes(hash) ? hash : keys[0]))(
     Object.keys(PAGES)
   ) as keyof typeof PAGES;
@@ -31,9 +31,7 @@ export default hot(function App() {
 
   useEffect(() =>
     // location is an object like window.location
-    history.listen(({ location, action, ...rest }) =>
-      setPage(getPage(location))
-    )
+    history.listen(({ location }) => setPage(getPage(location)))
   );
 
   const Page = PAGES[page];

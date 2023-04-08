@@ -743,7 +743,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             () =>
               list
                 .filter((item) => selected.includes(item.id))
-                .reduce<Promise<any>>(
+                .reduce<Promise<unknown>>(
                   (promise, item) => promise.then(() => post("process", item)),
                   Promise.resolve()
                 )

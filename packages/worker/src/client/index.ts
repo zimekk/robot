@@ -221,7 +221,7 @@ export const client = () => {
                   const { url } = data;
                   return Promise.resolve(
                     returnvalue.json
-                      .map((data: any) => ({
+                      .map((data: { station_id: string }) => ({
                         ...data,
                         url: `${
                           new URL(url).origin
@@ -230,7 +230,7 @@ export const client = () => {
                         }`,
                       }))
                       .filter(
-                        ({ x: lat, y: lng }: any) =>
+                        ({ x: lat, y: lng }: { x: number; y: number }) =>
                           [
                             `${52.17}:${21.06}:${10000}`,
                             `${52.46}:${21.29}:${10000}`,
