@@ -134,7 +134,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
         },
         opts: {
-          repeat: { cron: "5 12 * * *" },
+          repeat: { cron: "5 12 1 * *" },
         },
       },
       {

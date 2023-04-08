@@ -183,8 +183,12 @@ export const client = () => {
                       .filter(
                         ({ url }) => url && new RegExp("//promocje.").test(url)
                       )
-                      .filter(limiter(jobs, days(7)))
+                      .filter(limiter(jobs, days(3)))
                   );
+                } else if (type === Type.PROMO_ITEM) {
+                  return require("@dev/promo/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.RATES) {
                   return Promise.resolve(returnvalue.json)
                     .then(({ date }: { date: string }) =>

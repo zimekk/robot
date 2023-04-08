@@ -42,7 +42,7 @@ docker-compose exec app sh
 ```
 
 ```sh
-docker-compose exec app yarn workspace @dev/sql run migrate:up
+docker-compose exec sql psql robot -U postgres
 ```
 
 ```sh
@@ -66,13 +66,10 @@ docker-compose -f docker-compose.yml build --no-cache && docker-compose -f docke
 ```sh
 git fetch && git reset --hard origin
 docker-compose -f docker-compose.yml up --build -d && docker system prune -f
+docker-compose exec app yarn workspace @dev/sql run migrate:up
 ```
 
 ```sh
 docker-compose logs -f app
 docker-compose exec app sh
-```
-
-```sh
-docker-compose exec sql psql robot -U postgres
 ```
