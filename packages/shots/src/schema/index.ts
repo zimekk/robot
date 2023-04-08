@@ -46,6 +46,11 @@ export interface Item {
   removed: string | null;
 }
 
+// const HotShotErrorSchema = z.object({
+//   Message: z.string(),
+// });
+
 export const Schema = z.object({
+  // json: z.union([HotShotErrorSchema, HotShotSchema]),
   json: HotShotSchema,
 });

@@ -3,7 +3,6 @@ import { Schema as AutosSchema, AutosItemSchema } from "./autos";
 import { Schema as DirectionsReturnSchema } from "./directions";
 import { Schema as GamesSchema } from "./games";
 import GpassTransformSchema, { Schema as GpassReturnSchema } from "./gpass";
-import { Schema as HotshotSchema } from "./hot-shot";
 import LeclercTransformSchema from "./leclerc";
 import MacanReturnSchema from "./macan";
 import ProductsSchema from "./products";
@@ -334,9 +333,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.HOTSHOT),
-    returnvalue: z.object({
-      json: HotshotSchema,
-    }),
+    returnvalue: require("@dev/shots/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.LECLERC),

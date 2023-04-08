@@ -1,7 +1,7 @@
-import { Schema } from "..";
+import { HotShotSchema } from "..";
 
-describe("hot-shot", () => {
-  it("Schema", () =>
+describe("shots", () => {
+  it("schema", () =>
     [
       {
         json: {
@@ -2279,6 +2279,6 @@ describe("hot-shot", () => {
         },
       },
     ].forEach(({ json, result }) =>
-      expect(Schema.parse(json)).toEqual(result)
+      expect(HotShotSchema.parse(json)).toEqual(result)
     ));
 });
