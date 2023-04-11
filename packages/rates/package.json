@@ -18,7 +18,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "coverage": "type-coverage && tsc --noEmit"
+    "coverage": "type-coverage && tsc --noEmit",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@dev/sql": "^1.0.0",

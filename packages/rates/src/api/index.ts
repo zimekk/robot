@@ -18,6 +18,9 @@ export const router = () =>
 
 const DiffSchema = Schema.shape.json.omit({ range: true });
 
+export const diffItem = (data: unknown, item: unknown) =>
+  diffString(DiffSchema.parse(data), DiffSchema.parse(item));
+
 export const update = async (
   _id: string | number,
   _data: { url: string },
@@ -35,10 +38,7 @@ export const update = async (
           );
           if (result.rowCount > 0) {
             const { id, data } = result.rows[0];
-            const diff = diffString(
-              DiffSchema.parse(data),
-              DiffSchema.parse(item)
-            );
+            const diff = diffItem(data, item);
             console.info({ id, diff });
             if (!diff) {
               await query(
