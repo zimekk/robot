@@ -223,6 +223,10 @@ export const client = () => {
                         limiter(jobs, days(7))
                       );
                     });
+                } else if (type === Type.RYNEK) {
+                  return require("@dev/rynek/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.STATIONS) {
                   const { url } = data;
                   return Promise.resolve(

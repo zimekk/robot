@@ -43,6 +43,7 @@ COPY packages/products/package.json packages/products/
 COPY packages/promo/package.json packages/promo/
 COPY packages/rates/package.json packages/rates/
 COPY packages/rossm/package.json packages/rossm/
+COPY packages/rynek/package.json packages/rynek/
 COPY packages/salom/package.json packages/salom/
 COPY packages/schema/package.json packages/schema/
 COPY packages/shots/package.json packages/shots/

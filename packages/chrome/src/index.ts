@@ -61,13 +61,16 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
             // });
             if (["font", "image", "stylesheet"].includes(req.resourceType())) {
               req.abort();
-            } else if (["script"].includes(req.resourceType())) {
-              if (req.url().match("pl/app/static/js/")) {
-                // console.log(req.url());
-                req.abort();
-              } else {
-                req.continue();
-              }
+            } else if (
+              ["document"].includes(req.resourceType()) &&
+              req.url() !== url
+            ) {
+              req.abort();
+            } else if (
+              ["script"].includes(req.resourceType()) &&
+              req.url().match("pl/app/static/js/")
+            ) {
+              req.abort();
             } else {
               req.continue();
             }
@@ -122,6 +125,16 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     resolve({ url: res.url(), json });
                   } else if (url.match("(al.to|kom.pl)/.+/c/")) {
                     console.log(res.url());
+                    const e = "__INITIAL_STATE__";
+                    console.log(["page.evaluate"], e);
+                    const json = await page.evaluate(e);
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
+                  } else if (url.match("pierwotny.pl/s/")) {
+                    console.log(res.url());
+                    await page.evaluate(
+                      `eval(document.querySelector('#root + script').textContent)`
+                    );
                     const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);
                     const json = await page.evaluate(e);

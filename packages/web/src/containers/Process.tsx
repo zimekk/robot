@@ -296,6 +296,18 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
+        ["nowe-domy-mazowieckie", "nowe-domy-warszawa"]
+          .map((cat) => `https://rynekpierwotny.pl/s/${cat}/`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 10 * * *` },
+            },
+          }))
+      )
+      .concat(
         [
           2, 4,
           // 5, 6,

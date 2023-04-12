@@ -37,6 +37,7 @@ export const Type = {
   PRODUCTS2: "PRODUCTS2",
   RATES: "RATES",
   ROOMS: "ROOMS",
+  RYNEK: "RYNEK",
   SALOM: "SALOM",
   STATIONS: "STATIONS",
   STATION: "STATION",
@@ -137,6 +138,7 @@ export const EntrySchema = z.preprocess(
         [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
         [Type.RATES]: new RegExp("pl/rest/rates/"),
         [Type.ROOMS]: new RegExp("api/\\w+/details"),
+        [Type.RYNEK]: new RegExp("pierwotny.pl/s/"),
         [Type.SALOM]: new RegExp("lomon.com/pl-pl/shop"),
         [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
         [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
@@ -254,6 +256,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.ROOMS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.RYNEK),
     }),
     JsonSchema.extend({
       type: z.literal(Type.SALOM),
@@ -404,6 +409,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.ROOMS),
     returnvalue: RoomsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.RYNEK),
+    returnvalue: require("@dev/rynek/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.SALOM),
