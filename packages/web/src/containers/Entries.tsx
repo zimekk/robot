@@ -283,6 +283,20 @@ export default function Entries() {
             setPager((pager) =>
               ((pager) => (fetchEntries(pager), pager))({
                 ...pager,
+                start: 0,
+                limit: 100,
+              })
+            )
+          }
+        >
+          top 100
+        </button>
+        <button
+          disabled={loading}
+          onClick={() =>
+            setPager((pager) =>
+              ((pager) => (fetchEntries(pager), pager))({
+                ...pager,
                 start: 5000,
                 limit: 100,
               })
