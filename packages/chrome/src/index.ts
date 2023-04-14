@@ -63,6 +63,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
               req.abort();
             } else if (
               ["document"].includes(req.resourceType()) &&
+              url.match("pierwotny.pl/s/") &&
               req.url() !== url
             ) {
               req.abort();
