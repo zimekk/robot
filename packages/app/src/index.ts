@@ -8,6 +8,7 @@ import { z } from "zod";
 export const router = Router()
   .use("/api/data.json", (_req, res) => res.json({ hello: "Hello" }))
   .use(require("@dev/depots/api").router())
+  .use(require("@dev/flats/api").router())
   .use(require("@dev/funds/api").router())
   .use(require("@dev/moto/api").router())
   .use(require("@dev/plots/api").router())

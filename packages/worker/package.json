@@ -31,6 +31,7 @@
     "@bull-board/express": "^5.0.0",
     "@dev/chrome": "^1.0.0",
     "@dev/depots": "^1.0.0",
+    "@dev/flats": "^1.0.0",
     "@dev/funds": "^1.0.0",
     "@dev/moto": "^1.0.0",
     "@dev/plots": "^1.0.0",

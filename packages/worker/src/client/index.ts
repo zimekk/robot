@@ -156,6 +156,10 @@ export const client = () => {
                   return require("@dev/depots/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
+                } else if (type === Type.FLATS) {
+                  return require("@dev/flats/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.FUNDS) {
                   return require("@dev/funds/api")
                     .update(id, data, returnvalue)

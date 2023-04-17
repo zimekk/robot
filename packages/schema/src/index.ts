@@ -20,6 +20,7 @@ export const Type = {
   AUTOS_ITEM: "AUTOS_ITEM",
   DEPOT: "DEPOT",
   DIRECTIONS: "DIRECTIONS",
+  FLATS: "FLATS",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   GPASS: "GPASS",
@@ -119,6 +120,7 @@ export const EntrySchema = z.preprocess(
         [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
         [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
         [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
+        [Type.FLATS]: new RegExp("pl/nieruchomosci/mieszkania/"),
         [Type.FUNDS]: new RegExp("tfi/fund/"),
         [Type.GAMES]: new RegExp("mp.microsoft.com/"),
         [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
@@ -173,6 +175,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.DIRECTIONS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.FLATS),
     }),
     JsonSchema.extend({
       type: z.literal(Type.FUNDS),
@@ -321,6 +326,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.DIRECTIONS),
     returnvalue: DirectionsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.FLATS),
+    returnvalue: require("@dev/flats/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.FUNDS),

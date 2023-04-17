@@ -1,145 +1,128 @@
 import { z } from "zod";
+import { CategorySchema } from "@dev/plots/schema";
 
-const AdSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  description: z.string(),
-  category: z.object({
+const AdSchema = z
+  .object({
     id: z.number(),
-    type: z.string(),
-    itemType: z.string(),
-  }),
-  map: z.object({
-    zoom: z.number(),
-    lat: z.number(),
-    lon: z.number(),
-    radius: z.number(),
-    show_detailed: z.boolean(),
-  }),
-  isBusiness: z.boolean(),
-  url: z.string(),
-  isHighlighted: z.boolean(),
-  isPromoted: z.boolean(),
-  promotion: z.object({
-    highlighted: z.boolean(),
-    urgent: z.boolean(),
-    top_ad: z.boolean(),
-    options: z.string().array(),
-    b2c_ad_page: z.boolean(),
-    premium_ad_page: z.boolean(),
-  }),
-  delivery: z.object({
-    rock: z.object({
-      offer_id: z.null(),
-      active: z.boolean(),
-      mode: z.string(),
-    }),
-  }),
-  createdTime: z.string(),
-  lastRefreshTime: z.string(),
-  validToTime: z.string(),
-  isActive: z.boolean(),
-  status: z.string(),
-  params: z
-    .object({
-      key: z.string(),
-      name: z.string(),
+    title: z.string(),
+    description: z.string(),
+    category: z.object({
+      id: z.number(),
       type: z.string(),
-      value: z.string(),
-      normalizedValue: z.string(),
-    })
-    .array(),
-  itemCondition: z.string(),
-  price: z.object({
-    budget: z.boolean(),
-    free: z.boolean(),
-    exchange: z.boolean(),
-    displayValue: z.string(),
-    regularPrice: z.object({
-      value: z.number(),
-      currencyCode: z.string(),
-      currencySymbol: z.string(),
-      negotiable: z.boolean(),
-      priceFormatConfig: z.object({
-        decimalSeparator: z.string(),
-        thousandsSeparator: z.string(),
+      itemType: z.string(),
+    }),
+    map: z.object({
+      zoom: z.number(),
+      lat: z.number(),
+      lon: z.number(),
+      radius: z.number(),
+      show_detailed: z.boolean(),
+    }),
+    isBusiness: z.boolean(),
+    url: z.string(),
+    isHighlighted: z.boolean(),
+    isPromoted: z.boolean(),
+    promotion: z.object({
+      highlighted: z.boolean(),
+      urgent: z.boolean(),
+      top_ad: z.boolean(),
+      options: z.array(z.string()),
+      b2c_ad_page: z.boolean(),
+      premium_ad_page: z.boolean(),
+    }),
+    externalUrl: z.string().optional(),
+    delivery: z.object({
+      rock: z.object({
+        offer_id: z.null(),
+        active: z.boolean(),
+        mode: z.string(),
       }),
     }),
-  }),
-  salary: z.null(),
-  partner: z.object({ code: z.string() }),
-  isJob: z.boolean(),
-  photos: z.string().array(),
-  photosSet: z.string().array(),
-  location: z.object({
-    cityName: z.string(),
-    cityId: z.number(),
-    cityNormalizedName: z.string(),
-    regionName: z.string(),
-    regionId: z.number(),
-    regionNormalizedName: z.string(),
-    districtName: z.string().nullable(),
-    districtId: z.number(),
-    pathName: z.string(),
-  }),
-  urlPath: z.string(),
-  contact: z.object({
-    chat: z.boolean(),
-    courier: z.boolean(),
-    name: z.string(),
-    negotiation: z.boolean(),
-    phone: z.boolean(),
-  }),
-  user: z.object({
-    id: z.number(),
-    name: z.string(),
-    photo: z.string().nullable(),
-    logo: z.string().nullable(),
-    otherAdsEnabled: z.boolean(),
-    socialNetworkAccountType: z.string().nullable(),
-    isOnline: z.boolean(),
-    lastSeen: z.string(),
-    about: z.string(),
-    bannerDesktopURL: z.string(),
-    logo_ad_page: z.string().nullable(),
-    company_name: z.string(),
-    created: z.string(),
-    sellerType: z.null(),
-    uuid: z.string(),
-  }),
-  shop: z.object({ subdomain: z.string().nullable() }),
-  safedeal: z.object({
-    weight: z.number(),
-    weight_grams: z.number(),
+    createdTime: z.string(),
+    lastRefreshTime: z.string(),
+    pushupTime: z.string().optional(),
+    validToTime: z.string(),
+    isActive: z.boolean(),
     status: z.string(),
-    safedeal_blocked: z.boolean(),
-    allowed_quantity: z.unknown().array(),
-  }),
-  searchReason: z.string(),
-  isNewFavouriteAd: z.boolean(),
-});
-
-export const CategorySchema = z.object({
-  id: z.number(),
-  label: z.string(),
-  parentId: z.number(),
-  name: z.string(),
-  normalizedName: z.string(),
-  position: z.number(),
-  viewType: z.string(),
-  iconName: z.string(),
-  level: z.number(),
-  displayOrder: z.number(),
-  children: z.array(z.number()),
-  path: z.string(),
-  type: z.string(),
-  isAdding: z.boolean(),
-  isSearch: z.boolean(),
-  isOfferSeek: z.boolean(),
-  privateBusiness: z.boolean(),
-  photosMax: z.number(),
-  img: z.string().optional(),
-});
+    params: z.array(
+      z.object({
+        key: z.string(),
+        name: z.string(),
+        type: z.string(),
+        value: z.string(),
+        normalizedValue: z.string(),
+      })
+    ),
+    itemCondition: z.string(),
+    price: z.object({
+      budget: z.boolean(),
+      free: z.boolean(),
+      exchange: z.boolean(),
+      displayValue: z.string(),
+      regularPrice: z.object({
+        value: z.number(),
+        currencyCode: z.string(),
+        currencySymbol: z.string(),
+        negotiable: z.boolean(),
+        priceFormatConfig: z.object({
+          decimalSeparator: z.string(),
+          thousandsSeparator: z.string(),
+        }),
+      }),
+    }),
+    salary: z.null(),
+    partner: z.object({ code: z.string() }),
+    isJob: z.boolean(),
+    photos: z.array(z.string()),
+    photosSet: z.array(z.string()),
+    location: z.object({
+      cityName: z.string(),
+      cityId: z.number(),
+      cityNormalizedName: z.string(),
+      regionName: z.string(),
+      regionId: z.number(),
+      regionNormalizedName: z.string(),
+      districtName: z.string().nullable(),
+      districtId: z.number(),
+      pathName: z.string(),
+    }),
+    urlPath: z.string(),
+    contact: z.object({
+      chat: z.boolean(),
+      courier: z.boolean(),
+      name: z.string(),
+      negotiation: z.boolean(),
+      phone: z.boolean(),
+    }),
+    user: z.object({
+      id: z.number(),
+      name: z.string(),
+      photo: z.string().nullable(),
+      logo: z.string().nullable(),
+      otherAdsEnabled: z.boolean(),
+      socialNetworkAccountType: z.string().nullable(),
+      isOnline: z.boolean(),
+      lastSeen: z.string(),
+      about: z.string(),
+      bannerDesktopURL: z.string(),
+      logo_ad_page: z.string().nullable(),
+      company_name: z.string(),
+      created: z.string(),
+      sellerType: z.null(),
+      uuid: z.string(),
+    }),
+    shop: z.object({ subdomain: z.string().nullable() }),
+    safedeal: z.object({
+      weight: z.number(),
+      weight_grams: z.number(),
+      status: z.string(),
+      safedeal_blocked: z.boolean(),
+      allowed_quantity: z.array(z.unknown()),
+    }),
+    searchReason: z.string(),
+    isNewFavouriteAd: z.boolean(),
+  })
+  .strict();
 
 const JsonSchema = z.object({
   listing: z.object({
@@ -310,6 +293,16 @@ const JsonSchema = z.object({
   }),
   cookies: z.object({}),
 });
+
+export interface Item {
+  id: number;
+  item: string;
+  data: z.infer<typeof AdSchema>;
+  created: string;
+  checked: string | null;
+  updated: string | null;
+  removed: string | null;
+}
 
 export const Schema = z.object({
   json: JsonSchema,
