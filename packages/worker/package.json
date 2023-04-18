@@ -27,8 +27,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@bull-board/api": "^5.0.0",
-    "@bull-board/express": "^5.0.0",
+    "@bull-board/api": "^5.0.1",
+    "@bull-board/express": "^5.0.1",
     "@dev/chrome": "^1.0.0",
     "@dev/depots": "^1.0.0",
     "@dev/flats": "^1.0.0",
