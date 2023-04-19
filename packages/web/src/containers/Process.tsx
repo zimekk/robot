@@ -406,6 +406,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-2/c/1329-notebooki-laptopy-13-3.html?producent=357-apple",
           "g-2/c/1663-tablety.html?producent=357-apple",
           "g-2/c/2980-notebooki-laptopy-14-0.html?producent=357-apple",
+          "g-4/c/315-pendrive-pamieci-usb.html?producent=59-kingston",
+          "g-4/c/315-pendrive-pamieci-usb.html?producent=303-sandisk",
+          "g-4/c/979-karty-pamieci-microsd.html?producent=303-sandisk",
           "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
           "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
           "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
@@ -461,6 +464,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           "alouette%20papier%20toaletowy",
+          "finish%20kapsułki%20do%20zmywania",
+          "gillette%20mach3",
+          "gillette%20mach%203",
           "purina%20gourmet%20gold",
           "purina%20one",
         ]
