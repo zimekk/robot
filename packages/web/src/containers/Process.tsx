@@ -284,7 +284,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
           "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
-          "honda/jazz?search%5Bfilter_enum_generation%5D=gen-ii-2002-2008-jazz",
+          // "honda/jazz?search%5Bfilter_enum_generation%5D=gen-ii-2002-2008-jazz",
           "porsche/macan",
         ]
           .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
