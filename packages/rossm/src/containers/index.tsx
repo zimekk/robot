@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { createAsset } from "use-asset";
+import Assets from "./Assets";
 import { type Item } from "../schema";
 
 const asset = createAsset(
@@ -30,6 +31,7 @@ export default function Section() {
   return (
     <section>
       <h2>Rossm</h2>
+      <Assets />
       <ol>
         {Object.entries(grouped).map(([id, list]) => (
           <li key={id}>

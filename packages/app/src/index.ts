@@ -1,3 +1,4 @@
+import cors from "cors";
 import { config } from "dotenv";
 import express, { Router } from "express";
 import { createServer } from "http";
@@ -34,6 +35,7 @@ export const server = () => {
 
   const server = createServer(
     express()
+      .use(cors({ origin: "*" }))
       .use(router)
       .use(
         express.static(

@@ -59,10 +59,11 @@ export const Schema = z.object({
                   data: z.object({
                     items: z
                       .object({
-                        product: ProductSchema,
+                        product: ProductSchema.optional(),
                       })
                       .transform(({ product }) => product)
-                      .array(),
+                      .array()
+                      .transform((items) => items.filter(Boolean)),
                     totalCount: z.number(),
                     totalPages: z.number(),
                   }),
