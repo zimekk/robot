@@ -297,6 +297,20 @@ export default function Entries() {
             setPager((pager) =>
               ((pager) => (fetchEntries(pager), pager))({
                 ...pager,
+                start: 3000,
+                limit: 100,
+              })
+            )
+          }
+        >
+          3000+
+        </button>
+        <button
+          disabled={loading}
+          onClick={() =>
+            setPager((pager) =>
+              ((pager) => (fetchEntries(pager), pager))({
+                ...pager,
                 start: 5000,
                 limit: 100,
               })
@@ -455,6 +469,23 @@ export default function Entries() {
           </section>
         ))}
       </div>
+      {list.length > 0 && list.length === pager.limit && (
+        <div>
+          <button
+            disabled={loading}
+            onClick={() =>
+              setPager((pager) =>
+                ((pager) => (fetchEntries(pager), pager))({
+                  ...pager,
+                  start: pager.start + pager.limit,
+                })
+              )
+            }
+          >
+            next &rsaquo;
+          </button>
+        </div>
+      )}
     </fieldset>
   );
 }
