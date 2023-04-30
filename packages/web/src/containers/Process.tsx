@@ -486,7 +486,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           "kids/shoes/hiking-shoes",
           // "promotions/outlet/shoes",
-          "promotions/sale/skiing/boots/shopby/medium_16458",
+          // "promotions/sale/skiing/boots/shopby/medium_16458",
+          "sports/alpine-skiing/boots/shopby/on_piste_74982.html",
         ]
           .map((path) => {
             return `https://www.salomon.com/pl-pl/shop-emea/${path}.html`;

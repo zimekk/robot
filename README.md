@@ -70,6 +70,6 @@ docker-compose exec app yarn workspace @dev/sql run migrate:up
 ```
 
 ```sh
-docker-compose logs -f app
+docker-compose logs -f --tail=25 app
 docker-compose exec app sh
 ```

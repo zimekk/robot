@@ -15,7 +15,7 @@ export const ProductSchema = z
         description: z.string().nullable(),
         valueSeparator: z.string(),
         valueGroups: z
-          .object({ shortName: z.string(), description: z.null() })
+          .object({ shortName: z.string(), description: z.string().nullable() })
           .array(),
       })
       .array()
