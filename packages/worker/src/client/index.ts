@@ -19,6 +19,20 @@ const { REDIS_URL, QUEUE_NAME } = z
 
 type Data = { url: string; body?: object };
 
+async function fetchWithTimeout(url: string, options: object) {
+  // https://github.com/node-fetch/node-fetch#request-cancellation-with-abortsignal
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 10000);
+
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 export const AutosSchema = z
   .object({
     data: z.object({
@@ -290,25 +304,28 @@ export const client = () => {
           await job.progress(50);
 
           const returnvalue = data.body
-            ? await fetch(data.url, {
+            ? await fetchWithTimeout(data.url, {
                 method: "post",
                 body: JSON.stringify(data.body),
-              }).then(
-                async (res) =>
-                  ({ url: data.url, json: await res.json() } as {
-                    url: string;
-                    html?: string | undefined;
-                    json?: object | undefined;
-                  })
-              )
-            : await chrome(data.url);
+              }).then(async (res) => {
+                if (res.url !== data.url) {
+                  throw new Error(`Invalid response url: ${res.url}`);
+                }
+                return { url: data.url, json: await res.json() } as {
+                  url: string;
+                  html?: string | undefined;
+                  json?: object | undefined;
+                };
+              })
+            : await chrome(data.url).then((returnvalue) => {
+                if (returnvalue.html && returnvalue.url !== data.url) {
+                  console.log(["failure"], NAME);
+                  throw new Error(`Invalid response url: ${returnvalue.url}`);
+                }
+                return returnvalue;
+              });
 
           await job.progress(100);
-
-          if (returnvalue.html && returnvalue.url !== data.url) {
-            console.log(["failure"], NAME);
-            throw new Error(`Invalid response url: ${returnvalue.url}`);
-          }
 
           console.log(["success"], NAME);
           await job.log(`success ${NAME}`);
