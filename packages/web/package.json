@@ -33,6 +33,7 @@
     "@dev/schema": "^1.0.0",
     "@dev/shots": "^1.0.0",
     "@dev/status": "^1.0.0",
+    "@dev/stock": "^1.0.0",
     "@dev/thule": "^1.0.0",
     "@dev/vehicles": "^1.0.0",
     "chunk": "^0.0.3",

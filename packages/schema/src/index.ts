@@ -42,6 +42,7 @@ export const Type = {
   SALOM: "SALOM",
   STATIONS: "STATIONS",
   STATION: "STATION",
+  STOCK: "STOCK",
   ROSSM: "ROSSM",
   THULE: "THULE",
   UNKNOWN: "UNKNOWN",
@@ -144,6 +145,7 @@ export const EntrySchema = z.preprocess(
         [Type.SALOM]: new RegExp("lomon.com/pl-pl/shop"),
         [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
         [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+        [Type.STOCK]: new RegExp("bmw.cloud/similarity"),
         [Type.ROSSM]: new RegExp("smann.pl/szukaj"),
         [Type.THULE]: new RegExp("thule.com/pl-pl/"),
         [Type.UNKNOWN]: new RegExp(""),
@@ -263,6 +265,9 @@ export const EntrySchema = z.preprocess(
       type: z.literal(Type.ROOMS),
     }),
     JsonSchema.extend({
+      type: z.literal(Type.ROSSM),
+    }),
+    JsonSchema.extend({
       type: z.literal(Type.RYNEK),
     }),
     JsonSchema.extend({
@@ -287,7 +292,7 @@ export const EntrySchema = z.preprocess(
         }),
     }),
     JsonSchema.extend({
-      type: z.literal(Type.ROSSM),
+      type: z.literal(Type.STOCK),
     }),
     JsonSchema.extend({
       type: z.literal(Type.THULE),
@@ -420,6 +425,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
     returnvalue: RoomsReturnSchema,
   }),
   ReturnSchema.extend({
+    type: z.literal(Type.ROSSM),
+    returnvalue: require("@dev/rossm/schema").Schema,
+  }),
+  ReturnSchema.extend({
     type: z.literal(Type.RYNEK),
     returnvalue: require("@dev/rynek/schema").Schema,
   }),
@@ -449,8 +458,8 @@ export const EntriesSchema = z.discriminatedUnion("type", [
     }),
   }),
   ReturnSchema.extend({
-    type: z.literal(Type.ROSSM),
-    returnvalue: require("@dev/rossm/schema").Schema,
+    type: z.literal(Type.STOCK),
+    returnvalue: require("@dev/stock/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.THULE),

@@ -137,6 +137,18 @@ export const client = () => {
                   return require("@dev/vehicles/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
+                } else if (type === Type.DEPOT) {
+                  return require("@dev/depots/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.FLATS) {
+                  return require("@dev/flats/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.FUNDS) {
+                  return require("@dev/funds/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.HOTSHOT) {
                   return require("@dev/shots/api")
                     .update(id, data, returnvalue)
@@ -166,36 +178,12 @@ export const client = () => {
                   //     .filter(limiter(jobs, days(7)))
                   //     .slice(0, 150)
                   // );
-                } else if (type === Type.DEPOT) {
-                  return require("@dev/depots/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
-                } else if (type === Type.FLATS) {
-                  return require("@dev/flats/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
-                } else if (type === Type.FUNDS) {
-                  return require("@dev/funds/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
                 } else if (type === Type.PLOTS) {
                   return require("@dev/plots/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.PRODUCTS2) {
                   return require("@dev/products/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
-                } else if (type === Type.ROSSM) {
-                  return require("@dev/rossm/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
-                } else if (type === Type.SALOM) {
-                  return require("@dev/salom/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
-                } else if (type === Type.THULE) {
-                  return require("@dev/thule/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.PROMO) {
@@ -241,8 +229,16 @@ export const client = () => {
                         limiter(jobs, days(7))
                       );
                     });
+                } else if (type === Type.ROSSM) {
+                  return require("@dev/rossm/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 } else if (type === Type.RYNEK) {
                   return require("@dev/rynek/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.SALOM) {
+                  return require("@dev/salom/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.STATIONS) {
@@ -285,6 +281,14 @@ export const client = () => {
                       )
                       .filter(limiter(jobs, days(1)))
                   );
+                } else if (type === Type.STOCK) {
+                  return require("@dev/stock/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
+                } else if (type === Type.THULE) {
+                  return require("@dev/thule/api")
+                    .update(id, data, returnvalue)
+                    .then(() => []);
                 }
                 return [];
               })
@@ -307,6 +311,13 @@ export const client = () => {
             ? await fetchWithTimeout(data.url, {
                 method: "post",
                 body: JSON.stringify(data.body),
+                headers: data.url.match("bmw.cloud/similarity")
+                  ? {
+                      Accept: "application/json",
+                      "Content-Type": "application/json",
+                      "x-api-key": "XW2bOyFf6gteDp3GZ3QonjkDoWMFylG5s0FInTCD",
+                    }
+                  : {},
               }).then(async (res) => {
                 if (res.url !== data.url) {
                   throw new Error(`Invalid response url: ${res.url}`);

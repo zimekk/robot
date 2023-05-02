@@ -74,27 +74,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       },
       {
         data: {
-          url: "https://najlepszeoferty.bmw.pl/nowe/api/v1/ems/bmw-new-pl_PL/search",
-          body: {
-            $match: {
-              transactionalPrice: {
-                $min: 0,
-                $max: 1790000,
-              },
-              // brand: 1, // BMW
-              // brand: 65, // MINI
-              // series :5
-            },
-            $skip: 0,
-            $limit: 100,
-          },
-        },
-        opts: {
-          repeat: { cron: "0 11,19 * * *" },
-        },
-      },
-      {
-        data: {
           url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
           body: {
             $match: {
@@ -113,16 +92,78 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       },
       {
         data: {
-          url: "https://najlepszeoferty.mini.com.pl/nowe/api/v1/ems/mini-new-pl_PL/search",
+          url: "https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=48&startIndex=0",
           body: {
-            $match: {
-              transactionalPrice: {
-                $min: 0,
-                $max: 1790000,
+            searchContext: [
+              {
+                // usageState: {
+                //   value: ["NEW", "DEALER_YOUNG_USED"],
+                // },
+                // vehicleSalesProcessState: {
+                //   type: {
+                //     value: ["AVAILABLE", "RESERVED_MANUAL"],
+                //   },
+                // },
+                // brands: {
+                //   value: ["MINI"],
+                // },
+                productTypes: {
+                  value: ["CAR"],
+                },
+                // salesDestinations: [
+                //   {
+                //     name: "ONLINE",
+                //     onlineStatus: true,
+                //   },
+                // ],
+                // validities: [
+                //   {
+                //     filters: [
+                //       "DEGREE_OF_ELECTRIFICATION_BASED_FUEL_TYPE",
+                //       "POWER_KW_BASED_ON_DEGREE_OF_ELECTRIFICATION",
+                //       "TRANSMISSION",
+                //       "EMISSION_DATA_BASED_ON_DEGREE_OF_ELECTRIFICATION",
+                //       "UCP_PRICE_ALL_OPTIONS_PRICED",
+                //     ],
+                //     requireAll: true,
+                //     validity: "VALID",
+                //   },
+                // ],
+                // buNos: [
+                //   "32940",
+                //   "27023",
+                //   "44852",
+                //   "35466",
+                //   "51057",
+                //   "35941",
+                //   "28966",
+                //   "33160",
+                //   "49584",
+                //   "35140",
+                //   "29029",
+                //   "44845",
+                //   "28965",
+                //   "28597",
+                //   "42099",
+                //   "06030",
+                //   "36891",
+                //   "32059",
+                //   "51448",
+                //   "34238",
+                //   "41094",
+                //   "50457",
+                // ],
               },
+            ],
+            resultsContext: {
+              // excludes: ["EQUIPMENT_PRICES"],
+              // sort: [
+              //   {
+              //     by: "PRICE",
+              //     order: "ASC",
+              //   },
+              // ],
             },
-            $skip: 0,
-            $limit: 100,
           },
         },
         opts: {
