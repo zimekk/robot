@@ -92,7 +92,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       },
       {
         data: {
-          url: "https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=48&startIndex=0",
+          url: "https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=12&startIndex=0",
           body: {
             searchContext: [
               {
@@ -153,6 +153,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 //   "41094",
                 //   "50457",
                 // ],
+                // model: { marketingModelRange: { value: ["MINI_F56"] } },
+                model: {
+                  marketingModelRange: {
+                    value: ["JCW_F56", "JCW_F57", "X3_G01"],
+                  },
+                },
               },
             ],
             resultsContext: {
@@ -163,6 +169,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               //     order: "ASC",
               //   },
               // ],
+              sort: [
+                {
+                  by: "PRODUCTION_DATE",
+                  order: "DESC",
+                },
+              ],
             },
           },
         },

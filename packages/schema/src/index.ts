@@ -293,6 +293,10 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.STOCK),
+      data: z.object({
+        url: z.string(),
+        body: z.any(),
+      }),
     }),
     JsonSchema.extend({
       type: z.literal(Type.THULE),

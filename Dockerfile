@@ -50,6 +50,7 @@ COPY packages/schema/package.json packages/schema/
 COPY packages/shots/package.json packages/shots/
 COPY packages/sql/package.json packages/sql/
 COPY packages/status/package.json packages/status/
+COPY packages/stock/package.json packages/stock/
 COPY packages/thule/package.json packages/thule/
 COPY packages/vehicles/package.json packages/vehicles/
 COPY packages/web/package.json packages/web/

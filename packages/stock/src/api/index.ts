@@ -16,43 +16,72 @@ export const router = () =>
         .catch(next)
     );
 
+export const getNextPage = (
+  url: string,
+  { totalCount }: { totalCount: number }
+) => {
+  const u = new URL(url);
+  const { startIndex, maxResults } = Object.fromEntries(
+    u.searchParams.entries()
+  );
+  const nextStartIndex = Number(startIndex) + Number(maxResults);
+
+  if (nextStartIndex < Math.min(totalCount, 120)) {
+    u.searchParams.set("startIndex", String(nextStartIndex));
+    return u.toString();
+  }
+  return "";
+};
+
 export const update = async (
   _id: string | number,
-  _data: { url: string },
+  data: { url: string },
   { json }: { json: unknown }
 ) =>
-  Schema.transform(({ json: { hits } }) =>
-    hits.reduce(
-      (result, { vehicle: item }) =>
-        result.then(async () => {
-          const { documentId: id } = item;
-          console.log({ id, item });
-          const result = await query(
-            "SELECT * FROM stock WHERE item=$1 ORDER BY created DESC LIMIT 1",
-            [id]
-          );
-          if (result.rowCount > 0) {
-            const { id, data } = result.rows[0];
-            const diff = diffString(data, item);
-            console.info({ id, diff });
-            if (!diff) {
-              await query(
-                "UPDATE stock SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+  Schema.transform(
+    ({
+      json: {
+        hits,
+        metadata: { totalCount },
+      },
+    }) =>
+      hits
+        .reduce(
+          (result, { vehicle: item }) =>
+            result.then(async () => {
+              const { documentId: id } = item;
+              console.log({ id, item });
+              const result = await query(
+                "SELECT * FROM stock WHERE item=$1 ORDER BY created DESC LIMIT 1",
                 [id]
               );
-              return;
-            }
-            // await query(
-            //   "UPDATE stock SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
-            //   [item, id]
-            // );
-            // return;
-          }
-          await query("INSERT INTO stock (item, data) VALUES ($1, $2)", [
-            id,
-            item,
-          ]);
-        }),
-      Promise.resolve()
-    )
+              if (result.rowCount > 0) {
+                const { id, data } = result.rows[0];
+                const diff = diffString(data, item);
+                console.info({ id, diff });
+                if (!diff) {
+                  await query(
+                    "UPDATE stock SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                    [id]
+                  );
+                  return;
+                }
+                // await query(
+                //   "UPDATE stock SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+                //   [item, id]
+                // );
+                // return;
+              }
+              await query("INSERT INTO stock (item, data) VALUES ($1, $2)", [
+                id,
+                item,
+              ]);
+            }),
+          Promise.resolve()
+        )
+        .then(() => {
+          const nextPage = getNextPage(data.url, { totalCount });
+          console.log({ totalCount, nextPage });
+          return nextPage ? [{ ...data, url: nextPage }] : [];
+        })
   ).parseAsync({ json });

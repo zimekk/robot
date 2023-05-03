@@ -282,9 +282,11 @@ export const client = () => {
                       .filter(limiter(jobs, days(1)))
                   );
                 } else if (type === Type.STOCK) {
-                  return require("@dev/stock/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
+                  return require("@dev/stock/api").update(
+                    id,
+                    data,
+                    returnvalue
+                  );
                 } else if (type === Type.THULE) {
                   return require("@dev/thule/api")
                     .update(id, data, returnvalue)
