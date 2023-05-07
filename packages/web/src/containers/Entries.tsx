@@ -12,6 +12,7 @@ import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
 import { EntriesSchema, ReturnSchema, Type } from "@dev/schema";
 
+import { HeatMap } from "../components/HeatMap";
 import { Spinner } from "../components/Spinner";
 import { post } from "./Process";
 
@@ -414,11 +415,14 @@ export default function Entries() {
         {Object.entries(grouped).map(([group, list]) => (
           <section key={group}>
             {group && (
-              <strong>
-                <a href="#" onClick={onSelectGroup} data-group={group}>
-                  {group}
-                </a>
-              </strong>
+              <div>
+                <strong>
+                  <a href="#" onClick={onSelectGroup} data-group={group}>
+                    {group}
+                  </a>
+                </strong>
+                <HeatMap list={list} />
+              </div>
             )}
             <div>
               {list.map(({ error, ...item }) => (
