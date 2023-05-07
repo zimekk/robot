@@ -174,7 +174,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("smann.pl/szukaj\\?")) {
-                    if (url === res.url()) {
+                    if (decodeURI(url) === decodeURI(res.url())) {
                       console.log(res.url());
                       const e = "__NEXT_DATA__";
                       console.log(["page.evaluate"], e);
