@@ -182,14 +182,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           repeat: { cron: "0 12 * * *" },
         },
       },
-      {
-        data: {
-          url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
-        },
-        opts: {
-          repeat: { cron: "5 12 1 * *" },
-        },
-      },
+      // {
+      //   data: {
+      //     url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
+      //   },
+      //   opts: {
+      //     repeat: { cron: "5 12 1 * *" },
+      //   },
+      // },
       {
         data: {
           url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
@@ -251,8 +251,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           "hale-magazyny/wynajem/mazowieckie",
-          "hale-magazyny/wynajem/stare-babice",
-          "hale-magazyny/wynajem/zielonki-parcela",
+          // "hale-magazyny/wynajem/stare-babice",
+          // "hale-magazyny/wynajem/zielonki-parcela",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=373&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_enum_rooms%5D%5B0%5D=one",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=353&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_float_m:from%5D=70&search%5Bfilter_enum_rooms%5D%5B0%5D=three",
         ]
@@ -470,6 +470,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-5/c/346-karty-graficzne-nvidia.html?producent=57-gigabyte",
           "g-5/c/346-karty-graficzne-nvidia.html?producent=1126-inno3d",
           "g-5/c/388-obudowy-komputerowe.html?producent=368-nzxt",
+          "g-5/c/439-dyski-zewnetrzne-hdd.html?producent=26-wd&f1730-format=18808-2.5",
           "g-5/c/1779-dyski-ssd.html?producent=29-samsung",
           "g-5/c/1779-dyski-ssd.html?producent=59-kingston",
           "g-5/c/1779-dyski-ssd.html?producent=506-crucial",
@@ -478,6 +479,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-5/c/3402-pamieci-ram-ddr5.html?producent=2484-kingston-fury",
           "g-5/c/3618-plyty-glowne-socket-am5.html",
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
+          "g-6/c/2506-glosniki-przenosne.html?producent=374-jbl&f1872-moc-glosnikow-rms=71075-10-49-w",
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
           "g-64/c/2294-drony.html?producent=1009-dji",
@@ -497,10 +499,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
           "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens",
           "g-19/c/2362-akcesoria-do-kuchni.html?producent=3035-girmi",
+          "g-19/c/2880-generatory-pary.html",
+          "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
+          "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
         ]
           .map((path) => {
             return `https://www.al.to/${path}`;
@@ -516,15 +520,16 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "alouette%20papier%20toaletowy",
-          "finish%20kapsułki%20do%20zmywania",
-          "gillette%20mach3",
-          "gillette%20mach%203",
-          "purina%20gourmet%20gold",
-          "purina%20one",
+          "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
+          "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
+          "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET
+          "CategoryId=8576&BrandIds=7261", // Higiena / YOPE
+          "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
+          "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek (14)
+          "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
         ]
           .map((path) => {
-            return `https://www.rossmann.pl/szukaj?Page=1&PageSize=24&Search=${path}`;
+            return `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=24`;
           })
           .map((url, i) => ({
             data: {
@@ -595,49 +600,49 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "aparthotelczarnagora",
-          "aparthotelgiewont1",
-          "belwederhotel",
-          "bluemountainresort",
-          "czarnygron",
-          "grandhotelstamary",
-          "grenohotelspa",
-          "greenmountainhotel",
-          "hotelaquarion",
-          "hotelbaniathermalski",
-          "hotelbukovina",
-          "hotelcrocus",
-          "hotelczarnypotokresortspakrynica",
-          "hotelharnas",
-          "hotelklimczok",
-          "hotelkrysztal4",
-          "hoteloliviamedicalspa",
-          "hotelskalny",
-          "hotelpegaz",
-          "hotelpiotrspawellness",
-          "hotelperlapoludnia1",
-          "hotelprezydentmedicalspawellness",
-          "hotelprzedwiosnie1",
-          "hotelsasanka",
-          "hotelspadrirenaeriskrynicazdroj",
-          "hotelspadrirenaerispolanicazdrj",
-          "hotelspadrirenaeriswzgorzadylewskie",
-          "hotelstok",
-          "hoteltoporow",
-          "hotelwierchomla",
-          "hotelzbjnicwka",
-          "hotelzywieckimedicalspasport",
-          "interferieaquaparksporthotelmalachit",
-          "interferiesporthotelbornit",
-          "kompleksszkoleniowowypoczynkowyskalnyspa",
-          "lemonresort",
-          "mazowszemedispa1",
-          "modrzewieparkhotel1",
-          "nosalowydworresort1",
-          "odysseyclubhotel",
-          "osadasniezka",
-          "willabelweder",
-          "zamekksiezagora",
+          // "aparthotelczarnagora",
+          // "aparthotelgiewont1",
+          // "belwederhotel",
+          // "bluemountainresort",
+          // "czarnygron",
+          // "grandhotelstamary",
+          // "grenohotelspa",
+          // "greenmountainhotel",
+          // "hotelaquarion",
+          // "hotelbaniathermalski",
+          // "hotelbukovina",
+          // "hotelcrocus",
+          // "hotelczarnypotokresortspakrynica",
+          // "hotelharnas",
+          // "hotelklimczok",
+          // "hotelkrysztal4",
+          // "hoteloliviamedicalspa",
+          // "hotelskalny",
+          // "hotelpegaz",
+          // "hotelpiotrspawellness",
+          // "hotelperlapoludnia1",
+          // "hotelprezydentmedicalspawellness",
+          // "hotelprzedwiosnie1",
+          // "hotelsasanka",
+          // "hotelspadrirenaeriskrynicazdroj",
+          // "hotelspadrirenaerispolanicazdrj",
+          // "hotelspadrirenaeriswzgorzadylewskie",
+          // "hotelstok",
+          // "hoteltoporow",
+          // "hotelwierchomla",
+          // "hotelzbjnicwka",
+          // "hotelzywieckimedicalspasport",
+          // "interferieaquaparksporthotelmalachit",
+          // "interferiesporthotelbornit",
+          // "kompleksszkoleniowowypoczynkowyskalnyspa",
+          // "lemonresort",
+          // "mazowszemedispa1",
+          // "modrzewieparkhotel1",
+          // "nosalowydworresort1",
+          // "odysseyclubhotel",
+          // "osadasniezka",
+          // "willabelweder",
+          // "zamekksiezagora",
         ]
           .map((name) => {
             return [
