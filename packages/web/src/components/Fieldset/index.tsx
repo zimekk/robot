@@ -6,7 +6,9 @@ import React, {
 } from "react";
 import styled from "styled-components";
 
-const StyledFieldset = styled.fieldset``;
+const StyledFieldset = styled.fieldset`
+  min-inline-size: auto;
+`;
 
 const StyledLegend = styled.legend``;
 

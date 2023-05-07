@@ -857,17 +857,44 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           append url
         </button>
       </div>
-      {list.map((item) => (
+
+      {list.map((item: any) => (
         <div key={item.id}>
           <div>
-            <label>
+            <label
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                overflow: "hidden",
+              }}
+            >
               <input
                 type="checkbox"
                 value={item.id}
                 checked={selected.includes(item.id)}
                 onChange={onSelect}
               />
-              <Link href={item.id}>{item.id}</Link>
+              <Link
+                href={item.id}
+                style={{
+                  flex: 1,
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "auto",
+                }}
+              >
+                {item.id}
+              </Link>
+              {item.opts.repeat?.cron && (
+                <pre
+                  style={{
+                    fontSize: "xx-small",
+                    margin: 4,
+                  }}
+                >
+                  {item.opts.repeat.cron}
+                </pre>
+              )}
             </label>
           </div>
           {selected.includes(item.id) && (
