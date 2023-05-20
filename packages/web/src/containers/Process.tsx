@@ -268,10 +268,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "backpacks/laptop-backpacks",
-          "bike-rack",
-          "cargo-carrier/car-top-carrier",
-          "roof-rack/car-roof-racks",
+          // "backpacks/laptop-backpacks",
+          // "bike-rack",
+          // "cargo-carrier/car-top-carrier",
+          // "roof-rack/car-roof-racks",
         ]
           .map((cat) => `https://www.thule.com/pl-pl/${cat}`)
           .map((url, i) => ({
@@ -527,6 +527,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
           "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek (14)
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
+          "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
         ]
           .map((path) => {
             return `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=24`;

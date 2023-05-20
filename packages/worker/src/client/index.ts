@@ -6,7 +6,7 @@ import { headingDistanceTo } from "geolocation-utils";
 import { days, seconds } from "milliseconds";
 import { resolve } from "path";
 import { z } from "zod";
-import { CompletedSchema, EntrySchema, Type } from "@dev/schema";
+import { CompletedSchema, EntrySchema, Type, getTypeByUrl } from "@dev/schema";
 
 config({ path: resolve(__dirname, "../../../.env") });
 
@@ -309,34 +309,41 @@ export const client = () => {
           await job.log(`process ${NAME}`);
           await job.progress(50);
 
-          const returnvalue = data.body
-            ? await fetchWithTimeout(data.url, {
-                method: "post",
-                body: JSON.stringify(data.body),
-                headers: data.url.match("bmw.cloud/similarity")
-                  ? {
-                      Accept: "application/json",
-                      "Content-Type": "application/json",
-                      "x-api-key": "XW2bOyFf6gteDp3GZ3QonjkDoWMFylG5s0FInTCD",
-                    }
-                  : {},
-              }).then(async (res) => {
-                if (res.url !== data.url) {
-                  throw new Error(`Invalid response url: ${res.url}`);
-                }
-                return { url: data.url, json: await res.json() } as {
-                  url: string;
-                  html?: string | undefined;
-                  json?: object | undefined;
-                };
-              })
-            : await chrome(data.url).then((returnvalue) => {
+          const type = getTypeByUrl(data.url);
+
+          const returnvalue = await (
+            {
+              [Type.STOCK]: async () =>
+                await fetchWithTimeout(data.url, {
+                  method: "post",
+                  body: JSON.stringify(data.body),
+                  headers: data.url.match("bmw.cloud/similarity")
+                    ? {
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
+                        "x-api-key": "XW2bOyFf6gteDp3GZ3QonjkDoWMFylG5s0FInTCD",
+                      }
+                    : {},
+                }).then(async (res) => {
+                  if (res.url !== data.url) {
+                    throw new Error(`Invalid response url: ${res.url}`);
+                  }
+                  return { url: data.url, json: await res.json() } as {
+                    url: string;
+                    html?: string | undefined;
+                    json?: object | undefined;
+                  };
+                }),
+            }[type] ||
+            (async () =>
+              await chrome(data.url).then((returnvalue) => {
                 if (returnvalue.html && returnvalue.url !== data.url) {
                   console.log(["failure"], NAME);
                   throw new Error(`Invalid response url: ${returnvalue.url}`);
                 }
                 return returnvalue;
-              });
+              }))
+          )();
 
           await job.progress(100);
 

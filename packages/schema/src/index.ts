@@ -99,6 +99,42 @@ export const CompletedSchema = z
     url,
   }));
 
+export const getTypeByUrl = (url: string) =>
+  Object.entries({
+    [Type.AUTOS]: new RegExp("pl_PL/search"),
+    [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
+    [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
+    [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
+    [Type.FLATS]: new RegExp("pl/nieruchomosci/mieszkania/"),
+    [Type.FUNDS]: new RegExp("tfi/fund/"),
+    [Type.GAMES]: new RegExp("mp.microsoft.com/"),
+    [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
+    [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal|al.to/goracy_strzal"),
+    [Type.LECLERC]: new RegExp("leclerc.pl/"),
+    [Type.MACAN]: new RegExp("porsche.com/"),
+    [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
+    [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
+    [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
+    [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
+    [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
+    [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
+    [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
+    [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
+    [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
+    [Type.RATES]: new RegExp("pl/rest/rates/"),
+    [Type.ROOMS]: new RegExp("api/\\w+/details"),
+    [Type.RYNEK]: new RegExp("pierwotny.pl/s/"),
+    [Type.SALOM]: new RegExp("lomon.com/pl-pl/shop"),
+    [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
+    [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+    [Type.STOCK]: new RegExp("bmw.cloud/similarity"),
+    [Type.ROSSM]: new RegExp("smann.pl/szukaj"),
+    [Type.THULE]: new RegExp("thule.com/pl-pl/"),
+    [Type.UNKNOWN]: new RegExp(""),
+  })
+    .find(([, regExp]) => regExp.test(url))
+    ?.shift() as string;
+
 export const EntrySchema = z.preprocess(
   z
     .object({
@@ -116,42 +152,7 @@ export const EntrySchema = z.preprocess(
     })
     .passthrough()
     .transform((item) => ({
-      type: Object.entries({
-        [Type.AUTOS]: new RegExp("pl_PL/search"),
-        [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
-        [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
-        [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
-        [Type.FLATS]: new RegExp("pl/nieruchomosci/mieszkania/"),
-        [Type.FUNDS]: new RegExp("tfi/fund/"),
-        [Type.GAMES]: new RegExp("mp.microsoft.com/"),
-        [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
-        [Type.HOTSHOT]: new RegExp(
-          "x-kom.pl/goracy_strzal|al.to/goracy_strzal"
-        ),
-        [Type.LECLERC]: new RegExp("leclerc.pl/"),
-        [Type.MACAN]: new RegExp("porsche.com/"),
-        [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
-        [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
-        [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
-        [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
-        [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
-        [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
-        [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
-        [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
-        [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),
-        [Type.RATES]: new RegExp("pl/rest/rates/"),
-        [Type.ROOMS]: new RegExp("api/\\w+/details"),
-        [Type.RYNEK]: new RegExp("pierwotny.pl/s/"),
-        [Type.SALOM]: new RegExp("lomon.com/pl-pl/shop"),
-        [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
-        [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
-        [Type.STOCK]: new RegExp("bmw.cloud/similarity"),
-        [Type.ROSSM]: new RegExp("smann.pl/szukaj"),
-        [Type.THULE]: new RegExp("thule.com/pl-pl/"),
-        [Type.UNKNOWN]: new RegExp(""),
-      })
-        .find(([, regExp]) => regExp.test(item.data.url))
-        ?.shift(),
+      type: getTypeByUrl(item.data.url),
       ...item,
     })).parse,
   z.discriminatedUnion("type", [
