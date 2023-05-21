@@ -141,6 +141,8 @@ export const client = () => {
                   return require("@dev/depots/api")
                     .update(id, data, returnvalue)
                     .then(() => []);
+                } else if (type === Type.EURO) {
+                  return require("@dev/euro/api").update(id, data, returnvalue);
                 } else if (type === Type.FLATS) {
                   return require("@dev/flats/api")
                     .update(id, data, returnvalue)
@@ -313,6 +315,19 @@ export const client = () => {
 
           const returnvalue = await (
             {
+              [Type.EURO]: async () =>
+                await fetchWithTimeout(data.url, {
+                  headers: {},
+                }).then(async (res) => {
+                  if (res.url !== data.url) {
+                    throw new Error(`Invalid response url: ${res.url}`);
+                  }
+                  return { url: data.url, json: await res.json() } as {
+                    url: string;
+                    html?: string | undefined;
+                    json?: object | undefined;
+                  };
+                }),
               [Type.STOCK]: async () =>
                 await fetchWithTimeout(data.url, {
                   method: "post",

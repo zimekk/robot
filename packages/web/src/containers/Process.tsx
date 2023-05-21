@@ -520,6 +520,27 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "category=dyski-wewnetrzne-ssd&__=Kingston",
+          "category=etui-do-telefonow&__=Apple",
+          "category=karty-pamieci&__=SanDisk&_i=3,4",
+          "category=pendrive-pamieci-usb",
+          "category=smartwatch&__=Apple",
+          "category=telefony-komorkowe&__=Apple",
+        ]
+          .map((path) => {
+            return `https://www.euro.com.pl/rest/api/products/search?startFrom=0&numberOfItems=17&${path}&developSearchMode=false&orderBy=POPULARITY&direction=ASC`;
+          })
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 9,16 * * *` },
+            },
+          }))
+      )
+      .concat(
+        [
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
           "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
           "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET

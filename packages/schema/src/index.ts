@@ -20,6 +20,7 @@ export const Type = {
   AUTOS_ITEM: "AUTOS_ITEM",
   DEPOT: "DEPOT",
   DIRECTIONS: "DIRECTIONS",
+  EURO: "EURO",
   FLATS: "FLATS",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
@@ -105,6 +106,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
     [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
     [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
+    [Type.EURO]: new RegExp("com.pl/rest/api/products/search"),
     [Type.FLATS]: new RegExp("pl/nieruchomosci/mieszkania/"),
     [Type.FUNDS]: new RegExp("tfi/fund/"),
     [Type.GAMES]: new RegExp("mp.microsoft.com/"),
@@ -178,6 +180,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.DIRECTIONS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.EURO),
     }),
     JsonSchema.extend({
       type: z.literal(Type.FLATS),
@@ -336,6 +341,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.DIRECTIONS),
     returnvalue: DirectionsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.EURO),
+    returnvalue: require("@dev/euro/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.FLATS),
