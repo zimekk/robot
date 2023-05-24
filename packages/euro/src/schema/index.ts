@@ -181,7 +181,7 @@ const Result = z.object({
 export const JsonSchema = z.object({
   productsCount: z.number(),
   results: Result.strict().array(),
-  suggestion: z.null(),
+  suggestion: z.null().optional(),
 });
 
 export interface Item {

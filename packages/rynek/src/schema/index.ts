@@ -231,10 +231,10 @@ const JsonSchema = z.object({
   backToUrl: z.object({ url: z.string(), text: z.string() }),
   favourite: z.object({
     fetchRequest: z.number(),
-    patchRequest: z.number(),
+    patchRequest: z.number().optional(),
     favourites: z.object({
-      offers: z.object({}),
-      articles: z.array(z.unknown()),
+      offers: z.unknown(),
+      articles: z.array(z.unknown()).optional(),
       initialized: z.boolean(),
     }),
   }),
@@ -253,7 +253,7 @@ const JsonSchema = z.object({
     count: z.null(),
     requestState: z.number(),
   }),
-  isApplicationSent: z.boolean(),
+  isApplicationSent: z.boolean().optional(),
   isAuthenticated: z.boolean(),
   investmentOffer: z.object({
     articles: z.array(z.unknown()),
@@ -277,11 +277,13 @@ const JsonSchema = z.object({
     }),
     categories: z.null(),
   }),
-  login: z.object({
-    authModalTab: z.number(),
-    userSource: z.null(),
-    userHasLoggedIn: z.null(),
-  }),
+  login: z
+    .object({
+      authModalTab: z.number(),
+      userSource: z.null(),
+      userHasLoggedIn: z.null(),
+    })
+    .optional(),
   marketplace: z.object({ regions: z.array(z.unknown()) }),
   metaData: z.object({
     title: z.string(),
@@ -306,8 +308,8 @@ const JsonSchema = z.object({
   offerDetail: z.object({
     offer: z.null(),
     offerRequest: z.number(),
-    favouriteOffers: z.array(z.unknown()),
-    favouriteOffersRequest: z.number(),
+    favouriteOffers: z.array(z.unknown()).optional(),
+    favouriteOffersRequest: z.number().optional(),
     articles: z.array(z.unknown()),
     articlesRequest: z.number(),
     promotions: z.array(z.unknown()),
@@ -347,8 +349,8 @@ const JsonSchema = z.object({
     nearbyRegions: z.array(z.unknown()),
     nearbyRegionsRequestState: z.number(),
     recommendedOffers: z.array(z.unknown()),
-    appliedOffersList: z.array(z.unknown()),
-    appliedOffersListRequestState: z.number(),
+    appliedOffersList: z.array(z.unknown()).optional(),
+    appliedOffersListRequestState: z.number().optional(),
   }),
   offerList: z.object({
     list: z.object({
@@ -463,10 +465,12 @@ const JsonSchema = z.object({
     }),
     selectedOffer: z.object({ data: z.null(), requestState: z.number() }),
     selectedProperty: z.object({ data: z.null(), requestState: z.number() }),
-    applicationSentOffers: z.object({
-      data: z.array(z.unknown()),
-      requestState: z.number(),
-    }),
+    applicationSentOffers: z
+      .object({
+        data: z.array(z.unknown()),
+        requestState: z.number(),
+      })
+      .optional(),
     region: z.object({ data: z.array(z.unknown()), requestState: z.number() }),
     selectedRegion: SelectedRegion.array(),
   }),
@@ -499,8 +503,8 @@ const JsonSchema = z.object({
   property: z.object({
     property: z.null(),
     propertyRequest: z.number(),
-    favouriteProperties: z.array(z.unknown()),
-    favouritePropertiesRequest: z.number(),
+    favouriteProperties: z.array(z.unknown()).optional(),
+    favouritePropertiesRequest: z.number().optional(),
     articles: z.array(z.unknown()),
     articlesRequest: z.number(),
     offersNearby: z.array(z.unknown()),
@@ -524,8 +528,8 @@ const JsonSchema = z.object({
       excludeCurrentRoomFilterOption: z.boolean(),
     }),
     stats: z.object({ data: z.null(), requestState: z.number() }),
-    appliedPropertiesList: z.array(z.unknown()),
-    appliedPropertiesListRequestState: z.number(),
+    appliedPropertiesList: z.array(z.unknown()).optional(),
+    appliedPropertiesListRequestState: z.number().optional(),
   }),
   ranking: z.object({
     cities: z.object({ list: z.array(z.unknown()) }),
@@ -607,26 +611,30 @@ const JsonSchema = z.object({
     profile: z.object({
       data: z.null(),
       requestState: z.number(),
-      patchUserForm: z.object({
-        formValues: z.object({
-          name: z.string(),
-          email: z.string(),
-          phone: z.string(),
-          sex: z.string(),
+      patchUserForm: z
+        .object({
+          formValues: z.object({
+            name: z.string(),
+            email: z.string(),
+            phone: z.string(),
+            sex: z.string(),
+          }),
+          request: z.number(),
+          errors: z.null(),
+        })
+        .optional(),
+    }),
+    hidden: z
+      .object({
+        fetchRequest: z.number(),
+        patchRequest: z.number(),
+        hidden: z.object({
+          offer: z.array(z.unknown()),
+          application: z.array(z.unknown()),
+          recommendation_property: z.array(z.unknown()),
         }),
-        request: z.number(),
-        errors: z.null(),
-      }),
-    }),
-    hidden: z.object({
-      fetchRequest: z.number(),
-      patchRequest: z.number(),
-      hidden: z.object({
-        offer: z.array(z.unknown()),
-        application: z.array(z.unknown()),
-        recommendation_property: z.array(z.unknown()),
-      }),
-    }),
+      })
+      .optional(),
   }),
   variables: z.object({
     data: z.object({
