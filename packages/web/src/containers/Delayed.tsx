@@ -13,7 +13,7 @@ import { z } from "zod";
 import { DelayedSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
 import { Spinner } from "../components/Spinner";
-import Process, { post } from "./Process";
+import Process, { API_URL, post } from "./Process";
 
 type DelayedType = z.infer<typeof DelayedSchema>;
 
@@ -157,7 +157,7 @@ function Delayed({
               <span>{item.id}</span>
             </label>{" "}
             | <a href={item.data.url}>open</a> |{" "}
-            <a href={`delete/${item.id}`}>delete</a>
+            <a href={`${API_URL}delete/${item.id}`}>delete</a>
           </div>
           <pre>
             {JSON.stringify(

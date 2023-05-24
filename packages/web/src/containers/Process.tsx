@@ -14,8 +14,10 @@ import { DataSchema, OptsSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
 import { Link } from "../components/Link";
 
+export const API_URL = process.env.API_URL || "";
+
 export const post = (path: string, data?: object) =>
-  fetch(path, {
+  fetch(`${API_URL}${path}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

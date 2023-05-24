@@ -14,7 +14,7 @@ import { EntriesSchema, ReturnSchema, Type } from "@dev/schema";
 
 import { HeatMap } from "../components/HeatMap";
 import { Spinner } from "../components/Spinner";
-import { post } from "./Process";
+import { API_URL, post } from "./Process";
 
 const GROUP_BY = {
   _date: "date",
@@ -441,11 +441,11 @@ export default function Entries() {
                         </span>
                       )}
                     </label>{" "}
-                    | <a href={`entry/${item.id}`}>item</a> |{" "}
-                    <a href={`json/${item.id}`}>json</a> |{" "}
-                    <a href={`html/${item.id}`}>html</a> |{" "}
+                    | <a href={`${API_URL}entry/${item.id}`}>item</a> |{" "}
+                    <a href={`${API_URL}json/${item.id}`}>json</a> |{" "}
+                    <a href={`${API_URL}html/${item.id}`}>html</a> |{" "}
                     <a href={item.data.url}>open</a> |{" "}
-                    <a href={`delete/${item.id}`}>delete</a>
+                    <a href={`${API_URL}delete/${item.id}`}>delete</a>
                   </div>
                   <pre>
                     {JSON.stringify(
