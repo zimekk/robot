@@ -74,24 +74,24 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           repeat: { cron: "0 15 * * *" },
         },
       },
-      {
-        data: {
-          url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
-          body: {
-            $match: {
-              transactionalPrice: {
-                $min: 0,
-                $max: 1790000,
-              },
-            },
-            $skip: 0,
-            $limit: 100,
-          },
-        },
-        opts: {
-          repeat: { cron: "30 11,19 * * *" },
-        },
-      },
+      // {
+      //   data: {
+      //     url: "https://najlepszeoferty.bmw.pl/uzywane/api/v1/ems/bmw-used-pl_PL/search",
+      //     body: {
+      //       $match: {
+      //         transactionalPrice: {
+      //           $min: 0,
+      //           $max: 1790000,
+      //         },
+      //       },
+      //       $skip: 0,
+      //       $limit: 100,
+      //     },
+      //   },
+      //   opts: {
+      //     repeat: { cron: "30 11,19 * * *" },
+      //   },
+      // },
       {
         data: {
           url: "https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=12&startIndex=0",
@@ -508,6 +508,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens",
           "g-19/c/2362-akcesoria-do-kuchni.html?producent=3035-girmi",
+          "g-19/c/2362-akcesoria-do-kuchni.html?producent=1977-wmf",
           "g-19/c/2880-generatory-pary.html",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
@@ -526,12 +527,22 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "category=glosniki-przenosne&__=jbl",
+          "category=glosniki-przenosne&__=marshall",
+          "category=archiwizacja-danych1&__=WD",
           "category=dyski-wewnetrzne-ssd&__=Kingston",
+          "category=ekspresy-cisnieniowe&__=Siemens",
           "category=etui-do-telefonow&__=Apple",
           "category=karty-pamieci&__=SanDisk&_i=3,4",
+          "category=laptopy-i-netbooki&__=Apple",
+          "category=obiektywy&__=Canon",
+          "category=obiektywy&__=Sigma&_h=32",
           "category=pendrive-pamieci-usb",
+          "category=roboty-wieloczynnosciowe&__=KitchenAid&_aw=1",
           "category=smartwatch&__=Apple",
+          "category=stabilizatory-do-kamer-i-aparatow",
           "category=telefony-komorkowe&__=Apple",
+          "category=zelazka-systemowe&__=Philips",
         ]
           .map((path) => {
             return `https://www.euro.com.pl/rest/api/products/search?startFrom=0&numberOfItems=17&${path}&developSearchMode=false&orderBy=POPULARITY&direction=ASC`;
