@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+const DeliveryAvailability = z.object({
+  code: z.string(),
+  deliveryDate: z.string().nullable(),
+});
+
 const Result = z.object({
   name: z.string(),
   baseAttributes: z.array(
@@ -42,18 +47,8 @@ const Result = z.object({
         deliveryDate: z.null(),
       })
       .nullable(),
-    homeDeliveryAvailability: z
-      .object({
-        code: z.string(),
-        deliveryDate: z.null(),
-      })
-      .nullable(),
-    commonDeliveryAvailability: z
-      .object({
-        code: z.string(),
-        deliveryDate: z.null(),
-      })
-      .nullable(),
+    homeDeliveryAvailability: DeliveryAvailability.nullable(),
+    commonDeliveryAvailability: DeliveryAvailability.nullable(),
     reserveAndCollectAvailable: z.boolean(),
   }),
   labels: z.array(
@@ -82,14 +77,8 @@ const Result = z.object({
   outletDetails: z
     .object({
       deliveryAvailability: z.object({
-        shopDeliveryAvailability: z.object({
-          code: z.string(),
-          deliveryDate: z.null(),
-        }),
-        homeDeliveryAvailability: z.object({
-          code: z.string(),
-          deliveryDate: z.null(),
-        }),
+        shopDeliveryAvailability: DeliveryAvailability,
+        homeDeliveryAvailability: DeliveryAvailability,
         commonDeliveryAvailability: z.null(),
         reserveAndCollectAvailable: z.boolean(),
       }),
