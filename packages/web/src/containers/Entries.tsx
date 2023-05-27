@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { format } from "date-fns";
@@ -157,8 +158,10 @@ export default function Entries() {
     []
   );
 
+  const scrollTarget = useRef<HTMLFieldSetElement>(null);
+
   return (
-    <fieldset>
+    <fieldset ref={scrollTarget}>
       <legend>entries</legend>
       <div>
         <label>
@@ -277,6 +280,20 @@ export default function Entries() {
           }
         >
           top 5
+        </button>
+        <button
+          disabled={loading}
+          onClick={() =>
+            setPager((pager) =>
+              ((pager) => (fetchEntries(pager), pager))({
+                ...pager,
+                start: 0,
+                limit: 10,
+              })
+            )
+          }
+        >
+          top 10
         </button>
         <button
           disabled={loading}
@@ -477,14 +494,20 @@ export default function Entries() {
         <div>
           <button
             disabled={loading}
-            onClick={() =>
+            onClick={() => (
+              // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=code-frontend#parameters
+              scrollTarget.current?.scrollIntoView({
+                behavior: "auto",
+                block: "start",
+                inline: "nearest",
+              }),
               setPager((pager) =>
                 ((pager) => (fetchEntries(pager), pager))({
                   ...pager,
                   start: pager.start + pager.limit,
                 })
               )
-            }
+            )}
           >
             next &rsaquo;
           </button>
