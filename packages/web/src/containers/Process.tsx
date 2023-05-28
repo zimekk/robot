@@ -512,6 +512,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-19/c/2880-generatory-pary.html",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
+          "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
         ]
           .map((path) => {
             return `https://www.al.to/${path}`;
@@ -527,12 +528,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "category=glosniki-przenosne&__=jbl",
-          "category=glosniki-przenosne&__=marshall",
           "category=archiwizacja-danych1&__=WD",
+          "category=czysciki-parowe&__=Karcher",
           "category=dyski-wewnetrzne-ssd&__=Kingston",
           "category=ekspresy-cisnieniowe&__=Siemens",
           "category=etui-do-telefonow&__=Apple",
+          "category=glosniki-przenosne&__=jbl",
+          "category=glosniki-przenosne&__=marshall",
           "category=karty-pamieci&__=SanDisk&_i=3,4",
           "category=laptopy-i-netbooki&__=Apple",
           "category=obiektywy&__=Canon",
