@@ -490,6 +490,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
           "g-64/c/2294-drony.html?producent=1009-dji",
           "g-64/c/2582-gimbale.html?producent=1009-dji",
+          "g-64/c/2582-gimbale.html?producent=1155-zhiyun",
         ]
           .map((path) => {
             return `https://www.x-kom.pl/${path}`;
