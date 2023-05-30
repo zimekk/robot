@@ -1,13 +1,38 @@
 import { Router } from "express";
 import { diffString } from "json-diff";
+import { z } from "zod";
 import { query } from "@dev/sql";
-import { Schema } from "../schema";
+import { Schema, ItemSchema } from "../schema";
+
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
 
 export const router = () =>
   Router()
-    .get("/stock", (_req, res, next) =>
-      query("SELECT * FROM stock ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+    .get("/stock", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM stock ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
+        .catch(next)
+    )
+    .get("/stock/v1", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM stock ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => ItemSchema.array().parseAsync(data.rows))
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/stock/delete", (req, res, next) =>
