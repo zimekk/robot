@@ -538,15 +538,23 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=glosniki-przenosne&__=jbl",
           "category=glosniki-przenosne&__=marshall",
           "category=karty-pamieci&__=SanDisk&_i=3,4",
+          "category=ladowarki-ipod-iphone&__=Apple",
           "category=laptopy-i-netbooki&__=Apple",
+          "category=lodowki-do-zabudowy&__=Siemens",
           "category=obiektywy&__=Canon",
           "category=obiektywy&__=Sigma&_h=32",
           "category=pendrive-pamieci-usb",
+          "category=piekarniki-do-zabudowy&__=Siemens",
+          "category=plyty-do-zabudowy&__=Siemens",
+          "category=pralki&__=Siemens",
           "category=roboty-wieloczynnosciowe&__=KitchenAid&_aw=1",
           "category=smartwatch&__=Apple",
           "category=stabilizatory-do-kamer-i-aparatow",
+          "category=suszarki&__=Siemens",
           "category=telefony-komorkowe&__=Apple",
+          "category=telewizory-led-lcd-plazmowe&__=Panasonic",
           "category=zelazka-systemowe&__=Philips",
+          "category=zmywarki-do-zabudowy&__=Siemens",
         ]
           .map((path) => {
             return `https://www.euro.com.pl/rest/api/products/search?startFrom=0&numberOfItems=17&${path}&developSearchMode=false&orderBy=POPULARITY&direction=ASC`;
@@ -562,8 +570,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
           "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
+          "CategoryId=8344", // Worki na śmieci
           "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET
           "CategoryId=8576&BrandIds=7261", // Higiena / YOPE
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
