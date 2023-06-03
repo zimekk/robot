@@ -54,8 +54,8 @@ const Result = z.object({
   labels: z.array(
     z.object({
       name: z.string(),
-      color: z.null(),
-      backgroundColor: z.null(),
+      color: z.string().nullable(),
+      backgroundColor: z.string().nullable(),
     })
   ),
   brand: z.string(),
