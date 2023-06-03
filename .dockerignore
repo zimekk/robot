@@ -1,4 +1,6 @@
 .git
-lib
-node_modules
-public
+Dockerfile
+docker-compose.*
+packages/*/lib
+packages/*/public
+**/node_modules
