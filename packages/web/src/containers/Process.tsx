@@ -2,6 +2,7 @@ import React, {
   type ChangeEventHandler,
   useCallback,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from "react";
@@ -26,13 +27,13 @@ export const post = (path: string, data?: object) =>
     body: data ? JSON.stringify(data) : null,
   });
 
-const TYPE = ["delayed", "repeatable"] as const;
+const TYPE = ["repeatable", "delayed"] as const;
 const DELAY = [5, 10, 15, 30] as const;
 
 export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [selected, setSelected] = useState<string[]>(() => []);
   const [priority, setPriority] = useState<boolean>(() => false);
-  const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[0]);
+  const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[1]);
   const [delay, setDelay] = useState<(typeof DELAY)[number]>(() => DELAY[0]);
   const [match, setMatch] = useState(() => ({
     type: "",
@@ -788,6 +789,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
     []
   );
 
+  const typeId = useId();
+
+  const onChangeType = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    ({ target }) => setType(target.value as (typeof TYPE)[number]),
+    []
+  );
+
   return (
     <Fieldset legend="process">
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
@@ -820,34 +828,32 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             )}
           />
         </label>
-        <label>
-          <span>type</span>
-          <select
-            value={type}
-            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
-              ({ target }) => setType(target.value as (typeof TYPE)[number]),
-              []
-            )}
-          >
-            {TYPE.map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-        </label>
-        {type === "delayed" && (
-          <label>
-            <span>delay</span>
-            <select value={delay} onChange={onChangeDelay}>
-              {DELAY.map((value) => (
-                <option key={value} value={value}>
-                  {value}
-                </option>
-              ))}
-            </select>
-          </label>
-        )}
+        <span>
+          {TYPE.map((value) => (
+            <label key={value}>
+              <input
+                type="radio"
+                name={typeId}
+                value={value}
+                onChange={onChangeType}
+                checked={type === value}
+              />
+              <span>{value}</span>
+            </label>
+          ))}
+          {type === "delayed" && (
+            <span>
+              {" "}
+              <select value={delay} onChange={onChangeDelay}>
+                {DELAY.map((value) => (
+                  <option key={value} value={value}>
+                    {`${value} s`}
+                  </option>
+                ))}
+              </select>
+            </span>
+          )}
+        </span>
         <label>
           <input
             type="checkbox"
