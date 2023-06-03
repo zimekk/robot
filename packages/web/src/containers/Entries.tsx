@@ -8,8 +8,8 @@ import React, {
   useState,
 } from "react";
 import { format } from "date-fns";
-import { Subject } from "rxjs";
-import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
+import prettyBytes from "pretty-bytes";
+import { Subject, debounceTime, distinctUntilChanged, map } from "rxjs";
 import { z } from "zod";
 import { EntriesSchema, ReturnSchema, Type } from "@dev/schema";
 
@@ -31,6 +31,7 @@ const PAGER = {
 };
 
 export default function Entries() {
+  const [bytes, setBytes] = useState(0);
   const [pager, setPager] = useState(() => PAGER);
   const [match, setMatch] = useState(() => ({
     groupBy: Object.keys(GROUP_BY)[0],
@@ -134,7 +135,12 @@ export default function Entries() {
   const fetchEntries = useCallback(
     (pager: typeof PAGER) =>
       (setLoading(true), post("entries", pager))
-        .then((response) => response.json())
+        .then(
+          (response) => (
+            setBytes(Number(response.headers.get("content-length"))),
+            response.json()
+          )
+        )
         .then((list) =>
           pager.data
             ? z.any({}).array().parseAsync(list)
@@ -395,6 +401,7 @@ export default function Entries() {
             )}
           />
         </label>
+        {bytes > 0 && <span>{prettyBytes(bytes)}</span>}
       </div>
       <div>
         <label>
