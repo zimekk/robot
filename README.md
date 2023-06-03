@@ -61,6 +61,14 @@ docker-compose down --remove-orphans
 docker-compose -f docker-compose.yml build --no-cache && docker-compose -f docker-compose.yml up -d && docker system prune -f
 ```
 
+## backup & restore
+
+```sh
+docker-compose exec -u postgres sql psql robot
+docker-compose exec -u postgres sql pg_dump --clean --if-exists robot | gzip -c > "backup/dump_$(date +%Y%m%d_%H%M).sql.gz"
+gunzip -c tmp/dump_20230602_1811.sql.gz | docker-compose exec -T -u postgres sql psql robot
+```
+
 ## deploy
 
 ```sh
