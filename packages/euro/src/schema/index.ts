@@ -111,7 +111,18 @@ const Result = z.object({
   }),
   splitPayment: z.boolean(),
   productName: z.string(),
-  energyLabel: z.null(),
+  energyLabel: z
+    .object({
+      energyClass: z.object({
+        value: z.string(),
+        type: z.string(),
+        scale: z.string(),
+      }),
+      oldEnergyClassLabel: z.string(),
+      energyInformationCardUrl: z.string(),
+      definitionId: z.number(),
+    })
+    .nullable(),
   productAdvertisingPlacements: z.array(z.unknown()),
   voucherDetails: z
     .object({
