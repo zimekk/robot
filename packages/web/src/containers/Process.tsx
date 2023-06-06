@@ -113,12 +113,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 productTypes: {
                   value: ["CAR"],
                 },
-                // salesDestinations: [
-                //   {
-                //     name: "ONLINE",
-                //     onlineStatus: true,
-                //   },
-                // ],
+                salesDestinations: [
+                  {
+                    name: "ONLINE",
+                    onlineStatus: true,
+                  },
+                ],
                 // validities: [
                 //   {
                 //     filters: [
