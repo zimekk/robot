@@ -1,13 +1,26 @@
 import { Router } from "express";
 import { diffString } from "json-diff";
+import { z } from "zod";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
+
 export const router = () =>
   Router()
-    .get("/euro", (_req, res, next) =>
-      query("SELECT * FROM euro ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+    .get("/euro", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query("SELECT * FROM euro ORDER BY created DESC LIMIT $1 OFFSET $2", [
+            limit,
+            start,
+          ])
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/euro/delete", (req, res, next) =>
