@@ -788,7 +788,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       entries.filter(
         (item) =>
           // (filters.type === "" || filters.type === item.type) &&
-          filters.query === "" || item.data.url.match(filters.query)
+          filters.query === "" || item.data.url.includes(filters.query)
       )
     ),
     [entries, filters]

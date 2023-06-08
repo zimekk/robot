@@ -84,7 +84,7 @@ function Delayed({
       delayed.filter(
         (item) =>
           // (filters.type === "" || filters.type === item.type) &&
-          filters.query === "" || item.data.url.match(filters.query)
+          filters.query === "" || item.data.url.includes(filters.query)
       )
     ),
     [delayed, filters]
