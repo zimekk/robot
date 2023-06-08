@@ -1,13 +1,26 @@
 import { Router } from "express";
 import { diffString } from "json-diff";
+import { z } from "zod";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
+
 export const router = () =>
   Router()
-    .get("/promo", (_req, res, next) =>
-      query("SELECT * FROM promo ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+    .get("/promo", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM promo ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/promo/delete", (req, res, next) =>
