@@ -185,9 +185,11 @@ export const client = () => {
                     .update(id, data, returnvalue)
                     .then(() => []);
                 } else if (type === Type.PRODUCTS2) {
-                  return require("@dev/products/api")
-                    .update(id, data, returnvalue)
-                    .then(() => []);
+                  return require("@dev/products/api").update(
+                    id,
+                    data,
+                    returnvalue
+                  );
                 } else if (type === Type.PROMO) {
                   return Promise.resolve(
                     returnvalue.json.list

@@ -1,5 +1,19 @@
 import { z } from "zod";
 
+export const PaginationSchema = z.object({
+  currentPage: z.number(),
+  itemsPerPageActive: z.number(),
+  itemsPerPage: z.number().array(),
+  totalPages: z.number(),
+  pageSize: z.number(),
+  sort: z.object({ rule: z.string(), sort: z.string() }),
+});
+
+export type PaginationState = Pick<
+  z.infer<typeof PaginationSchema>,
+  "currentPage" | "totalPages"
+>;
+
 export const PhotoSchema = z.object({
   url: z.string().optional(),
   thumbnailUrl: z.string().optional(),
@@ -66,6 +80,9 @@ export interface Item {
 
 const JsonSchema = z.object({
   app: z.object({
+    listing: z.object({
+      paginationState: PaginationSchema,
+    }),
     products: z.record(ProductSchema),
   }),
 });
