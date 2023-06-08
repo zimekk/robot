@@ -485,6 +485,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-5/c/2997-procesory-amd-ryzen-5.html?producent=3-amd",
           "g-5/c/3402-pamieci-ram-ddr5.html?producent=2484-kingston-fury",
           "g-5/c/3618-plyty-glowne-socket-am5.html",
+          "g-6/c/1215-sluchawki.html?producent=357-apple&producent=1214-marshall&producent=2334-shure",
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
           "g-6/c/2506-glosniki-przenosne.html?producent=374-jbl&f1872-moc-glosnikow-rms=71075-10-49-w",
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
@@ -548,6 +549,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=plyty-do-zabudowy&__=Siemens",
           "category=pralki&__=Siemens",
           "category=roboty-wieloczynnosciowe&__=KitchenAid&_aw=1",
+          "category=sluchawki&__=Apple,marshall",
           "category=smartwatch&__=Apple",
           "category=stabilizatory-do-kamer-i-aparatow",
           "category=suszarki&__=Siemens",
@@ -595,10 +597,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "kids/shoes/hiking-shoes",
+          // "kids/shoes/hiking-shoes",
           // "promotions/outlet/shoes",
           // "promotions/sale/skiing/boots/shopby/medium_16458",
-          "sports/alpine-skiing/boots/shopby/on_piste_74982.html",
+          // "sports/alpine-skiing/boots/shopby/on_piste_74982",
         ]
           .map((path) => {
             return `https://www.salomon.com/pl-pl/shop-emea/${path}.html`;
