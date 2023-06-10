@@ -21,12 +21,7 @@ export default function Section() {
 
   return (
     <section>
-      <h2>
-        Plots
-        <button onClick={useCallback(() => fetch("plots/insert"), [])}>
-          insert
-        </button>
-      </h2>
+      <h2>Plots</h2>
       <ol>
         {result.map((item) => (
           <li key={item.id}>

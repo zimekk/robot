@@ -23,11 +23,6 @@ export const router = () =>
         .then((result) => res.json({ result }))
         .catch(next)
     )
-    .get("/plots/insert", (_req, res, next) =>
-      query("insert into plots (json) values ($1)", [{ test: { key: 2 } }])
-        .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
-    )
     .get("/plots/delete", (req, res, next) =>
       query("delete from plots where id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
@@ -39,26 +34,47 @@ export const update = async (
   _data: { url: string },
   { json }: { json: unknown }
 ) =>
-  Schema.parseAsync({ json })
-    .then(({ json }) =>
-      json.listing.listing.ads.reduce(
-        (result, item) =>
-          result.then(async () => {
-            // https://node-postgres.com/features/types#uuid--json--jsonb
-            // https://itnext.io/storing-json-in-postgres-using-node-js-c8ff50337013
-            // https://jaredpogi.medium.com/how-safely-upsert-in-postgresql-with-nodejs-44487b5aa90d
-            const result = await query("select id from plots where id=$1", [
-              item.id,
-            ]);
-            if (result.rowCount === 0) {
-              await query("insert into plots (id, json) values ($1, $2)", [
-                item.id,
+  Schema.transform(
+    ({
+      json: {
+        listing: {
+          listing: { ads: results },
+        },
+      },
+    }) =>
+      results
+        .reduce(
+          (result, item) =>
+            result.then(async () => {
+              const { id } = item;
+              console.log({ id, item });
+              const result = await query(
+                "SELECT * FROM plots WHERE item=$1 ORDER BY created DESC LIMIT 1",
+                [id]
+              );
+              if (result.rowCount > 0) {
+                const { id } = result.rows[0];
+                // const diff = diffString(data, item);
+                // console.info({ id, diff });
+                if (id) {
+                  await query(
+                    "UPDATE euro SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                    [id]
+                  );
+                  return;
+                }
+                // await query(
+                //   "UPDATE euro SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+                //   [item, id]
+                // );
+                // return;
+              }
+              await query("INSERT INTO plots (item, data) VALUES ($1, $2)", [
+                id,
                 item,
               ]);
-              // return notify(id, data);
-            }
-          }),
-        Promise.resolve()
-      )
-    )
-    .then(() => []);
+            }),
+          Promise.resolve()
+        )
+        .then(() => [])
+  ).parseAsync({ json });
