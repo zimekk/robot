@@ -120,7 +120,7 @@ const Result = z.object({
       }),
       oldEnergyClassLabel: z.string(),
       energyInformationCardUrl: z.string(),
-      definitionId: z.number(),
+      definitionId: z.number().nullable(),
     })
     .nullable(),
   productAdvertisingPlacements: z.array(z.unknown()),

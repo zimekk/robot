@@ -59,7 +59,7 @@ const DirectionsSchema = z
                     z.null(),
                     z.null(),
                     LatLngLiteralSchema,
-                    z.string(),
+                    z.string().nullable(),
                     z.null(),
                     z.number(),
                   ])
