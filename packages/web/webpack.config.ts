@@ -73,6 +73,10 @@ export default (async (
               ],
             },
           },
+          {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader"],
+          },
         ],
       },
       resolve: {

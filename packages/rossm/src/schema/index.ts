@@ -38,8 +38,8 @@ const ProductSchema = z
   .passthrough();
 
 export const DataSchema = ProductSchema;
-// const DiffSchema = Schema.shape.json.omit({ objects: true });
-export const DiffSchema = DataSchema;
+
+export const DiffSchema = DataSchema.strip().omit({ pictures: true });
 
 export interface Item {
   id: number;
