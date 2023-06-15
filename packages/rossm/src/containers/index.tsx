@@ -1,11 +1,8 @@
 import React, { useCallback, useMemo } from "react";
-import { create, formatters } from "jsondiffpatch";
 import { createAsset } from "use-asset";
+import { Diff } from "@dev/components";
 import Assets, { API_URL } from "./Assets";
 import { type Item, DiffSchema } from "../schema";
-import "./html.css";
-
-const jsondiffpatch = create({});
 
 const asset = createAsset(
   () =>
@@ -14,19 +11,6 @@ const asset = createAsset(
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
 );
-
-function Diff({ item, data }: { item: unknown; data: unknown }) {
-  const left = DiffSchema.parse(data);
-  const delta = jsondiffpatch.diff(left, DiffSchema.parse(item));
-  // console.log({ delta });
-
-  return delta ? (
-    <div
-      className="jsondiffpatch-unchanged-hidden"
-      dangerouslySetInnerHTML={{ __html: formatters.html.format(delta, left) }}
-    />
-  ) : null;
-}
 
 export default function Section() {
   const result = asset.read();
@@ -69,7 +53,10 @@ export default function Section() {
                     </button>
                     <pre>{JSON.stringify(item, null, 2)}</pre>
                     {index < list.length - 1 && (
-                      <Diff item={item.data} data={list[index + 1].data} />
+                      <Diff
+                        left={DiffSchema.parse(list[index + 1].data)}
+                        right={DiffSchema.parse(item.data)}
+                      />
                     )}
                   </li>
                 ))}
