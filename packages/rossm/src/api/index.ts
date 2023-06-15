@@ -1,8 +1,14 @@
 import fetch from "cross-fetch";
 import { Router } from "express";
 import { diffString } from "json-diff";
+import { z } from "zod";
 import { query } from "@dev/sql";
-import { Schema } from "../schema";
+import { DiffSchema, Schema } from "../schema";
+
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
 
 export const router = () =>
   Router()
@@ -11,9 +17,16 @@ export const router = () =>
         .then((data) => (console.log(data), res.json({ status: "ok" })))
         .catch(next)
     )
-    .get("/rossm/assets", (_req, res, next) =>
-      query("SELECT * FROM rossm_asset ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+    .get("/rossm/assets", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM rossm_asset ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/rossm/assets/:id/:name", (req, res, next) =>
@@ -22,14 +35,16 @@ export const router = () =>
         .then(({ type, blob }) => res.type(type).end(blob))
         .catch(next)
     )
-    .get("/rossm", (_req, res, next) =>
-      query("SELECT * FROM rossm ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
-        .catch(next)
-    )
-    .get("/rossm/delete", (req, res, next) =>
-      query("DELETE FROM rossm WHERE id=$1", [req.query.id])
-        .then((data) => (console.log(data), res.json({ status: "ok" })))
+    .get("/rossm", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM rossm ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     );
 
@@ -68,7 +83,10 @@ export const update = async (
           );
           if (result.rowCount > 0) {
             const { id, data } = result.rows[0];
-            const diff = diffString(data, item);
+            const diff = diffString(
+              DiffSchema.parse(data),
+              DiffSchema.parse(item)
+            );
             console.info({ id, diff });
             if (!diff) {
               await query(

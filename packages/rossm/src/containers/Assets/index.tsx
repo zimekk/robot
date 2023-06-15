@@ -11,9 +11,11 @@ interface Item {
   };
 }
 
+export const API_URL = process.env.API_URL || "";
+
 const asset = createAsset(
   () =>
-    fetch("rossm/assets")
+    fetch(`${API_URL}rossm/assets?limit=5`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
@@ -51,14 +53,18 @@ export default function Assets() {
         {list.map((item) => (
           <li key={item.id}>
             [
-            <a href={`rossm/assets/${item.id}/${item.item.split("/").pop()}`}>
+            <a
+              href={`${API_URL}rossm/assets/${item.id}/${item.item
+                .split("/")
+                .pop()}`}
+            >
               {item.item}
             </a>
             ]
             <Image item={item} />
             <button
               onClick={useCallback(
-                () => fetch(`rossm/asset/delete?id=${item.id}`),
+                () => fetch(`${API_URL}rossm/asset/delete?id=${item.id}`),
                 []
               )}
             >

@@ -37,10 +37,14 @@ const ProductSchema = z
   })
   .passthrough();
 
+export const DataSchema = ProductSchema;
+// const DiffSchema = Schema.shape.json.omit({ objects: true });
+export const DiffSchema = DataSchema;
+
 export interface Item {
   id: number;
   item: string;
-  data: z.infer<typeof ProductSchema>;
+  data: z.infer<typeof DataSchema>;
   created: string;
   checked: string | null;
   updated: string | null;
