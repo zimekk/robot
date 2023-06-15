@@ -615,10 +615,40 @@ export const JsonSchema = z.object({
     .array(),
 });
 
+export const DataSchema = Vehicle;
+
+export const DiffSchema = DataSchema.extend({
+  ordering: z.object({
+    distributionData: z.object({
+      locationOutletNickname: z.string().optional(),
+    }),
+  }),
+  price: z.object({
+    equipmentsTotalGrossPrice: z.number(),
+    grossSalesPrice: z.number(),
+    priceUpdatedAt: z.string(),
+  }),
+  salesProcess: z.object({
+    reason: z.string(),
+    type: z.enum(["AVAILABLE", "RESERVED_MANUAL", "SOLD"]),
+  }),
+  vehicleSpecification: z.object({
+    modelAndOption: z.object({
+      brand: z.string(),
+      model: z.object({
+        modelName: z.string(),
+      }),
+      modelRange: z.object({
+        name: z.string(),
+      }),
+    }),
+  }),
+});
+
 export interface Item {
   id: number;
   item: string;
-  data: z.infer<typeof Vehicle>;
+  data: z.infer<typeof DataSchema>;
   created: string;
   checked: string | null;
   updated: string | null;
