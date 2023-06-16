@@ -1,10 +1,13 @@
 import React, { useCallback, useMemo } from "react";
 import { createAsset } from "use-asset";
-import { type Item } from "../schema";
+import { Diff } from "@dev/components";
+import { type Item, DiffSchema } from "../schema";
+
+export const API_URL = process.env.API_URL || "";
 
 const asset = createAsset(
   () =>
-    fetch("euro")
+    fetch(`${API_URL}euro?limit=1000`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
@@ -35,18 +38,24 @@ export default function Section() {
           <li key={id}>
             [{id}]
             <ul>
-              {list.map((item) => (
+              {list.map((item, index) => (
                 <li key={item.id}>
                   [{item.id}]
                   <button
                     onClick={useCallback(
-                      () => fetch(`euro/delete?id=${item.id}`),
+                      () => fetch(`${API_URL}euro/delete?id=${item.id}`),
                       []
                     )}
                   >
                     delete
                   </button>
-                  <pre>{JSON.stringify(item, null, 2)}</pre>
+                  <pre>{JSON.stringify({ name: item.data.name }, null, 2)}</pre>
+                  {index < list.length - 1 && (
+                    <Diff
+                      left={DiffSchema.parse(list[index + 1].data)}
+                      right={DiffSchema.parse(item.data)}
+                    />
+                  )}
                 </li>
               ))}
             </ul>

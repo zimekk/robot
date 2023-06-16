@@ -184,10 +184,20 @@ export const JsonSchema = z.object({
   suggestion: z.null().optional(),
 });
 
+export const DataSchema = Result;
+
+export const DiffSchema = DataSchema.omit({
+  deliveryAvailability: true,
+  deliveryPriceMessage: true,
+  instalment: true,
+  opinionsSummary: true,
+  outletDetails: true,
+});
+
 export interface Item {
   id: number;
   item: string;
-  data: z.infer<typeof Result>;
+  data: z.infer<typeof DataSchema>;
   created: string;
   checked: string | null;
   updated: string | null;
