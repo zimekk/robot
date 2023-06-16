@@ -21,7 +21,7 @@ export const PhotoSchema = z.object({
 });
 
 export const ProductSchema = z.object({
-  featureSummary: z.string().array(),
+  featureSummary: z.string().array().optional(),
   featureSummaryStructured: z
     .object({
       shortName: z.string(),
@@ -69,12 +69,12 @@ export const ProductSchema = z.object({
 
 export const DataSchema = ProductSchema;
 
-export const DiffSchema = DataSchema.omit({
-  category: true,
-  commentsCount: true,
-  installmentMinimum: true,
-  rating: true,
-  ratingCount: true,
+export const DiffSchema = DataSchema.pick({
+  availabilityStatus: true,
+  name: true,
+  oldPrice: true,
+  price: true,
+  priceInfo: true,
 });
 
 export interface Item {

@@ -41,12 +41,7 @@ const Result = z.object({
   productGroupName: z.string(),
   productType: z.string(),
   deliveryAvailability: z.object({
-    shopDeliveryAvailability: z
-      .object({
-        code: z.string(),
-        deliveryDate: z.null(),
-      })
-      .nullable(),
+    shopDeliveryAvailability: DeliveryAvailability.nullable(),
     homeDeliveryAvailability: DeliveryAvailability.nullable(),
     commonDeliveryAvailability: DeliveryAvailability.nullable(),
     reserveAndCollectAvailable: z.boolean(),
