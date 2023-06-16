@@ -2,7 +2,7 @@ import { Router } from "express";
 import { diffString } from "json-diff";
 import { z } from "zod";
 import { query } from "@dev/sql";
-import { PaginationState, Schema } from "../schema";
+import { DiffSchema, PaginationState, Schema } from "../schema";
 
 const PagerSchema = z.object({
   start: z.coerce.number().default(0),
@@ -78,8 +78,10 @@ export const update = async (
               );
               if (result.rowCount > 0) {
                 const { id, data } = result.rows[0];
-                const diff = diffString(data, item);
-                console.info({ id, diff });
+                const diff = diffString(
+                  DiffSchema.parse(data),
+                  DiffSchema.parse(item)
+                );
                 if (!diff) {
                   await query(
                     "UPDATE products SET checked=CURRENT_TIMESTAMP WHERE id=$1",
