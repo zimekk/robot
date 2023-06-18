@@ -1,16 +1,23 @@
-import React, { useCallback, useMemo } from "react";
+import React, {
+  ChangeEventHandler,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { createAsset } from "use-asset";
-import { Diff } from "@dev/components";
+import { Diff, diff } from "@dev/components";
 import Assets, { API_URL } from "./Assets";
 import { type Item, DiffSchema } from "../schema";
 
 const asset = createAsset(
   () =>
-    fetch(`${API_URL}rossm?limit=5000`)
+    fetch(`${API_URL}rossm?limit=1000`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
 );
+
+const deleteItem = (id: number) => fetch(`${API_URL}rossm/delete?id=${id}`);
 
 export default function Section() {
   const result = asset.read();
@@ -27,12 +34,57 @@ export default function Section() {
     [result]
   );
 
-  console.log({ result, grouped });
+  const [selected, setSelected] = useState<number[]>(() => []);
+
+  const handleSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    ({ target }) =>
+      ((id) =>
+        setSelected((selected) =>
+          target.checked
+            ? selected.concat(id)
+            : selected.filter((item) => item !== id)
+        ))(Number(target.value)),
+    []
+  );
+
+  console.log({ result, grouped, selected });
 
   return (
     <section>
       <h2>Rossm</h2>
       <Assets />
+      <div>
+        <button
+          onClick={() =>
+            setSelected(
+              Object.values(grouped).flatMap((list) =>
+                list.reduce(
+                  (result, item, index, list) =>
+                    index < list.length - 1 &&
+                    diff(
+                      DiffSchema.parse(list[index + 1].data),
+                      DiffSchema.parse(item.data)
+                    ) === undefined
+                      ? result.concat(item.id)
+                      : result,
+                  [] as number[]
+                )
+              )
+            )
+          }
+        >
+          select duplicates
+        </button>
+        <button
+          disabled={selected.length === 0}
+          onClick={() =>
+            selected.reduce(
+              (promise, id) => promise.then(() => deleteItem(id)),
+              Promise.resolve() as Promise<any>
+            )
+          }
+        >{`delete selected (${selected.length})`}</button>
+      </div>
       <ol>
         {Object.entries(grouped)
           // .filter(([, list]) => list.length > 10)
@@ -42,16 +94,29 @@ export default function Section() {
               <ul>
                 {list.map((item, index) => (
                   <li key={item.id}>
-                    [{item.id}]
-                    <button
-                      onClick={useCallback(
-                        () => fetch(`${API_URL}rossm/delete?id=${item.id}`),
-                        []
+                    <label>
+                      <input
+                        type="checkbox"
+                        value={item.id}
+                        checked={selected.includes(item.id)}
+                        onChange={handleSelect}
+                      />
+                      [{item.id}]
+                    </label>
+                    <button onClick={() => deleteItem(item.id)}>delete</button>
+                    <pre>
+                      {JSON.stringify(
+                        (({ data: { name, price }, ...rest }: any) => ({
+                          data: {
+                            name,
+                            price,
+                          },
+                          ...rest,
+                        }))(item),
+                        null,
+                        2
                       )}
-                    >
-                      delete
-                    </button>
-                    <pre>{JSON.stringify(item, null, 2)}</pre>
+                    </pre>
                     {index < list.length - 1 && (
                       <Diff
                         left={DiffSchema.parse(list[index + 1].data)}

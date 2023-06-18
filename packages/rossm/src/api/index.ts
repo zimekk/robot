@@ -46,6 +46,11 @@ export const router = () =>
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
         .catch(next)
+    )
+    .get("/rossm/delete", (req, res, next) =>
+      query("DELETE FROM rossm WHERE id=$1", [req.query.id])
+        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .catch(next)
     );
 
 const assets = async (list: string[]) =>
