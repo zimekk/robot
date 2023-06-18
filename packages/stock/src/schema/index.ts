@@ -626,7 +626,7 @@ export const DiffSchema = DataSchema.extend({
   price: z.object({
     equipmentsTotalGrossPrice: z.number(),
     grossSalesPrice: z.number(),
-    priceUpdatedAt: z.string(),
+    // priceUpdatedAt: z.string(),
   }),
   salesProcess: z.object({
     reason: z.string(),

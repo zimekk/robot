@@ -107,6 +107,8 @@ export default function Section() {
                       (({
                         data: {
                           documentId,
+                          price,
+                          salesProcess,
                           vehicleSpecification: {
                             modelAndOption: { model },
                           },
@@ -115,6 +117,8 @@ export default function Section() {
                       }: any) => ({
                         data: {
                           documentId,
+                          price,
+                          salesProcess,
                           vehicleSpecification: { modelAndOption: { model } },
                         },
                         ...rest,
