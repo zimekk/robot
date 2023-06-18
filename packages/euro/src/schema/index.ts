@@ -181,12 +181,11 @@ export const JsonSchema = z.object({
 
 export const DataSchema = Result;
 
-export const DiffSchema = DataSchema.omit({
-  deliveryAvailability: true,
-  deliveryPriceMessage: true,
-  instalment: true,
-  opinionsSummary: true,
-  outletDetails: true,
+export const DiffSchema = DataSchema.pick({
+  brand: true,
+  prices: true,
+  productGroupName: true,
+  productName: true,
 });
 
 export interface Item {
