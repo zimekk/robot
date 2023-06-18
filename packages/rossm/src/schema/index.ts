@@ -39,7 +39,10 @@ const ProductSchema = z
 
 export const DataSchema = ProductSchema;
 
-export const DiffSchema = DataSchema.strip().omit({ pictures: true });
+export const DiffSchema = DataSchema.strip().omit({
+  navigateUrl: true,
+  pictures: true,
+});
 
 export interface Item {
   id: number;
