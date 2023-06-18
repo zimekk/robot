@@ -5,14 +5,14 @@ import React, {
   useState,
 } from "react";
 import { createAsset } from "use-asset";
-import { Diff } from "@dev/components";
+import { Diff, diff } from "@dev/components";
 import { type Item, DiffSchema } from "../schema";
 
 export const API_URL = process.env.API_URL || "";
 
 const asset = createAsset(
   () =>
-    fetch(`${API_URL}products?limit=1000&start=0`)
+    fetch(`${API_URL}products?limit=1000`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
@@ -35,9 +35,7 @@ export default function Section() {
     [result]
   );
 
-  const [selected, setSelected] = useState<number[]>(() =>
-    result.filter((item) => !item.data.featureSummary).map((item) => item.id)
-  );
+  const [selected, setSelected] = useState<number[]>(() => []);
 
   const handleSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target }) =>
@@ -56,6 +54,38 @@ export default function Section() {
     <section>
       <h2>Products</h2>
       <div>
+        <button
+          onClick={() =>
+            setSelected(
+              Object.values(grouped).flatMap((list) =>
+                list.reduce(
+                  (result, item, index, list) =>
+                    index < list.length - 1 &&
+                    diff(
+                      DiffSchema.parse(list[index + 1].data),
+                      DiffSchema.parse(item.data)
+                    ) === undefined
+                      ? result.concat(item.id)
+                      : result,
+                  [] as number[]
+                )
+              )
+            )
+          }
+        >
+          select duplicates
+        </button>
+        <button
+          onClick={() =>
+            setSelected(
+              result
+                .filter((item) => !item.data.featureSummary)
+                .map((item) => item.id)
+            )
+          }
+        >
+          select incomplete
+        </button>
         <button
           disabled={selected.length === 0}
           onClick={() =>

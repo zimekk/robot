@@ -4,8 +4,11 @@ import "./styles.css";
 
 const jsondiffpatch = create({});
 
+export const diff = (left: unknown, right: unknown) =>
+  jsondiffpatch.diff(left, right);
+
 export function Diff({ left, right }: { left: unknown; right: unknown }) {
-  const delta = jsondiffpatch.diff(left, right);
+  const delta = diff(left, right);
   // console.log({ delta });
 
   return delta ? (
