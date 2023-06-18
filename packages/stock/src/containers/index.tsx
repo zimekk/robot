@@ -1,17 +1,24 @@
-import React, { useCallback, useMemo } from "react";
+import React, {
+  ChangeEventHandler,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { createAsset } from "use-asset";
-import { Diff } from "@dev/components";
+import { Diff, diff } from "@dev/components";
 import { type Item, DiffSchema } from "../schema";
 
 export const API_URL = process.env.API_URL || "";
 
 const asset = createAsset(
   () =>
-    fetch(`${API_URL}stock?limit=500`)
+    fetch(`${API_URL}stock?limit=100`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
 );
+
+const deleteItem = (id: number) => fetch(`${API_URL}stock/delete?id=${id}`);
 
 export default function Section() {
   const result = asset.read();
@@ -28,11 +35,56 @@ export default function Section() {
     [result]
   );
 
-  console.log({ result, grouped });
+  const [selected, setSelected] = useState<number[]>(() => []);
+
+  const handleSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    ({ target }) =>
+      ((id) =>
+        setSelected((selected) =>
+          target.checked
+            ? selected.concat(id)
+            : selected.filter((item) => item !== id)
+        ))(Number(target.value)),
+    []
+  );
+
+  console.log({ result, grouped, selected });
 
   return (
     <section>
       <h2>Stock</h2>
+      <div>
+        <button
+          onClick={() =>
+            setSelected(
+              Object.values(grouped).flatMap((list) =>
+                list.reduce(
+                  (result, item, index, list) =>
+                    index < list.length - 1 &&
+                    diff(
+                      DiffSchema.parse(list[index + 1].data),
+                      DiffSchema.parse(item.data)
+                    ) === undefined
+                      ? result.concat(item.id)
+                      : result,
+                  [] as number[]
+                )
+              )
+            )
+          }
+        >
+          select duplicates
+        </button>
+        <button
+          disabled={selected.length === 0}
+          onClick={() =>
+            selected.reduce(
+              (promise, id) => promise.then(() => deleteItem(id)),
+              Promise.resolve() as Promise<any>
+            )
+          }
+        >{`delete selected (${selected.length})`}</button>
+      </div>
       <ol>
         {Object.entries(grouped).map(([id, list]) => (
           <li key={id}>
@@ -40,17 +92,36 @@ export default function Section() {
             <ul>
               {list.map((item, index) => (
                 <li key={item.id}>
-                  [{item.id}]
-                  <button
-                    onClick={useCallback(
-                      () => fetch(`${API_URL}stock/delete?id=${item.id}`),
-                      []
-                    )}
-                  >
-                    delete
-                  </button>
+                  <label>
+                    <input
+                      type="checkbox"
+                      value={item.id}
+                      checked={selected.includes(item.id)}
+                      onChange={handleSelect}
+                    />
+                    [{item.id}]
+                  </label>
+                  <button onClick={() => deleteItem(item.id)}>delete</button>
                   <pre>
-                    {JSON.stringify(DiffSchema.parse(item.data), null, 2)}
+                    {JSON.stringify(
+                      (({
+                        data: {
+                          documentId,
+                          vehicleSpecification: {
+                            modelAndOption: { model },
+                          },
+                        },
+                        ...rest
+                      }: any) => ({
+                        data: {
+                          documentId,
+                          vehicleSpecification: { modelAndOption: { model } },
+                        },
+                        ...rest,
+                      }))(item),
+                      null,
+                      2
+                    )}
                   </pre>
                   {index < list.length - 1 && (
                     <Diff
