@@ -1044,7 +1044,14 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bull-board/api@5.4.0", "@bull-board/api@^5.2.0":
+"@bull-board/api@5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-5.5.1.tgz#575021afde1863d2c6014d2f790ee1cb84032822"
+  integrity sha512-JRCiXpDspazAQH+4W8SPMWTzLD5xk/DOPU6XRaA+woOvTgX/LLs7vtQ0ZevC/o3Xogbvz7xR+/pNetHHk2nAEQ==
+  dependencies:
+    redis-info "^3.0.8"
+
+"@bull-board/api@^5.2.0":
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-5.4.0.tgz#3efcebf0fdf135f1c4d1bd11be4c8e38f69acfe2"
   integrity sha512-SsUsOU2ZspQCG58MEcQL+MSeSos5onTmS4UhdRBOPRqjzJKuD2xPMKC2+r+TvX18+7ZzeqGonqztvKw4H3MROA==
@@ -1052,21 +1059,21 @@
     redis-info "^3.0.8"
 
 "@bull-board/express@^5.2.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-5.4.0.tgz#906932293edbe4a60f0a14e10c70e7c96521c4ec"
-  integrity sha512-E3KQnhcwNWlHYLFLGLTU7OGZLGcTgZw1AGv09rU+UOR04wOi3a+weSq07cJjiJsU0N9baeXbAsluJHiq4vtrcQ==
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-5.5.1.tgz#715451b3616fc3ec26ddaaea11d3ed18f3106b0d"
+  integrity sha512-/Po9WiU1JmHdHr5syi5hI+3+XRblzod8l09+YX706N7FNw1/y7A2SBUtq2Q809JOees9sddo9EHHgA9B05cnEw==
   dependencies:
-    "@bull-board/api" "5.4.0"
-    "@bull-board/ui" "5.4.0"
+    "@bull-board/api" "5.5.1"
+    "@bull-board/ui" "5.5.1"
     ejs "3.1.7"
     express "4.17.3"
 
-"@bull-board/ui@5.4.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-5.4.0.tgz#9ac365db498c6af0f866d36dfc1fb768887485bc"
-  integrity sha512-dwBwSk4Fy/KPHLquN0zCo12P+ZVxWaJq4bZelbCWYOMLWOnjArJ6lAaGY29BGKLAUMh7vSeZMHEnZnE4jYtRxw==
+"@bull-board/ui@5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-5.5.1.tgz#0f6243ee4aa8d4add06470eef425da63964c0a31"
+  integrity sha512-/BtSXndO0F3cbM9gLrrclRsrQAfubeuWl/7dYtmwC+mDdF10F35yIvSw1z4fy3HzOFHW/A07lhPYt1flDRNVIg==
   dependencies:
-    "@bull-board/api" "5.4.0"
+    "@bull-board/api" "5.5.1"
 
 "@commitlint/cli@^17.6.3":
   version "17.6.5"
