@@ -126,7 +126,12 @@ const Result = z.object({
       automatic: z.boolean(),
       beginTime: z.string(),
       endTime: z.string(),
-      usageLimit: z.null(),
+      usageLimit: z
+        .object({
+          remainingUsageLimit: z.number(),
+          totalUsageLimit: z.number(),
+        })
+        .nullable(),
       description: z.string(),
     })
     .nullable(),
