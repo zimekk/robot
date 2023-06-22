@@ -89,6 +89,9 @@ export const update = async (
                   );
                   return;
                 }
+                if (!item.featureSummary) {
+                  return;
+                }
                 // await query(
                 //   "UPDATE products SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
                 //   [item, id]

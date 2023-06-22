@@ -10,9 +10,13 @@ import { type Item, DiffSchema } from "../schema";
 
 export const API_URL = process.env.API_URL || "";
 
+const LIMIT = [100].concat(
+  [...Array(5)].map((_value, index) => (index + 1) * 1000)
+);
+
 const asset = createAsset(
-  () =>
-    fetch(`${API_URL}products?limit=1000`)
+  (limit) =>
+    fetch(`${API_URL}products?limit=${limit}`)
       .then((res) => res.json())
       .then<Item[]>(({ result }) => result)
   // .catch((error) => (console.error(error), []))
@@ -21,7 +25,8 @@ const asset = createAsset(
 const deleteItem = (id: number) => fetch(`${API_URL}products/delete?id=${id}`);
 
 export default function Section() {
-  const result = asset.read();
+  const [pager, setPager] = useState(() => ({ limit: LIMIT[0] }));
+  const result = asset.read(pager.limit);
 
   const grouped = useMemo(
     () =>
@@ -48,12 +53,32 @@ export default function Section() {
     []
   );
 
-  console.log({ result, selected });
+  console.log({ ...pager, result, selected });
 
   return (
     <section>
       <h2>Products</h2>
       <div>
+        <label>
+          <span>limit</span>
+          <select
+            value={String(pager.limit)}
+            onChange={useCallback<ChangeEventHandler<HTMLSelectElement>>(
+              ({ target }) =>
+                setPager((pager) => ({
+                  ...pager,
+                  limit: Number(target.value),
+                })),
+              []
+            )}
+          >
+            {LIMIT.map((value) => (
+              <option key={value} value={String(value)}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
         <button
           onClick={() =>
             setSelected(
