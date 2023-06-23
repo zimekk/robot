@@ -46,11 +46,16 @@ const Advert = z
     parameters: z
       .object({
         key: z.enum([
-          "make",
-          "year",
-          "mileage",
+          "country_origin",
           "engine_capacity",
+          "engine_power",
           "fuel_type",
+          "gearbox",
+          "make",
+          "mileage",
+          "model",
+          "version",
+          "year",
         ]),
         displayValue: z.string(),
         value: z.string(),
