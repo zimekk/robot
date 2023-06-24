@@ -767,10 +767,22 @@ const JsonSchema = z.object({
   }),
 });
 
+export const DataSchema = Offer;
+
+export const DiffSchema = DataSchema.omit({
+  change_color: true,
+  has_distinction: true,
+}).extend({
+  configuration: DataSchema.shape.configuration.omit({
+    display_type: true,
+    is_autoresponder_enabled: true,
+  }),
+});
+
 export interface Item {
   id: number;
   item: string;
-  data: z.infer<typeof Offer>;
+  data: z.infer<typeof DataSchema>;
   created: string;
   checked: string | null;
   updated: string | null;

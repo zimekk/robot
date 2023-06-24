@@ -1,13 +1,26 @@
 import { Router } from "express";
 import { diffString } from "json-diff";
+import { z } from "zod";
 import { query } from "@dev/sql";
-import { Schema } from "../schema";
+import { DiffSchema, Schema } from "../schema";
+
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
 
 export const router = () =>
   Router()
-    .get("/rynek", (_req, res, next) =>
-      query("SELECT * FROM rynek ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+    .get("/rynek", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query(
+            "SELECT * FROM rynek ORDER BY created DESC LIMIT $1 OFFSET $2",
+            [limit, start]
+          )
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/rynek/delete", (req, res, next) =>
@@ -40,7 +53,10 @@ export const update = async (
             );
             if (result.rowCount > 0) {
               const { id, data } = result.rows[0];
-              const diff = diffString(data, item);
+              const diff = diffString(
+                DiffSchema.parse(data),
+                DiffSchema.parse(item)
+              );
               console.info({ id, diff });
               if (!diff) {
                 await query(
