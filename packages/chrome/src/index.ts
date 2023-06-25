@@ -173,6 +173,12 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     const json = await page.evaluate(e);
                     console.log({ json });
                     resolve({ url: res.url(), json });
+                  } else if (url.match("dom.pl/pl/")) {
+                    const e = "__NEXT_DATA__";
+                    console.log(["page.evaluate"], e);
+                    const json = await page.evaluate(e);
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
                   } else if (url.match("smann.pl/szukaj\\?")) {
                     if (decodeURI(url) === decodeURI(res.url())) {
                       console.log(res.url());
