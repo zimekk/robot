@@ -72,6 +72,9 @@ export const update = async (
             result.then(async () => {
               const { id } = item;
               console.log({ id, item });
+              if (!item.featureSummary) {
+                return;
+              }
               const result = await query(
                 "SELECT * FROM products WHERE item=$1 ORDER BY created DESC LIMIT 1",
                 [id]
@@ -87,9 +90,6 @@ export const update = async (
                     "UPDATE products SET checked=CURRENT_TIMESTAMP WHERE id=$1",
                     [id]
                   );
-                  return;
-                }
-                if (!item.featureSummary) {
                   return;
                 }
                 // await query(
