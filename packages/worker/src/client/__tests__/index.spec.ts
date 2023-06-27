@@ -1,4 +1,4 @@
-import { AutosSchema, limiter } from "..";
+import { AutosSchema, limiter } from "../parse";
 
 describe("client", () => {
   it("AutosSchema", () =>

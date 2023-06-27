@@ -17,8 +17,8 @@ import { Link } from "../components/Link";
 
 export const API_URL = process.env.API_URL || "";
 
-export const post = (path: string, data?: object) =>
-  fetch(`${API_URL}${path}`, {
+export const post = (path: string, data?: object, base = API_URL) =>
+  fetch(`${base}${path}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -825,6 +825,16 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
     []
   );
 
+  const handleScrap = useCallback(
+    (item: object) => (
+      console.log(["scrap"], { item }),
+      post("scrap", item, "")
+        .then((response) => response.json())
+        .then((json) => post("parse", json))
+    ),
+    []
+  );
+
   return (
     <Fieldset legend="process">
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
@@ -967,7 +977,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               >
                 {item.id}
               </Link>
-              {item.opts.repeat?.cron && (
+              {item.opts.repeat?.cron ? (
                 <pre
                   style={{
                     fontSize: "xx-small",
@@ -976,6 +986,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 >
                   {item.opts.repeat.cron}
                 </pre>
+              ) : (
+                <button onClick={() => handleScrap(item)}>scrap</button>
               )}
             </label>
           </div>

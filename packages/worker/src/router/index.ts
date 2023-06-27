@@ -6,7 +6,7 @@ import { ExpressAdapter } from "@bull-board/express";
 import { z } from "zod";
 import { DataSchema, EntrySchema, OptsSchema } from "@dev/schema";
 
-import { client } from "../client";
+import { chrome, client, parse } from "../client";
 
 export const router = () => {
   const BASE_PATH = "/board";
@@ -24,6 +24,43 @@ export const router = () => {
   });
 
   return Router()
+    .post("/scrap", json(), async (req, res, next) =>
+      z
+        .object({
+          id: z.string(),
+          data: DataSchema,
+        })
+        .parseAsync(req.body)
+        .then(({ id, data }) =>
+          (console.log(["scrap"], { data }), chrome(data.url))
+            .then((returnvalue) => {
+              if (returnvalue.html && returnvalue.url !== data.url) {
+                throw new Error(`Invalid response url: ${returnvalue.url}`);
+              }
+              return returnvalue;
+            })
+            .then((returnvalue) => res.json({ id, data, returnvalue }))
+        )
+        .catch(next)
+    )
+    .post("/parse", json({ limit: "10mb" }), async (req, res, next) =>
+      z
+        .object({
+          id: z.string(),
+          data: DataSchema,
+          returnvalue: z.unknown(),
+        })
+        .parseAsync(req.body)
+        .then(
+          ({ id, data, returnvalue }) => (
+            console.log(["parse"], { data }),
+            parse({ id, data, returnvalue }).then(() =>
+              res.json({ status: "ok" })
+            )
+          )
+        )
+        .catch(next)
+    )
     .post("/process", json(), async (req, res) => {
       const { data, opts } = await z
         .object({
