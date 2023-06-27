@@ -10,9 +10,9 @@ import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as RoomsReturnSchema } from "./rooms";
 // import { Schema as StationsSchema } from "./stations";
 // import { Schema as StationSchema } from "./stations/item";
-import OtodomOfferTransform, {
-  Schema as OtodomOfferSchema,
-} from "./otodom/offer";
+// import OtodomOfferTransform, {
+//   Schema as OtodomOfferSchema,
+// } from "./otodom/offer";
 import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSchema,
 
 export const Type = {
@@ -233,19 +233,19 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.OTODOM),
-      returnvalue: z
-        .object({
-          html: z.string(),
-        })
-        .transform(OtodomOfferTransform),
+      // returnvalue: z
+      //   .object({
+      //     html: z.string(),
+      //   })
+      //   .transform(OtodomOfferTransform),
     }),
     JsonSchema.extend({
       type: z.literal(Type.OTODOM_OFFER),
-      returnvalue: z
-        .object({
-          html: z.string(),
-        })
-        .transform(OtodomOfferTransform),
+      // returnvalue: z
+      //   .object({
+      //     html: z.string(),
+      //   })
+      //   .transform(OtodomOfferTransform),
     }),
     JsonSchema.extend({
       type: z.literal(Type.OTOMOTO),
@@ -399,15 +399,11 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.OTODOM),
-    returnvalue: z.object({
-      json: OtodomOfferSchema,
-    }),
+    returnvalue: require("@dev/props/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.OTODOM_OFFER),
-    returnvalue: z.object({
-      json: OtodomOfferSchema,
-    }),
+    returnvalue: require("@dev/props/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.OTOMOTO),

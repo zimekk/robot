@@ -106,16 +106,19 @@ export default async (
           .update(id, data, returnvalue)
           .then(() => []);
       } else if (type === Type.OTODOM) {
-        const { items = [] } =
-          returnvalue.json.props?.pageProps.data?.searchAds || {};
-        return Promise.resolve(
-          items
-            .map(({ slug }) => ({
-              url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
-            }))
-            .filter(limiter(jobs, days(7)))
-            .slice(0, 150)
-        );
+        return require("@dev/props/api")
+          .update(id, data, returnvalue)
+          .then(() => []);
+        // const { items = [] } =
+        //   returnvalue.json.props?.pageProps.data?.searchAds || {};
+        // return Promise.resolve(
+        //   items
+        //     .map(({ slug }) => ({
+        //       url: `${new URL(data.url).origin}/pl/oferta/${slug}`,
+        //     }))
+        //     .filter(limiter(jobs, days(7)))
+        //     .slice(0, 150)
+        // );
       } else if (type === Type.OTOMOTO) {
         return require("@dev/moto/api")
           .update(id, data, returnvalue)
