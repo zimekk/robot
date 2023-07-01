@@ -328,6 +328,17 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             (cat) =>
               `https://www.otodom.pl/pl/oferty/sprzedaz/${cat}?limit=72&page=1`
           )
+          .concat(
+            [
+              "dom/mazowieckie/piaseczynski/konstancin--jeziorna",
+              "dzialka/mazowieckie/piaseczynski/konstancin--jeziorna",
+              "dzialka/mazowieckie/pruszkowski/michalowice",
+              "dzialka/mazowieckie/warszawski-zachodni/stare-babice",
+            ].map(
+              (cat) =>
+                `https://www.otodom.pl/pl/wyniki/sprzedaz/${cat}?limit=72&page=1`
+            )
+          )
           .map((url, i) => ({
             data: {
               url,
