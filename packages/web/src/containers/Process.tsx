@@ -532,13 +532,15 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens&producent=1977-wmf",
+          "g-19/c/1803-roboty-kuchenne.html?producent=539-bosch&producent=1977-wmf",
           "g-19/c/1820-wentylatory.html?producent=1023-xiaomi",
           "g-19/c/2362-akcesoria-do-kuchni.html?producent=3035-girmi",
           "g-19/c/2362-akcesoria-do-kuchni.html?producent=1977-wmf",
+          "g-19/c/2471-akcesoria-roboty-kuchenne.html?producent=539-bosch&producent=1977-wmf",
           "g-19/c/2880-generatory-pary.html",
+          "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
-          "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
         ]
           .map((path) => {
             return `https://www.al.to/${path}`;
@@ -575,6 +577,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=piekarniki-do-zabudowy&__=Siemens",
           "category=plyty-do-zabudowy&__=Siemens",
           "category=pralki&__=Siemens",
+          "category=roboty-wieloczynnosciowe&__=Bosch,wmf&_az=4",
           "category=roboty-wieloczynnosciowe&__=KitchenAid&_aw=1",
           "category=sluchawki&__=Apple,marshall",
           "category=smartwatch&__=Apple",
@@ -583,6 +586,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=telefony-komorkowe&__=Apple",
           "category=telewizory-led-lcd-plazmowe&__=Panasonic",
           "category=wentylatory-i-klimatory&__=xiaomi",
+          "category=wyposazenie-do-robotow-kuchennych&__=Bosch",
           "category=zelazka-systemowe&__=Philips",
           "category=zmywarki-do-zabudowy&__=Siemens",
         ]
