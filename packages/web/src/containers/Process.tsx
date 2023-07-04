@@ -516,9 +516,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "g-64/c/2582-gimbale.html?producent=1009-dji",
           // "g-64/c/2582-gimbale.html?producent=1155-zhiyun",
         ]
-          .map((path) => {
-            return `https://www.x-kom.pl/${path}`;
-          })
+          .map((path) => `https://www.x-kom.pl/${path}`)
           .map((url, i) => ({
             data: {
               url,
@@ -540,11 +538,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-19/c/2880-generatory-pary.html",
           "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
+          "g-63/c/2073-klocki-lego.html?producent=629-lego&f833-seria=8890-lego-technic&f833-seria=161664-lego-dots",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
         ]
-          .map((path) => {
-            return `https://www.al.to/${path}`;
-          })
+          .map((path) => `https://www.al.to/${path}`)
           .map((url, i) => ({
             data: {
               url,
@@ -590,9 +587,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=zelazka-systemowe&__=Philips",
           "category=zmywarki-do-zabudowy&__=Siemens",
         ]
-          .map((path) => {
-            return `https://www.euro.com.pl/rest/api/products/search?startFrom=0&numberOfItems=17&${path}&developSearchMode=false&orderBy=POPULARITY&direction=ASC`;
-          })
+          .map(
+            (path) =>
+              `https://www.euro.com.pl/rest/api/products/search?startFrom=0&numberOfItems=17&${path}&developSearchMode=false&orderBy=POPULARITY&direction=ASC`
+          )
           .map((url, i) => ({
             data: {
               url,
@@ -615,9 +613,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
           "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
         ]
-          .map((path) => {
-            return `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=24`;
-          })
+          .map(
+            (path) =>
+              `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=24`
+          )
           .map((url, i) => ({
             data: {
               url,
@@ -634,9 +633,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "promotions/sale/skiing/boots/shopby/medium_16458",
           // "sports/alpine-skiing/boots/shopby/on_piste_74982",
         ]
-          .map((path) => {
-            return `https://www.salomon.com/pl-pl/shop-emea/${path}.html`;
-          })
+          .map((path) => `https://www.salomon.com/pl-pl/shop-emea/${path}.html`)
           .map((url, i) => ({
             data: {
               url,
@@ -649,19 +646,17 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         chunk(
           [
-            "592143",
-            "681134",
-            "681136",
-            "681152",
-            "730554",
-            "730597",
-            "1070889",
+            // "592143",
+            // "681134",
+            // "681136",
+            // "681152",
+            // "730554",
+            // "730597",
+            // "1070889",
           ],
           1
         )
-          .map((ids) => {
-            return `https://www.x-kom.pl/szukaj?q=${ids.join("+")}`;
-          })
+          .map((ids) => `https://www.x-kom.pl/szukaj?q=${ids.join("+")}`)
           .map((url, i) => ({
             data: {
               url,
@@ -672,10 +667,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
-        chunk(["1022668"], 1)
-          .map((ids) => {
-            return `https://www.al.to/szukaj?q=${ids.join("+")}`;
-          })
+        chunk(
+          [
+            // "1022668"
+          ],
+          1
+        )
+          .map((ids) => `https://www.al.to/szukaj?q=${ids.join("+")}`)
           .map((url, i) => ({
             data: {
               url,
@@ -731,14 +729,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "willabelweder",
           // "zamekksiezagora",
         ]
-          .map((name) => {
-            return [
-              // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
-              // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
-              `https://booking.profitroom.com/api/${name}/details`,
-              // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
-            ];
-          })
+          .map((name) => [
+            // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
+            // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
+            `https://booking.profitroom.com/api/${name}/details`,
+            // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
+          ])
           .flat()
           .map((url, i) => ({
             data: {
