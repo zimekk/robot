@@ -62,6 +62,9 @@ export const update = async (
                 DiffSchema.parse(item)
               );
               console.info({ id, diff });
+              if (!item.location.reverseGeocoding) {
+                return;
+              }
               if (!diff) {
                 await query(
                   "UPDATE props SET checked=CURRENT_TIMESTAMP WHERE id=$1",

@@ -124,7 +124,11 @@ const JsonSchema = z
 
 export const DataSchema = Ad;
 
-export const DiffSchema = Ad;
+export const DiffSchema = Ad.extend({
+  // location: Ad.shape.location.omit({
+  //   reverseGeocoding: true,
+  // }),
+});
 
 export interface Item {
   id: number;
