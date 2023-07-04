@@ -128,6 +128,9 @@ export const DiffSchema = Ad.extend({
   // location: Ad.shape.location.omit({
   //   reverseGeocoding: true,
   // }),
+  locationLabel: Ad.shape.locationLabel.omit({
+    locale: true,
+  }),
 });
 
 export interface Item {
