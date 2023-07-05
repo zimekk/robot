@@ -12,6 +12,7 @@ const PAGES = Object.freeze({
   funds: lazy(() => import("@dev/funds")),
   moto: lazy(() => import("@dev/moto")),
   plots: lazy(() => import("@dev/plots")),
+  prods: lazy(() => import("@dev/prods")),
   products: lazy(() => import("@dev/products")),
   promo: lazy(() => import("@dev/promo")),
   props: lazy(() => import("@dev/props")),

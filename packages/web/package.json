@@ -25,6 +25,7 @@
     "@dev/funds": "^1.0.0",
     "@dev/moto": "^1.0.0",
     "@dev/plots": "^1.0.0",
+    "@dev/prods": "^1.0.0",
     "@dev/products": "^1.0.0",
     "@dev/promo": "^1.0.0",
     "@dev/props": "^1.0.0",

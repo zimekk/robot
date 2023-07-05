@@ -42,6 +42,7 @@ COPY packages/funds/package.json packages/funds/
 COPY packages/moto/package.json packages/moto/
 COPY packages/notify/package.json packages/notify/
 COPY packages/plots/package.json packages/plots/
+COPY packages/prods/package.json packages/prods/
 COPY packages/products/package.json packages/products/
 COPY packages/promo/package.json packages/promo/
 COPY packages/props/package.json packages/props/
