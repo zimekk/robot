@@ -125,11 +125,12 @@ const JsonSchema = z
 export const DataSchema = Ad;
 
 export const DiffSchema = Ad.extend({
-  // location: Ad.shape.location.omit({
-  //   reverseGeocoding: true,
-  // }),
+  location: Ad.shape.location.omit({
+    reverseGeocoding: true,
+  }),
   locationLabel: Ad.shape.locationLabel.omit({
     locale: true,
+    value: true,
   }),
 });
 
