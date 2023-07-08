@@ -48,11 +48,15 @@ export const client = () => {
     async produce(
       data: Data,
       opts = {
-        delay: seconds(1),
         // repeat: { cron: "1 10,22 * * *" },
       }
     ) {
-      await queue.add(NAME, data, opts);
+      await queue.add(NAME, data, {
+        attempts: 1, // 5 - If job fails it will retry till 5 times
+        backoff: seconds(10), // 5000 - static 5 sec delay between retry
+        delay: seconds(1),
+        ...opts,
+      });
       return q;
     },
     process() {

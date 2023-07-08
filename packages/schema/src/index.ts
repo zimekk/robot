@@ -493,6 +493,12 @@ export const DelayedSchema = z
         .strict()
         .optional(),
       jobId: z.string().optional(),
+      backoff: z
+        .object({
+          type: z.enum(["fixed"]),
+          delay: z.number(),
+        })
+        .optional(),
       delay: z.number(),
       timestamp: z.number(),
       prevMillis: z.number().optional(),
