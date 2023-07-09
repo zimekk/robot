@@ -959,6 +959,29 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         >
           append url
         </button>
+        <button
+          onClick={useCallback(
+            () =>
+              list
+                .filter((item) => selected.includes(item.id))
+                .reduce<Promise<unknown>>(
+                  (promise, item) =>
+                    promise
+                      .then(() => handleScrap(item))
+                      .then(
+                        () =>
+                          new Promise((resolve) =>
+                            setTimeout(resolve, seconds(10 * Math.random()))
+                          )
+                      ),
+                  Promise.resolve()
+                )
+                .then(() => setSelected([])),
+            [list, selected]
+          )}
+        >
+          scrap
+        </button>
       </div>
 
       {list.map((item: any) => (
