@@ -1,4 +1,5 @@
 import { json } from "body-parser";
+import fetch from "cross-fetch";
 import { Router } from "express";
 import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
@@ -24,6 +25,34 @@ export const router = () => {
   });
 
   return Router()
+    .get("/shops/:id", json(), async (req, res, next) =>
+      z
+        .object({
+          id: z.string(),
+        })
+        .parseAsync(req.params)
+        .then(({ id }) =>
+          z
+            .object({
+              areaName: z.string(),
+            })
+            .parseAsync(req.query)
+            .then(
+              ({ areaName }) =>
+                `https://www.euro.com.pl/rest/api/products/${id}/shops?areaName=${encodeURIComponent(
+                  areaName
+                )}`
+            )
+            .then(
+              (url) => (
+                console.log(["fetch"], url),
+                fetch(url).then((res) => res.json())
+              )
+            )
+        )
+        .then((json) => (console.log(json), res.json(json)))
+        .catch(next)
+    )
     .post("/scrap", json(), async (req, res, next) =>
       z
         .object({
