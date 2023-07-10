@@ -263,6 +263,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[1]);
   const [delay, setDelay] = useState<(typeof DELAY)[number]>(() => DELAY[0]);
   const [match, setMatch] = useState(() => ({
+    blocked: false,
     type: "",
     query: "",
   }));
@@ -412,14 +413,15 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           repeat: { cron: "0 12 * * *" },
         },
       },
-      // {
-      //   data: {
-      //     url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
-      //   },
-      //   opts: {
-      //     repeat: { cron: "5 12 1 * *" },
-      //   },
-      // },
+      {
+        blocked: true,
+        data: {
+          url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
+        },
+        opts: {
+          repeat: { cron: "5 12 1 * *" },
+        },
+      },
       {
         data: {
           url: "https://www.rbinternational.com.pl/rest/rates/?type=kursywalut&range=all",
@@ -429,6 +431,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         },
       },
       {
+        blocked: true,
         data: {
           url: "https://www.x-kom.pl/promocje",
         },
@@ -445,6 +448,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         },
       },
       {
+        blocked: true,
         data: {
           url: "https://www.x-kom.pl/goracy_strzal",
         },
@@ -567,6 +571,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             )
           )
           .map((url, i) => ({
+            blocked: true,
             data: {
               url,
             },
@@ -745,6 +750,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         ]
           .map((path) => `https://www.x-kom.pl/${path}`)
           .map((url, i) => ({
+            blocked: true,
             data: {
               url,
             },
@@ -1025,19 +1031,17 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         })
         .transform((item) => ({ ...item, id: item.data.url }))
         .array()
-        .parse(records),
-    [type, delay, priority, records]
+        .parse(
+          records.filter(({ blocked = false }) => blocked === match.blocked)
+        ),
+    [type, delay, priority, records, match.blocked]
   );
 
   const list = useMemo(
-    () => (
-      console.log(filters),
+    () =>
       entries.filter(
-        (item) =>
-          // (filters.type === "" || filters.type === item.type) &&
-          filters.query === "" || item.data.url.includes(filters.query)
-      )
-    ),
+        (item) => filters.query === "" || item.data.url.includes(filters.query)
+      ),
     [entries, filters]
   );
 
@@ -1135,6 +1139,21 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               []
             )}
           />
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            checked={match.blocked}
+            onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
+              ({ target }) =>
+                setMatch((match) => ({
+                  ...match,
+                  blocked: target.checked,
+                })),
+              []
+            )}
+          />
+          <span>blocked</span>
         </label>
         <span>
           {TYPE.map((value) => (
