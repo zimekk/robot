@@ -432,7 +432,7 @@ const JsonSchema = z.object({
       seo_meta_keywords: z.array(z.string()).nullable(),
       show_meta_fields: z.boolean(),
       meta_title: z.null(),
-      meta_description: z.null(),
+      meta_description: z.string().nullable(),
       region: z.number(),
       type: z.number(),
     }),
