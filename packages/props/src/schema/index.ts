@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const MoneyType = z.object({
   value: z.number(),
-  currency: z.enum(["EUR", "PLN"]),
+  currency: z.enum(["EUR", "PLN", "USD"]),
   __typename: z.literal("Money"),
 });
 
