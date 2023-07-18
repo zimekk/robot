@@ -763,6 +763,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens&producent=1977-wmf",
+          "g-19/c/1800-suszarko-lokowki.html?producent=567-babyliss&producent=569-remington",
           "g-19/c/1803-roboty-kuchenne.html?producent=539-bosch&producent=1977-wmf",
           "g-19/c/1820-wentylatory.html?producent=1023-xiaomi",
           "g-19/c/2362-akcesoria-do-kuchni.html?producent=3035-girmi",
@@ -800,6 +801,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=ladowarki-ipod-iphone&__=Apple",
           "category=laptopy-i-netbooki&__=Apple",
           "category=lodowki-do-zabudowy&__=Siemens",
+          "category=lokowko-suszarki&__=Babyliss,Dyson,Remington",
           // "category=obiektywy&__=Canon",
           // "category=obiektywy&__=Sigma&_h=32",
           "category=obiektywy&_h=2",
