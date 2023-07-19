@@ -5,12 +5,12 @@
 ## install
 
 ```sh
-nvm install v14
+nvm install v18
 npm i -g yarn
 ```
 
 ```sh
-node -v # v14.18.2
+node -v # v18.16.0
 yarn -v # 1.22.19
 ```
 
