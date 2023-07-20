@@ -564,6 +564,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               "dom/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/mazowieckie/pruszkowski/michalowice",
+              "dzialka/mazowieckie/pruszkowski/raszyn",
               "dzialka/mazowieckie/warszawski-zachodni/stare-babice",
             ].map(
               (cat) =>
@@ -719,6 +720,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
           "g-4/c/1836-etui-i-obudowy-na-smartfony.html?producent=357-apple",
           "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
+          "g-4/c/2287-akcesoria-do-tabletow.html?producent=357-apple",
           "g-4/c/2748-sluchawki-true-wireless.html?producent=357-apple",
           "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
           "g-5/c/158-zasilacze-do-komputera.html?producent=368-nzxt",
@@ -740,6 +742,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-6/c/1215-sluchawki.html?producent=357-apple&producent=1214-marshall&producent=2334-shure",
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
           "g-6/c/2506-glosniki-przenosne.html?producent=374-jbl&f1872-moc-glosnikow-rms=71075-10-49-w",
+          "g-6/c/3095-statywy-do-mikrofonow.html?producent=818-elgato&producent=2025-rode&producent=2438-blue-microphones",
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
           "g-8/c/2672-etui-na-sluchawki.html?f5654-kompatybilnosc=151468-apple-airpods",
@@ -787,12 +790,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "category=akcesoria-do-ipada-i-tabletow-multimedialnych&__=Apple",
           "category=archiwizacja-danych1&__=WD",
           "category=czysciki-parowe&__=Karcher",
           "category=dyski-wewnetrzne-ssd&__=Kingston",
           "category=ekspresy-cisnieniowe&__=Siemens,jura",
           "category=etui-do-telefonow&__=Apple",
-          "category=fotele-i-stojaki-do-kierownicy&__=sparco",
+          "category=fotele-i-stojaki-do-kierownicy&__=Asus,sparco",
           "category=gilotyny-i-trymery",
           "category=glosniki-przenosne&__=BowersWilkins,Sonos,Yamaha,jbl,marshall",
           // "category=glosniki-przenosne&__=jbl",
