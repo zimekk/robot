@@ -56,6 +56,14 @@ export const ListSchema = z
       ),
     }),
   ])
+  .transform(({ type, data, ...item }) => ({
+    type:
+      data.images.length > 0 && data.images[0]?.match(".al.to/")
+        ? "alto"
+        : type,
+    data,
+    ...item,
+  }))
   .array();
 
 export const DataSchema = z.object({
