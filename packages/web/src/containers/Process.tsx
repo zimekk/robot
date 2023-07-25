@@ -562,9 +562,13 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           .concat(
             [
               "dom/mazowieckie/piaseczynski/konstancin--jeziorna",
+              "dzialka/lodzkie/belchatowski/kleszczow",
               "dzialka/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/mazowieckie/pruszkowski/michalowice",
               "dzialka/mazowieckie/pruszkowski/raszyn",
+              "dzialka/mazowieckie/warszawa/warszawa/warszawa/bemowo/boernerowo",
+              "dzialka/mazowieckie/warszawa/warszawa/warszawa/ursus",
+              "dzialka/mazowieckie/warszawski-zachodni/izabelin",
               "dzialka/mazowieckie/warszawski-zachodni/stare-babice",
             ].map(
               (cat) =>
@@ -586,6 +590,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
           "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
           // "honda/jazz?search%5Bfilter_enum_generation%5D=gen-ii-2002-2008-jazz",
+          "mini/cooper-s--john-cooper-works",
           "porsche/macan",
         ]
           .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
@@ -746,6 +751,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
           "g-8/c/1425-odtwarzacze-multimedialne.html?producent=357-apple",
           "g-8/c/2672-etui-na-sluchawki.html?f5654-kompatybilnosc=151468-apple-airpods",
+          "g-12/c/2466-baterie-i-akumulatorki.html?f2834-typ-ogniwa=41678-aa-r6&f2834-typ-ogniwa=41679-aaa-r03",
           "g-64/c/2294-drony.html?producent=1009-dji",
           "g-64/c/2582-gimbale.html?producent=1009-dji&producent=1155-zhiyun",
           // "g-64/c/2582-gimbale.html?producent=1009-dji",
@@ -764,6 +770,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "g-19/c/1786-odkurzacze.html?producent=539-bosch&producent=545-dyson&producent=546-karcher&producent=555-tefal&f170-typ-odkurzacza=25377-pionowy",
           "g-19/c/1796-maszynki-do-mielenia.html?producent=539-bosch",
           "g-19/c/1798-ekspresy-do-kawy.html?producent=464-siemens&producent=1977-wmf",
           "g-19/c/1800-suszarko-lokowki.html?producent=567-babyliss&producent=569-remington",
@@ -811,6 +818,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "category=obiektywy&__=Canon",
           // "category=obiektywy&__=Sigma&_h=32",
           "category=obiektywy&_h=2",
+          "category=odkurzacze-pionowe&__=Bosch,Dyson,Karcher,Tefal",
           "category=pendrive-pamieci-usb&__=Kingston,SanDisk&_h=2,3",
           "category=piekarniki-do-zabudowy&__=Siemens",
           "category=plyty-do-zabudowy&__=Siemens",
