@@ -1,15 +1,25 @@
 import { Router } from "express";
+import { z } from "zod";
 import { query } from "@dev/sql";
 import { Schema } from "../schema";
 
-// yarn workspace @dev/sql run migrate create create moto
-// yarn workspace @dev/sql run migrate:up
+const PagerSchema = z.object({
+  start: z.coerce.number().default(0),
+  limit: z.coerce.number().default(100),
+});
 
 export const router = () =>
   Router()
-    .get("/moto", (_req, res, next) =>
-      query("select * from moto", [])
-        .then((data) => res.json({ result: data.rows }))
+    .get("/moto", (req, res, next) =>
+      PagerSchema.parseAsync(req.query)
+        .then(({ start, limit }) =>
+          query("SELECT * FROM moto ORDER BY created DESC LIMIT $1 OFFSET $2", [
+            limit,
+            start,
+          ])
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
         .catch(next)
     )
     .get("/moto/delete", async (req, res, next) =>
