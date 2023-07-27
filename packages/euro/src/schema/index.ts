@@ -176,7 +176,7 @@ const Result = z.object({
   paymentTypeDescriptions: z.array(z.unknown()),
   videos: z.array(z.unknown()),
   relatedPromotion: z.null(),
-  holidayStatus: z.null(),
+  holidayStatus: z.null().optional(),
 });
 
 export const JsonSchema = z.object({
