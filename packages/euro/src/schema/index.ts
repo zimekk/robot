@@ -111,7 +111,7 @@ const Result = z.object({
       energyClass: z.object({
         value: z.string(),
         type: z.string(),
-        scale: z.string(),
+        scale: z.string().nullable(),
       }),
       oldEnergyClassLabel: z.string(),
       energyInformationCardUrl: z.string(),
@@ -176,6 +176,7 @@ const Result = z.object({
   paymentTypeDescriptions: z.array(z.unknown()),
   videos: z.array(z.unknown()),
   relatedPromotion: z.null(),
+  holidayStatus: z.null(),
 });
 
 export const JsonSchema = z.object({
