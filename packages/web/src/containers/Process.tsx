@@ -856,10 +856,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
           "CategoryId=8344", // Worki na śmieci
           "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET
+          "CategoryId=8382&BrandIds=10193&BrandIds=11576", // Akcesoria dla kota / CATSI / ELOY
           "CategoryId=8576&BrandIds=7261", // Higiena / YOPE
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
           "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek (14)
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
+          "CategoryId=8615&BrandIds=2353", // Chusteczki higieniczne / ALOUETTE
           "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
         ]
           .map(
