@@ -724,7 +724,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "g-4/c/979-karty-pamieci-microsd.html?producent=303-sandisk",
           "g-4/c/1590-smartfony-i-telefony.html?producent=357-apple",
           "g-4/c/1836-etui-i-obudowy-na-smartfony.html?producent=357-apple",
-          "g-4/c/1837-ladowarki-do-smartfonow.html?producent=1839-green-cell",
+          "g-4/c/1837-ladowarki-do-smartfonow.html?producent=357-apple&producent=1839-green-cell",
           "g-4/c/2287-akcesoria-do-tabletow.html?producent=357-apple",
           "g-4/c/2748-sluchawki-true-wireless.html?producent=357-apple",
           "g-4/c/3008-smartwatche-lte.html?producent=357-apple",
@@ -746,6 +746,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-6/c/15-monitory.html?producent=357-apple",
           "g-6/c/1215-sluchawki.html?producent=357-apple&producent=1214-marshall&producent=2334-shure",
           "g-6/c/1295-monitory-led-32-i-wieksze.html?producent=396-dell",
+          "g-6/c/2326-kamery-ip.html?producent=276-tp-link&producent=2287-hikvision",
           "g-6/c/2506-glosniki-przenosne.html?producent=374-jbl&f1872-moc-glosnikow-rms=71075-10-49-w",
           "g-6/c/3095-statywy-do-mikrofonow.html?producent=818-elgato&producent=2025-rode&producent=2438-blue-microphones",
           "g-7/c/171-joysticki.html?producent=896-thrustmaster",
@@ -756,6 +757,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-64/c/2582-gimbale.html?producent=1009-dji&producent=1155-zhiyun",
           // "g-64/c/2582-gimbale.html?producent=1009-dji",
           // "g-64/c/2582-gimbale.html?producent=1155-zhiyun",
+          "g-64/c/3037-rejestratory-ip.html?producent=276-tp-link&producent=2287-hikvision",
         ]
           .map((path) => `https://www.x-kom.pl/${path}`)
           .map((url, i) => ({
@@ -832,6 +834,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=telefony-komorkowe&__=Apple",
           "category=telewizory-led-lcd-plazmowe&__=Panasonic",
           "category=wentylatory-i-klimatory&__=xiaomi",
+          "category=wyposazenie-do-ekspresow&__=Siemens",
           "category=wyposazenie-do-robotow-kuchennych&__=Bosch",
           "category=zelazka-systemowe&__=Philips",
           "category=zmywarki-do-zabudowy&__=Siemens",
@@ -1086,8 +1089,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   );
 
   const handleScrap = useCallback(
-    (item: object) => (
-      console.log(["scrap"], { item }),
+    (item: object, text = "scrap") => (
+      console.log([text], { item }),
       post("scrap", item, "")
         .then((response) => response.json())
         .then((json) => post("parse", json))
@@ -1096,7 +1099,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   );
 
   const handleAvailability = useCallback(
-    (id: number) =>
+    (id: string) =>
       SHOPS
         // .slice(0, 2)
         .reduce<Promise<unknown>>(
@@ -1224,14 +1227,20 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             [list, selected]
           )}
         >
-          process
+          {type === "delayed" ? "process" : "add"}
         </button>
         <button
           onClick={useCallback(() => post("cleanup").then(getDelayed), [])}
         >
           cleanup
         </button>
-        <button onClick={() => handleAvailability(1225761)}>shops</button>
+        <button
+          onClick={() =>
+            ((plu) => plu && handleAvailability(plu))(prompt("plu:", "1225761"))
+          }
+        >
+          shops
+        </button>
         <button
           onClick={useCallback(() => {
             const url = prompt("Url:", "https://");
@@ -1261,9 +1270,11 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               list
                 .filter((item) => selected.includes(item.id))
                 .reduce<Promise<unknown>>(
-                  (promise, item) =>
+                  (promise, item, key, list) =>
                     promise
-                      .then(() => handleScrap(item))
+                      .then(() =>
+                        handleScrap(item, `scrap ${key + 1}/${list.length}`)
+                      )
                       .then(
                         () =>
                           new Promise((resolve) =>
