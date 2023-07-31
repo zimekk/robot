@@ -563,11 +563,15 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             [
               "dom/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/lodzkie/belchatowski/kleszczow",
+              "dzialka/mazowieckie/otwocki/jozefow/jozefow",
               "dzialka/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/mazowieckie/pruszkowski/michalowice",
               "dzialka/mazowieckie/pruszkowski/raszyn",
               "dzialka/mazowieckie/warszawa/warszawa/warszawa/bemowo/boernerowo",
               "dzialka/mazowieckie/warszawa/warszawa/warszawa/ursus",
+              "dzialka/mazowieckie/warszawa/warszawa/warszawa/wawer/anin",
+              "dzialka/mazowieckie/warszawa/warszawa/warszawa/wawer/miedzeszyn",
+              "dzialka/mazowieckie/warszawa/warszawa/warszawa/wawer/miedzylesie",
               "dzialka/mazowieckie/warszawski-zachodni/izabelin",
               "dzialka/mazowieckie/warszawski-zachodni/stare-babice",
             ].map(
