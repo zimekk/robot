@@ -164,6 +164,11 @@ export default function Entries() {
     []
   );
 
+  const selectedIds = useMemo(
+    () => list.map((item) => item.id).filter((id) => selected.includes(id)),
+    [list, selected]
+  );
+
   const scrollTarget = useRef<HTMLFieldSetElement>(null);
 
   return (
@@ -407,16 +412,21 @@ export default function Entries() {
         <label>
           <input
             type="checkbox"
-            checked={list.length > 0 && selected.length === list.length}
+            checked={list.length > 0 && selectedIds.length === list.length}
             disabled={list.length === 0}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>
-                setSelected(target.checked ? list.map(({ id }) => id) : []),
+                ((listIds) =>
+                  setSelected((selected) =>
+                    selected
+                      .filter((id) => !listIds.includes(id))
+                      .concat(target.checked ? listIds : [])
+                  ))(list.map((item) => item.id)),
               [list]
             )}
           />
         </label>
-        <span>{`${selected.length} / ${entries.length}`}</span>{" "}
+        <span>{`${selected.length} / ${list.length}`}</span>{" "}
         <button
           disabled={selected.length === 0}
           onClick={useCallback(

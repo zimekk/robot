@@ -90,6 +90,11 @@ function Delayed({
     [delayed, filters]
   );
 
+  const selectedIds = useMemo(
+    () => list.map((item) => item.id).filter((id) => selected.includes(id)),
+    [list, selected]
+  );
+
   return (
     <Fieldset legend="delayed">
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
@@ -97,16 +102,21 @@ function Delayed({
         <label>
           <input
             type="checkbox"
-            checked={delayed.length > 0 && selected.length === delayed.length}
+            checked={delayed.length > 0 && selectedIds.length === list.length}
             disabled={delayed.length === 0}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>
-                setSelected(target.checked ? delayed.map(({ id }) => id) : []),
-              [delayed]
+                ((listIds) =>
+                  setSelected((selected) =>
+                    selected
+                      .filter((id) => !listIds.includes(id))
+                      .concat(target.checked ? listIds : [])
+                  ))(list.map((item) => item.id)),
+              [list]
             )}
           />
         </label>
-        <span>{`${selected.length} / ${delayed.length}`}</span>{" "}
+        <span>{`${selected.length} / ${list.length}`}</span>{" "}
         <label>
           <span>query</span>
           <input
