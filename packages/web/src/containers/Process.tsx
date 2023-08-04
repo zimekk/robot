@@ -860,13 +860,14 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
-          "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
+          "CategoryId=8343&BrandIds=10624&BrandIds=10757", // Akcesoria Do Sprzątania / 3M SCOTCH-BRITE / VILEDA
           "CategoryId=8344", // Worki na śmieci
+          "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
           "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET
           "CategoryId=8382&BrandIds=10193&BrandIds=11576", // Akcesoria dla kota / CATSI / ELOY
           "CategoryId=8576&BrandIds=7261", // Higiena / YOPE
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
-          "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek (14)
+          "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
           "CategoryId=8615&BrandIds=2353", // Chusteczki higieniczne / ALOUETTE
           "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
