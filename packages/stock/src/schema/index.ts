@@ -554,7 +554,7 @@ export const ItemSchema = z.object({
           modelDescription: z.object({
             default_PL: z.string(),
             pl_PL: z.string(),
-            en_PL: z.string(),
+            en_PL: z.string().optional(),
           }),
           modelName: z.string(),
           steering: z.string(),
