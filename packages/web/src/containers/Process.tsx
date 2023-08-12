@@ -14,6 +14,7 @@ import { z } from "zod";
 import { DataSchema, OptsSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
 import { Link } from "../components/Link";
+import { Spinner } from "../components/Spinner";
 
 export const API_URL = process.env.API_URL || "";
 
@@ -257,9 +258,15 @@ export const post = (path: string, data?: object, base = API_URL) =>
 const TYPE = ["repeatable", "delayed"] as const;
 const DELAY = [5, 10, 15, 30] as const;
 
+const scrap = async (item: object, text: string) =>
+  (console.info([text], { item }), post("scrap", item, ""))
+    .then((response) => response.json())
+    .then((json) => post("parse", json));
+
 export default function Process({ getDelayed }: { getDelayed: () => void }) {
   const [selected, setSelected] = useState<string[]>(() => []);
   const [priority, setPriority] = useState<boolean>(() => false);
+  const [loading, setLoading] = useState(false);
   const [type, setType] = useState<(typeof TYPE)[number]>(() => TYPE[1]);
   const [delay, setDelay] = useState<(typeof DELAY)[number]>(() => DELAY[0]);
   const [match, setMatch] = useState(() => ({
@@ -1094,12 +1101,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
   );
 
   const handleScrap = useCallback(
-    (item: object, text = "scrap") => (
-      console.log([text], { item }),
-      post("scrap", item, "")
-        .then((response) => response.json())
-        .then((json) => post("parse", json))
-    ),
+    (item: object, text = "scrap") =>
+      (setLoading(true), scrap(item, text))
+        .catch(console.error)
+        .then(() => setLoading(false)),
     []
   );
 
@@ -1280,30 +1285,39 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           append url
         </button>
         <button
+          disabled={loading}
           onClick={useCallback(
             () =>
-              list
+              (setLoading(true), list)
                 .filter((item) => selected.includes(item.id))
                 .reduce<Promise<unknown>>(
                   (promise, item, key, list) =>
                     promise
                       .then(() =>
-                        handleScrap(item, `scrap ${key + 1}/${list.length}`)
+                        scrap(item, `scrap ${key + 1}/${list.length}`)
+                      )
+                      .then(() =>
+                        setSelected((selected) =>
+                          selected.filter((id) => id !== item.id)
+                        )
                       )
                       .then(
                         () =>
+                          key < list.length - 1 &&
                           new Promise((resolve) =>
                             setTimeout(resolve, seconds(10 * Math.random()))
                           )
                       ),
                   Promise.resolve()
                 )
-                .then(() => setSelected([])),
+                .catch(console.error)
+                .then(() => setLoading(false)),
             [list, selected]
           )}
         >
           scrap
         </button>
+        {loading && <Spinner />}
       </div>
 
       {list.map((item: any) => (
@@ -1343,7 +1357,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                   {item.opts.repeat.cron}
                 </pre>
               ) : (
-                <button onClick={() => handleScrap(item)}>scrap</button>
+                <button disabled={loading} onClick={() => handleScrap(item)}>
+                  scrap
+                </button>
               )}
             </label>
           </div>
