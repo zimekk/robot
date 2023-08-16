@@ -1,6 +1,5 @@
-import { json } from "body-parser";
 import fetch from "cross-fetch";
-import { Router } from "express";
+import { Router, json } from "express";
 import { createBullBoard } from "@bull-board/api";
 import { BullAdapter } from "@bull-board/api/bullAdapter";
 import { ExpressAdapter } from "@bull-board/express";
