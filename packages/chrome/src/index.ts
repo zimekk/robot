@@ -27,16 +27,16 @@ export async function launch() {
   const config = {
     // https://stackoverflow.com/questions/47122579/run-puppeteer-on-already-installed-chrome-on-macos
     executablePath: PUPPETEER_EXECUTABLE_PATH,
-    // headless: true,
+    headless: "new",
     args: WORKDIR
       ? [
           "--no-sandbox",
-          "--headless",
+          "--headless=new",
           "--disable-gpu",
           "--disable-dev-shm-usage",
         ]
       : [],
-  };
+  } as const;
   // Open Chrome with the given command and arguments
   return await puppeteer.launch(config);
 }
@@ -121,14 +121,14 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     console.log(["page.waitForSelector"], s);
                     const e = "__NEXT_DATA__";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("(al.to|kom.pl)/.+/c/")) {
                     console.log(res.url());
                     const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("pierwotny.pl/s/")) {
@@ -138,7 +138,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     );
                     const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (
@@ -148,7 +148,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     console.log(res.url());
                     const e = "__PRERENDERED_STATE__";
                     console.log(["page.evaluate"], e);
-                    const json = JSON.parse(await page.evaluate(e));
+                    const json = JSON.parse((await page.evaluate(e)) as string);
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("/maps/dir/")) {
@@ -162,7 +162,9 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     } else {
                       const e = "APP_INITIALIZATION_STATE[3][4].substr(5)";
                       console.log(["page.evaluate"], e);
-                      const json = JSON.parse(await page.evaluate(e));
+                      const json = JSON.parse(
+                        (await page.evaluate(e)) as string
+                      );
                       console.log({ json });
                       resolve({ url: res.url(), json });
                     }
@@ -170,13 +172,13 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     console.log(res.url());
                     const e = "__NEXT_DATA__";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("dom.pl/pl/")) {
                     const e = "__NEXT_DATA__";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("smann.pl/szukaj\\?")) {
@@ -184,7 +186,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                       console.log(res.url());
                       const e = "__NEXT_DATA__";
                       console.log(["page.evaluate"], e);
-                      const json = await page.evaluate(e);
+                      const json = (await page.evaluate(e)) as object;
                       console.log({ json });
                       resolve({ url: res.url(), json });
                     }
@@ -192,14 +194,14 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     console.log(res.url());
                     const e = "adobeLaunchCategoryViewEvents";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (url.match("thule.com/pl-pl/")) {
                     console.log(res.url());
                     const e = "_THULEDATA";
                     console.log(["page.evaluate"], e);
-                    const json = await page.evaluate(e);
+                    const json = (await page.evaluate(e)) as object;
                     console.log({ json });
                     resolve({ url: res.url(), json });
                   } else if (
