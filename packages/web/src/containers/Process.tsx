@@ -570,6 +570,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             [
               "dom/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/lodzkie/belchatowski/kleszczow",
+              "dzialka/mazowieckie/grodziski/milanowek/milanowek",
               "dzialka/mazowieckie/otwocki/jozefow/jozefow",
               "dzialka/mazowieckie/piaseczynski/konstancin--jeziorna",
               "dzialka/mazowieckie/pruszkowski/michalowice",
@@ -872,6 +873,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8380&BrandIds=10504", // Karma sucha dla kota / PURINA ONE
           "CategoryId=8379&BrandIds=10251", // Karma mokra dla kota / PURINA GOURMET
           "CategoryId=8382&BrandIds=10193&BrandIds=11576", // Akcesoria dla kota / CATSI / ELOY
+          "CategoryId=8424&BrandIds=5717", // Energetyki i izotoniki / OSHEE
           "CategoryId=8576&BrandIds=7261", // Higiena / YOPE
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
           "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek
