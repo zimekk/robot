@@ -119,7 +119,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
     [Type.PROMO]: new RegExp("x-kom.pl/promocje|al.to/promocje"),
     [Type.PROMO_ITEM]: new RegExp("promocje.x-kom.pl/|promocje.al.to/"),
-    [Type.OTODOM]: new RegExp("otodom.pl/pl/oferty/"),
+    [Type.OTODOM]: new RegExp("otodom.pl/pl/(oferty|wyniki)/"),
     [Type.OTODOM_OFFER]: new RegExp("otodom.pl/pl/oferta/"),
     [Type.OTOMOTO]: new RegExp("otomoto.pl/osobowe/"),
     [Type.OTOMOTO_OFFER]: new RegExp("otomoto.pl/oferta/"),

@@ -72,6 +72,7 @@ export default async (
 ) =>
   await EntrySchema.parseAsync({ id, data, returnvalue }).then(
     async ({ data, type, returnvalue }) => {
+      console.log(["parse"], { data, type, returnvalue });
       if (type === Type.AUTOS) {
         return AutosSchema.parseAsync({
           data,

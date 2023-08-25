@@ -79,12 +79,9 @@ export const router = () => {
           returnvalue: z.unknown(),
         })
         .parseAsync(req.body)
-        .then(
-          ({ id, data, returnvalue }) => (
-            console.log(["parse"], { data }),
-            parse({ id, data, returnvalue }).then(() =>
-              res.json({ status: "ok" })
-            )
+        .then(({ id, data, returnvalue }) =>
+          parse({ id, data, returnvalue }).then(() =>
+            res.json({ status: "ok" })
           )
         )
         .catch(next)
