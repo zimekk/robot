@@ -63,6 +63,6 @@ COPY packages/worker/bin packages/worker/bin/
 RUN yarn --frozen-lockfile
 
 COPY . ./
-RUN yarn build
+RUN yarn build && yarn --prod
 
 CMD ["yarn", "serve"]

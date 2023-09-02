@@ -101,10 +101,12 @@ const Advert = z
       })
       .strict()
       .nullable(),
-    priceEvaluation: z.object({
-      indicator: z.enum(["ABOVE", "BELOW", "IN", "NONE"]),
-      __typename: z.enum(["PriceEvaluation"]),
-    }),
+    priceEvaluation: z
+      .object({
+        indicator: z.enum(["ABOVE", "BELOW", "IN", "NONE"]),
+        __typename: z.enum(["PriceEvaluation"]),
+      })
+      .optional(),
     __typename: z.enum(["Advert"]),
   })
   .strict();

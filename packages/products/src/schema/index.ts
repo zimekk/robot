@@ -58,6 +58,15 @@ export const ProductSchema = z.object({
   id: z.string(),
   name: z.string(),
   price: z.number(),
+  promotionInfo: z
+    .object({
+      code: z.null(),
+      discountedPrice: z.number(),
+      promotionEndDate: z.string(),
+      customerLimit: z.number(),
+      promotionStartDate: z.string(),
+    })
+    .optional(),
   category: z.object({
     id: z.string(),
     parentGroupId: z.string().optional(),
