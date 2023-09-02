@@ -1043,6 +1043,23 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
           }))
       )
+      .concat(
+        ["ab75c33d-3a26-4342-b36a-6e5fef0a3ac3"]
+          .map(
+            (id) =>
+              `https://api.um.warszawa.pl/api/action/dbstore_get/?id=${encodeURIComponent(
+                id
+              )}`
+          )
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 30} 22 * * *` },
+            },
+          }))
+      )
   );
 
   const entries = useMemo(

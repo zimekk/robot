@@ -21,9 +21,10 @@ async function fetchWithTimeout(url: string, options: object) {
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
-  }, 10000);
+  }, seconds(30));
 
   try {
+    console.log(["fetch"], { url });
     return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(timeout);
@@ -80,15 +81,29 @@ export const client = () => {
         .process(NAME, async function (job) {
           const { data } = job;
 
-          console.log(["process"], NAME, data);
           await job.log(`process ${NAME}`);
           await job.progress(50);
 
           const type = getTypeByUrl(data.url);
 
+          console.log(["process"], NAME, data, type);
+
           const returnvalue = await (
             {
               [Type.EURO]: async () =>
+                await fetchWithTimeout(data.url, {
+                  headers: {},
+                }).then(async (res) => {
+                  if (res.url !== data.url) {
+                    throw new Error(`Invalid response url: ${res.url}`);
+                  }
+                  return { url: data.url, json: await res.json() } as {
+                    url: string;
+                    html?: string | undefined;
+                    json?: object | undefined;
+                  };
+                }),
+              [Type.ROADS]: async () =>
                 await fetchWithTimeout(data.url, {
                   headers: {},
                 }).then(async (res) => {

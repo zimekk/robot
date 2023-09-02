@@ -177,6 +177,10 @@ export default async (
             url.searchParams.set("date", date);
             return [{ url: url.toString() }].filter(limiter(jobs, days(7)));
           });
+      } else if (type === Type.ROADS) {
+        return require("@dev/roads/api")
+          .update(id, data, returnvalue)
+          .then(() => []);
       } else if (type === Type.ROSSM) {
         return require("@dev/rossm/api")
           .update(id, data, returnvalue)
