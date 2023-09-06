@@ -38,6 +38,7 @@ COPY packages/components/package.json packages/components/
 COPY packages/depots/package.json packages/depots/
 COPY packages/euro/package.json packages/euro/
 COPY packages/flats/package.json packages/flats/
+COPY packages/fuels/package.json packages/fuels/
 COPY packages/funds/package.json packages/funds/
 COPY packages/moto/package.json packages/moto/
 COPY packages/notify/package.json packages/notify/

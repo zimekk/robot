@@ -231,6 +231,8 @@ export default async (
             )
             .filter(limiter(jobs, days(1)))
         );
+      } else if (type === Type.STATION) {
+        return require("@dev/fuels/api").update(id, data, returnvalue);
       } else if (type === Type.STOCK) {
         return require("@dev/stock/api").update(id, data, returnvalue);
       } else if (type === Type.THULE) {

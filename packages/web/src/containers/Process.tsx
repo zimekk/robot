@@ -394,7 +394,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
                 // model: { marketingModelRange: { value: ["MINI_F56"] } },
                 model: {
                   marketingModelRange: {
-                    value: ["JCW_F56", "JCW_F57", "X3_G01"],
+                    value: ["JCW_F56", "JCW_F57", "X3_G01", "X3M_F97"],
                   },
                 },
               },
@@ -880,10 +880,11 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
           "CategoryId=8615&BrandIds=2353", // Chusteczki higieniczne / ALOUETTE
           "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
+          "CategoryId=9195&BrandIds=5482&BrandIds=5500&BrandIds=2250", // Antyperspiranty / ADIDAS / NIKE / NIVEA
         ]
           .map(
             (path) =>
-              `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=24`
+              `https://www.rossmann.pl/szukaj?${path}&Page=1&PageSize=96`
           )
           .map((url, i) => ({
             data: {

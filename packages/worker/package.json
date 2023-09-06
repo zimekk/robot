@@ -33,6 +33,7 @@
     "@dev/depots": "^1.0.0",
     "@dev/euro": "^1.0.0",
     "@dev/flats": "^1.0.0",
+    "@dev/fuels": "^1.0.0",
     "@dev/funds": "^1.0.0",
     "@dev/moto": "^1.0.0",
     "@dev/plots": "^1.0.0",

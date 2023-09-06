@@ -8,8 +8,6 @@ import MacanReturnSchema from "./macan";
 import ProductsSchema from "./products";
 import PromoTransform, { Schema as PromoSchema } from "./promo";
 import { Schema as RoomsReturnSchema } from "./rooms";
-// import { Schema as StationsSchema } from "./stations";
-// import { Schema as StationSchema } from "./stations/item";
 // import OtodomOfferTransform, {
 //   Schema as OtodomOfferSchema,
 // } from "./otodom/offer";
