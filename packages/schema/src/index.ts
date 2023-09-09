@@ -23,6 +23,7 @@ export const Type = {
   FUNDS: "FUNDS",
   GAMES: "GAMES",
   GPASS: "GPASS",
+  GRATKA: "GRATKA",
   HOTSHOT: "HOTSHOT",
   LECLERC: "LECLERC",
   MACAN: "MACAN",
@@ -110,6 +111,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.FUNDS]: new RegExp("tfi/fund/"),
     [Type.GAMES]: new RegExp("mp.microsoft.com/"),
     [Type.GPASS]: new RegExp("com/pl-PL/xbox-game-pass"),
+    [Type.GRATKA]: new RegExp("gratka.pl/"),
     [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal|al.to/goracy_strzal"),
     [Type.LECLERC]: new RegExp("leclerc.pl/"),
     [Type.MACAN]: new RegExp("porsche.com/"),
@@ -196,6 +198,9 @@ export const EntrySchema = z.preprocess(
     JsonSchema.extend({
       type: z.literal(Type.GPASS),
       returnvalue: GpassTransformSchema,
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.GRATKA),
     }),
     JsonSchema.extend({
       type: z.literal(Type.MACAN),

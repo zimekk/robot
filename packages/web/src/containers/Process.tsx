@@ -525,6 +525,18 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
+        ["dzialki-grunty/otrebusy"]
+          .map((cat) => `https://gratka.pl/nieruchomosci/${cat}`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 8,16 * * *` },
+            },
+          }))
+      )
+      .concat(
         [
           "granica_45581",
           "kanie_134919",
@@ -1053,6 +1065,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               )}`
           )
           .map((url, i) => ({
+            blocked: true,
             data: {
               url,
             },

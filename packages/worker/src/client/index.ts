@@ -71,8 +71,10 @@ export const client = () => {
 
             parse({ id, data, returnvalue }, { jobs })
               .then((list) =>
-                Promise.all(
-                  list.map((data: { url: string }) => q.produce(data))
+                list.reduce(
+                  (promise: Promise<any>, data: { url: string }) =>
+                    promise.then(() => q.produce(data)),
+                  Promise.resolve()
                 )
               )
               .catch(console.error);

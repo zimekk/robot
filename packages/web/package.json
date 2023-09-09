@@ -24,6 +24,7 @@
     "@dev/flats": "^1.0.0",
     "@dev/fuels": "^1.0.0",
     "@dev/funds": "^1.0.0",
+    "@dev/gratka": "^1.0.0",
     "@dev/moto": "^1.0.0",
     "@dev/plots": "^1.0.0",
     "@dev/prods": "^1.0.0",

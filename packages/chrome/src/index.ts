@@ -49,6 +49,12 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
   await page.setUserAgent((await browser.userAgent()).replace("Headless", ""));
   await page.setRequestInterception(true);
 
+  if (url.match("gratka.pl/")) {
+    return import("./pl.gratka")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
+  }
+
   return await Promise.all([
     new Promise<{ url: string; html?: string; json?: object }>(
       (resolve, reject) =>

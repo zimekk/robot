@@ -40,6 +40,7 @@ COPY packages/euro/package.json packages/euro/
 COPY packages/flats/package.json packages/flats/
 COPY packages/fuels/package.json packages/fuels/
 COPY packages/funds/package.json packages/funds/
+COPY packages/gratka/package.json packages/gratka/
 COPY packages/moto/package.json packages/moto/
 COPY packages/notify/package.json packages/notify/
 COPY packages/plots/package.json packages/plots/

@@ -102,6 +102,8 @@ export default async (
         return require("@dev/funds/api")
           .update(id, data, returnvalue)
           .then(() => []);
+      } else if (type === Type.GRATKA) {
+        return require("@dev/gratka/api").update(id, data, returnvalue);
       } else if (type === Type.HOTSHOT) {
         return require("@dev/shots/api")
           .update(id, data, returnvalue)
@@ -232,7 +234,9 @@ export default async (
             .filter(limiter(jobs, days(1)))
         );
       } else if (type === Type.STATION) {
-        return require("@dev/fuels/api").update(id, data, returnvalue);
+        return require("@dev/fuels/api")
+          .update(id, data, returnvalue)
+          .then(() => []);
       } else if (type === Type.STOCK) {
         return require("@dev/stock/api").update(id, data, returnvalue);
       } else if (type === Type.THULE) {
