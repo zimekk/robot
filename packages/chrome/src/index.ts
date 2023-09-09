@@ -53,6 +53,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
     return import("./pl.gratka")
       .then(({ scrap }) => scrap(page, url))
       .finally(() => browser.close());
+  } else if (url.match("expert.pl/")) {
+    return import("./pl.expert")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
   }
 
   return await Promise.all([

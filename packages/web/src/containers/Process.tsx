@@ -877,6 +877,18 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
+        ["smartfony-i-zegarki/smartfony/warianty-produktu_apple-iphone-13"]
+          .map((path) => `https://www.mediaexpert.pl/${path}`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i + 1} 7,17 * * *` },
+            },
+          }))
+      )
+      .concat(
         [
           "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH

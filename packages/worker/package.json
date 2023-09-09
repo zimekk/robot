@@ -32,6 +32,7 @@
     "@dev/chrome": "^1.0.0",
     "@dev/depots": "^1.0.0",
     "@dev/euro": "^1.0.0",
+    "@dev/expert": "^1.0.0",
     "@dev/flats": "^1.0.0",
     "@dev/fuels": "^1.0.0",
     "@dev/funds": "^1.0.0",

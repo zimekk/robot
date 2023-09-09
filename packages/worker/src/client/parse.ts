@@ -94,6 +94,8 @@ export default async (
           .then(() => []);
       } else if (type === Type.EURO) {
         return require("@dev/euro/api").update(id, data, returnvalue);
+      } else if (type === Type.EXPERT) {
+        return require("@dev/expert/api").update(id, data, returnvalue);
       } else if (type === Type.FLATS) {
         return require("@dev/flats/api")
           .update(id, data, returnvalue)

@@ -19,6 +19,7 @@ export const Type = {
   DEPOT: "DEPOT",
   DIRECTIONS: "DIRECTIONS",
   EURO: "EURO",
+  EXPERT: "EXPERT",
   FLATS: "FLATS",
   FUNDS: "FUNDS",
   GAMES: "GAMES",
@@ -107,6 +108,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
     [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
     [Type.EURO]: new RegExp("com.pl/rest/api/products/search"),
+    [Type.EXPERT]: new RegExp("expert.pl/"),
     [Type.FLATS]: new RegExp("pl/nieruchomosci/mieszkania/"),
     [Type.FUNDS]: new RegExp("tfi/fund/"),
     [Type.GAMES]: new RegExp("mp.microsoft.com/"),
@@ -185,6 +187,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.EURO),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.EXPERT),
     }),
     JsonSchema.extend({
       type: z.literal(Type.FLATS),
@@ -355,6 +360,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
     returnvalue: require("@dev/euro/schema").Schema,
   }),
   ReturnSchema.extend({
+    type: z.literal(Type.EXPERT),
+    returnvalue: require("@dev/expert/schema").Schema,
+  }),
+  ReturnSchema.extend({
     type: z.literal(Type.FLATS),
     returnvalue: require("@dev/flats/schema").Schema,
   }),
@@ -371,6 +380,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.GPASS),
     returnvalue: GpassReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.GRATKA),
+    returnvalue: require("@dev/gratka/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.HOTSHOT),
