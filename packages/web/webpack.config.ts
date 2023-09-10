@@ -102,6 +102,7 @@ export default (async (
         // https://webpack.js.org/plugins/html-webpack-plugin/
         new HtmlWebpackPlugin({
           favicon: require.resolve("./src/assets/favicon.ico"),
+          title: "Robot",
         }),
       ].filter(Boolean),
     },

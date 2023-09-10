@@ -3,6 +3,7 @@ import { z } from "zod";
 export const DataSchema = z
   .object({
     id: z.number(),
+    link: z.string(),
     name: z.string(),
     product_id: z.number(),
     product_parent_id: z.number(),
@@ -15,6 +16,7 @@ export const DataSchema = z
       old_price: z.object({ amount: z.null(), currency: z.string() }),
       value: z.object({ amount: z.null(), currency: z.string() }),
     }),
+    gallery: z.string().array(),
   })
   .passthrough();
 

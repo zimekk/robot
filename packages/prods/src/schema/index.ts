@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { DataSchema as EuroSchema } from "@dev/euro/schema";
+import { DataSchema as ExpertSchema } from "@dev/expert/schema";
 import { DataSchema as XkomSchema } from "@dev/products/schema";
 
 const ItemSchema = z.object({
@@ -22,45 +23,74 @@ export const ListSchema = z
           images,
           prices: { mainPrice, promotionalPrice },
         }) =>
-          Object.assign(
-            {
-              id,
-              brand,
-              name,
-              images: images
-                .filter(({ type }) => ["ICON_PHOTO"].includes(type))
-                .map(({ url }) => url),
-            },
-            promotionalPrice
-              ? {
-                  price: promotionalPrice.price,
-                  oldPrice: mainPrice,
-                }
-              : {
-                  price: mainPrice,
-                }
-          )
+          ((base) =>
+            Object.assign(
+              {
+                id,
+                url: new URL(`/p/${id}`, base).toString(),
+                brand,
+                name,
+                images: images
+                  .filter(({ type }) => ["ICON_PHOTO"].includes(type))
+                  .map(({ url }) => url),
+              },
+              promotionalPrice
+                ? {
+                    price: promotionalPrice.price,
+                    oldPrice: mainPrice,
+                  }
+                : {
+                    price: mainPrice,
+                  }
+            ))("https://www.euro.com.pl")
+      ),
+    }),
+    ItemSchema.extend({
+      type: z.literal("expert"),
+      data: ExpertSchema.transform(({ id, link, name, gallery, price_gross }) =>
+        ((base) => ({
+          id: String(id),
+          url: new URL(link, base).toString(),
+          brand: "",
+          name,
+          images: gallery.map((href) =>
+            new URL(
+              `https://prod-api.mediaexpert.pl/api/images/gallery_290_300/thumbnails/${href}`,
+              base
+            ).toString()
+          ),
+          price: price_gross / 100,
+          // oldPrice,
+        }))(`https://www.mediaexpert.pl`)
       ),
     }),
     ItemSchema.extend({
       type: z.literal("xkom"),
       data: XkomSchema.transform(
-        ({ id, producer: { name: brand }, name, photo, price, oldPrice }) => ({
+        ({
           id,
-          brand,
+          producer: { name: brand },
           name,
-          images: [photo.url].filter(Boolean),
+          photo: { url = "" },
           price,
           oldPrice,
-        })
+        }) =>
+          ((base) => ({
+            id,
+            url: new URL(`/p/${id}`, base).toString(),
+            brand,
+            name,
+            images: [url].filter(Boolean),
+            price,
+            oldPrice,
+          }))(
+            url?.match(".al.to/") ? "https://www.al.to" : "https://www.x-kom.pl"
+          )
       ),
     }),
   ])
   .transform(({ type, data, ...item }) => ({
-    type:
-      data.images.length > 0 && data.images[0]?.match(".al.to/")
-        ? "alto"
-        : type,
+    type: data.url.match(".al.to/") ? "alto" : type,
     data,
     ...item,
   }))
@@ -68,6 +98,7 @@ export const ListSchema = z
 
 export const DataSchema = z.object({
   id: z.string(),
+  url: z.string(),
   brand: z.string(),
   name: z.string(),
   images: z.string().array(),
@@ -82,11 +113,11 @@ export const DiffSchema = DataSchema.pick({
 });
 
 export interface Item {
-  id: number;
+  id: string;
   item: string;
   data: z.infer<typeof DataSchema>;
-  created: string;
-  checked: string | null;
-  updated: string | null;
-  removed: string | null;
+  created: Date;
+  // checked: string | null;
+  updated: Date | null;
+  // removed: string | null;
 }

@@ -26,7 +26,7 @@ const asset = createAsset(
   // .catch((error) => (console.error(error), []))
 );
 
-const deleteItem = (id: number) => fetch(`${API_URL}prods/delete?id=${id}`);
+const deleteItem = (id: string) => fetch(`${API_URL}prods/delete?id=${id}`);
 
 export default function Section() {
   const [pager, setPager] = useState(() => ({ limit: LIMIT[0] }));
@@ -44,7 +44,7 @@ export default function Section() {
     [result]
   );
 
-  const [selected, setSelected] = useState<number[]>(() => []);
+  const [selected, setSelected] = useState<string[]>(() => []);
 
   const handleSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target }) =>
@@ -53,7 +53,7 @@ export default function Section() {
           target.checked
             ? selected.concat(id)
             : selected.filter((item) => item !== id)
-        ))(Number(target.value)),
+        ))(target.value),
     []
   );
 
@@ -96,7 +96,7 @@ export default function Section() {
                     ) === undefined
                       ? result.concat(item.id)
                       : result,
-                  [] as number[]
+                  [] as string[]
                 )
               )
             )
