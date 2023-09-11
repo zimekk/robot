@@ -1,7 +1,10 @@
 import { parse } from "node-html-parser";
 import { z } from "zod";
 
-export const DataSchema = z.object({
+export const TYPES = ["pb", "pb+", "on", "on+", "lpg", "lpg+"] as const;
+
+export const BaseSchema = z.object({
+  url: z.string(),
   station_id: z.number(),
   x: z.number(),
   y: z.number(),
@@ -10,7 +13,20 @@ export const DataSchema = z.object({
   map_img: z.string(),
 });
 
+export const DataSchema = BaseSchema.extend({
+  address: z.string(),
+  map_img: z.string().optional(),
+  petrol_list: z
+    .object({
+      type: z.enum(TYPES),
+      price: z.coerce.number(),
+    })
+    .array(),
+});
+
 export const DiffSchema = DataSchema.extend({});
+
+export type Base = z.infer<typeof BaseSchema>;
 
 export type Data = z.infer<typeof DataSchema>;
 
@@ -35,8 +51,8 @@ export const JsonSchema = z
           address: z.string(),
           petrol_list: z
             .object({
-              type: z.string(),
-              price: z.string(),
+              type: z.enum(TYPES),
+              price: z.coerce.number(),
             })
             .array(),
         })

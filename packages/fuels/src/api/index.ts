@@ -2,7 +2,7 @@ import { Router } from "express";
 import { diffString } from "json-diff";
 import { z } from "zod";
 import { query } from "@dev/sql";
-import { DiffSchema, Schema } from "../schema";
+import { type Base, type Data, DiffSchema, Schema } from "../schema";
 
 const PagerSchema = z.object({
   start: z.coerce.number().default(0),
@@ -23,20 +23,20 @@ export const router = () =>
         .then((result) => res.json({ result }))
         .catch(next)
     )
-    .get("/roads/delete", (req, res, next) =>
-      query("DELETE FROM roads WHERE id=$1", [req.query.id])
+    .get("/fuels/delete", (req, res, next) =>
+      query("DELETE FROM fuels WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
         .catch(next)
     );
 
 export const update = async (
   _id: string | number,
-  data: { url: string; station_id: number },
+  data: Base,
   { json }: { json: unknown }
 ) =>
   Schema.transform(({ json }) =>
     [{ ...json, ...data }].reduce(
-      (result, item) =>
+      (result, item: Data) =>
         result.then(async () => {
           const { station_id: id } = item;
           console.log({ id, item });

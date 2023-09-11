@@ -75,7 +75,7 @@ export const router = () => {
       z
         .object({
           id: z.string(),
-          data: DataSchema,
+          data: DataSchema.passthrough(),
           returnvalue: z.unknown(),
         })
         .parseAsync(req.body)

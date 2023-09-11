@@ -72,11 +72,13 @@ const Ad = z.object({
   // roomsNumber: z.string().nullable(),
   // transaction: z.string(),
   // specialOffer: z.null(),
-  locationLabel: z.object({
-    value: z.string(),
-    locale: z.string(),
-    __typename: z.string(),
-  }),
+  locationLabel: z
+    .object({
+      value: z.string(),
+      locale: z.string(),
+      __typename: z.string(),
+    })
+    .optional(),
   // peoplePerRoom: z.null(),
   // isPrivateOwner: z.boolean(),
   // investmentState: z.null(),
@@ -128,10 +130,10 @@ export const DiffSchema = Ad.extend({
   location: Ad.shape.location.omit({
     reverseGeocoding: true,
   }),
-  locationLabel: Ad.shape.locationLabel.omit({
-    locale: true,
-    value: true,
-  }),
+  // locationLabel: Ad.shape.locationLabel.omit({
+  //   locale: true,
+  //   value: true,
+  // }),
 });
 
 export interface Item {
