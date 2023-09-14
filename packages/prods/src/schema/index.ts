@@ -71,6 +71,7 @@ export const ListSchema = z
           id,
           producer: { name: brand },
           name,
+          mark,
           photo: { url = "" },
           price,
           oldPrice,
@@ -80,6 +81,7 @@ export const ListSchema = z
             url: new URL(`/p/${id}`, base).toString(),
             brand,
             name,
+            mark,
             images: [url].filter(Boolean),
             price,
             oldPrice,
@@ -91,7 +93,10 @@ export const ListSchema = z
   ])
   .transform(({ type, data, ...item }) => ({
     type: data.url.match(".al.to/") ? "alto" : type,
-    data,
+    data: {
+      ...data,
+      images: data.images.slice(0, 3),
+    },
     ...item,
   }))
   .array();
