@@ -6,9 +6,11 @@ interface Plot {
   data: unknown;
 }
 
+export const API_URL = process.env.API_URL || "";
+
 // https://github.com/pmndrs/use-asset
 const asset = createAsset(() =>
-  fetch("plots")
+  fetch(`${API_URL}plots`)
     .then((res) => res.json())
     .then<Plot[]>(({ result }) => result)
     .catch((error) => (console.error(error), []))
@@ -28,7 +30,7 @@ export default function Section() {
             [{item.id}]
             <button
               onClick={useCallback(
-                () => fetch(`plots/delete?id=${item.id}`),
+                () => fetch(`${API_URL}plots/delete?id=${item.id}`),
                 []
               )}
             >

@@ -51,58 +51,76 @@ const JsonSchema = z.object({
           old_price: z.object({ amount: z.null(), currency: z.string() }),
           value: z.object({ amount: z.null(), currency: z.string() }),
         }),
-        // _embedded: z.object({
-        //   promoPrice: z.null(),
-        //   postscripts: z.object({
-        //     elements: z.array(
-        //       z.union([
-        //         z.object({
-        //           display_price_strategy: z.null(),
-        //           gtm_name: z.string(),
-        //           gtm_position: z.string(),
-        //           id: z.number(),
-        //           name: z.string(),
-        //           place: z.string(),
-        //           tooltip: z.string(),
-        //           zone: z.string(),
-        //           url: z.string()
-        //         }),
-        //         z.object({
-        //           display_price_strategy: z.null(),
-        //           gtm_name: z.null(),
-        //           gtm_position: z.null(),
-        //           id: z.number(),
-        //           name: z.string(),
-        //           place: z.string(),
-        //           tooltip: z.null(),
-        //           zone: z.string(),
-        //           url: z.null()
-        //         })
-        //       ])
-        //     )
-        //   }),
-        //   expressOrderFinalHour: z.null(),
-        //   hotDeals: z.object({ elements: z.array(z.unknown()) }),
-        //   bestPaymentBankOffer: z.object({
-        //     installment_amount: z.object({
-        //       amount: z.number(),
-        //       currency: z.string()
-        //     }),
-        //     installments_number: z.number(),
-        //     interest_on_loan: z.number(),
-        //     display_strategy: z.number(),
-        //     general_information: z.string(),
-        //     is_installment_with_promotional_code: z.boolean(),
-        //     prefix: z.string(),
-        //     suffix: z.string()
-        //   }),
-        //   opinionsAvegares: z.object({
-        //     average: z.number(),
-        //     count: z.number(),
-        //     product_id: z.number(),
-        //     variants: z.null()
-        //   })
-        // }),
+        _embedded: z.object({
+          promoPrice: z.any(),
+          // promoPrice: z.object({
+          //   campaign_id: z.null(),
+          //   action_id: z.null(),
+          //   show_new_price: z.boolean(),
+          //   show_old_price: z.boolean(),
+          //   club_price: z.null(),
+          //   for_action_price: z.number(),
+          //   for_action_campaign_id: z.null(),
+          //   for_action_code: z.string(),
+          //   new_price: z.null(),
+          //   new_price_net: z.null(),
+          //   old_price: z.null(),
+          //   discount_info_collection: z.array(z.unknown()),
+          //   discount_info_basic_collection: z.array(z.unknown()),
+          //   product_price: z.null(),
+          //   date_from: z.string(),
+          //   date_to: z.string()
+          // }),
+          // postscripts: z.object({
+          //   elements: z.array(
+          //     z.union([
+          //       z.object({
+          //         display_price_strategy: z.null(),
+          //         gtm_name: z.string(),
+          //         gtm_position: z.string(),
+          //         id: z.number(),
+          //         name: z.string(),
+          //         place: z.string(),
+          //         tooltip: z.string(),
+          //         zone: z.string(),
+          //         url: z.string()
+          //       }),
+          //       z.object({
+          //         display_price_strategy: z.null(),
+          //         gtm_name: z.null(),
+          //         gtm_position: z.null(),
+          //         id: z.number(),
+          //         name: z.string(),
+          //         place: z.string(),
+          //         tooltip: z.null(),
+          //         zone: z.string(),
+          //         url: z.null()
+          //       })
+          //     ])
+          //   )
+          // }),
+          // expressOrderFinalHour: z.null(),
+          hotDeals: z.object({ elements: z.array(z.unknown()) }),
+          // bestPaymentBankOffer: z.object({
+          //   installment_amount: z.object({
+          //     amount: z.number(),
+          //     currency: z.string()
+          //   }),
+          //   installments_number: z.number(),
+          //   interest_on_loan: z.number(),
+          //   display_strategy: z.number(),
+          //   general_information: z.string(),
+          //   is_installment_with_promotional_code: z.boolean(),
+          //   prefix: z.string(),
+          //   suffix: z.string()
+          // }),
+          // opinionsAvegares: z.object({
+          //   average: z.number(),
+          //   count: z.number(),
+          //   product_id: z.number(),
+          //   variants: z.null()
+          // })
+        }),
         promo_price_gross: z.null(),
         promo_price_net: z.null(),
         club_price: z.null(),
@@ -205,17 +223,24 @@ const JsonSchema = z.object({
         //   showRelationList: z.boolean(),
         //   showSimilarProducts: z.boolean()
         // }),
-        flags: z.object({
-          exclusive_product: z.boolean().optional(),
-          receive_in_hour: z.boolean().optional(),
-          has_leasing_link: z.boolean().optional(),
-          product_promoted: z.boolean(),
-          inpost_parcel_available: z.boolean().optional(),
-          variant_opinions: z.boolean(),
-          has_pko_leasing: z.boolean().optional(),
-          apple_promotion_available: z.boolean(),
-          present_packaging_small_size_for_smartphones: z.boolean(),
-        }),
+        flags: z
+          .object({
+            preorder_product: z.boolean().optional(),
+            preorder_installments: z.boolean().optional(),
+            additional_new: z.boolean().optional(),
+            product_new: z.boolean().optional(),
+            Iphone_15: z.boolean().optional(),
+            exclusive_product: z.boolean().optional(),
+            receive_in_hour: z.boolean().optional(),
+            has_leasing_link: z.boolean().optional(),
+            product_promoted: z.boolean(),
+            inpost_parcel_available: z.boolean().optional(),
+            variant_opinions: z.boolean(),
+            has_pko_leasing: z.boolean().optional(),
+            apple_promotion_available: z.boolean(),
+            present_packaging_small_size_for_smartphones: z.boolean(),
+          })
+          .passthrough(),
         should_be_disabled: z.boolean(),
         is_product_set: z.boolean(),
         inpost: z.object({ available: z.boolean() }),
