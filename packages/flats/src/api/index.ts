@@ -2,7 +2,7 @@ import { Router } from "express";
 import { diffString } from "json-diff";
 import { z } from "zod";
 import { query } from "@dev/sql";
-import { Schema } from "../schema";
+import { DiffSchema, Schema } from "../schema";
 
 const PagerSchema = z.object({
   start: z.coerce.number().default(0),
@@ -53,7 +53,10 @@ export const update = async (
             );
             if (result.rowCount > 0) {
               const { id, data } = result.rows[0];
-              const diff = diffString(data, item);
+              const diff = diffString(
+                DiffSchema.parse(data),
+                DiffSchema.parse(item)
+              );
               console.info({ id, diff });
               if (!diff) {
                 await query(

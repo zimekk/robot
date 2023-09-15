@@ -294,10 +294,23 @@ const JsonSchema = z.object({
   cookies: z.object({}),
 });
 
+export const DataSchema = AdSchema;
+
+export const DiffSchema = DataSchema.strip()
+  .extend({
+    user: DataSchema.shape.user.omit({
+      isOnline: true,
+      lastSeen: true,
+    }),
+  })
+  .omit({
+    searchReason: true,
+  });
+
 export interface Item {
   id: number;
   item: string;
-  data: z.infer<typeof AdSchema>;
+  data: z.infer<typeof DataSchema>;
   created: string;
   checked: string | null;
   updated: string | null;
