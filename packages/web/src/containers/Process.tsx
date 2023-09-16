@@ -525,7 +525,18 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           }))
       )
       .concat(
-        ["dzialki-grunty/otrebusy"]
+        [
+          "dzialki-grunty/budowlana/dawidy-bankowe",
+          "dzialki-grunty/budowlana/jozefoslaw",
+          "dzialki-grunty/budowlana/komorow-34074",
+          "dzialki-grunty/budowlana/michalowice-34075",
+          "dzialki-grunty/budowlana/nowa-wies-34077",
+          "dzialki-grunty/budowlana/otrebusy",
+          "dzialki-grunty/budowlana/pecice",
+          "dzialki-grunty/budowlana/podkowa-lesna",
+          "dzialki-grunty/budowlana/warszawa/powsin",
+          "dzialki-grunty/budowlana/warszawa/ursynow",
+        ]
           .map((cat) => `https://gratka.pl/nieruchomosci/${cat}`)
           .map((url, i) => ({
             data: {
