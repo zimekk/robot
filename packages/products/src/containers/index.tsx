@@ -1,5 +1,5 @@
 import React, {
-  ChangeEventHandler,
+  type ChangeEventHandler,
   useCallback,
   useMemo,
   useState,
