@@ -819,8 +819,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-19/c/2471-akcesoria-roboty-kuchenne.html?producent=539-bosch&producent=1977-wmf",
           "g-19/c/2880-generatory-pary.html",
           "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
+          "g-19/c/3664-akcesoria-do-grilla.html?producent=2375-weber",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-63/c/2073-klocki-lego.html?producent=629-lego&f833-seria=8890-lego-technic&f833-seria=161664-lego-dots",
+          "g-65/c/3047-grille-ogrodowe.html?producent=2375-weber",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
         ]
           .map((path) => `https://www.al.to/${path}`)
