@@ -904,6 +904,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
+          "CategoryId=8324&BrandIds=10531", // Pranie i płukanie / PERWOLL
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
           "CategoryId=8343&BrandIds=10624&BrandIds=10757", // Akcesoria Do Sprzątania / 3M SCOTCH-BRITE / VILEDA
           "CategoryId=8344", // Worki na śmieci
