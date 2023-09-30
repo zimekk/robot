@@ -17,17 +17,20 @@ export default z
         .object({})
         .passthrough()
         .parse({
-          details: $root.querySelectorAll("div.details").map(($el) => ({
-            intro: $el.parentNode.querySelector("div.intro > h3")?.text,
-            price: $el.querySelector("div.price > p")?.text,
-            priceNumber: $el.querySelector("span.price-number")?.text,
-            link: (($el) => ({
-              href: $el?.getAttribute("href"),
-              text: $el?.getAttribute("aria-label"),
-            }))($el.querySelector("> a")),
-            bullets: $el
-              .querySelectorAll("ul > li")
-              .map(($el) => $el?.text.trim()),
-          })),
+          details: $root
+            .querySelectorAll("div.details")
+            .map(($el) => $el.parentNode)
+            .map(($el) => ({
+              intro: $el.querySelector("div.intro > h3")?.text,
+              price: $el.querySelector("div.price > p")?.text,
+              priceNumber: $el.querySelector("span.price-number")?.text,
+              link: (($el) => ({
+                href: $el?.getAttribute("href"),
+                text: $el?.getAttribute("aria-label"),
+              }))($el.querySelector("a")),
+              bullets: $el
+                .querySelectorAll("ul > li")
+                .map(($el) => $el?.text.trim()),
+            })),
         }))(parse(html)),
   }));
