@@ -48,3 +48,5 @@ export const router = () =>
       )
       .catch(next)
   );
+
+export const status = (data: unknown) => data;

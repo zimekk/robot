@@ -44,6 +44,7 @@ export const Type = {
   SALOM: "SALOM",
   STATIONS: "STATIONS",
   STATION: "STATION",
+  STATUS: "STATUS",
   STOCK: "STOCK",
   ROSSM: "ROSSM",
   THULE: "THULE",
@@ -133,6 +134,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.SALOM]: new RegExp("lomon.com/pl-pl/shop"),
     [Type.STATIONS]: new RegExp(/stations-get-stations\?zoom=\d/),
     [Type.STATION]: new RegExp(/stations-get-station\?station_id=\d/),
+    [Type.STATUS]: new RegExp(/^\/status/),
     [Type.STOCK]: new RegExp("bmw.cloud/similarity"),
     [Type.ROSSM]: new RegExp("smann.pl/szukaj"),
     [Type.THULE]: new RegExp("thule.com/pl-pl/"),
@@ -309,6 +311,9 @@ export const EntrySchema = z.preprocess(
           network_name: z.string(),
           map_img: z.string(),
         }),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.STATUS),
     }),
     JsonSchema.extend({
       type: z.literal(Type.STOCK),
@@ -491,6 +496,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
       network_name: z.string(),
       map_img: z.string(),
     }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.STATUS),
+    returnvalue: require("@dev/status/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.STOCK),

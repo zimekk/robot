@@ -118,6 +118,8 @@ export const client = () => {
                     json?: object | undefined;
                   };
                 }),
+              [Type.STATUS]: async () =>
+                require("@dev/status/api").status(data),
               [Type.STOCK]: async () =>
                 await fetchWithTimeout(data.url, {
                   method: "post",

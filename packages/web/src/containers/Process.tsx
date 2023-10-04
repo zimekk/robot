@@ -1100,6 +1100,16 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
             },
           }))
       )
+      .concat(
+        ["/status"].map((url, i) => ({
+          data: {
+            url,
+          },
+          opts: {
+            repeat: { cron: `${i + 15} 9 * * *` },
+          },
+        }))
+      )
   );
 
   const entries = useMemo(

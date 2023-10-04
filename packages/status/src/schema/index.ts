@@ -1,4 +1,5 @@
 import type { CpuInfo } from "os";
+import { z } from "zod";
 
 export type StatusType = {
   databases: {
@@ -15,3 +16,5 @@ export type StatusType = {
   uptime: number;
   usage: string[];
 };
+
+export const Schema = z.any();

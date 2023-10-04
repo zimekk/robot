@@ -27,7 +27,8 @@
     "pretty-bytes": "^6.1.0",
     "pretty-ms": "^8.0.0",
     "ssl-checker": "^2.0.8",
-    "use-asset": "^1.0.4"
+    "use-asset": "^1.0.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
