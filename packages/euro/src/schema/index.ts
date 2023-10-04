@@ -5,6 +5,18 @@ const DeliveryAvailability = z.object({
   deliveryDate: z.string().nullable(),
 });
 
+const Instalment = z.object({
+  code: z.string(),
+  instalmentPrice: z.number(),
+  numberOfInstalments: z.number(),
+  loanInterest: z.number(),
+  label: z.string().nullable(),
+  hasPromotionDetails: z.boolean(),
+  shortPromotionDescription: z.string().nullable(),
+  rrso: z.number(),
+  usingDiscountedPrice: z.boolean(),
+});
+
 const Result = z.object({
   name: z.string(),
   baseAttributes: z.array(
@@ -83,19 +95,7 @@ const Result = z.object({
           categoryDescription: z.string(),
           categoryId: z.number(),
           price: z.number(),
-          instalment: z
-            .object({
-              code: z.string(),
-              instalmentPrice: z.number(),
-              numberOfInstalments: z.number(),
-              loanInterest: z.number(),
-              label: z.string(),
-              hasPromotionDetails: z.boolean(),
-              shortPromotionDescription: z.null(),
-              rrso: z.number(),
-              usingDiscountedPrice: z.boolean(),
-            })
-            .nullable(),
+          instalment: Instalment.nullable(),
         })
       ),
     })
@@ -136,19 +136,7 @@ const Result = z.object({
     })
     .nullable(),
   deliveryPriceMessage: z.string().nullable(),
-  instalment: z
-    .object({
-      code: z.string(),
-      instalmentPrice: z.number(),
-      numberOfInstalments: z.number(),
-      loanInterest: z.number(),
-      label: z.string(),
-      hasPromotionDetails: z.boolean(),
-      shortPromotionDescription: z.string().nullable(),
-      rrso: z.number(),
-      usingDiscountedPrice: z.boolean(),
-    })
-    .nullable(),
+  instalment: Instalment.nullable(),
   identifiers: z.object({
     plu: z.string(),
     productLinkName: z.string(),
