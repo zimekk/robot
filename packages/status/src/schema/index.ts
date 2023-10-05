@@ -18,3 +18,5 @@ export type StatusType = {
 };
 
 export const Schema = z.any();
+
+export type SchemaType = z.infer<typeof Schema>;

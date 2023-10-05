@@ -3,10 +3,13 @@ import prettyMilliseconds from "pretty-ms";
 import prettyBytes from "pretty-bytes";
 import { createAsset } from "use-asset";
 import type { StatusType } from "../schema";
+import { getTotal } from "../utils";
+
+export const API_URL = process.env.API_URL || "";
 
 // https://github.com/pmndrs/use-asset
 const asset = createAsset(() =>
-  fetch("status")
+  fetch(`${API_URL}status`)
     .then((res) => res.json())
     .then<StatusType>(({ result }) => result)
     .catch(
@@ -32,6 +35,7 @@ export default function Section() {
   const result = asset.read();
 
   console.log({ result });
+  console.log({ total: getTotal(result.usage) });
 
   return (
     <section>

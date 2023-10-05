@@ -1,11 +1,33 @@
 import { Router } from "express";
 import { query } from "@dev/sql";
 import { exec } from "child_process";
+import { createTransport } from "nodemailer";
 import os from "os";
 import sslChecker from "ssl-checker";
+import type { SchemaType } from "../schema";
+import { getTotal } from "../utils";
+
+async function notify(data: { total: number }) {
+  const subject = `Robot Notification - Usage ${data.total}%`;
+  const text = `Usage: ${data.total}`;
+
+  const transporter = createTransport(process.env.SMTP_URL, {
+    from: process.env.MAIL_FROM,
+  });
+
+  const info = await transporter.sendMail({
+    to: process.env.MAIL_TO,
+    subject,
+    text,
+  });
+  console.log(info);
+
+  // only needed when using pooled connections
+  transporter.close();
+}
 
 const diskFree = () =>
-  new Promise((resolve, reject) =>
+  new Promise<string[]>((resolve, reject) =>
     exec("df -h", (error, stdout) =>
       error
         ? reject(error)
@@ -42,6 +64,7 @@ export const router = () =>
             type: os.type(),
             uptime: os.uptime(),
             usage,
+            total: getTotal(usage),
             ssl,
           },
         })
@@ -49,4 +72,17 @@ export const router = () =>
       .catch(next)
   );
 
-export const status = (data: unknown) => data;
+export const status = async (data: SchemaType) =>
+  diskFree()
+    .then((usage) => getTotal(usage))
+    .then(async (total) => {
+      if (total > 95) {
+        await notify({ total });
+      }
+      return {
+        json: {
+          total,
+          ...data,
+        },
+      };
+    });
