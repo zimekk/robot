@@ -7,9 +7,11 @@ import sslChecker from "ssl-checker";
 import type { SchemaType } from "../schema";
 import { getTotal } from "../utils";
 
-async function notify(data: { total: number }) {
-  const subject = `Robot Notification - Usage ${data.total}%`;
-  const text = `Usage: ${data.total}`;
+async function notify(data: { total?: number; ssl?: object[] }) {
+  const subject = data.ssl
+    ? `Robot Notification - SSL`
+    : `Robot Notification - Usage ${data.total}%`;
+  const text = JSON.stringify(data, null, 2);
 
   const transporter = createTransport(process.env.SMTP_URL, {
     from: process.env.MAIL_FROM,
@@ -35,21 +37,31 @@ const diskFree = () =>
     )
   );
 
+// https://stackoverflow.com/questions/56771030/node-js-how-to-check-get-ssl-certificate-expiry-date
+const sslCheck = () =>
+  Promise.all(
+    (process.env.SSL_CHECK || "")
+      .split(":")
+      .concat([
+        // "badssl.com",
+        // "expired.badssl.com",
+      ])
+      .map((hostname) => sslChecker(hostname, { method: "GET", port: 443 }))
+  );
+
 export const router = () =>
   Router().get("/status", (_req, res, next) =>
     Promise.all([
       diskFree(),
-      query(
-        "SELECT pg_database.datname AS name, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database",
-        []
-      ),
-      // https://stackoverflow.com/questions/56771030/node-js-how-to-check-get-ssl-certificate-expiry-date
-      Promise.all(
-        [
-          // "badssl.com",
-          // "expired.badssl.com",
-        ].map((hostname) => sslChecker(hostname, { method: "GET", port: 443 }))
-      ),
+      process.env.DATABASE_URL
+        ? query(
+            "SELECT pg_database.datname AS name, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database",
+            []
+          )
+        : {
+            rows: [],
+          },
+      sslCheck(),
     ])
       .then(([usage, data, ssl]) =>
         res.json({
@@ -73,16 +85,23 @@ export const router = () =>
   );
 
 export const status = async (data: SchemaType) =>
-  diskFree()
-    .then((usage) => getTotal(usage))
-    .then(async (total) => {
-      if (total > 95) {
-        await notify({ total });
-      }
-      return {
-        json: {
-          total,
-          ...data,
-        },
-      };
-    });
+  Promise.all([
+    diskFree().then((usage) => getTotal(usage)),
+    sslCheck().then((ssl) =>
+      ssl.filter(({ daysRemaining }) => daysRemaining <= 30)
+    ),
+  ]).then(async ([total, ssl]) => {
+    if (total > 95) {
+      await notify({ total });
+    }
+    if (ssl.length > 0) {
+      await notify({ ssl });
+    }
+    return {
+      json: {
+        ssl,
+        total,
+        ...data,
+      },
+    };
+  });
