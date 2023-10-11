@@ -88,7 +88,7 @@ export const status = async (data: SchemaType) =>
   Promise.all([
     diskFree().then((usage) => getTotal(usage)),
     sslCheck().then((ssl) =>
-      ssl.filter(({ daysRemaining }) => daysRemaining < 15)
+      ssl.filter(({ daysRemaining }) => daysRemaining <= 20)
     ),
   ]).then(async ([total, ssl]) => {
     if (total > 95) {
