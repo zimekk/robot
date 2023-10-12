@@ -1,4 +1,4 @@
-FROM node:18.18.0-alpine
+FROM node:18.18.1-alpine
 
 # https://pptr.dev/troubleshooting#running-on-alpine
 # Installs latest Chromium (100) package.
