@@ -823,6 +823,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-63/c/2073-klocki-lego.html?producent=629-lego&f833-seria=8890-lego-technic&f833-seria=161664-lego-dots",
           "g-65/c/3047-grille-ogrodowe.html?producent=2375-weber",
+          "g-65/c/3059-narzedzia.html?producent=2354-gardena",
+          "g-65/c/3349-pompy-i-akcesoria.html",
           "g-70/c/3503-zmywarki-do-zabudowy-60-cm.html?producent=464-siemens",
         ]
           .map((path) => `https://www.al.to/${path}`)
