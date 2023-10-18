@@ -329,98 +329,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       //   },
       // },
       {
-        data: {
-          url: "https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=12&startIndex=0",
-          body: {
-            searchContext: [
-              {
-                // usageState: {
-                //   value: ["NEW", "DEALER_YOUNG_USED"],
-                // },
-                // vehicleSalesProcessState: {
-                //   type: {
-                //     value: ["AVAILABLE", "RESERVED_MANUAL"],
-                //   },
-                // },
-                // brands: {
-                //   value: ["MINI"],
-                // },
-                productTypes: {
-                  value: ["CAR"],
-                },
-                salesDestinations: [
-                  {
-                    name: "ONLINE",
-                    onlineStatus: true,
-                  },
-                ],
-                // validities: [
-                //   {
-                //     filters: [
-                //       "DEGREE_OF_ELECTRIFICATION_BASED_FUEL_TYPE",
-                //       "POWER_KW_BASED_ON_DEGREE_OF_ELECTRIFICATION",
-                //       "TRANSMISSION",
-                //       "EMISSION_DATA_BASED_ON_DEGREE_OF_ELECTRIFICATION",
-                //       "UCP_PRICE_ALL_OPTIONS_PRICED",
-                //     ],
-                //     requireAll: true,
-                //     validity: "VALID",
-                //   },
-                // ],
-                // buNos: [
-                //   "32940",
-                //   "27023",
-                //   "44852",
-                //   "35466",
-                //   "51057",
-                //   "35941",
-                //   "28966",
-                //   "33160",
-                //   "49584",
-                //   "35140",
-                //   "29029",
-                //   "44845",
-                //   "28965",
-                //   "28597",
-                //   "42099",
-                //   "06030",
-                //   "36891",
-                //   "32059",
-                //   "51448",
-                //   "34238",
-                //   "41094",
-                //   "50457",
-                // ],
-                // model: { marketingModelRange: { value: ["MINI_F56"] } },
-                model: {
-                  marketingModelRange: {
-                    value: ["JCW_F56", "JCW_F57", "X3_G01", "X3M_F97"],
-                  },
-                },
-              },
-            ],
-            resultsContext: {
-              // excludes: ["EQUIPMENT_PRICES"],
-              // sort: [
-              //   {
-              //     by: "PRICE",
-              //     order: "ASC",
-              //   },
-              // ],
-              sort: [
-                {
-                  by: "PRODUCTION_DATE",
-                  order: "DESC",
-                },
-              ],
-            },
-          },
-        },
-        opts: {
-          repeat: { cron: "0 12 * * *" },
-        },
-      },
-      {
         blocked: true,
         data: {
           url: "https://finder.porsche.com/pl/pl-PL/search?model=macan&model-generation=95b-iii",
@@ -489,6 +397,105 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         },
       },
     ]
+      .concat(
+        [
+          ["5_G30", "5_G31", "M5_F90"],
+          ["JCW_F56", "JCW_F57", "X3_G01", "X3M_F97"],
+        ].map((value, i) => ({
+          data: {
+            url: `https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=${
+              (i + 1) * 6
+            }&startIndex=0`,
+            body: {
+              searchContext: [
+                {
+                  // usageState: {
+                  //   value: ["NEW", "DEALER_YOUNG_USED"],
+                  // },
+                  // vehicleSalesProcessState: {
+                  //   type: {
+                  //     value: ["AVAILABLE", "RESERVED_MANUAL"],
+                  //   },
+                  // },
+                  // brands: {
+                  //   value: ["MINI"],
+                  // },
+                  productTypes: {
+                    value: ["CAR"],
+                  },
+                  salesDestinations: [
+                    {
+                      name: "ONLINE",
+                      onlineStatus: true,
+                    },
+                  ],
+                  // validities: [
+                  //   {
+                  //     filters: [
+                  //       "DEGREE_OF_ELECTRIFICATION_BASED_FUEL_TYPE",
+                  //       "POWER_KW_BASED_ON_DEGREE_OF_ELECTRIFICATION",
+                  //       "TRANSMISSION",
+                  //       "EMISSION_DATA_BASED_ON_DEGREE_OF_ELECTRIFICATION",
+                  //       "UCP_PRICE_ALL_OPTIONS_PRICED",
+                  //     ],
+                  //     requireAll: true,
+                  //     validity: "VALID",
+                  //   },
+                  // ],
+                  // buNos: [
+                  //   "32940",
+                  //   "27023",
+                  //   "44852",
+                  //   "35466",
+                  //   "51057",
+                  //   "35941",
+                  //   "28966",
+                  //   "33160",
+                  //   "49584",
+                  //   "35140",
+                  //   "29029",
+                  //   "44845",
+                  //   "28965",
+                  //   "28597",
+                  //   "42099",
+                  //   "06030",
+                  //   "36891",
+                  //   "32059",
+                  //   "51448",
+                  //   "34238",
+                  //   "41094",
+                  //   "50457",
+                  // ],
+                  // model: { marketingModelRange: { value: ["MINI_F56"] } },
+                  model: {
+                    marketingModelRange: {
+                      value,
+                    },
+                  },
+                },
+              ],
+              resultsContext: {
+                // excludes: ["EQUIPMENT_PRICES"],
+                // sort: [
+                //   {
+                //     by: "PRICE",
+                //     order: "ASC",
+                //   },
+                // ],
+                sort: [
+                  {
+                    by: "PRODUCTION_DATE",
+                    order: "DESC",
+                  },
+                ],
+              },
+            },
+          },
+          opts: {
+            repeat: { cron: `${i} 12 * * *` },
+          },
+        }))
+      )
       .concat(
         [
           "hale-magazyny/wynajem/mazowieckie",
