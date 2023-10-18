@@ -502,7 +502,7 @@ export const ItemSchema = z.object({
       }),
       priceUpdatedAt: z.string(),
     }),
-    salesProcess: z.object({ reason: z.string(), type: z.string() }),
+    salesProcess: z.object({ reason: z.string().optional(), type: z.string() }),
     vehicleLifeCycle: z.object({ isRepaired: z.boolean() }),
     vehicleSpecification: z.object({
       modelAndOption: z.object({
