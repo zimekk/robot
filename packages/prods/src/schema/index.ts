@@ -31,7 +31,7 @@ export const ListSchema = z
                 brand,
                 name,
                 images: images
-                  .filter(({ type }) => ["ICON_PHOTO"].includes(type))
+                  .filter(({ type }) => ["CMS_PHOTO"].includes(type))
                   .map(({ url }) => url),
               },
               promotionalPrice

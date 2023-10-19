@@ -49,7 +49,21 @@ const Result = z.object({
     voucherDiscountedPrice: z.number().nullable(),
     lowestPrice: z.object({ price: z.number().nullable(), show: z.boolean() }),
   }),
-  images: z.array(z.object({ url: z.string(), type: z.string() })),
+  images: z
+    .object({
+      url: z.string(),
+      type: z.enum([
+        "BIG_PHOTO",
+        "CARD_PHOTO",
+        "CMS_PHOTO",
+        "DETAILS_PHOTO",
+        "ICON_PHOTO",
+        "ORIGINAL_PHOTO",
+        "PHOTO",
+        "SUITE_PHOTO",
+      ]),
+    })
+    .array(),
   productGroupName: z.string(),
   productType: z.string(),
   deliveryAvailability: z.object({
