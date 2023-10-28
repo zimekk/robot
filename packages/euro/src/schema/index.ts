@@ -9,7 +9,7 @@ const Instalment = z.object({
   code: z.string(),
   instalmentPrice: z.number(),
   numberOfInstalments: z.number(),
-  loanInterest: z.number(),
+  loanInterest: z.number().nullable(),
   label: z.string().nullable(),
   hasPromotionDetails: z.boolean(),
   shortPromotionDescription: z.string().nullable(),
@@ -179,6 +179,10 @@ const Result = z.object({
   videos: z.array(z.unknown()),
   relatedPromotion: z.null(),
   holidayStatus: z.null().optional(),
+  eanCodes: z.string().array().optional(),
+  symkar: z.string().optional(),
+  scores: z.unknown().optional(),
+  stockDetails: z.unknown().optional(),
 });
 
 export const JsonSchema = z.object({
