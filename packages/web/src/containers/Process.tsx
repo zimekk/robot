@@ -1313,15 +1313,17 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           <span>priority</span>
         </label>
         <button
+          disabled={loading}
           onClick={useCallback(
             () =>
+              (setLoading(true),
               list
                 .filter((item) => selected.includes(item.id))
                 .reduce<Promise<unknown>>(
                   (promise, item) => promise.then(() => post("process", item)),
                   Promise.resolve()
-                )
-                .then(() => setSelected([]))
+                ))
+                .then(() => (setLoading(false), setSelected([])))
                 .then(getDelayed),
             [list, selected]
           )}
@@ -1398,7 +1400,6 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         </button>
         {loading && <Spinner />}
       </div>
-
       {list.map((item: any) => (
         <div key={item.id}>
           <div>
