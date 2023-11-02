@@ -503,7 +503,7 @@ export const ItemSchema = z.object({
       priceUpdatedAt: z.string(),
     }),
     salesProcess: z.object({ reason: z.string().optional(), type: z.string() }),
-    vehicleLifeCycle: z.object({ isRepaired: z.boolean() }),
+    vehicleLifeCycle: z.object({ isRepaired: z.boolean().optional() }),
     vehicleSpecification: z.object({
       modelAndOption: z.object({
         baseFuelType: z.string(),
