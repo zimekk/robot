@@ -1886,10 +1886,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
-"@types/milliseconds@^0.0.32":
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/@types/milliseconds/-/milliseconds-0.0.32.tgz#a68f51614d1f92a47d2eebb268aff1a6da8a8e97"
-  integrity sha512-mKZKOEpMEZQMYFFcNmopf52CJj7Lu+72+udmQlWiZW7b6LlF0BKLFk8uCa7S3O8aBXs82AKWjAc81+5lZcfkLA==
+"@types/milliseconds@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@types/milliseconds/-/milliseconds-0.0.33.tgz#f1a2d61849f490a423dc38f701aa61828e19c04e"
+  integrity sha512-RMJhntbMMTZ5VHJYuMiMjF6zM9lkpq+SCHwLaiCdBq38wkp9L+iEFRAmQuHi+aTsO62VBu5HRPodr1pWFiQpqA==
 
 "@types/mime@*":
   version "3.0.2"
