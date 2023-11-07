@@ -16,23 +16,23 @@ export const router = () =>
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM shots ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/shots/delete", (req, res, next) =>
       query("DELETE FROM SHOTS WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     );
 
 export const update = async (
   _id: string | number,
   _data: { url: string },
-  { json }: { json: unknown }
+  { json }: { json: unknown },
 ) =>
   Schema.transform(({ json: item }) =>
     [item].reduce(
@@ -42,16 +42,16 @@ export const update = async (
           console.log({ id, item });
           const result = await query(
             "SELECT * FROM shots WHERE item=$1 ORDER BY created DESC LIMIT 1",
-            [id]
+            [id],
           );
-          if (result.rowCount > 0) {
+          if (result.rowCount && result.rowCount > 0) {
             const { id, data } = result.rows[0];
             const diff = diffString(data, item);
             console.info({ id, diff });
             if (!diff) {
               await query(
                 "UPDATE shots SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                [id]
+                [id],
               );
               return;
             }
@@ -66,6 +66,6 @@ export const update = async (
             item,
           ]);
         }),
-      Promise.resolve()
-    )
+      Promise.resolve(),
+    ),
   ).parseAsync({ json });

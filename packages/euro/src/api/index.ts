@@ -17,25 +17,25 @@ export const router = () =>
           query("SELECT * FROM euro ORDER BY created DESC LIMIT $1 OFFSET $2", [
             limit,
             start,
-          ])
+          ]),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/euro/delete", (req, res, next) =>
       query("DELETE FROM euro WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     );
 
 export const getNextPage = (
   url: string,
-  { productsCount }: { productsCount: number }
+  { productsCount }: { productsCount: number },
 ) => {
   const u = new URL(url);
   const { startFrom, numberOfItems } = Object.fromEntries(
-    u.searchParams.entries()
+    u.searchParams.entries(),
   );
   const nextStartIndex = Number(startFrom) + Number(numberOfItems);
 
@@ -49,7 +49,7 @@ export const getNextPage = (
 export const update = async (
   _id: string | number,
   data: { url: string },
-  { json }: { json: unknown }
+  { json }: { json: unknown },
 ) =>
   Schema.transform(({ json: { productsCount, results } }) =>
     results
@@ -62,19 +62,19 @@ export const update = async (
             console.log({ id, item });
             const result = await query(
               "SELECT * FROM euro WHERE item=$1 ORDER BY created DESC LIMIT 1",
-              [id]
+              [id],
             );
-            if (result.rowCount > 0) {
+            if (result.rowCount && result.rowCount > 0) {
               const { id, data } = result.rows[0];
               const diff = diffString(
                 DiffSchema.parse(data),
-                DiffSchema.parse(item)
+                DiffSchema.parse(item),
               );
               console.info({ id, diff });
               if (!diff) {
                 await query(
                   "UPDATE euro SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                  [id]
+                  [id],
                 );
                 return;
               }
@@ -89,11 +89,11 @@ export const update = async (
               item,
             ]);
           }),
-        Promise.resolve()
+        Promise.resolve(),
       )
       .then(() => {
         const nextPage = getNextPage(data.url, { productsCount });
         console.log({ productsCount, nextPage });
         return nextPage ? [{ ...data, url: nextPage }] : [];
-      })
+      }),
   ).parseAsync({ json });

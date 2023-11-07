@@ -16,38 +16,38 @@ export const router = () =>
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM stock ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/stock/v1", (req, res, next) =>
       PagerSchema.parseAsync(req.query)
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM stock ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => ItemSchema.array().parseAsync(data.rows))
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/stock/delete", (req, res, next) =>
       query("DELETE FROM stock WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     );
 
 export const getNextPage = (
   url: string,
-  { totalCount }: { totalCount: number }
+  { totalCount }: { totalCount: number },
 ) => {
   const u = new URL(url);
   const { startIndex, maxResults } = Object.fromEntries(
-    u.searchParams.entries()
+    u.searchParams.entries(),
   );
   const nextStartIndex = Number(startIndex) + Number(maxResults);
 
@@ -61,7 +61,7 @@ export const getNextPage = (
 export const update = async (
   _id: string | number,
   data: { url: string },
-  { json }: { json: unknown }
+  { json }: { json: unknown },
 ) =>
   Schema.transform(
     ({
@@ -78,19 +78,19 @@ export const update = async (
               console.log({ id, item });
               const result = await query(
                 "SELECT * FROM stock WHERE item=$1 ORDER BY created DESC LIMIT 1",
-                [id]
+                [id],
               );
-              if (result.rowCount > 0) {
+              if (result.rowCount && result.rowCount > 0) {
                 const { id, data } = result.rows[0];
                 const diff = diffString(
                   DiffSchema.parse(data),
-                  DiffSchema.parse(item)
+                  DiffSchema.parse(item),
                 );
                 console.info({ id, diff });
                 if (!diff) {
                   await query(
                     "UPDATE stock SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                    [id]
+                    [id],
                   );
                   return;
                 }
@@ -105,11 +105,11 @@ export const update = async (
                 item,
               ]);
             }),
-          Promise.resolve()
+          Promise.resolve(),
         )
         .then(() => {
           const nextPage = getNextPage(data.url, { totalCount });
           console.log({ totalCount, nextPage });
           return nextPage ? [{ ...data, url: nextPage }] : [];
-        })
+        }),
   ).parseAsync({ json });

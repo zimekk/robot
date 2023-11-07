@@ -16,22 +16,22 @@ export const router = () =>
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM products ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/products/delete", (req, res, next) =>
       query("DELETE FROM products WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     );
 
 export const getNextPage = (
   url: string,
-  { paginationState }: { paginationState: PaginationState }
+  { paginationState }: { paginationState: PaginationState },
 ) => {
   const { currentPage, totalPages } = paginationState;
 
@@ -41,12 +41,12 @@ export const getNextPage = (
     const params = Object.assign(
       Array.from(u.searchParams.entries()).reduce(
         (params, [key, value]) => Object.assign(params, { [key]: value }),
-        { page }
+        { page },
       ),
-      { page }
+      { page },
     );
     return new URL(
-      `${u.origin}${u.pathname}?${new URLSearchParams(params)}`
+      `${u.origin}${u.pathname}?${new URLSearchParams(params)}`,
     ).toString();
   }
   return "";
@@ -55,7 +55,7 @@ export const getNextPage = (
 export const update = async (
   _id: string | number,
   { url }: { url: string },
-  { json }: { json: unknown }
+  { json }: { json: unknown },
 ) =>
   Schema.transform(
     ({
@@ -77,18 +77,18 @@ export const update = async (
               }
               const result = await query(
                 "SELECT * FROM products WHERE item=$1 ORDER BY created DESC LIMIT 1",
-                [id]
+                [id],
               );
-              if (result.rowCount > 0) {
+              if (result.rowCount && result.rowCount > 0) {
                 const { id, data } = result.rows[0];
                 const diff = diffString(
                   DiffSchema.parse(data),
-                  DiffSchema.parse(item)
+                  DiffSchema.parse(item),
                 );
                 if (!diff) {
                   await query(
                     "UPDATE products SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                    [id]
+                    [id],
                   );
                   return;
                 }
@@ -103,11 +103,11 @@ export const update = async (
                 item,
               ]);
             }),
-          Promise.resolve()
+          Promise.resolve(),
         )
         .then(() => {
           const nextPage = getNextPage(url, { paginationState });
           console.log({ paginationState, nextPage });
           return nextPage ? [{ url: nextPage }] : [];
-        })
+        }),
   ).parseAsync({ json });

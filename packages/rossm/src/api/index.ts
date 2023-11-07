@@ -15,42 +15,42 @@ export const router = () =>
     .get("/rossm/assets/delete", (req, res, next) =>
       query("DELETE FROM rossm_asset WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     )
     .get("/rossm/assets", (req, res, next) =>
       PagerSchema.parseAsync(req.query)
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM rossm_asset ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/rossm/assets/:id/:name", (req, res, next) =>
       query("SELECT type, blob FROM rossm_asset WHERE id=$1", [req.params.id])
         .then((data) => data.rows[0])
         .then(({ type, blob }) => res.type(type).end(blob))
-        .catch(next)
+        .catch(next),
     )
     .get("/rossm", (req, res, next) =>
       PagerSchema.parseAsync(req.query)
         .then(({ start, limit }) =>
           query(
             "SELECT * FROM rossm ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start]
-          )
+            [limit, start],
+          ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
-        .catch(next)
+        .catch(next),
     )
     .get("/rossm/delete", (req, res, next) =>
       query("DELETE FROM rossm WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))
-        .catch(next)
+        .catch(next),
     );
 
 const assets = async (list: string[]) =>
@@ -58,22 +58,22 @@ const assets = async (list: string[]) =>
     (result, item) =>
       result.then(async (list) => {
         const blob = await fetch(
-          new URL(item, "https://localhost").toString()
+          new URL(item, "https://localhost").toString(),
         ).then((res) => res.blob());
         console.log({ blob });
         const arrayBuffer = await blob.arrayBuffer();
         await query(
           "INSERT INTO rossm_asset (item, type, size, blob) VALUES ($1, $2, $3, $4)",
-          [item, blob.type, blob.size, Buffer.from(arrayBuffer)]
+          [item, blob.type, blob.size, Buffer.from(arrayBuffer)],
         );
       }),
-    Promise.resolve()
+    Promise.resolve(),
   );
 
 export const update = async (
   _id: string | number,
   _data: { url: string },
-  { json }: { json: unknown }
+  { json }: { json: unknown },
 ) =>
   Schema.transform(({ json: list }) =>
     list.reduce(
@@ -84,19 +84,19 @@ export const update = async (
           console.log({ id, item });
           const result = await query(
             "SELECT * FROM rossm WHERE item=$1 ORDER BY created DESC LIMIT 1",
-            [id]
+            [id],
           );
-          if (result.rowCount > 0) {
+          if (result.rowCount && result.rowCount > 0) {
             const { id, data } = result.rows[0];
             const diff = diffString(
               DiffSchema.parse(data),
-              DiffSchema.parse(item)
+              DiffSchema.parse(item),
             );
             console.info({ id, diff });
             if (!diff) {
               await query(
                 "UPDATE rossm SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                [id]
+                [id],
               );
               return;
             }
@@ -112,6 +112,6 @@ export const update = async (
           ]);
           await assets(item.pictures.slice(0, 3).map((item) => item.small));
         }),
-      Promise.resolve()
-    )
+      Promise.resolve(),
+    ),
   ).parseAsync({ json });
