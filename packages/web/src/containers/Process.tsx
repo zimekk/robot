@@ -881,7 +881,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           // "category=obiektywy&__=Sigma&_h=32",
           "category=obiektywy&_h=2",
           "category=odkurzacze-pionowe&__=Bosch,Dyson,Karcher,Tefal",
-          "category=okapy&_ay=10,5",
+          "category=okapy&__=Bosch,Franke,Siemens,elica&_ay=10,5",
           "category=pendrive-pamieci-usb&__=Kingston,SanDisk&_h=2,3",
           "category=piekarniki-do-zabudowy&__=Siemens",
           "category=plyty-do-zabudowy&__=Siemens",
