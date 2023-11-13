@@ -41,8 +41,8 @@ export const ListSchema = z
                   }
                 : {
                     price: mainPrice,
-                  }
-            ))("https://www.euro.com.pl")
+                  },
+            ))("https://www.euro.com.pl"),
       ),
     }),
     ItemSchema.extend({
@@ -56,12 +56,12 @@ export const ListSchema = z
           images: gallery.map((href) =>
             new URL(
               `https://prod-api.mediaexpert.pl/api/images/gallery_290_300/thumbnails/${href}`,
-              base
-            ).toString()
+              base,
+            ).toString(),
           ),
           price: price_gross / 100,
           // oldPrice,
-        }))(`https://www.mediaexpert.pl`)
+        }))(`https://www.mediaexpert.pl`),
       ),
     }),
     ItemSchema.extend({
@@ -75,19 +75,34 @@ export const ListSchema = z
           photo: { url = "" },
           price,
           oldPrice,
+          promotionInfo: { discountedPrice } = {},
         }) =>
-          ((base) => ({
-            id,
-            url: new URL(`/p/${id}`, base).toString(),
-            brand,
-            name,
-            mark,
-            images: [url].filter(Boolean),
-            price,
-            oldPrice,
-          }))(
-            url?.match(".al.to/") ? "https://www.al.to" : "https://www.x-kom.pl"
-          )
+          ((base) =>
+            Object.assign(
+              {
+                id,
+                url: new URL(`/p/${id}`, base).toString(),
+                brand,
+                name,
+                mark,
+                images: [url].filter(Boolean),
+                price,
+                oldPrice,
+              },
+              discountedPrice
+                ? {
+                    price: discountedPrice,
+                    oldPrice: price,
+                  }
+                : {
+                    price,
+                    oldPrice,
+                  },
+            ))(
+            url?.match(".al.to/")
+              ? "https://www.al.to"
+              : "https://www.x-kom.pl",
+          ),
       ),
     }),
   ])

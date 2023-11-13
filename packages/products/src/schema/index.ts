@@ -84,6 +84,7 @@ export const DiffSchema = DataSchema.pick({
   oldPrice: true,
   price: true,
   priceInfo: true,
+  promotionInfo: true,
 });
 
 export interface Item {
