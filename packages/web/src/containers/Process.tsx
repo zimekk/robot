@@ -838,6 +838,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "g-19/c/2880-generatory-pary.html",
           "g-19/c/3519-parownice-do-sprzatania.html?producent=546-karcher",
           "g-19/c/3664-akcesoria-do-grilla.html?producent=2375-weber",
+          "g-25/c/2953-dzwonki-do-drzwi.html?producent=628-ubiquiti",
           "g-25/c/3038-inteligentne-kamery.html?producent=1023-xiaomi",
           "g-27/c/1950-zamrazarki.html?producent=464-siemens&producent=539-bosch",
           "g-63/c/2073-klocki-lego.html?producent=629-lego&f833-seria=8890-lego-technic&f833-seria=161664-lego-dots",
@@ -859,6 +860,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "category=accesspoint&__=ubiquiti",
           "category=akcesoria-do-ipada-i-tabletow-multimedialnych&__=Apple",
           "category=archiwizacja-danych1&__=WD",
           "category=czysciki-parowe&__=Karcher",
@@ -870,6 +872,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=glosniki-przenosne&__=BowersWilkins,Sonos,Yamaha,jbl,marshall",
           // "category=glosniki-przenosne&__=jbl",
           // "category=glosniki-przenosne&__=marshall",
+          "category=kamery-ip-do-monitoringu&__=HIKVISION,ubiquiti",
           "category=karty-pamieci&__=SanDisk&_i=2,4&_j=6,8",
           "category=kuchenki-mikrofalowe-do-zabudowy&__=Siemens",
           "category=ladowarki-ipod-iphone&__=Apple",
@@ -892,6 +895,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=smartwatch&__=Apple",
           "category=stabilizatory-do-kamer-i-aparatow",
           "category=suszarki&__=Siemens",
+          "category=switche-przelaczniki-sieciowe&__=ubiquiti",
           "category=telefony-komorkowe&__=Apple",
           "category=telewizory-led-lcd-plazmowe&__=Panasonic",
           "category=wentylatory-i-klimatory&__=xiaomi",
