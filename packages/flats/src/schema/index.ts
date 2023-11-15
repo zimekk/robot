@@ -9,7 +9,7 @@ const AdSchema = z
     category: z.object({
       id: z.number(),
       type: z.string(),
-      itemType: z.string(),
+      itemType: z.string().optional(),
     }),
     map: z.object({
       zoom: z.number(),
@@ -51,7 +51,7 @@ const AdSchema = z
         type: z.string(),
         value: z.string(),
         normalizedValue: z.string(),
-      })
+      }),
     ),
     itemCondition: z.string(),
     price: z.object({
@@ -261,7 +261,7 @@ const JsonSchema = z.object({
               .array(),
             default_value: z.string().optional(),
           })
-          .array()
+          .array(),
       ),
       metadata: z.object({
         currencies: z.array(
@@ -270,10 +270,10 @@ const JsonSchema = z.object({
             symbol: z.string(),
             is_default: z.boolean(),
             prioritized_categories: z.unknown().array(),
-          })
+          }),
         ),
         distances: z.array(
-          z.object({ value: z.number(), is_default: z.boolean() })
+          z.object({ value: z.number(), is_default: z.boolean() }),
         ),
       }),
       headers: z.object({ "x-request-id": z.string() }),
@@ -288,7 +288,7 @@ const JsonSchema = z.object({
         icon: z.object({ image_url: z.string(), big_image_url: z.string() }),
         name: z.string(),
         link: z.object({ url: z.string(), is_external: z.boolean() }),
-      })
+      }),
     ),
   }),
   cookies: z.object({}),
