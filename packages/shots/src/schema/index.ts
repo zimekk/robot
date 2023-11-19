@@ -10,7 +10,7 @@ export const HotShotSchema = z.object({
   Id: z.string(),
   Price: z.number(),
   OldPrice: z.number(),
-  PromotionGainText: z.string(),
+  PromotionGainText: z.string().optional(),
   PromotionGainTextLines: z.string().array(),
   PromotionGainValue: z.number(),
   PromotionTotalCount: z.number(),
