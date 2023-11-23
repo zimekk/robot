@@ -605,7 +605,7 @@ const JsonSchema = z.object({
     slug: z.null(),
     title: z.null(),
     requestState: z.number(),
-  }),
+  }).optional(),
   ui: z.object({ bottomFixedElementHeight: z.null() }),
   user: z.object({
     profile: z.object({
