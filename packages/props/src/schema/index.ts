@@ -59,6 +59,7 @@ const Ad = z.object({
           .array(),
         __typename: z.string(),
       })
+      .nullable()
       .optional(),
   }),
   // openDays: z.string(),
