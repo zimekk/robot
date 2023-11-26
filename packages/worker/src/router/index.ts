@@ -71,7 +71,7 @@ export const router = () => {
         )
         .catch(next)
     )
-    .post("/parse", json({ limit: "10mb" }), async (req, res, next) =>
+    .post("/parse", json({ limit: "15mb" }), async (req, res, next) =>
       z
         .object({
           id: z.string(),
