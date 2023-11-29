@@ -23,6 +23,29 @@ export const router = () =>
         .then((result) => res.json({ result }))
         .catch(next),
     )
+    .get("/promo/v2", (req, res, next) =>
+      PagerSchema.extend({
+        ilike: z.string().default(""),
+      })
+        .parseAsync(req.query)
+        .then(({ start, limit, ilike }) =>
+          query(
+            `SELECT
+              product,
+              data->'general' AS general
+            FROM
+              promo,
+              jsonb_array_elements(data->'products') AS product
+            WHERE
+              product->>'name' ILIKE '%' || $3 || '%'
+            LIMIT $1 OFFSET $2`,
+            [limit, start, ilike],
+          ),
+        )
+        .then((data) => data.rows)
+        .then((result) => res.json({ result }))
+        .catch(next),
+    )
     .get("/promo/delete", (req, res, next) =>
       query("DELETE FROM promo WHERE id=$1", [req.query.id])
         .then((data) => (console.log(data), res.json({ status: "ok" })))

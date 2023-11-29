@@ -15,6 +15,17 @@ const ProductSchema = z.object({
   mark: z.string(),
 });
 
+const GeneralSchema = z.object({
+  date_start: z.string(),
+  date_start_utc: z.string(),
+  date_stop: z.string(),
+  date_stop_utc: z.string(),
+  enabled: z.boolean(),
+  id: z.number(),
+  name: z.string(),
+  url: z.string(),
+});
+
 const PromoSchema = z.object({
   filters: z
     .object({
@@ -33,16 +44,7 @@ const PromoSchema = z.object({
       view: z.enum(["select", "range"]),
     })
     .array(),
-  general: z.object({
-    date_start: z.string(),
-    date_start_utc: z.string(),
-    date_stop: z.string(),
-    date_stop_utc: z.string(),
-    enabled: z.boolean(),
-    id: z.number(),
-    name: z.string(),
-    url: z.string(),
-  }),
+  general: GeneralSchema,
   products: ProductSchema.array(),
   seo: z
     .object({
