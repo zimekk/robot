@@ -178,7 +178,10 @@ const Result = z.object({
   paymentTypeDescriptions: z.array(z.unknown()),
   videos: z.array(z.unknown()),
   relatedPromotion: z.null(),
-  holidayStatus: z.null().optional(),
+  holidayStatus: z.object({
+    name: z.string(),
+    descriptions: z.unknown().array(),
+  }).nullable().optional(),
   eanCodes: z.string().array().optional(),
   symkar: z.string().optional(),
   scores: z.unknown().optional(),
