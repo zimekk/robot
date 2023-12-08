@@ -26,18 +26,24 @@ export const router = () =>
     .get("/promo/v2", (req, res, next) =>
       PagerSchema.extend({
         ilike: z.string().default(""),
+        orderBy: z.enum(["date_start", "price"]).default("date_start"),
       })
         .parseAsync(req.query)
-        .then(({ start, limit, ilike }) =>
+        .then(({ start, limit, ilike, orderBy }) =>
           query(
             `SELECT
-              product,
-              data->'general' AS general
+              g.general, product
             FROM
               promo,
-              jsonb_array_elements(data->'products') AS product
-            WHERE
-              product->>'name' ILIKE '%' || $3 || '%'
+              jsonb_to_record(data) g(general jsonb),
+              jsonb_array_elements(data->'products') product
+            WHERE product->>'name' ILIKE '%' || $3 || '%'
+            ${
+              {
+                date_start: `ORDER BY general->'date_start' DESC`,
+                price: `ORDER BY product->'price'`,
+              }[orderBy]
+            }
             LIMIT $1 OFFSET $2`,
             [limit, start, ilike],
           ),
