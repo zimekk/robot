@@ -231,9 +231,9 @@ export const EntrySchema = z.preprocess(
         })
         .extend({
           code: z.string().optional(),
-          desc: z.string(),
-          href: z.string(),
-          name: z.string(),
+          desc: z.string().optional(),
+          href: z.string().optional(),
+          name: z.string().optional(),
         }),
     }),
     JsonSchema.extend({
@@ -329,7 +329,7 @@ export const EntrySchema = z.preprocess(
       type: z.literal(Type.UNKNOWN),
       returnvalue: z.any(),
     }),
-  ])
+  ]),
 );
 // .transform((item) => (console.log(item), item));
 
@@ -348,7 +348,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
           success: z.literal(false),
           status: z.number(),
           message: z.literal("Error"),
-        })
+        }),
       ),
     }),
   }),
