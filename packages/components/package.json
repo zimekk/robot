@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "main": "lib",
+  "type": "module",
   "files": [
     "lib/"
   ],

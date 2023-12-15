@@ -1,7 +1,9 @@
 import React from "react";
-import { create, formatters } from "jsondiffpatch";
+import { create } from "jsondiffpatch";
+// import * as html from "jsondiffpatch/formatters/html";
 import "./styles.css";
 
+const html = require("jsondiffpatch/formatters/html");
 const jsondiffpatch = create({});
 
 export const diff = (left: unknown, right: unknown) =>
@@ -9,12 +11,12 @@ export const diff = (left: unknown, right: unknown) =>
 
 export function Diff({ left, right }: { left: unknown; right: unknown }) {
   const delta = diff(left, right);
-  // console.log({ delta });
+  const __html = delta && html.format(delta, left);
 
-  return delta ? (
+  return __html ? (
     <div
       className="jsondiffpatch-unchanged-hidden"
-      dangerouslySetInnerHTML={{ __html: formatters.html.format(delta, left) }}
+      dangerouslySetInnerHTML={{ __html }}
     />
   ) : null;
 }

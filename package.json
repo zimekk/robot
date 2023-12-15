@@ -72,7 +72,7 @@
     "reset": "rm -rf node_modules packages/*/node_modules",
     "serve": "yarn workspace @dev/app serve",
     "start": "yarn workspace @dev/web start",
-    "test": "yarn workspaces run jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces run jest",
     "dedupe": "yarn-deduplicate && yarn",
     "dedupe:list": "yarn-deduplicate --list",
     "update": "yarn upgrade-interactive",
