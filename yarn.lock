@@ -1144,7 +1144,14 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bull-board/api@5.10.3", "@bull-board/api@^5.2.0":
+"@bull-board/api@5.11.0":
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-5.11.0.tgz#695d1ed3c28d802427714963822093c4086ae730"
+  integrity sha512-i5nPoTodSQhpYsr93wKLiiWSoZdbYK6zJx0Urf0djKjkzXxh8Ubh9cmDQqavunu3E/bV2Fe5E8eIFvxuTafbig==
+  dependencies:
+    redis-info "^3.0.8"
+
+"@bull-board/api@^5.2.0":
   version "5.10.3"
   resolved "https://registry.yarnpkg.com/@bull-board/api/-/api-5.10.3.tgz#a4340734619bc7fa82cee195efaf078b9a879b69"
   integrity sha512-QdHeAoKnJl+fXWt5o8EhxMOIcVCD89A6bdN9sn2jCyF8pNT2+2vCzhkf2Eb0vmh7JwMivc+pNWEjJdoJ/V65Yw==
@@ -1152,21 +1159,21 @@
     redis-info "^3.0.8"
 
 "@bull-board/express@^5.2.0":
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-5.10.3.tgz#03abdf4f174d2dceefef8f5f5b3a2fc65745ed4c"
-  integrity sha512-Rt7Eap8KZ5Np+kJMwMH0pUKp1ZYfap51TcfdeqlwRqs7HBI+IgZzywGlgtA71fdCaQu6EDXSBnzb9n9hQY+z2g==
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/express/-/express-5.11.0.tgz#c7fd45234671fb1886af89594f6b7852c266475d"
+  integrity sha512-Y+avqRHWpI8xu0mAD7ICZeFZekNkMcK/Kt5yGhgxoa5/I4e4bj19VLrU3qvxmXF1Af1lYqlVIYqOeoyF4lpfYg==
   dependencies:
-    "@bull-board/api" "5.10.3"
-    "@bull-board/ui" "5.10.3"
+    "@bull-board/api" "5.11.0"
+    "@bull-board/ui" "5.11.0"
     ejs "^3.1.7"
     express "^4.17.3"
 
-"@bull-board/ui@5.10.3":
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-5.10.3.tgz#559e8bf49b65d5ca3a353f9a028b52e1231f5991"
-  integrity sha512-UELmoXQUCP+oL81aoXAZsU0AkWwMEg0xl0hzC0YYWEXZ7Pkd+gYgOxhPkKTDlIZqtamJ7K7HgtZ0SIiHjcR/XQ==
+"@bull-board/ui@5.11.0":
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/@bull-board/ui/-/ui-5.11.0.tgz#d10d216f5d30ea78a37bbea6121860128b02adbd"
+  integrity sha512-+1FVMUwgtI/lwiEs8NuUOP4BAbiJR3gFfqUK4ii3AKtt7Bc57PTvYw4q41FKbmnD3J8oTZHER8zRv8qe7keJ+Q==
   dependencies:
-    "@bull-board/api" "5.10.3"
+    "@bull-board/api" "5.11.0"
 
 "@commitlint/cli@^18.0.0":
   version "18.4.4"
