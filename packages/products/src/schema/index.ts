@@ -71,7 +71,7 @@ export const ProductSchema = z.object({
     id: z.string(),
     parentGroupId: z.string().optional(),
   }),
-  questionsAndAnswers: z.boolean(),
+  questionsAndAnswers: z.boolean().optional(),
   isFetching: z.boolean(),
 });
 // .strict();
