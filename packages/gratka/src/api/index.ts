@@ -35,8 +35,8 @@ export const update = async (
   { json }: { json: unknown },
 ) =>
   Schema.transform(({ json }) => json)
-    .transform(({ mainEntity: { itemListElement } }) =>
-      itemListElement.map((item) => ({
+    .transform(({ offers: { offers } }) =>
+      offers.map((item) => ({
         id: String(item.url.split("/").pop()),
         ...item,
       })),

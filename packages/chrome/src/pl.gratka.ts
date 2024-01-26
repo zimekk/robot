@@ -19,7 +19,7 @@ export const scrap = async (page: Page, url: string) =>
       // timeout: 60_000,
     })
     .then(async () => {
-      const e = `[document.querySelector('script[type="application/ld+json"]')].map(e => JSON.parse(unescape(e.textContent)))[0]`;
+      const e = `[...document.querySelectorAll('script[type="application/ld+json"]')].map(e => JSON.parse(unescape(e.textContent))).find(item => item['@type'] === 'Product')`;
       console.log(["page.evaluate"], e);
       const json = (await page.evaluate(e)) as object;
       console.log({ json });

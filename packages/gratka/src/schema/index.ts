@@ -5,7 +5,7 @@ const OfferSchema = z.object({
   itemOffered: z.object({
     "@type": z.literal("Place"),
     description: z.string(),
-    name: z.string(),
+    name: z.string().optional(),
     image: z.string().optional(),
     address: z.object({
       "@type": z.literal("PostalAddress"),
@@ -13,7 +13,6 @@ const OfferSchema = z.object({
       addressLocality: z.string(),
       addressRegion: z.string(),
     }),
-    url: z.string(),
     geo: z.object({
       "@type": z.literal("GeoCoordinates"),
       latitude: z.number(),
@@ -21,6 +20,7 @@ const OfferSchema = z.object({
     }),
   }),
   url: z.string(),
+  name: z.string().optional(),
   availability: z.string(),
   priceCurrency: z.string(),
   price: z.number(),
@@ -28,12 +28,24 @@ const OfferSchema = z.object({
 
 const WebPageSchema = z.object({
   "@context": z.string(),
-  "@type": z.literal("WebPage"),
+  "@type": z.literal("Product"),
   url: z.string(),
-  mainEntity: z.object({
-    "@type": z.literal("OfferCatalog"),
-    name: z.string(),
-    itemListElement: OfferSchema.array(),
+  additionalType: z.literal("RealEstateListing"),
+  name: z.string(),
+  offers: z.object({
+    "@type": z.literal("AggregateOffer"),
+    priceCurrency: z.literal("PLN"),
+    offerCount: z.number(),
+    lowPrice: z.number(),
+    highPrice: z.number(),
+    businessFunction: z.string(),
+    offers: OfferSchema.transform(
+      ({ itemOffered, name = itemOffered.name, ...rest }) => ({
+        itemOffered,
+        name,
+        ...rest,
+      }),
+    ).array(),
   }),
 });
 
