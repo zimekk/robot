@@ -928,6 +928,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         ["smartfony-i-zegarki/smartfony/warianty-produktu_apple-iphone-13"]
           .map((path) => `https://www.mediaexpert.pl/${path}`)
           .map((url, i) => ({
+            blocked: true,
             data: {
               url,
             },
