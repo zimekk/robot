@@ -99,7 +99,7 @@ const Offer = z.object({
         mobile: z.string().nullable(),
         type: z.number(),
         region: z.object({ id: z.number(), short_name: z.string() }),
-      })
+      }),
     ),
     slug: z.string(),
   }),
@@ -238,15 +238,17 @@ const JsonSchema = z.object({
       initialized: z.boolean(),
     }),
   }),
-  googleMapPOI: z.object({
-    detail: z.object({ pois: z.object({}), poisRequest: z.number() }),
-    travelDirections: z.object({
-      activePoi: z.null(),
-      activePoiDirections: z.null(),
-      poisDirections: z.object({}),
-    }),
-    userPoi: z.array(z.unknown()),
-  }),
+  googleMapPOI: z
+    .object({
+      detail: z.object({ pois: z.object({}), poisRequest: z.number() }),
+      travelDirections: z.object({
+        activePoi: z.null(),
+        activePoiDirections: z.null(),
+        poisDirections: z.object({}),
+      }),
+      userPoi: z.array(z.unknown()),
+    })
+    .optional(),
   googleTagManager: z.boolean(),
   homepage: z.object({
     recommendedOfferList: z.array(z.unknown()),
@@ -387,7 +389,7 @@ const JsonSchema = z.object({
         id: z.number(),
         slug: z.string(),
         title: z.string(),
-      })
+      }),
     ),
     articlesRequest: z.number(),
     childrenRegions: z.array(
@@ -404,7 +406,7 @@ const JsonSchema = z.object({
           vendors_count_for_sale: z.number(),
         }),
         full_name_reverted: z.string(),
-      })
+      }),
     ),
     childrenRegionsRequest: z.number(),
     parentRegions: z.array(z.unknown()),
@@ -450,7 +452,7 @@ const JsonSchema = z.object({
           vendors_count_for_sale: z.number(),
         }),
         full_name_reverted: z.string(),
-      })
+      }),
     ),
     nearbyRegionsRequestState: z.number(),
   }),
@@ -600,12 +602,14 @@ const JsonSchema = z.object({
     vendors: z.null(),
   }),
   smartAds: z.object({ offers: z.array(z.unknown()) }),
-  terms: z.object({
-    content: z.null(),
-    slug: z.null(),
-    title: z.null(),
-    requestState: z.number(),
-  }).optional(),
+  terms: z
+    .object({
+      content: z.null(),
+      slug: z.null(),
+      title: z.null(),
+      requestState: z.number(),
+    })
+    .optional(),
   ui: z.object({ bottomFixedElementHeight: z.null() }),
   user: z.object({
     profile: z.object({
@@ -639,90 +643,90 @@ const JsonSchema = z.object({
   variables: z.object({
     data: z.object({
       offer_construction_end_date: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_facilities: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_natural_sites: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_configuration_display_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_funds_protection: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_standard_description_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_parking_place_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_holiday_location: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_size: z.array(z.object({ value: z.number(), label: z.string() })),
       offer_distance: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_display_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_price_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_listing_bullets: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       offer_listing_bullets_short: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       promotion_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_flat_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_house_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_ownership_form: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_kitchen_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_quarters: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_additional_areas: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       property_room_area_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       recommendation_stat_label: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       user_type: z.array(z.object({ value: z.number(), label: z.string() })),
       user_sex: z.array(z.object({ value: z.number(), label: z.string() })),
       vendor_office_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       vendor_type: z.array(z.object({ value: z.number(), label: z.string() })),
       region_type: z.array(z.object({ value: z.number(), label: z.string() })),
       application_meeting_time_preferences: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       application_source_sections: z.array(
-        z.object({ value: z.number().nullable(), label: z.string() })
+        z.object({ value: z.number().nullable(), label: z.string() }),
       ),
       for_investor_search_type: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
       country_codes: z.array(
-        z.object({ value: z.number(), label: z.string() })
+        z.object({ value: z.number(), label: z.string() }),
       ),
     }),
     requestState: z.number(),
