@@ -78,7 +78,7 @@
     "update": "yarn upgrade-interactive",
     "update:dedupe": "yarn-deduplicate && yarn",
     "update:latest": "yarn upgrade-interactive --latest",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "workspaces": [
     "packages/*"
