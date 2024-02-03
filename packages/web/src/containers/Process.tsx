@@ -878,6 +878,8 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=glosniki-przenosne&__=BowersWilkins,Sonos,Yamaha,jbl,marshall",
           // "category=glosniki-przenosne&__=jbl",
           // "category=glosniki-przenosne&__=marshall",
+          "category=inteligentne-glosniki&_k=1,10",
+          "category=kable-i-adaptery-komputerowe&__=Unitek&_h=4,5&_j=9",
           "category=kamery-ip-do-monitoringu&__=HIKVISION,ubiquiti",
           "category=karty-pamieci&__=SanDisk&_i=2,4&_j=6,8",
           "category=kuchenki-mikrofalowe-do-zabudowy&__=Siemens",
