@@ -127,7 +127,7 @@ const Result = z.object({
         type: z.string(),
         scale: z.string().nullable(),
       }),
-      oldEnergyClassLabel: z.string(),
+      oldEnergyClassLabel: z.string().nullable(),
       energyInformationCardUrl: z.string(),
       definitionId: z.number().nullable(),
     })
