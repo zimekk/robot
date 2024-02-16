@@ -8321,9 +8321,9 @@ sprintf-js@~1.0.2:
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
 ssl-checker@^2.0.8:
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/ssl-checker/-/ssl-checker-2.0.8.tgz#eb50cd3174be0fb7efc68bc23fc5716d7dc677bc"
-  integrity sha512-pIDGxablZowKR/elbm72Wk7T3lEdrcAKT4ltPsdQrpm7N6EIIvuFQpIcMNG+A/wmiymcRwFDzTd83bW6Yy5LKQ==
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/ssl-checker/-/ssl-checker-2.0.9.tgz#d855af4e4da7f2a95046b21049f6aa31e0d0988a"
+  integrity sha512-aKIJBxTqWOPaeCrbuOGTyGtolJH+Yrbatldgj/wPADkoVtZ+7ySHQ///Y4H590MeTWkr1AE0T7iP5YXX/ZXpEw==
 
 stack-utils@^2.0.3:
   version "2.0.6"
