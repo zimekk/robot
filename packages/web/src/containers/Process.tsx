@@ -629,11 +629,19 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "audi/a4-allroad",
+          // "audi/a5?search%5Bfilter_enum_generation%5D=gen-f5-2016",
+          "audi/a6-allroad?search%5Bfilter_enum_generation%5D=gen-c8-2019",
+          // "audi/q5?search%5Bfilter_enum_generation%5D=gen-fy-2017",
+          "audi/q7?search%5Bfilter_enum_generation%5D=gen-ii-2015-q7",
+          // "audi/q8",
+          "bmw/seria-5?search%5Bfilter_enum_generation%5D%5B0%5D=gen-g30-2017&search%5Bfilter_enum_generation%5D%5B1%5D=gen-g60-2023",
           "bmw/x3?search%5Bfilter_enum_generation%5D=gen-g01-2017",
           "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
           // "honda/jazz?search%5Bfilter_enum_generation%5D=gen-ii-2002-2008-jazz",
           "mini/cooper-s--john-cooper-works",
           "porsche/macan",
+          "volvo/xc-60?search%5Bfilter_enum_generation%5D=gen-ii-2017",
         ]
           .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
           .map((url, i) => ({
