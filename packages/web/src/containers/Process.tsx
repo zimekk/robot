@@ -501,7 +501,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "hale-magazyny/wynajem/mazowieckie",
           // "hale-magazyny/wynajem/stare-babice",
           // "hale-magazyny/wynajem/zielonki-parcela",
+          "mieszkania/sprzedaz/warszawa/?search%5Bdistrict_id%5D=373&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_enum_rooms%5D%5B0%5D=one",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=373&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_enum_rooms%5D%5B0%5D=one",
+          "mieszkania/sprzedaz/warszawa/?search%5Bdistrict_id%5D=353&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_float_m:from%5D=70&search%5Bfilter_enum_rooms%5D%5B0%5D=three",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=353&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_float_m:from%5D=70&search%5Bfilter_enum_rooms%5D%5B0%5D=three",
         ]
           .map((cat) => `https://www.olx.pl/nieruchomosci/${cat}/`)
@@ -882,6 +884,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=ekspresy-cisnieniowe&__=Siemens,jura",
           "category=etui-do-telefonow&__=Apple",
           "category=fotele-i-stojaki-do-kierownicy&__=Asus,sparco",
+          "category=foto-i-kamery&searchString=LP-E12",
           "category=gilotyny-i-trymery",
           "category=glosniki-przenosne&__=BowersWilkins,Sonos,Yamaha,jbl,marshall",
           // "category=glosniki-przenosne&__=jbl",
@@ -910,10 +913,12 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "category=sluchawki&__=Apple,marshall",
           "category=smartwatch&__=Apple",
           "category=stabilizatory-do-kamer-i-aparatow",
+          "category=statywy&__=Manfrotto",
           "category=suszarki&__=Siemens",
           "category=switche-przelaczniki-sieciowe&__=ubiquiti",
           "category=telefony-komorkowe&__=Apple",
           "category=telewizory-led-lcd-plazmowe&__=Panasonic",
+          "category=urzadzenia-do-streamingu&__=Elgato",
           "category=wentylatory-i-klimatory&__=xiaomi",
           "category=wyposazenie-do-ekspresow&__=Siemens",
           "category=wyposazenie-do-robotow-kuchennych&__=Bosch",
@@ -1356,10 +1361,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
               (setLoading(true),
               list
                 .filter((item) => selected.includes(item.id))
-                .reduce<Promise<unknown>>(
-                  (promise, item) => promise.then(() => post("process", item)),
-                  Promise.resolve(),
-                ))
+                .reduce<
+                  Promise<unknown>
+                >((promise, item) => promise.then(() => post("process", item)), Promise.resolve()))
                 .then(() => (setLoading(false), setSelected([])))
                 .then(getDelayed),
             [list, selected],
