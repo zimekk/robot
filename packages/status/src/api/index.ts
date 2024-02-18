@@ -33,8 +33,8 @@ const diskFree = () =>
     exec("df -h", (error, stdout) =>
       error
         ? reject(error)
-        : resolve(stdout.split("\n").filter((name) => name.match("^/dev/")))
-    )
+        : resolve(stdout.split("\n").filter((name) => name.match("^/dev/"))),
+    ),
   );
 
 // https://stackoverflow.com/questions/56771030/node-js-how-to-check-get-ssl-certificate-expiry-date
@@ -46,7 +46,7 @@ const sslCheck = () =>
         // "badssl.com",
         // "expired.badssl.com",
       ])
-      .map((hostname) => sslChecker(hostname, { method: "GET", port: 443 }))
+      .map((hostname) => sslChecker(hostname, { method: "GET", port: 443 })),
   );
 
 export const router = () =>
@@ -56,17 +56,25 @@ export const router = () =>
       process.env.DATABASE_URL
         ? query(
             "SELECT pg_database.datname AS name, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database",
-            []
+            [],
+          )
+        : {
+            rows: [],
+          },
+      process.env.DATABASE_URL
+        ? query(
+            "SELECT table_name AS name, pg_size_pretty(pg_total_relation_size(quote_ident(table_name))) AS size FROM information_schema.tables where table_schema=$1;",
+            ["public"],
           )
         : {
             rows: [],
           },
       sslCheck(),
     ])
-      .then(([usage, data, ssl]) =>
+      .then(([usage, data, tables, ssl]) =>
         res.json({
           result: {
-            databases: data.rows,
+            databases: ([] as any[]).concat(data.rows).concat(tables.rows),
             cpus: os.cpus(),
             freemem: os.freemem(),
             totalmem: os.totalmem(),
@@ -79,16 +87,16 @@ export const router = () =>
             total: getTotal(usage),
             ssl,
           },
-        })
+        }),
       )
-      .catch(next)
+      .catch(next),
   );
 
 export const status = async (data: SchemaType) =>
   Promise.all([
     diskFree().then((usage) => getTotal(usage)),
     sslCheck().then((ssl) =>
-      ssl.filter(({ daysRemaining }) => daysRemaining <= 20)
+      ssl.filter(({ daysRemaining }) => daysRemaining <= 20),
     ),
   ]).then(async ([total, ssl]) => {
     if (total > 95) {
