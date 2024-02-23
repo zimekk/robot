@@ -30,12 +30,12 @@ const Result = z.object({
               name: z.string(),
               definitionId: z.number().nullable(),
               url: z.null(),
-            })
+            }),
           ),
           definitionId: z.number().nullable(),
-        })
+        }),
       ),
-    })
+    }),
   ),
   prices: z.object({
     mainPrice: z.number(),
@@ -66,6 +66,7 @@ const Result = z.object({
     .array(),
   productGroupName: z.string(),
   productType: z.string(),
+  promotionStickers: z.unknown().array().optional(),
   deliveryAvailability: z.object({
     shopDeliveryAvailability: DeliveryAvailability.nullable(),
     homeDeliveryAvailability: DeliveryAvailability.nullable(),
@@ -77,7 +78,7 @@ const Result = z.object({
       name: z.string().nullable(),
       color: z.string().nullable(),
       backgroundColor: z.string().nullable(),
-    })
+    }),
   ),
   brand: z.string(),
   brandLogo: z.null(),
@@ -90,9 +91,9 @@ const Result = z.object({
             variantValue: z.string(),
             currentProduct: z.boolean(),
             colorCodes: z.string().array().nullable(),
-          })
+          }),
         ),
-      })
+      }),
     ),
   }),
   outletDetails: z
@@ -110,7 +111,7 @@ const Result = z.object({
           categoryId: z.number(),
           price: z.number(),
           instalment: Instalment.nullable(),
-        })
+        }),
       ),
     })
     .nullable(),
@@ -178,10 +179,13 @@ const Result = z.object({
   paymentTypeDescriptions: z.array(z.unknown()),
   videos: z.array(z.unknown()),
   relatedPromotion: z.null(),
-  holidayStatus: z.object({
-    name: z.string(),
-    descriptions: z.unknown().array(),
-  }).nullable().optional(),
+  holidayStatus: z
+    .object({
+      name: z.string(),
+      descriptions: z.unknown().array(),
+    })
+    .nullable()
+    .optional(),
   eanCodes: z.string().array().optional(),
   symkar: z.string().optional(),
   scores: z.unknown().optional(),
