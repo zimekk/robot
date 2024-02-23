@@ -27,7 +27,7 @@ export async function launch() {
   const config = {
     // https://stackoverflow.com/questions/47122579/run-puppeteer-on-already-installed-chrome-on-macos
     executablePath: PUPPETEER_EXECUTABLE_PATH,
-    headless: "new",
+    headless: true,
     args: WORKDIR
       ? [
           "--no-sandbox",
@@ -101,7 +101,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                   res
                     .url()
                     .match(
-                      "/get/(xkom|alto)/|/v1/(xkom|alto)/hotShots/current|/v1/(xkom|alto)/hotShots/\\d+\\?onlyHeader|/v1/(xkom|alto)/products/searchHints|/api/\\w+/details"
+                      "/get/(xkom|alto)/|/v1/(xkom|alto)/hotShots/current|/v1/(xkom|alto)/hotShots/\\d+\\?onlyHeader|/v1/(xkom|alto)/products/searchHints|/api/\\w+/details",
                     )
                 ) {
                   console.log(["resolve.json"], res.url(), headers);
@@ -116,7 +116,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     ["resolve.html"],
                     res.url(),
                     res.status(),
-                    headers
+                    headers,
                   );
 
                   if (res.status() !== 200) {
@@ -144,7 +144,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                   } else if (url.match("pierwotny.pl/s/")) {
                     console.log(res.url());
                     await page.evaluate(
-                      `eval(document.querySelector('#root + script').textContent)`
+                      `eval(document.querySelector('#root + script').textContent)`,
                     );
                     const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);
@@ -173,7 +173,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                       const e = "APP_INITIALIZATION_STATE[3][4].substr(5)";
                       console.log(["page.evaluate"], e);
                       const json = JSON.parse(
-                        (await page.evaluate(e)) as string
+                        (await page.evaluate(e)) as string,
                       );
                       console.log({ json });
                       resolve({ url: res.url(), json });
@@ -230,7 +230,7 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
               console.error(e);
               reject(e);
             }
-          })
+          }),
     ),
     page.goto(url, {
       waitUntil: "networkidle2",
