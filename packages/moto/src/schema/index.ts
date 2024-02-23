@@ -12,6 +12,7 @@ const Advert = z
       id: z.string(),
       __typename: z.enum(["Category"]),
     }),
+    cepikVerified: z.boolean().optional(),
     location: z.object({
       city: z.object({
         name: z.string(),
@@ -148,7 +149,7 @@ export const Schema = z.object({
               .object({
                 data: z.string(),
               })
-              .transform(({ data }) => UrqlState.parse(JSON.parse(data)))
+              .transform(({ data }) => UrqlState.parse(JSON.parse(data))),
           ),
         }),
       }),
@@ -158,6 +159,6 @@ export const Schema = z.object({
         props: {
           pageProps: { urqlState },
         },
-      }) => Object.values(urqlState).find(Boolean) || []
+      }) => Object.values(urqlState).find(Boolean) || [],
     ),
 });
