@@ -10,28 +10,27 @@ import React, {
 import { Subject } from "rxjs";
 import { debounceTime, distinctUntilChanged, map } from "rxjs/operators";
 import { z } from "zod";
-import { DelayedSchema } from "@dev/schema";
+import { FailedSchema } from "@dev/schema";
 import { Fieldset } from "../components/Fieldset";
 import { Spinner } from "../components/Spinner";
-import Process, { API_URL, post } from "./Process";
-import Failed from "./Failed";
+import { API_URL, post } from "./Process";
 
-type DelayedType = z.infer<typeof DelayedSchema>;
+type FailedType = z.infer<typeof FailedSchema>;
 
-function Delayed({
+function Failed({
   loading,
   setLoading,
-  delayed,
-  setDelayed,
-  getDelayed,
+  failed,
+  setFailed,
+  getFailed,
   selected,
   setSelected,
 }: {
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  delayed: DelayedType;
-  setDelayed: Dispatch<SetStateAction<DelayedType>>;
-  getDelayed: () => void;
+  failed: FailedType;
+  setFailed: Dispatch<SetStateAction<FailedType>>;
+  getFailed: () => void;
   selected: string[];
   setSelected: Dispatch<SetStateAction<string[]>>;
 }) {
@@ -66,7 +65,7 @@ function Delayed({
   }, [match]);
 
   useEffect(() => {
-    getDelayed();
+    getFailed();
   }, []);
 
   const onSelect = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -82,13 +81,13 @@ function Delayed({
   const list = useMemo(
     () => (
       console.log(filters),
-      delayed.filter(
+      failed.filter(
         (item) =>
           // (filters.type === "" || filters.type === item.type) &&
           filters.query === "" || item.data.url.includes(filters.query),
       )
     ),
-    [delayed, filters],
+    [failed, filters],
   );
 
   const selectedIds = useMemo(
@@ -97,14 +96,14 @@ function Delayed({
   );
 
   return (
-    <Fieldset legend="delayed">
-      {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
+    <Fieldset legend="failed">
+      {/* <pre>{JSON.stringify(failed, null, 2)}</pre> */}
       <div>
         <label>
           <input
             type="checkbox"
-            checked={delayed.length > 0 && selectedIds.length === list.length}
-            disabled={delayed.length === 0}
+            checked={failed.length > 0 && selectedIds.length === list.length}
+            disabled={failed.length === 0}
             onChange={useCallback<ChangeEventHandler<HTMLInputElement>>(
               ({ target }) =>
                 ((listIds) =>
@@ -140,8 +139,8 @@ function Delayed({
               (setLoading(true), post("entries/delete", { selected }))
                 .then((response) => response.json())
                 .then(() =>
-                  setDelayed((delayed) =>
-                    delayed.filter(({ id }) => !selected.includes(id)),
+                  setFailed((failed) =>
+                    failed.filter(({ id }) => !selected.includes(id)),
                   ),
                 )
                 .then(() => (setLoading(false), setSelected([]))),
@@ -150,7 +149,7 @@ function Delayed({
         >
           delete
         </button>
-        <button disabled={loading} onClick={useCallback(getDelayed, [])}>
+        <button disabled={loading} onClick={useCallback(getFailed, [])}>
           refresh
         </button>
         {loading && <Spinner />}
@@ -196,30 +195,28 @@ function Delayed({
 export default function Section() {
   const [selected, setSelected] = useState<string[]>(() => []);
   const [loading, setLoading] = useState(false);
-  const [delayed, setDelayed] = useState<DelayedType>(() => []);
-  const getDelayed = useCallback(
+  const [failed, setFailed] = useState<FailedType>(() => []);
+  const getFailed = useCallback(
     () =>
-      (setLoading(true), post("delayed", {}))
+      (setLoading(true), post("failed", {}))
         .then((response) => response.json())
-        .then(DelayedSchema.parseAsync)
-        .then(setDelayed)
+        .then(FailedSchema.parseAsync)
+        .then(setFailed)
         .then(() => (setLoading(false), setSelected([]))),
     [],
   );
 
   return (
     <>
-      <Delayed
+      <Failed
         loading={loading}
         setLoading={setLoading}
-        delayed={delayed}
-        setDelayed={setDelayed}
-        getDelayed={getDelayed}
+        failed={failed}
+        setFailed={setFailed}
+        getFailed={getFailed}
         selected={selected}
         setSelected={setSelected}
       />
-      <Failed />
-      <Process getDelayed={getDelayed} />
     </>
   );
 }
