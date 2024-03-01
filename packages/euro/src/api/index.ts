@@ -92,8 +92,9 @@ export const update = async (
         Promise.resolve(),
       )
       .then(() => {
-        const nextPage = getNextPage(data.url, { productsCount });
-        console.log({ productsCount, nextPage });
-        return nextPage ? [{ ...data, url: nextPage }] : [];
+        // const nextPage = getNextPage(data.url, { productsCount });
+        // console.log({ productsCount, nextPage });
+        // return nextPage ? [{ ...data, url: nextPage }] : [];
+        return [];
       }),
   ).parseAsync({ json });

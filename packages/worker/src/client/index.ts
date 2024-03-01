@@ -50,7 +50,7 @@ export const client = () => {
       data: Data,
       opts = {
         // repeat: { cron: "1 10,22 * * *" },
-      }
+      },
     ) {
       await queue.add(NAME, data, {
         attempts: 1, // 5 - If job fails it will retry till 5 times
@@ -74,11 +74,11 @@ export const client = () => {
                 list.reduce(
                   (promise: Promise<any>, data: { url: string }) =>
                     promise.then(() => q.produce(data)),
-                  Promise.resolve()
-                )
+                  Promise.resolve(),
+                ),
               )
               .catch(console.error);
-          }
+          },
         )
         .process(NAME, async function (job) {
           const { data } = job;
@@ -92,19 +92,19 @@ export const client = () => {
 
           const returnvalue = await (
             {
-              [Type.EURO]: async () =>
-                await fetchWithTimeout(data.url, {
-                  headers: {},
-                }).then(async (res) => {
-                  if (res.url !== data.url) {
-                    throw new Error(`Invalid response url: ${res.url}`);
-                  }
-                  return { url: data.url, json: await res.json() } as {
-                    url: string;
-                    html?: string | undefined;
-                    json?: object | undefined;
-                  };
-                }),
+              // [Type.EURO]: async () =>
+              //   await fetchWithTimeout(data.url, {
+              //     headers: {},
+              //   }).then(async (res) => {
+              //     if (res.url !== data.url) {
+              //       throw new Error(`Invalid response url: ${res.url}`);
+              //     }
+              //     return { url: data.url, json: await res.json() } as {
+              //       url: string;
+              //       html?: string | undefined;
+              //       json?: object | undefined;
+              //     };
+              //   }),
               [Type.ROADS]: async () =>
                 await fetchWithTimeout(data.url, {
                   headers: {},
