@@ -16,7 +16,7 @@ RUN apk add --no-cache \
 ENV TZ=Europe/Warsaw
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+ENV PUPPETEER_SKIP_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Add user so we don't need --no-sandbox.
@@ -29,9 +29,10 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 # USER pptruser
 
 ENV WORKDIR=/app
-WORKDIR $WORKDIR
+RUN npm i -g pnpm
 
-COPY package.json yarn.lock ./
+WORKDIR $WORKDIR
+COPY package.json pnpm-*.yaml ./
 COPY packages/app/package.json packages/app/
 COPY packages/chrome/package.json packages/chrome/
 COPY packages/components/package.json packages/components/
@@ -64,9 +65,9 @@ COPY packages/vehicles/package.json packages/vehicles/
 COPY packages/web/package.json packages/web/
 COPY packages/worker/package.json packages/worker/
 COPY packages/worker/bin packages/worker/bin/
-RUN yarn --frozen-lockfile
+RUN pnpm i --frozen-lockfile
 
 COPY . ./
-RUN yarn build && yarn --prod
+RUN pnpm build && pnpm prune --prod --config.ignore-scripts=true
 
-CMD ["yarn", "serve"]
+CMD ["pnpm", "serve"]

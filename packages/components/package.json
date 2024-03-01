@@ -19,12 +19,14 @@
   },
   "scripts": {
     "build": "tsc",
-    "coverage": "type-coverage && tsc --noEmit"
+    "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest"
   },
   "dependencies": {
     "jsondiffpatch": "^0.6.0"
   },
   "devDependencies": {
+    "@types/node": "^18.16.3",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "@types/styled-components": "^5.1.26"

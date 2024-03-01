@@ -23,7 +23,8 @@
     "build": "tsc",
     "coverage": "type-coverage && tsc --noEmit",
     "serve": "node server",
-    "start": "ts-node-dev server"
+    "start": "ts-node-dev server",
+    "test": "jest"
   },
   "dependencies": {
     "@dev/depots": "^1.0.0",

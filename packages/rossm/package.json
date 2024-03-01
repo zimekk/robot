@@ -18,7 +18,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "coverage": "type-coverage && tsc --noEmit"
+    "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest"
   },
   "dependencies": {
     "@dev/components": "^1.0.0",
@@ -30,6 +31,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/json-diff": "^1.0.0",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",

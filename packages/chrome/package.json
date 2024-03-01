@@ -16,6 +16,7 @@
   "scripts": {
     "build": "NODE_ENV=production tsc",
     "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest",
     "test:debug": "node --inspect ../../node_modules/.bin/jest",
     "test:watch": "jest --watch"
   },

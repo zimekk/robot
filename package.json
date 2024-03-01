@@ -65,24 +65,18 @@
     "*.{json,js,jsx,md,scss,ts,tsx,css,yml,yaml}": "prettier --write"
   },
   "scripts": {
-    "build": "yarn workspaces run build",
+    "build": "pnpm -r run build",
     "clean": "rm -rf packages/*/public packages/*/lib",
-    "coverage": "yarn workspaces run coverage",
+    "coverage": "pnpm -r run coverage",
     "lint": "eslint . --ext .json,.js,.jsx,.ts,.tsx",
     "reset": "rm -rf node_modules packages/*/node_modules",
-    "serve": "yarn workspace @dev/app serve",
-    "start": "yarn workspace @dev/web start",
-    "test": "NODE_OPTIONS=--experimental-vm-modules yarn workspaces run jest",
-    "dedupe": "yarn-deduplicate && yarn",
-    "dedupe:list": "yarn-deduplicate --list",
-    "update": "yarn upgrade-interactive",
-    "update:dedupe": "yarn-deduplicate && yarn",
-    "update:latest": "yarn upgrade-interactive --latest",
+    "serve": "pnpm --filter=@dev/app run serve",
+    "start": "pnpm --filter=@dev/web run start",
+    "test": "NODE_OPTIONS=--experimental-vm-modules pnpm -r run test",
+    "update:dedupe": "pnpm dedupe",
+    "update:latest": "pnpm -r up -i",
     "prepare": "husky"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "resolutions": {},
   "devDependencies": {
     "@commitlint/cli": "^19.0.0",
@@ -99,8 +93,7 @@
     "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
     "type-coverage": "^2.25.3",
-    "typescript": "^5.0.4",
-    "yarn-deduplicate": "^6.0.2"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "@types/jest": "^29.5.1",

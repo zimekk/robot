@@ -15,7 +15,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "coverage": "type-coverage && tsc --noEmit",
-    "start": "webpack serve --mode development"
+    "start": "webpack serve --mode development",
+    "test": "jest"
   },
   "dependencies": {
     "@dev/app": "^1.0.0",

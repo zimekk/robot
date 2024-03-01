@@ -16,6 +16,7 @@
   "scripts": {
     "build": "NODE_ENV=production tsc",
     "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -43,5 +44,7 @@
     "node-html-parser": "^6.1.5",
     "zod": "^3.21.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^18.16.3"
+  }
 }
