@@ -149,6 +149,23 @@ function Failed({
         >
           delete
         </button>
+        <button
+          disabled={selected.length === 0 || loading}
+          onClick={useCallback(
+            () =>
+              (setLoading(true), post("failed/retry", { selected }))
+                .then((response) => response.json())
+                .then(() =>
+                  setFailed((failed) =>
+                    failed.filter(({ id }) => !selected.includes(id)),
+                  ),
+                )
+                .then(() => (setLoading(false), setSelected([]))),
+            [selected],
+          )}
+        >
+          retry
+        </button>
         <button disabled={loading} onClick={useCallback(getFailed, [])}>
           refresh
         </button>

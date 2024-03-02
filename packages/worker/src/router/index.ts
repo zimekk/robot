@@ -160,6 +160,24 @@ export const router = () => {
         })
         .then((entries) => res.json(entries)),
     )
+    .post("/failed/retry", json(), async (req, res) =>
+      z
+        .object({
+          selected: z.string().array(),
+        })
+        .parseAsync(req.body)
+        .then(async ({ selected }) =>
+          selected
+            .reduce(
+              (promise, id) =>
+                promise
+                  .then(() => worker.queue.getJob(id))
+                  .then((job) => (job ? job.retry() : Promise.resolve())),
+              Promise.resolve(),
+            )
+            .then(() => res.json({ status: "ok" })),
+        ),
+    )
     .post("/failed", json(), async (req, res) =>
       z
         .object({})
