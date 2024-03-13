@@ -631,8 +631,9 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "audi/a4-allroad",
+          // "audi/a4-allroad",
           // "audi/a5?search%5Bfilter_enum_generation%5D=gen-f5-2016",
+          "audi/a6/seg-combi?search%5Bfilter_enum_generation%5D=gen-c8-2018",
           "audi/a6-allroad?search%5Bfilter_enum_generation%5D=gen-c8-2019",
           // "audi/q5?search%5Bfilter_enum_generation%5D=gen-fy-2017",
           "audi/q7?search%5Bfilter_enum_generation%5D=gen-ii-2015-q7",
