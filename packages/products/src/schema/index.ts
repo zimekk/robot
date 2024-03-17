@@ -49,6 +49,7 @@ export const ProductSchema = z.object({
   producer: z.object({ id: z.string(), name: z.string() }),
   isEsd: z.boolean(),
   esdType: z.string(),
+  isGiftCard: z.boolean().optional(),
   productLink: z.string(),
   photo: PhotoSchema,
   rating: z.number().optional(),
@@ -72,6 +73,7 @@ export const ProductSchema = z.object({
     parentGroupId: z.string().optional(),
   }),
   questionsAndAnswers: z.boolean().optional(),
+  promotionGainValue: z.unknown().nullable().optional(),
   isFetching: z.boolean(),
 });
 // .strict();
