@@ -31,16 +31,13 @@ export const router = () =>
         .parseAsync(req.query)
         .then(({ start, limit, ilike, orderBy }) =>
           query(
-            `SELECT * FROM (
-              SELECT
-                DISTINCT ON (g.general->'id', product->'id')
-                g.general, product
-              FROM
-                promo,
-                jsonb_to_record(data) g(general jsonb),
-                jsonb_array_elements(data->'products') product
-              WHERE product->>'name' ILIKE '%' || $3 || '%'
-            ) t
+            `SELECT
+              g.general, product
+            FROM
+              promo,
+              jsonb_to_record(data) g(general jsonb),
+              jsonb_array_elements(data->'products') product
+            WHERE product->>'name' ILIKE '%' || $3 || '%'
             ${
               {
                 date_start: `ORDER BY general->'date_start' DESC`,
