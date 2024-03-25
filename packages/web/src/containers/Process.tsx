@@ -1014,7 +1014,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           "CategoryId=8589&BrandIds=5259", // Pasty do zębów / MERIDOL
           "CategoryId=8603&BrandIds=4309&Tags=393_2702", // Maszynki i wkłady / GILLETTE / wkłady do maszynek
           "CategoryId=8613&BrandIds=2353", // Papiery toaletowe / ALOUETTE
-          "CategoryId=8615&BrandIds=2353", // Chusteczki higieniczne / ALOUETTE
+          "CategoryId=8615&BrandIds=2353&BrandIds=4883", // Chusteczki higieniczne / ALOUETTE | KLEENEX
           "CategoryId=8657&BrandIds=2362", // Szampony / ALTERRA
           "CategoryId=8969&BrandIds=3495", // Środki do wc / DOMESTOS
           "CategoryId=9195&BrandIds=5482&BrandIds=5500&BrandIds=2250", // Antyperspiranty / ADIDAS / NIKE / NIVEA
