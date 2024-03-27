@@ -2,6 +2,8 @@ import { z } from "zod";
 
 const ProductSchema = z
   .object({
+    attributes: z.unknown().array().optional(),
+    badges: z.unknown().array().optional(),
     brand: z.string(),
     brandId: z.number(),
     caption: z.string(),
@@ -31,6 +33,8 @@ const ProductSchema = z
     promotion: z
       .object({ type: z.string(), redirectUrl: z.string() })
       .optional(),
+    promotionFrom: z.string().optional(),
+    promotionTo: z.string().optional(),
     hasRichContent: z.boolean(),
     availability: z.string(),
     category: z.string(),
@@ -54,48 +58,58 @@ export interface Item {
   removed: string | null;
 }
 
+// export const Schema = z.object({
+//   json: z
+//     .object({
+//       props: z.object({
+//         pageProps: z.object({
+//           initialReduxState: z.object({
+//             productList: z.object({
+//               list: z.object({
+//                 allV2: z.object({
+//                   data: z.object({
+//                     items: z
+//                       .object({
+//                         product: ProductSchema.optional(),
+//                       })
+//                       .transform(({ product }) => product)
+//                       .array()
+//                       .transform((items) => items.filter(Boolean)),
+//                     totalCount: z.number(),
+//                     totalPages: z.number(),
+//                   }),
+//                 }),
+//               }),
+//             }),
+//           }),
+//         }),
+//       }),
+//     })
+//     .transform(
+//       ({
+//         props: {
+//           pageProps: {
+//             initialReduxState: {
+//               productList: {
+//                 list: {
+//                   allV2: {
+//                     data: { items },
+//                   },
+//                 },
+//               },
+//             },
+//           },
+//         },
+//       }) => items
+//     ),
+// });
+
 export const Schema = z.object({
   json: z
     .object({
-      props: z.object({
-        pageProps: z.object({
-          initialReduxState: z.object({
-            productList: z.object({
-              list: z.object({
-                allV2: z.object({
-                  data: z.object({
-                    items: z
-                      .object({
-                        product: ProductSchema.optional(),
-                      })
-                      .transform(({ product }) => product)
-                      .array()
-                      .transform((items) => items.filter(Boolean)),
-                    totalCount: z.number(),
-                    totalPages: z.number(),
-                  }),
-                }),
-              }),
-            }),
-          }),
-        }),
+      data: z.object({
+        items: ProductSchema.array(),
       }),
     })
-    .transform(
-      ({
-        props: {
-          pageProps: {
-            initialReduxState: {
-              productList: {
-                list: {
-                  allV2: {
-                    data: { items },
-                  },
-                },
-              },
-            },
-          },
-        },
-      }) => items
-    ),
+    .transform(({ data: { items } }) => items),
 });

@@ -61,6 +61,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
     return import("./pl.com.euro")
       .then(({ scrap }) => scrap(page, url))
       .finally(() => browser.close());
+  } else if (url.match("smann.pl/szukaj\\?")) {
+    return import("./pl.mann")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
   }
 
   return await Promise.all([
