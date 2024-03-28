@@ -1475,7 +1475,7 @@ importers:
         version: 5.15.3(@bull-board/ui@5.15.3)
       '@bull-board/express':
         specifier: ^5.2.0
-        version: 5.15.2
+        version: 5.15.3
       '@dev/chrome':
         specifier: ^1.0.0
         version: link:../chrome
@@ -2861,15 +2861,6 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@bull-board/api@5.15.2(@bull-board/ui@5.15.2):
-    resolution: {integrity: sha512-HOqh5/Z0W5GR0WHVS/G83DTn8JwDn0NZs2H5u0bMFnvEmKZexysdnZyeox8Y31A6azRO/tqK3o/LrT1Hhtaxtw==}
-    peerDependencies:
-      '@bull-board/ui': 5.15.2
-    dependencies:
-      '@bull-board/ui': 5.15.2
-      redis-info: 3.1.0
-    dev: false
-
   /@bull-board/api@5.15.3(@bull-board/ui@5.15.3):
     resolution: {integrity: sha512-tlEYOI6Hp0ZGozDCtKQEFgvzTKXj+drKStHJm86s1TcUZlsnMjzR0BUxu5CW6EB3tS3MtPLJH5RQCmUq0UEiiQ==}
     peerDependencies:
@@ -2879,21 +2870,15 @@ packages:
       redis-info: 3.1.0
     dev: false
 
-  /@bull-board/express@5.15.2:
-    resolution: {integrity: sha512-ZZPe9M/jejC4AXzNsbf6SsCdKWZzXnpSPeQ+rb6yFXiQq3GpvMI9BZkasGb3k3BNETUZeK+ZlOem7ES0yMJ9bg==}
+  /@bull-board/express@5.15.3:
+    resolution: {integrity: sha512-2xoXOHh8XhRGMc+APt8/i1F645St9vpgndItY2WGTXieJroHNtTwH0CuDrItLlWPVsg1KRN5BCAhexbJkC3a2w==}
     dependencies:
-      '@bull-board/api': 5.15.2(@bull-board/ui@5.15.2)
-      '@bull-board/ui': 5.15.2
+      '@bull-board/api': 5.15.3(@bull-board/ui@5.15.3)
+      '@bull-board/ui': 5.15.3
       ejs: 3.1.9
       express: 4.18.3
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@bull-board/ui@5.15.2:
-    resolution: {integrity: sha512-OlDCAaBOjdR7ke3vGkm/vEwC8Cwrt/r9ivc8jL+hQbgDluauKl/o9NSPp3BgC2Fo0MRszAxTgSitR0pGLRhAwg==}
-    dependencies:
-      '@bull-board/api': 5.15.2(@bull-board/ui@5.15.2)
     dev: false
 
   /@bull-board/ui@5.15.3:
@@ -6615,7 +6600,7 @@ packages:
     dependencies:
       foreground-child: 3.1.1
       jackspeak: 2.3.6
-      minimatch: 9.0.3
+      minimatch: 9.0.4
       minipass: 7.0.4
       path-scurry: 1.10.1
     dev: true
@@ -8234,6 +8219,13 @@ packages:
 
   /minimatch@9.0.3:
     resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
+    engines: {node: '>=16 || 14 >=14.17'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
+  /minimatch@9.0.4:
+    resolution: {integrity: sha512-KqWh+VchfxcMNRAJjj2tnsSJdNbHsVgnkBhTNrW7AjVo6OvLtxw8zfT9oLw1JSohlFzJ8jCoTgaoXvJ+kHt6fw==}
     engines: {node: '>=16 || 14 >=14.17'}
     dependencies:
       brace-expansion: 2.0.1
@@ -10376,7 +10368,7 @@ packages:
       typescript: 2 || 3 || 4 || 5
     dependencies:
       fast-glob: 3.3.2
-      minimatch: 9.0.3
+      minimatch: 9.0.4
       normalize-path: 3.0.0
       tslib: 2.6.2
       tsutils: 3.21.0(typescript@5.4.3)
