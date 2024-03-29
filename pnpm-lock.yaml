@@ -402,7 +402,7 @@ importers:
         version: 1.0.6
       node-html-parser:
         specifier: ^6.1.5
-        version: 6.1.12
+        version: 6.1.13
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -1053,7 +1053,7 @@ importers:
         version: link:../vehicles
       node-html-parser:
         specifier: ^6.1.5
-        version: 6.1.12
+        version: 6.1.13
       zod:
         specifier: ^3.21.4
         version: 3.22.4
@@ -1571,7 +1571,7 @@ importers:
         version: 1.0.3
       node-html-parser:
         specifier: ^6.1.5
-        version: 6.1.12
+        version: 6.1.13
       zod:
         specifier: ^3.21.4
         version: 3.22.4
@@ -8302,8 +8302,8 @@ packages:
     dev: false
     optional: true
 
-  /node-html-parser@6.1.12:
-    resolution: {integrity: sha512-/bT/Ncmv+fbMGX96XG9g05vFt43m/+SYKIs9oAemQVYyVcZmDAI2Xq/SbNcpOA35eF0Zk2av3Ksf+Xk8Vt8abA==}
+  /node-html-parser@6.1.13:
+    resolution: {integrity: sha512-qIsTMOY4C/dAa5Q5vsobRpOOvPfC4pB61UVW2uSwZNUp0QU/jCekTal1vMmbO0DgdHeLUJpv/ARmDqErVxA3Sg==}
     dependencies:
       css-select: 5.1.0
       he: 1.2.0
