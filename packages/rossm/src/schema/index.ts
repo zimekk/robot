@@ -38,6 +38,8 @@ const ProductSchema = z
     hasRichContent: z.boolean(),
     availability: z.string(),
     category: z.string(),
+    cmpDescription: z.string().optional(),
+    cmpType: z.string().optional(),
   })
   .passthrough();
 
