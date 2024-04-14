@@ -1475,7 +1475,7 @@ importers:
         version: 5.15.3(@bull-board/ui@5.15.3)
       '@bull-board/express':
         specifier: ^5.2.0
-        version: 5.15.3
+        version: 5.15.5
       '@dev/chrome':
         specifier: ^1.0.0
         version: link:../chrome
@@ -2882,12 +2882,21 @@ packages:
       redis-info: 3.1.0
     dev: false
 
-  /@bull-board/express@5.15.3:
-    resolution: {integrity: sha512-2xoXOHh8XhRGMc+APt8/i1F645St9vpgndItY2WGTXieJroHNtTwH0CuDrItLlWPVsg1KRN5BCAhexbJkC3a2w==}
+  /@bull-board/api@5.15.5(@bull-board/ui@5.15.5):
+    resolution: {integrity: sha512-s3x0f+0s4nwndBM+QSROMVKiDyE/vaaouQCsxRWOFqneLCkM+Ro2wF6fkhmFkZMjouoBbS8rCFGaIZ+8uttYtg==}
+    peerDependencies:
+      '@bull-board/ui': 5.15.5
     dependencies:
-      '@bull-board/api': 5.15.3(@bull-board/ui@5.15.3)
-      '@bull-board/ui': 5.15.3
-      ejs: 3.1.9
+      '@bull-board/ui': 5.15.5
+      redis-info: 3.1.0
+    dev: false
+
+  /@bull-board/express@5.15.5:
+    resolution: {integrity: sha512-vnoWyjkHgMDfAZkriGd3chf/1g08Gc5Bz0SGb08eaQEjlzIRps1mYPp0YKYCcm0d9U0vOZa038X5xPKCRPpnZg==}
+    dependencies:
+      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
+      '@bull-board/ui': 5.15.5
+      ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
       - supports-color
@@ -2897,6 +2906,12 @@ packages:
     resolution: {integrity: sha512-wCXk+s4cSszZe0p0sYYxZPLSKafFQNPsUypTvpAh3IC2p4fr6F/wUBGb1kBMspRkFC19l5yFCD5qPHVlAR0QKw==}
     dependencies:
       '@bull-board/api': 5.15.3(@bull-board/ui@5.15.3)
+    dev: false
+
+  /@bull-board/ui@5.15.5:
+    resolution: {integrity: sha512-TSXgqBDI3ig6ez6yHArGzpwCuA/rhQewv0KOUAvPzssgX4HqfkatrV7gTuTM+XJe7/sLiXnBiryV7SRV0hgRMg==}
+    dependencies:
+      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
     dev: false
 
   /@commitlint/cli@19.2.1(@types/node@20.12.7)(typescript@5.4.5):
@@ -5628,8 +5643,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /ejs@3.1.9:
-    resolution: {integrity: sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==}
+  /ejs@3.1.10:
+    resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
