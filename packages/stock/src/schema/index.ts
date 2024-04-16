@@ -9,8 +9,10 @@ export const Equipment = z.object({
           optionGroups: z.string().array(),
           category: z.string(),
         })
-        .array(),
+        .array()
+        .optional(),
     })
+    .passthrough()
     .optional(),
   definedByVg: z.boolean().optional(),
   displayType: z.string().optional(),
@@ -28,8 +30,9 @@ export const Equipment = z.object({
   standard: z.boolean(),
   translatedOptionGroups: z
     .object({
-      default_PL: z.array(z.string()),
+      default_PL: z.array(z.string()).optional(),
     })
+    .passthrough()
     .optional(),
   translatedSalesGroups: z
     .object({
@@ -565,7 +568,7 @@ export const ItemSchema = z.object({
         modelRange: z.object({
           name: z.string(),
           description: z.object({
-            default_PL: z.string(),
+            default_PL: z.string().optional(),
             pl_PL: z.string(),
           }),
         }),
