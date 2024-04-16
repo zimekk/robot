@@ -5,7 +5,12 @@ export const scrap = async (page: Page, url: string) =>
     new Promise((resolve) =>
       page
         .on("request", (req: HTTPRequest) => {
-          if (["document", "script", "xhr"].includes(req.resourceType())) {
+          if (
+            ["document", "fetch", "script", "xhr"].includes(
+              req.resourceType(),
+            ) &&
+            new URL(url).host === new URL(req.url()).host
+          ) {
             // console.log(["request"], {
             //   req: req.url(),
             //   resourceType: req.resourceType(),
@@ -26,7 +31,7 @@ export const scrap = async (page: Page, url: string) =>
     ),
     page.goto(url, {
       waitUntil: "networkidle2",
-      // timeout: 60_000,
+      timeout: 15_000,
     }),
   ])
     .then(async ([json]) => {

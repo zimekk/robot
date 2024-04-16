@@ -8,3 +8,6 @@ logs:
 
 exec:
 	docker-compose exec app sh
+
+restart:
+	docker-compose restart
