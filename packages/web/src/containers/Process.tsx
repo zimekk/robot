@@ -879,6 +879,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         [
           // "category=accesspoint&__=ubiquiti",
           "accesspoint,_ubiquiti.bhtml",
+          "akcesoria-do-drukarek-3d,_3doodler,rodzaj!filament.bhtml",
           // "category=akcesoria-do-ipada-i-tabletow-multimedialnych&__=Apple",
           "akcesoria-do-ipada-i-tabletow-multimedialnych,_Apple.bhtml",
           // "category=archiwizacja-danych1&__=WD",
