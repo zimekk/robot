@@ -533,27 +533,29 @@ const JsonSchema = z.object({
     appliedPropertiesList: z.array(z.unknown()).optional(),
     appliedPropertiesListRequestState: z.number().optional(),
   }),
-  ranking: z.object({
-    cities: z.object({ list: z.array(z.unknown()) }),
-    monthly: z.object({
-      positions: z.array(z.unknown()),
-      region_description: z.null(),
-      month: z.null(),
-      year: z.null(),
+  ranking: z
+    .object({
+      cities: z.object({ list: z.array(z.unknown()) }),
+      monthly: z.object({
+        positions: z.array(z.unknown()),
+        region_description: z.null(),
+        month: z.null(),
+        year: z.null(),
+        region: z.null(),
+      }),
+      quarterly: z.object({
+        positions: z.array(z.unknown()),
+        year: z.null(),
+        quarter: z.null(),
+      }),
+      quarterList: z.object({ list: z.array(z.unknown()) }),
+      partnerList: z.object({ list: z.array(z.unknown()) }),
+      form: z.object({
+        formValues: z.object({ period: z.string(), city: z.string() }),
+      }),
       region: z.null(),
-    }),
-    quarterly: z.object({
-      positions: z.array(z.unknown()),
-      year: z.null(),
-      quarter: z.null(),
-    }),
-    quarterList: z.object({ list: z.array(z.unknown()) }),
-    partnerList: z.object({ list: z.array(z.unknown()) }),
-    form: z.object({
-      formValues: z.object({ period: z.string(), city: z.string() }),
-    }),
-    region: z.null(),
-  }),
+    })
+    .optional(),
   responseState: z.object({
     state: z.number(),
     status: z.number(),
