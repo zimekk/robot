@@ -1475,7 +1475,7 @@ importers:
         version: 5.16.0(@bull-board/ui@5.16.0)
       '@bull-board/express':
         specifier: ^5.2.0
-        version: 5.15.5
+        version: 5.16.0
       '@dev/chrome':
         specifier: ^1.0.0
         version: link:../chrome
@@ -2873,15 +2873,6 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@bull-board/api@5.15.5(@bull-board/ui@5.15.5):
-    resolution: {integrity: sha512-s3x0f+0s4nwndBM+QSROMVKiDyE/vaaouQCsxRWOFqneLCkM+Ro2wF6fkhmFkZMjouoBbS8rCFGaIZ+8uttYtg==}
-    peerDependencies:
-      '@bull-board/ui': 5.15.5
-    dependencies:
-      '@bull-board/ui': 5.15.5
-      redis-info: 3.1.0
-    dev: false
-
   /@bull-board/api@5.16.0(@bull-board/ui@5.16.0):
     resolution: {integrity: sha512-JnPi2M11At/4lxDP267k20AqUBZdVv+82nNMcO80dPJAEKpzbvhLqAl4H3nDSEowmzgzVVlD+/eFOMjg07h9Zg==}
     peerDependencies:
@@ -2891,21 +2882,15 @@ packages:
       redis-info: 3.1.0
     dev: false
 
-  /@bull-board/express@5.15.5:
-    resolution: {integrity: sha512-vnoWyjkHgMDfAZkriGd3chf/1g08Gc5Bz0SGb08eaQEjlzIRps1mYPp0YKYCcm0d9U0vOZa038X5xPKCRPpnZg==}
+  /@bull-board/express@5.16.0:
+    resolution: {integrity: sha512-UNuJcLvkAI+KdHHlx6U4+0JWr1PrVrlJBFaAPckd0vjoLZT1KRjNNyTYEyOUi84Zwa0RYkHS4mOKDkZRYT8aww==}
     dependencies:
-      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
-      '@bull-board/ui': 5.15.5
+      '@bull-board/api': 5.16.0(@bull-board/ui@5.16.0)
+      '@bull-board/ui': 5.16.0
       ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@bull-board/ui@5.15.5:
-    resolution: {integrity: sha512-TSXgqBDI3ig6ez6yHArGzpwCuA/rhQewv0KOUAvPzssgX4HqfkatrV7gTuTM+XJe7/sLiXnBiryV7SRV0hgRMg==}
-    dependencies:
-      '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
     dev: false
 
   /@bull-board/ui@5.16.0:
