@@ -23,7 +23,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "node-pg-migrate": "^6.2.2",
+    "node-pg-migrate": "^7.0.0",
     "pg": "^8.11.0"
   },
   "devDependencies": {
