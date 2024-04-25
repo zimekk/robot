@@ -13,14 +13,14 @@ importers:
         version: 29.5.12
       jest:
         specifier: ^29.5.0
-        version: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+        version: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
       ts-jest:
         specifier: ^29.1.0
         version: 29.1.2(@babel/core@7.24.4)(jest@29.7.0)(typescript@5.4.5)
     devDependencies:
       '@commitlint/cli':
         specifier: ^19.0.0
-        version: 19.2.2(@types/node@18.19.27)(typescript@5.4.5)
+        version: 19.2.2(@types/node@20.12.7)(typescript@5.4.5)
       '@commitlint/config-conventional':
         specifier: ^19.0.0
         version: 19.2.2
@@ -56,7 +56,7 @@ importers:
         version: 3.2.5
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.2(@types/node@18.19.27)(typescript@5.4.5)
+        version: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
       type-coverage:
         specifier: ^2.25.3
         version: 2.28.1(typescript@5.4.5)
@@ -203,10 +203,10 @@ importers:
         version: 18.19.27
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -246,10 +246,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -289,10 +289,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -332,10 +332,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -378,10 +378,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -424,10 +424,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -464,10 +464,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -507,10 +507,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -541,10 +541,10 @@ importers:
         version: 4.17.21
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -588,10 +588,10 @@ importers:
         version: 4.17.21
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -640,10 +640,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -683,10 +683,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -723,10 +723,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -766,10 +766,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -806,10 +806,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -849,10 +849,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -895,10 +895,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -938,10 +938,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -978,10 +978,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1094,10 +1094,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1162,10 +1162,10 @@ importers:
         version: 6.4.14
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1208,10 +1208,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1248,10 +1248,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1288,10 +1288,10 @@ importers:
         version: 1.0.3
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1427,10 +1427,10 @@ importers:
         version: 18.19.27
       '@types/react':
         specifier: ^18.2.6
-        version: 18.2.73
+        version: 18.2.79
       '@types/react-dom':
         specifier: ^18.2.4
-        version: 18.2.22
+        version: 18.2.25
       '@types/styled-components':
         specifier: ^5.1.26
         version: 5.1.34
@@ -1451,7 +1451,7 @@ importers:
         version: 5.6.0(webpack@5.91.0)
       react-hot-loader:
         specifier: ^4.13.1
-        version: 4.13.1(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0)
+        version: 4.13.1(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0)
       style-loader:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.91.0)
@@ -2899,14 +2899,14 @@ packages:
       '@bull-board/api': 5.15.5(@bull-board/ui@5.15.5)
     dev: false
 
-  /@commitlint/cli@19.2.2(@types/node@18.19.27)(typescript@5.4.5):
+  /@commitlint/cli@19.2.2(@types/node@20.12.7)(typescript@5.4.5):
     resolution: {integrity: sha512-P8cbOHfg2PQRzfICLSrzUVOCVMqjEZ8Hlth6mtJ4yOEjT47Q5PbIGymgX3rLVylNw+3IAT2Djn9IJ2wHbXFzBg==}
     engines: {node: '>=v18'}
     hasBin: true
     dependencies:
       '@commitlint/format': 19.0.3
       '@commitlint/lint': 19.2.2
-      '@commitlint/load': 19.2.0(@types/node@18.19.27)(typescript@5.4.5)
+      '@commitlint/load': 19.2.0(@types/node@20.12.7)(typescript@5.4.5)
       '@commitlint/read': 19.2.1
       '@commitlint/types': 19.0.3
       execa: 8.0.1
@@ -2975,7 +2975,7 @@ packages:
       '@commitlint/types': 19.0.3
     dev: true
 
-  /@commitlint/load@19.2.0(@types/node@18.19.27)(typescript@5.4.5):
+  /@commitlint/load@19.2.0(@types/node@20.12.7)(typescript@5.4.5):
     resolution: {integrity: sha512-XvxxLJTKqZojCxaBQ7u92qQLFMMZc4+p9qrIq/9kJDy8DOrEa7P1yx7Tjdc2u2JxIalqT4KOGraVgCE7eCYJyQ==}
     engines: {node: '>=v18'}
     dependencies:
@@ -2985,7 +2985,7 @@ packages:
       '@commitlint/types': 19.0.3
       chalk: 5.3.0
       cosmiconfig: 9.0.0(typescript@5.4.5)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@18.19.27)(cosmiconfig@9.0.0)(typescript@5.4.5)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.12.7)(cosmiconfig@9.0.0)(typescript@5.4.5)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -3678,7 +3678,7 @@ packages:
   /@types/hoist-non-react-statics@3.3.5:
     resolution: {integrity: sha512-SbcrWzkKBw2cdwRTwQAswfpB9g9LJWfjtUeW/jvNwbhC8cpmmNYVePa+ncbUe0rGTQ7G3Ff6mYUN2VMfLVr+Sg==}
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.79
       hoist-non-react-statics: 3.3.2
     dev: true
 
@@ -3754,6 +3754,7 @@ packages:
     resolution: {integrity: sha512-yd2W8EcsMY8X2mAmSHOwW0YuW5NksHr2vD9bWAfvyXHaEqGvD/0nygQVeqlck4KhZ9k6RsXGxhixUWRfyN+0mQ==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
 
   /@types/node@20.12.0:
     resolution: {integrity: sha512-jVC7fWX1Did5TNn8mmGsE81mdyv+7a+nHNlUiNVys8G392CfNfhqAVRd+cuY0+OBU2vN6GzpiRX/MgJ9b3rtpQ==}
@@ -3796,14 +3797,14 @@ packages:
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
     dev: true
 
-  /@types/react-dom@18.2.22:
-    resolution: {integrity: sha512-fHkBXPeNtfvri6gdsMYyW+dW7RXFo6Ad09nLFK0VQWR7yGLai/Cyvyj696gbwYvBnhGtevUG9cET0pmUbMtoPQ==}
+  /@types/react-dom@18.2.25:
+    resolution: {integrity: sha512-o/V48vf4MQh7juIKZU2QGDfli6p1+OOi5oXx36Hffpc9adsHeXjVp8rHuPkjd8VT8sOJ2Zp05HR7CdpGTIUFUA==}
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.79
     dev: true
 
-  /@types/react@18.2.73:
-    resolution: {integrity: sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==}
+  /@types/react@18.2.79:
+    resolution: {integrity: sha512-RwGAGXPl9kSXwdNTafkOEuFrTBD5SA2B3iEB96xi8+xu5ddUa/cpvyVCSNn+asgLCTHkb5ZxN8gbuibYJi4s1w==}
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
@@ -3859,7 +3860,7 @@ packages:
     resolution: {integrity: sha512-mmiVvwpYklFIv9E8qfxuPyIt/OuyIrn6gMOAMOFUO3WJfSrSE+sGUoa4PiZj77Ut7bKZpaa6o1fBKS/4TOEvnA==}
     dependencies:
       '@types/hoist-non-react-statics': 3.3.5
-      '@types/react': 18.2.73
+      '@types/react': 18.2.79
       csstype: 3.1.3
     dev: true
 
@@ -4670,13 +4671,13 @@ packages:
     dev: false
     optional: true
 
-  /bare-fs@2.2.3:
-    resolution: {integrity: sha512-amG72llr9pstfXOBOHve1WjiuKKAMnebcmMbPWDZ7BCevAoJLpugjuAPRsDINEyjT0a6tbaVx3DctkXIRbLuJw==}
+  /bare-fs@2.3.0:
+    resolution: {integrity: sha512-TNFqa1B4N99pds2a5NYHR15o0ZpdNKbAeKTE/+G6ED/UeOavv8RY3dr/Fu99HW3zU3pXpo2kDNO8Sjsm2esfOw==}
     requiresBuild: true
     dependencies:
       bare-events: 2.2.2
-      bare-path: 2.1.1
-      streamx: 2.16.1
+      bare-path: 2.1.2
+      bare-stream: 1.0.0
     dev: false
     optional: true
 
@@ -4686,11 +4687,19 @@ packages:
     dev: false
     optional: true
 
-  /bare-path@2.1.1:
-    resolution: {integrity: sha512-OHM+iwRDRMDBsSW7kl3dO62JyHdBKO3B25FB9vNQBPcGHMo4+eA8Yj41Lfbk3pS/seDY+siNge0LdRTulAau/A==}
+  /bare-path@2.1.2:
+    resolution: {integrity: sha512-o7KSt4prEphWUHa3QUwCxUI00R86VdjiuxmJK0iNVDHYPGo+HsDaVCnqCmPbf/MiW1ok8F4p3m8RTHlWk8K2ig==}
     requiresBuild: true
     dependencies:
       bare-os: 2.2.1
+    dev: false
+    optional: true
+
+  /bare-stream@1.0.0:
+    resolution: {integrity: sha512-KhNUoDL40iP4gFaLSsoGE479t0jHijfYdIcxRn/XtezA2BaUD0NRf/JGRpsMq6dMNM+SrCrB0YSSo/5wBY4rOQ==}
+    requiresBuild: true
+    dependencies:
+      streamx: 2.16.1
     dev: false
     optional: true
 
@@ -5156,7 +5165,7 @@ packages:
       vary: 1.1.2
     dev: false
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@18.19.27)(cosmiconfig@9.0.0)(typescript@5.4.5):
+  /cosmiconfig-typescript-loader@5.0.0(@types/node@20.12.7)(cosmiconfig@9.0.0)(typescript@5.4.5):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
     peerDependencies:
@@ -5164,7 +5173,7 @@ packages:
       cosmiconfig: '>=8.2'
       typescript: '>=4'
     dependencies:
-      '@types/node': 18.19.27
+      '@types/node': 20.12.7
       cosmiconfig: 9.0.0(typescript@5.4.5)
       jiti: 1.21.0
       typescript: 5.4.5
@@ -5185,7 +5194,7 @@ packages:
       parse-json: 5.2.0
       typescript: 5.4.5
 
-  /create-jest@29.7.0(@types/node@18.19.27)(ts-node@10.9.2):
+  /create-jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2):
     resolution: {integrity: sha512-Adz2bdH0Vq3F53KEMJOoftQFutWCukm6J24wbPWRO4k1kMY7gS7ds/uoJkNuV8wDCtWWnuwGcJwpWcih+zEW1Q==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -5194,7 +5203,7 @@ packages:
       chalk: 4.1.2
       exit: 0.1.2
       graceful-fs: 4.2.11
-      jest-config: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      jest-config: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
       jest-util: 29.7.0
       prompts: 2.4.2
     transitivePeerDependencies:
@@ -5930,7 +5939,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 7.6.0(@typescript-eslint/parser@7.6.0)(eslint@8.57.0)(typescript@5.4.5)
       '@typescript-eslint/utils': 6.21.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
-      jest: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      jest: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7362,7 +7371,7 @@ packages:
       - babel-plugin-macros
       - supports-color
 
-  /jest-cli@29.7.0(@types/node@18.19.27)(ts-node@10.9.2):
+  /jest-cli@29.7.0(@types/node@20.12.7)(ts-node@10.9.2):
     resolution: {integrity: sha512-OVVobw2IubN/GSYsxETi+gOe7Ka59EFMR/twOU3Jb2GnKKeMGJB5SGUUrEz3SFVmJASUdZUzy83sLNNQ2gZslg==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -7376,10 +7385,10 @@ packages:
       '@jest/test-result': 29.7.0
       '@jest/types': 29.6.3
       chalk: 4.1.2
-      create-jest: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      create-jest: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
       exit: 0.1.2
       import-local: 3.1.0
-      jest-config: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      jest-config: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
       jest-util: 29.7.0
       jest-validate: 29.7.0
       yargs: 17.7.2
@@ -7388,46 +7397,6 @@ packages:
       - babel-plugin-macros
       - supports-color
       - ts-node
-
-  /jest-config@29.7.0(@types/node@18.19.27)(ts-node@10.9.2):
-    resolution: {integrity: sha512-uXbpfeQ7R6TZBqI3/TxCU4q4ttk3u0PJeC+E0zbfSoSjq6bJ7buBPxzQPL0ifrkY4DNu4JUdk0ImlBUYi840eQ==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@types/node': '*'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      ts-node:
-        optional: true
-    dependencies:
-      '@babel/core': 7.24.4
-      '@jest/test-sequencer': 29.7.0
-      '@jest/types': 29.6.3
-      '@types/node': 18.19.27
-      babel-jest: 29.7.0(@babel/core@7.24.4)
-      chalk: 4.1.2
-      ci-info: 3.9.0
-      deepmerge: 4.3.1
-      glob: 7.2.3
-      graceful-fs: 4.2.11
-      jest-circus: 29.7.0
-      jest-environment-node: 29.7.0
-      jest-get-type: 29.6.3
-      jest-regex-util: 29.6.3
-      jest-resolve: 29.7.0
-      jest-runner: 29.7.0
-      jest-util: 29.7.0
-      jest-validate: 29.7.0
-      micromatch: 4.0.5
-      parse-json: 5.2.0
-      pretty-format: 29.7.0
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-      ts-node: 10.9.2(@types/node@18.19.27)(typescript@5.4.5)
-    transitivePeerDependencies:
-      - babel-plugin-macros
-      - supports-color
 
   /jest-config@29.7.0(@types/node@20.12.6)(ts-node@10.9.2):
     resolution: {integrity: sha512-uXbpfeQ7R6TZBqI3/TxCU4q4ttk3u0PJeC+E0zbfSoSjq6bJ7buBPxzQPL0ifrkY4DNu4JUdk0ImlBUYi840eQ==}
@@ -7464,7 +7433,47 @@ packages:
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.9.2(@types/node@18.19.27)(typescript@5.4.5)
+      ts-node: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+
+  /jest-config@29.7.0(@types/node@20.12.7)(ts-node@10.9.2):
+    resolution: {integrity: sha512-uXbpfeQ7R6TZBqI3/TxCU4q4ttk3u0PJeC+E0zbfSoSjq6bJ7buBPxzQPL0ifrkY4DNu4JUdk0ImlBUYi840eQ==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+    peerDependencies:
+      '@types/node': '*'
+      ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      ts-node:
+        optional: true
+    dependencies:
+      '@babel/core': 7.24.4
+      '@jest/test-sequencer': 29.7.0
+      '@jest/types': 29.6.3
+      '@types/node': 20.12.7
+      babel-jest: 29.7.0(@babel/core@7.24.4)
+      chalk: 4.1.2
+      ci-info: 3.9.0
+      deepmerge: 4.3.1
+      glob: 7.2.3
+      graceful-fs: 4.2.11
+      jest-circus: 29.7.0
+      jest-environment-node: 29.7.0
+      jest-get-type: 29.6.3
+      jest-regex-util: 29.6.3
+      jest-resolve: 29.7.0
+      jest-runner: 29.7.0
+      jest-util: 29.7.0
+      jest-validate: 29.7.0
+      micromatch: 4.0.5
+      parse-json: 5.2.0
+      pretty-format: 29.7.0
+      slash: 3.0.0
+      strip-json-comments: 3.1.1
+      ts-node: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -7740,7 +7749,7 @@ packages:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  /jest@29.7.0(@types/node@18.19.27)(ts-node@10.9.2):
+  /jest@29.7.0(@types/node@20.12.7)(ts-node@10.9.2):
     resolution: {integrity: sha512-NIy3oAFp9shda19hy4HK0HRTWKtPJmGdnvywu01nOqNC2vZg+Z+fvJDxpMQA88eb2I9EcafcdjYgsDthnYTvGw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -7753,7 +7762,7 @@ packages:
       '@jest/core': 29.7.0(ts-node@10.9.2)
       '@jest/types': 29.6.3
       import-local: 3.1.0
-      jest-cli: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      jest-cli: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -9210,7 +9219,7 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-hot-loader@4.13.1(@types/react@18.2.73)(react-dom@18.2.0)(react@18.2.0):
+  /react-hot-loader@4.13.1(@types/react@18.2.79)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-ZlqCfVRqDJmMXTulUGic4lN7Ic1SXgHAFw7y/Jb7t25GBgTR0fYAJ8uY4mrpxjRyWGWmqw77qJQGnYbzCvBU7g==}
     engines: {node: '>= 6'}
     peerDependencies:
@@ -9221,7 +9230,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.79
       fast-levenshtein: 2.0.6
       global: 4.4.0
       hoist-non-react-statics: 3.3.2
@@ -10054,8 +10063,8 @@ packages:
       pump: 3.0.0
       tar-stream: 3.1.7
     optionalDependencies:
-      bare-fs: 2.2.3
-      bare-path: 2.1.1
+      bare-fs: 2.3.0
+      bare-path: 2.1.2
     dev: false
 
   /tar-stream@3.1.7:
@@ -10195,7 +10204,7 @@ packages:
       '@babel/core': 7.24.4
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 29.7.0(@types/node@18.19.27)(ts-node@10.9.2)
+      jest: 29.7.0(@types/node@20.12.7)(ts-node@10.9.2)
       jest-util: 29.7.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -10269,6 +10278,37 @@ packages:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 18.19.27
+      acorn: 8.11.3
+      acorn-walk: 8.3.2
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 5.4.5
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
+    dev: true
+
+  /ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5):
+    resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
+    hasBin: true
+    peerDependencies:
+      '@swc/core': '>=1.2.50'
+      '@swc/wasm': '>=1.2.50'
+      '@types/node': '*'
+      typescript: '>=2.7'
+    peerDependenciesMeta:
+      '@swc/core':
+        optional: true
+      '@swc/wasm':
+        optional: true
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.4
+      '@types/node': 20.12.7
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
