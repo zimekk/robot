@@ -409,8 +409,8 @@ const JsonSchema = z.object({
       }),
     ),
     childrenRegionsRequest: z.number(),
-    parentRegions: z.array(z.unknown()),
-    parentRegionsRequest: z.number(),
+    parentRegions: z.array(z.unknown()).optional(),
+    parentRegionsRequest: z.number().optional(),
     search: z.object({
       id: z.number(),
       slug: z.string(),
