@@ -55,6 +55,7 @@ export const ProductSchema = z.object({
   rating: z.number().optional(),
   ratingCount: z.number().optional(),
   commentsCount: z.number().optional(),
+  commentsRatingFivePoints: z.number().optional(),
   freeShipping: z.boolean().optional(),
   id: z.string(),
   name: z.string(),
