@@ -16,9 +16,9 @@
   "scripts": {
     "build": "NODE_ENV=production tsc",
     "coverage": "type-coverage && tsc --noEmit",
-    "migrate:create": "node-pg-migrate create -j ts",
-    "migrate:up": "ts-node node_modules/node-pg-migrate/bin/node-pg-migrate up -j ts --envPath ../../.env",
-    "migrate:down": "ts-node ts-node node_modules/node-pg-migrate/bin/node-pg-migrate down -j ts --envPath ../../.env",
+    "migrate:create": "node-pg-migrate create -j ts --tsconfig tsconfig.json",
+    "migrate:up": "node-pg-migrate up -j ts --tsconfig tsconfig.json --envPath ../../.env",
+    "migrate:down": "node-pg-migrate down -j ts --tsconfig tsconfig.json --envPath ../../.env",
     "test": "jest",
     "test:watch": "jest --watch"
   },
