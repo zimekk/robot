@@ -1,7 +1,7 @@
-import { HotShotSchema } from "..";
+import { HotShotSchema, Schema } from "..";
 
 describe("shots", () => {
-  it("schema", () =>
+  it("HotShotSchema", () =>
     [
       {
         json: {
@@ -2279,6 +2279,15 @@ describe("shots", () => {
         },
       },
     ].forEach(({ json, result }) =>
-      expect(HotShotSchema.parse(json)).toEqual(result)
+      expect(HotShotSchema.parse(json)).toEqual(result),
     ));
+
+  it("Schema", () =>
+    [
+      {
+        json: {
+          Message: "Aktualnie nie ma promocji Gorący strzał.",
+        },
+      },
+    ].forEach(({ json }) => expect(Schema.parse({ json })).not.toBeFalsy()));
 });

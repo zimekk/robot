@@ -52,5 +52,9 @@ export interface Item {
 
 export const Schema = z.object({
   // json: z.union([HotShotErrorSchema, HotShotSchema]),
-  json: HotShotSchema,
+  json: HotShotSchema.or(
+    z.object({
+      Message: z.literal("Aktualnie nie ma promocji Gorący strzał."),
+    }),
+  ),
 });

@@ -38,6 +38,9 @@ export const update = async (
     [item].reduce(
       (result, item) =>
         result.then(async () => {
+          if (!("Id" in item)) {
+            return;
+          }
           const { Id: id } = item;
           console.log({ id, item });
           const result = await query(
