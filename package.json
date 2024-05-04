@@ -16,7 +16,6 @@
     },
     "extends": [
       "eslint:recommended",
-      "plugin:import/recommended",
       "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
@@ -41,10 +40,7 @@
           "argsIgnorePattern": "^_"
         }
       ],
-      "@typescript-eslint/no-var-requires": "off",
-      "import/no-extraneous-dependencies": "error",
-      "import/no-unused-modules": "error",
-      "import/no-unresolved": "off"
+      "@typescript-eslint/no-var-requires": "off"
     },
     "settings": {
       "react": {
@@ -68,7 +64,7 @@
     "build": "pnpm -r run build",
     "clean": "rm -rf packages/*/public packages/*/lib",
     "coverage": "pnpm -r run coverage",
-    "lint": "eslint . --ext .json,.js,.jsx,.ts,.tsx",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .json,.js,.jsx,.ts,.tsx",
     "reset": "rm -rf node_modules packages/*/node_modules",
     "serve": "pnpm --filter=@dev/app run serve",
     "start": "pnpm --filter=@dev/web run start",
@@ -83,7 +79,7 @@
     "@commitlint/config-conventional": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.40.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jest": "^28.0.0",
     "eslint-plugin-prettier": "^5.0.0",
