@@ -152,7 +152,7 @@ importers:
         version: 4.19.2
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/cors':
         specifier: ^2.8.13
@@ -180,7 +180,7 @@ importers:
         version: 2.11.2(puppeteer-extra@3.3.6)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       dotenv:
         specifier: ^16.0.3
@@ -236,7 +236,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -279,7 +279,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -322,7 +322,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -368,7 +368,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -414,7 +414,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -454,7 +454,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -497,7 +497,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -534,7 +534,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -556,7 +556,7 @@ importers:
         version: 6.9.13
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/nodemailer':
         specifier: ^6.4.8
@@ -581,7 +581,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -630,7 +630,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -673,7 +673,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -713,7 +713,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -756,7 +756,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -796,7 +796,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -839,7 +839,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -885,7 +885,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -928,7 +928,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -968,7 +968,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1056,7 +1056,7 @@ importers:
         version: 6.1.13
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/node':
         specifier: ^18.16.3
@@ -1084,7 +1084,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1152,7 +1152,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1198,7 +1198,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1238,7 +1238,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1278,7 +1278,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -1405,7 +1405,7 @@ importers:
         version: 1.0.4(react@18.2.0)
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@babel/core':
         specifier: ^7.21.8
@@ -1574,7 +1574,7 @@ importers:
         version: 6.1.13
       zod:
         specifier: ^3.21.4
-        version: 3.23.6
+        version: 3.23.7
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -10853,6 +10853,6 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
-  /zod@3.23.6:
-    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
+  /zod@3.23.7:
+    resolution: {integrity: sha512-NBeIoqbtOiUMomACV/y+V3Qfs9+Okr18vR5c/5pHClPpufWOrsx8TENboDPe265lFdfewX2yBtNTLPvnmCxwog==}
     dev: false
