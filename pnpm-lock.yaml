@@ -1475,7 +1475,7 @@ importers:
         version: 5.17.0(@bull-board/ui@5.17.0)
       '@bull-board/express':
         specifier: ^5.2.0
-        version: 5.17.0
+        version: 5.17.1
       '@dev/chrome':
         specifier: ^1.0.0
         version: link:../chrome
@@ -2886,11 +2886,20 @@ packages:
       redis-info: 3.1.0
     dev: false
 
-  /@bull-board/express@5.17.0:
-    resolution: {integrity: sha512-JU44srFJ/6IEkNZn7iht58XrsGCSRLoewX7dVawjwFJpZ84i2wpn43uq5v/bNSbWsGuNaLyITBjb8dgqDoN18w==}
+  /@bull-board/api@5.17.1(@bull-board/ui@5.17.1):
+    resolution: {integrity: sha512-KQaH3z2YJxN2h+Kh4ZJ341NNEFwrsNeZAu9FtQX8h4G0nkSw3FSlgWDO6UrN0b448+co/gWTT6qZz0st2fFmPg==}
+    peerDependencies:
+      '@bull-board/ui': 5.17.1
     dependencies:
-      '@bull-board/api': 5.17.0(@bull-board/ui@5.17.0)
-      '@bull-board/ui': 5.17.0
+      '@bull-board/ui': 5.17.1
+      redis-info: 3.1.0
+    dev: false
+
+  /@bull-board/express@5.17.1:
+    resolution: {integrity: sha512-3aWDP7UPdnUj2SYdxKnu/Rtb/1a0KnfKu7a/iPUBVPQQJN8CQzcdcYG3BNhFnrbY8f3+efI1o0eUkgdkJYB1aA==}
+    dependencies:
+      '@bull-board/api': 5.17.1(@bull-board/ui@5.17.1)
+      '@bull-board/ui': 5.17.1
       ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
@@ -2901,6 +2910,12 @@ packages:
     resolution: {integrity: sha512-Vj+yWPjrjx3Iqh2N/ZBDhK2d2yJD44dfvIxm+SnXQb4ne312j117TpViInceysxGtbbAOlAW6hq6JvsDoRl7KQ==}
     dependencies:
       '@bull-board/api': 5.17.0(@bull-board/ui@5.17.0)
+    dev: false
+
+  /@bull-board/ui@5.17.1:
+    resolution: {integrity: sha512-/BO4C454w7ar5ZaHfcThEY2A2SYD9YkQkBizq8o9sjglVctpnnnh37YY2iOVRZCZFXMKIe7t05Kd9/9p3IPvSw==}
+    dependencies:
+      '@bull-board/api': 5.17.1(@bull-board/ui@5.17.1)
     dev: false
 
   /@commitlint/cli@19.3.0(@types/node@20.12.10)(typescript@5.4.5):
@@ -5553,7 +5568,7 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
-      jake: 10.8.7
+      jake: 10.9.1
     dev: false
 
   /electron-to-chromium@1.4.717:
@@ -7247,8 +7262,8 @@ packages:
       '@pkgjs/parseargs': 0.11.0
     dev: true
 
-  /jake@10.8.7:
-    resolution: {integrity: sha512-ZDi3aP+fG/LchyBzUM804VjddnwfSfsdeYkwt8NcbKRvo4rFkjhs456iLFn3k2ZUWvNe4i48WACDbza8fhq2+w==}
+  /jake@10.9.1:
+    resolution: {integrity: sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
