@@ -1002,6 +1002,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
+          "CategoryId=13176&BrandIds=2855", // Szampony do włosów / L'BIOTICA BIOVAX
           "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
           "CategoryId=8324&BrandIds=10531", // Pranie i płukanie / PERWOLL
           "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
