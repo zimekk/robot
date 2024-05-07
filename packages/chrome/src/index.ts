@@ -61,6 +61,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
     return import("./pl.com.euro")
       .then(({ scrap }) => scrap(page, url))
       .finally(() => browser.close());
+  } else if (url.match("moto.pl/osobowe/")) {
+    return import("./pl.moto")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
   } else if (url.match("smann.pl/szukaj\\?")) {
     return import("./pl.mann")
       .then(({ scrap }) => scrap(page, url))
@@ -186,13 +190,6 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                       console.log({ json });
                       resolve({ url: res.url(), json });
                     }
-                  } else if (url.match("moto.pl/osobowe/")) {
-                    console.log(res.url());
-                    const e = "__NEXT_DATA__";
-                    console.log(["page.evaluate"], e);
-                    const json = (await page.evaluate(e)) as object;
-                    console.log({ json });
-                    resolve({ url: res.url(), json });
                   } else if (url.match("dom.pl/pl/")) {
                     const e = "__NEXT_DATA__";
                     console.log(["page.evaluate"], e);

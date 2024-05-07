@@ -22,6 +22,7 @@
   },
   "scripts": {
     "build": "NODE_ENV=production tsc",
+    "chrome": "bin/chrome.js",
     "coverage": "type-coverage && tsc --noEmit",
     "test": "jest",
     "test:debug": "node --inspect ../../node_modules/.bin/jest",
