@@ -1,4 +1,17 @@
 import type { HTTPRequest, HTTPResponse, Page } from "puppeteer";
+import { z } from "zod";
+
+const JsonSchema = z.object({
+  props: z.object({
+    pageProps: z.object({
+      urqlState: z.record(
+        z.object({
+          data: z.string(),
+        }),
+      ),
+    }),
+  }),
+});
 
 export const scrap = async (page: Page, url: string) =>
   page
@@ -26,6 +39,10 @@ export const scrap = async (page: Page, url: string) =>
       console.log(["page.evaluate"], e);
       const json = (await page.evaluate(e)) as object;
       console.log({ json });
-      return { url, json, html: undefined };
+      return JsonSchema.parseAsync(json).then((json) => ({
+        url,
+        json,
+        html: undefined,
+      }));
     })
     .finally(() => page.close());
