@@ -40,33 +40,41 @@ export interface Item {
   removed: string | null;
 }
 
+export const StationSchema = z.object({
+  address: z.string().default(""),
+  petrol_list: z
+    .object({
+      type: z.preprocess(
+        (value: unknown) =>
+          ({
+            "on b7": "on",
+            "on max": "on+",
+            "pb95 e10": "pb",
+          })[value as string] || value,
+        z.enum(TYPES),
+      ),
+      price: z.coerce.number(),
+    })
+    .array(),
+});
+
 export const JsonSchema = z
   .object({
     html: z.string(),
   })
   .transform(({ html }) =>
     (($root) =>
-      z
-        .object({
-          address: z.string(),
-          petrol_list: z
-            .object({
-              type: z.enum(TYPES),
-              price: z.coerce.number(),
-            })
-            .array(),
-        })
-        .parse({
-          address: $root.querySelector("div.right-side > a:first-child")?.text,
-          petrol_list: $root
-            .querySelectorAll("ul.petrol-list > li")
-            .map(($li) => ({
-              type: $li.childNodes[0].text,
-              price: $li.childNodes[1].text,
-            })),
-        }))(parse(html))
+      StationSchema.parse({
+        address: $root.querySelector("div.right-side > a:first-child")?.text,
+        petrol_list: $root
+          .querySelectorAll("ul.petrol-list > li")
+          .map(($li) => ({
+            type: $li.childNodes[0].text,
+            price: $li.childNodes[1].text,
+          })),
+      }))(parse(html)),
   );
 
 export const Schema = z.object({
-  json: JsonSchema,
+  json: StationSchema.or(JsonSchema),
 });

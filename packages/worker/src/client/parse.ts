@@ -47,13 +47,13 @@ export const AutosSchema = z
       list: $list.map(({ id }) => ({
         url: data.url.replace(/\/search$/, `/vehicle/${id}/`),
       })),
-    })
+    }),
   );
 
 export const limiter = (jobs: unknown, period: number) => {
   const Schema = CompletedSchema.transform(
     ({ timestamp, url }) =>
-      `${format(timestamp - (timestamp % period), "yyyyMMdd_HHmmss")}:${url}`
+      `${format(timestamp - (timestamp % period), "yyyyMMdd_HHmmss")}:${url}`,
   );
 
   const urls = Schema.array().parse(jobs);
@@ -68,7 +68,7 @@ export default async (
     data,
     returnvalue,
   }: { id: Queue.JobId; data: Data; returnvalue: unknown },
-  { jobs = [] }: { jobs?: Queue.Job[] } = {}
+  { jobs = [] }: { jobs?: Queue.Job[] } = {},
 ) =>
   await EntrySchema.parseAsync({ id, data, returnvalue }).then(
     async ({ data, type, returnvalue }) => {
@@ -82,7 +82,7 @@ export default async (
           list
             .filter(limiter(jobs, days(7)))
             .slice(0, 150)
-            .concat(next ? [next] : [])
+            .concat(next ? [next] : []),
         );
       } else if (type === Type.AUTOS_ITEM) {
         return require("@dev/vehicles/api")
@@ -109,6 +109,26 @@ export default async (
       } else if (type === Type.HOTSHOT) {
         return require("@dev/shots/api")
           .update(id, data, returnvalue)
+          .then(() => []);
+      } else if (type === Type.LECLERC) {
+        return require("@dev/fuels/api")
+          .update(
+            id,
+            Object.assign(
+              {
+                station_id: 0,
+                x: 52.154332124889,
+                y: 21.042253017076,
+                network_id: 119,
+                network_name: "Leclerc Ursynów",
+                map_img:
+                  "https://www.autocentrum.pl/system/assets/images/fuel-station/network/map/no-map-45x60.png",
+                address: "Warszawa, Ciszewskiego 15",
+              },
+              data,
+            ),
+            returnvalue,
+          )
           .then(() => []);
       } else if (type === Type.OTODOM) {
         return require("@dev/props/api")
@@ -147,7 +167,7 @@ export default async (
           returnvalue.json.list
             .map((data) => ({ ...data, url: data.href }))
             .filter(({ url }) => url && new RegExp("//promocje.").test(url))
-            .filter(limiter(jobs, days(3)))
+            .filter(limiter(jobs, days(3))),
         );
       } else if (type === Type.PROMO_ITEM) {
         return require("@dev/promo/api")
@@ -162,8 +182,8 @@ export default async (
               sub(new Date(date), {
                 days: 1,
               }),
-              "yyyy-MM-dd"
-            )
+              "yyyy-MM-dd",
+            ),
           )
           .then((date: string) => {
             if (
@@ -172,7 +192,7 @@ export default async (
                 sub(new Date(), {
                   days: 7,
                 }),
-                "yyyy-MM-dd"
+                "yyyy-MM-dd",
               )
             ) {
               return [];
@@ -225,15 +245,15 @@ export default async (
                         $center: { lat, lng },
                         $radius,
                       }))
-                      .parse(line.split(":"))
+                      .parse(line.split(":")),
                   )
                   .findIndex(
                     ({ $center, $radius }) =>
                       headingDistanceTo($center, { lat, lng }).distance <
-                      $radius
-                  ) >= 0
+                      $radius,
+                  ) >= 0,
             )
-            .filter(limiter(jobs, days(1)))
+            .filter(limiter(jobs, days(1))),
         );
       } else if (type === Type.STATION) {
         return require("@dev/fuels/api")
@@ -247,5 +267,5 @@ export default async (
           .then(() => []);
       }
       return [];
-    }
+    },
   );

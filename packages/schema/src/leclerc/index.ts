@@ -21,7 +21,7 @@ export default z
             .querySelectorAll(".petrol-station li")
             .map(($el) => ({
               type: $el.getAttribute("class"),
-              price: $el.text,
+              price: $el.text.replace(",", "."),
             })),
         }))(parse(html)),
   }));
