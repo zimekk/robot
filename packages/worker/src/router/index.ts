@@ -11,7 +11,7 @@ import { chrome, client, parse } from "../client";
 export const router = () => {
   const BASE_PATH = "/board";
 
-  const serverAdapter = new ExpressAdapter();
+  const serverAdapter: any = new ExpressAdapter();
   serverAdapter.setBasePath(BASE_PATH);
 
   const worker = client();
