@@ -22,9 +22,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@dev/components": "^1.0.0",
-    "@dev/plots": "^1.0.0",
-    "@dev/sql": "^1.0.0",
+    "@dev/components": "workspace:*",
+    "@dev/plots": "workspace:*",
+    "@dev/sql": "workspace:*",
     "express": "^4.18.2",
     "json-diff": "^1.0.3",
     "use-asset": "^1.0.4",

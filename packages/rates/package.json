@@ -23,7 +23,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@dev/sql": "^1.0.0",
+    "@dev/sql": "workspace:*",
     "express": "^4.18.2",
     "json-diff": "^1.0.3",
     "use-asset": "^1.0.4",
