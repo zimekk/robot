@@ -1472,7 +1472,7 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^5.2.0
-        version: 5.18.1(@bull-board/ui@5.18.0)
+        version: 5.18.3(@bull-board/ui@5.18.0)
       '@bull-board/express':
         specifier: ^5.2.0
         version: 5.18.0
@@ -2241,10 +2241,10 @@ packages:
     peerDependencies:
       '@bull-board/ui': 5.18.0
 
-  '@bull-board/api@5.18.1':
-    resolution: {integrity: sha512-lAM8Q9dj8sGvocTnJjllps2l7x1wh+bRAWKPmYxpmQ/oQGAjTVeWmnAzn1TXcCDOQNTDi1DC26IYXeGGxA8s+w==}
+  '@bull-board/api@5.18.3':
+    resolution: {integrity: sha512-TuP/au5qWzW2RCBLFovpPWGJuC0wHDp5wvcTRSedseH7gLtUUBqYAFQbZR0l3Asbnrqnijoey87/1LAsGSAYAQ==}
     peerDependencies:
-      '@bull-board/ui': 5.18.1
+      '@bull-board/ui': 5.18.3
 
   '@bull-board/express@5.18.0':
     resolution: {integrity: sha512-aXZDpvQOurx4kdmVweHb1yrrCaC1ZwaAN6QR3vRBHs3MpnIfAFdiB3neA9q16E6Qfbvq52ylL6qQXNMKs4T3og==}
@@ -4325,6 +4325,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.3:
     resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
@@ -7333,7 +7334,7 @@ snapshots:
       '@bull-board/ui': 5.18.0
       redis-info: 3.1.0
 
-  '@bull-board/api@5.18.1(@bull-board/ui@5.18.0)':
+  '@bull-board/api@5.18.3(@bull-board/ui@5.18.0)':
     dependencies:
       '@bull-board/ui': 5.18.0
       redis-info: 3.1.0
