@@ -1550,7 +1550,7 @@ importers:
         version: link:../vehicles
       bull:
         specifier: ^4.10.4
-        version: 4.12.8
+        version: 4.12.9
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -3165,8 +3165,8 @@ packages:
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
 
-  bull@4.12.8:
-    resolution: {integrity: sha512-JgZVAR3ChuesMWSJfQjgTyXb6kdT6qos3ft9pt0AASRMiRZIjDxHMtxfcOs2Zf8O9uSv0Y5ycYwv5Te3liGJ3A==}
+  bull@4.12.9:
+    resolution: {integrity: sha512-rqka/O9ZBfrKgI4fanhN6XW0AJ9WYRakjHlCJPjoHyh79xIvEjyU8hvs/CCeRdrbU6zSw8UNfDOjCUaQO1MTuQ==}
     engines: {node: '>=12'}
 
   bundle-name@4.1.0:
@@ -8559,7 +8559,7 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bull@4.12.8:
+  bull@4.12.9:
     dependencies:
       cron-parser: 4.9.0
       get-port: 5.1.1
