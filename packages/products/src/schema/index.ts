@@ -54,6 +54,7 @@ export const ProductSchema = z.object({
   photo: PhotoSchema,
   rating: z.number().optional(),
   ratingCount: z.number().optional(),
+  ratingFivePoints: z.number().optional(),
   commentsCount: z.number().optional(),
   commentsRatingFivePoints: z.number().optional(),
   freeShipping: z.boolean().optional(),
