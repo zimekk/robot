@@ -385,7 +385,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           url: "https://ursynow.leclerc.pl/",
         },
         opts: {
-          repeat: { cron: "0 10,20 * * *" },
+          repeat: { cron: "0 8,10,14,18,20 * * *" },
         },
       },
       {
