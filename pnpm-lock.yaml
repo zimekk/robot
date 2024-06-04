@@ -1106,10 +1106,10 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.4.0(@types/pg@8.11.6)(pg@8.11.5)
+        version: 7.4.0(@types/pg@8.11.6)(pg@8.11.6)
       pg:
         specifier: ^8.11.0
-        version: 8.11.5
+        version: 8.11.6
     devDependencies:
       '@types/nodemailer':
         specifier: ^6.4.8
@@ -5407,8 +5407,8 @@ packages:
     resolution: {integrity: sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==}
     engines: {node: '>=10'}
 
-  pg@8.11.5:
-    resolution: {integrity: sha512-jqgNHSKL5cbDjFlHyYsCXmQDrfIX/3RsNwYqpd4N0Kt8niLuNoRNH+aazv6cOd43gPh9Y4DjQCtb+X0MH0Hvnw==}
+  pg@8.11.6:
+    resolution: {integrity: sha512-6CyL4F0j3vPmakU9rWdeRY8qF5Cjc3OE86y6YpgDI6YtKHhNyCjGEIE8U5ZRfBjKTZikwolKIFWh3I22MeRnoA==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -10990,9 +10990,9 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.4.0(@types/pg@8.11.6)(pg@8.11.5):
+  node-pg-migrate@7.4.0(@types/pg@8.11.6)(pg@8.11.6):
     dependencies:
-      pg: 8.11.5
+      pg: 8.11.6
       yargs: 17.7.2
     optionalDependencies:
       '@types/pg': 8.11.6
@@ -11218,9 +11218,9 @@ snapshots:
 
   pg-numeric@1.0.2: {}
 
-  pg-pool@3.6.2(pg@8.11.5):
+  pg-pool@3.6.2(pg@8.11.6):
     dependencies:
-      pg: 8.11.5
+      pg: 8.11.6
 
   pg-protocol@1.6.1: {}
 
@@ -11242,10 +11242,10 @@ snapshots:
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
 
-  pg@8.11.5:
+  pg@8.11.6:
     dependencies:
       pg-connection-string: 2.6.4
-      pg-pool: 3.6.2(pg@8.11.5)
+      pg-pool: 3.6.2(pg@8.11.6)
       pg-protocol: 1.6.1
       pg-types: 2.2.0
       pgpass: 1.0.5
