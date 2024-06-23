@@ -400,12 +400,15 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       .concat(
         [
           ["5_G30", "5_G31", "M5_F90"],
-          ["JCW_F56", "JCW_F57", "X3_G01", "X3M_F97"],
+          ["JCW_F56", "JCW_F57"],
+          ["X3_G01", "X3M_F97"],
+          ["X5_G05", "X5M_F95"],
+          ["X6_G06", "X6M_F96", "X7_G07"],
         ].map((value, i) => ({
           data: {
             url: `https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=${
-              (i + 1) * 6
-            }&startIndex=0`,
+              4 * 6
+            }&startIndex=0#${i + 1}`,
             body: {
               searchContext: [
                 {
