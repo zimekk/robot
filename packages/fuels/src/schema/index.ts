@@ -53,9 +53,11 @@ export const StationSchema = z.object({
           })[value as string] || value,
         z.enum(TYPES),
       ),
-      price: z.coerce.number(),
+      // price: z.coerce.number(),
+      price: z.string().transform(parseFloat),
     })
-    .array(),
+    .array()
+    .transform((list) => list.filter(({ price }) => !isNaN(price))),
 });
 
 export const JsonSchema = z
