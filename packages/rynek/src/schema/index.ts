@@ -331,13 +331,15 @@ const JsonSchema = z.object({
         count: z.number(),
         pageSize: z.number(),
       }),
-      all: z.object({
-        properties: z.array(z.unknown()),
-        requestState: z.number(),
-        page: z.number(),
-        count: z.number(),
-        pageSize: z.number(),
-      }),
+      all: z
+        .object({
+          properties: z.array(z.unknown()),
+          requestState: z.number(),
+          page: z.number(),
+          count: z.number(),
+          pageSize: z.number(),
+        })
+        .optional(),
       modal: z.object({
         properties: z.array(z.unknown()),
         requestState: z.number(),
