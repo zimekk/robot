@@ -66,7 +66,7 @@ export const update = async (
   Schema.transform(
     ({
       json: {
-        hits,
+        hits = [],
         metadata: { totalCount },
       },
     }) =>

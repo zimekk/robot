@@ -617,7 +617,8 @@ export const JsonSchema = z.object({
       vehicle: Vehicle.passthrough(),
       country: z.string(),
     })
-    .array(),
+    .array()
+    .optional(),
 });
 
 export const DataSchema = Vehicle;
