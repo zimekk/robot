@@ -68,7 +68,9 @@ export interface Item {
 
 export const Schema = z.object({
   json: z.object({
-    data: PromoSchema,
+    data: PromoSchema.array().or(PromoSchema.transform((item) => [item])),
     message: z.enum(["success"]),
+    redirect_to: z.string().optional(),
+    status: z.string().optional(),
   }),
 });

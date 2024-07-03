@@ -64,39 +64,41 @@ export const update = async (
   { json }: { json: unknown },
 ) =>
   Schema.transform(({ json: { data } }) =>
-    [data].reduce(
-      (result, item) =>
-        result.then(async () => {
-          const {
-            general: { id },
-          } = item;
-          console.log({ id, item });
-          const result = await query(
-            "SELECT * FROM promo WHERE item=$1 ORDER BY created DESC LIMIT 1",
-            [id],
-          );
-          if (result.rowCount && result.rowCount > 0) {
-            const { id, data } = result.rows[0];
-            const diff = diffString(data, item);
-            console.info({ id, diff });
-            if (!diff) {
-              await query(
-                "UPDATE promo SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                [id],
-              );
-              return;
+    data
+      .filter((item) => item !== null)
+      .reduce(
+        (result, item) =>
+          result.then(async () => {
+            const {
+              general: { id },
+            } = item;
+            console.log({ id, item });
+            const result = await query(
+              "SELECT * FROM promo WHERE item=$1 ORDER BY created DESC LIMIT 1",
+              [id],
+            );
+            if (result.rowCount && result.rowCount > 0) {
+              const { id, data } = result.rows[0];
+              const diff = diffString(data, item);
+              console.info({ id, diff });
+              if (!diff) {
+                await query(
+                  "UPDATE promo SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                  [id],
+                );
+                return;
+              }
+              // await query(
+              //   "UPDATE promo SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+              //   [item, id]
+              // );
+              // return;
             }
-            // await query(
-            //   "UPDATE promo SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
-            //   [item, id]
-            // );
-            // return;
-          }
-          await query("INSERT INTO promo (item, data) VALUES ($1, $2)", [
-            id,
-            item,
-          ]);
-        }),
-      Promise.resolve(),
-    ),
+            await query("INSERT INTO promo (item, data) VALUES ($1, $2)", [
+              id,
+              item,
+            ]);
+          }),
+        Promise.resolve(),
+      ),
   ).parseAsync({ json });
