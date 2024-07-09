@@ -59,7 +59,7 @@ importers:
         version: 10.9.2(@types/node@20.14.3)(typescript@5.5.3)
       type-coverage:
         specifier: ^2.25.3
-        version: 2.29.0(typescript@5.5.3)
+        version: 2.29.1(typescript@5.5.3)
       typescript:
         specifier: ^5.0.4
         version: 5.5.3
@@ -6348,13 +6348,13 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  type-coverage-core@2.28.1:
-    resolution: {integrity: sha512-NniLJtLiDg0+dhrf/9ACGwi3OAhIfvd20f1CB0yxIUBMECwmJp7e7me3lM8djkrDBJtqSY+uXA6PRs+yv3HTnA==}
+  type-coverage-core@2.29.1:
+    resolution: {integrity: sha512-lonikLRWnejbW9qsjoUsqXxQ3c4D0LPHaY2fsN5YD78sHAL27AaIoWYOjtitSqmv5UCS+3tv4qYjnj56vUH5eQ==}
     peerDependencies:
       typescript: 2 || 3 || 4 || 5
 
-  type-coverage@2.29.0:
-    resolution: {integrity: sha512-1YGnQo6kK7cq8PwPoW27EnyKsvpzM7pPPo7bcS4u/7Sb4zs0WX1rGBm1eou3ZHslu56AsmPt/pgIuhCgN1EriQ==}
+  type-coverage@2.29.1:
+    resolution: {integrity: sha512-hsS1UYDrSltiSqMHJQn5wRFJiAeSA1PItMgeszxBkBjZEbtCzzmAU9dQswR1k8z0/ewj2/SbYEldYRurxgmxhA==}
     hasBin: true
 
   type-detect@4.0.8:
@@ -10976,7 +10976,7 @@ snapshots:
 
   memfs@4.8.0:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   meow@12.1.1: {}
 
@@ -12376,20 +12376,20 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  type-coverage-core@2.28.1(typescript@5.5.3):
+  type-coverage-core@2.29.1(typescript@5.5.3):
     dependencies:
       fast-glob: 3.3.2
       minimatch: 9.0.5
       normalize-path: 3.0.0
-      tslib: 2.6.2
+      tslib: 2.6.3
       tsutils: 3.21.0(typescript@5.5.3)
       typescript: 5.5.3
 
-  type-coverage@2.29.0(typescript@5.5.3):
+  type-coverage@2.29.1(typescript@5.5.3):
     dependencies:
       chalk: 4.1.2
       minimist: 1.2.8
-      type-coverage-core: 2.28.1(typescript@5.5.3)
+      type-coverage-core: 2.29.1(typescript@5.5.3)
     transitivePeerDependencies:
       - typescript
 
