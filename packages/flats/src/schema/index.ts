@@ -209,12 +209,14 @@ const JsonSchema = z.object({
         .nullable(),
     }),
     popularSearches: z.unknown().array(),
-    seo: z.object({
-      title: z.string(),
-      description: z.string(),
-      h1: z.string(),
-      seoText: z.string(),
-    }),
+    seo: z
+      .object({
+        title: z.string(),
+        description: z.string(),
+        h1: z.string(),
+        seoText: z.string(),
+      })
+      .optional(),
     breadcrumbs: z
       .object({
         label: z.string(),
