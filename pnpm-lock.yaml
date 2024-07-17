@@ -1399,7 +1399,7 @@ importers:
         version: 7.8.1
       styled-components:
         specifier: ^6.0.0
-        version: 6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 6.1.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@18.2.0)
@@ -6193,8 +6193,8 @@ packages:
     peerDependencies:
       webpack: ^5.27.0
 
-  styled-components@6.1.11:
-    resolution: {integrity: sha512-Ui0jXPzbp1phYij90h12ksljKGqF8ncGx+pjrNPsSPhbUUjWT2tD1FwGo2LF6USCnbrsIhNngDfodhxbegfEOA==}
+  styled-components@6.1.12:
+    resolution: {integrity: sha512-n/O4PzRPhbYI0k1vKKayfti3C/IGcPf+DqcrOB7O/ab9x4u/zjqraneT5N45+sIe87cxrCApXM8Bna7NYxwoTA==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
@@ -8932,7 +8932,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   camelcase@5.3.1: {}
 
@@ -9371,7 +9371,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   dot-prop@5.3.0:
     dependencies:
@@ -11032,7 +11032,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   lru-cache@10.4.3: {}
 
@@ -11175,7 +11175,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   node-fetch@2.7.0:
     dependencies:
@@ -11363,7 +11363,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   parent-module@1.0.1:
     dependencies:
@@ -11383,7 +11383,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   path-exists@4.0.0: {}
 
@@ -12242,7 +12242,7 @@ snapshots:
     dependencies:
       webpack: 5.93.0(webpack-cli@5.1.4)
 
-  styled-components@6.1.11(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  styled-components@6.1.12(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/unitless': 0.8.1
@@ -12275,7 +12275,7 @@ snapshots:
   synckit@0.8.8:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.6.2
+      tslib: 2.6.3
 
   tapable@2.2.1: {}
 
