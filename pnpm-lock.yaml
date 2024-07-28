@@ -1106,7 +1106,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.5.2(@types/pg@8.11.6)(pg@8.11.6)
+        version: 7.6.0(@types/pg@8.11.6)(pg@8.11.6)
       pg:
         specifier: ^8.11.0
         version: 8.11.6
@@ -5215,8 +5215,8 @@ packages:
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
 
-  node-pg-migrate@7.5.2:
-    resolution: {integrity: sha512-xN8Fc9lLE8tAkNVvivvxJyCWxZgM9tT+Uu/0fZdkco71aoC5VfHQzUjIyBjgqxMsKgZbzKz+NNpltKHL1/yAMA==}
+  node-pg-migrate@7.6.0:
+    resolution: {integrity: sha512-w4xYMxYzvNxRWCCzD3pIxTzc9Mq6Hsy9C8rUU9phCxBnYkyO47uExQsMhxqLLjYt9Qhbel26UrrcO89gRWIGIw==}
     engines: {node: '>=18.19.0'}
     hasBin: true
     peerDependencies:
@@ -6113,8 +6113,8 @@ packages:
     resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
     engines: {node: '>=12'}
 
-  string-width@7.1.0:
-    resolution: {integrity: sha512-SEIJCWiX7Kg4c129n48aDRwLbFb2LJmXXFrWBG4NGaRtMQ3myKPKbwrD1BKqQn74oCoNMBVrfDEr5M9YxCsrkw==}
+  string-width@7.2.0:
+    resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
     engines: {node: '>=18'}
 
   string.prototype.matchall@4.0.11:
@@ -8986,7 +8986,7 @@ snapshots:
   cli-truncate@4.0.0:
     dependencies:
       slice-ansi: 5.0.0
-      string-width: 7.1.0
+      string-width: 7.2.0
 
   cliui@8.0.1:
     dependencies:
@@ -11181,7 +11181,7 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.5.2(@types/pg@8.11.6)(pg@8.11.6):
+  node-pg-migrate@7.6.0(@types/pg@8.11.6)(pg@8.11.6):
     dependencies:
       pg: 8.11.6
       yargs: 17.7.2
@@ -12131,7 +12131,7 @@ snapshots:
       emoji-regex: 9.2.2
       strip-ansi: 7.1.0
 
-  string-width@7.1.0:
+  string-width@7.2.0:
     dependencies:
       emoji-regex: 10.3.0
       get-east-asian-width: 1.2.0
@@ -12786,7 +12786,7 @@ snapshots:
   wrap-ansi@9.0.0:
     dependencies:
       ansi-styles: 6.2.1
-      string-width: 7.1.0
+      string-width: 7.2.0
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}
