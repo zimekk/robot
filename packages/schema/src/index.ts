@@ -545,6 +545,7 @@ export const DelayedSchema = z
     attemptsMade: z.number(),
     stacktrace: z.array(z.unknown()),
     returnvalue: z.null(),
+    debounceId: z.null(),
     failedReason: z.string().optional(),
     finishedOn: z.number().nullable(),
     processedOn: z.number().nullable(),

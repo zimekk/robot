@@ -1,6 +1,35 @@
-import { EntrySchema, Type } from "..";
+import { DelayedSchema, EntrySchema, Type } from "..";
 
 describe("schema", () => {
+  it("DelayedSchema", () =>
+    [
+      {
+        id: "91790",
+        name: "chrome",
+        data: {
+          url: "https://ursynow.leclerc.pl/",
+        },
+        opts: {
+          attempts: 1,
+          backoff: {
+            type: "fixed",
+            delay: 10000,
+          },
+          delay: 5000,
+          timestamp: 1722363408265,
+        },
+        progress: 0,
+        delay: 5000,
+        timestamp: 1722363408265,
+        attemptsMade: 0,
+        stacktrace: [],
+        returnvalue: null,
+        debounceId: null,
+        finishedOn: null,
+        processedOn: null,
+      },
+    ].forEach((data) => expect(DelayedSchema.parse([data])).toBeTruthy()));
+
   it("EntrySchema", () =>
     [
       {
@@ -146,7 +175,7 @@ describe("schema", () => {
         EntrySchema.parse({
           timestamp: 1674684317544,
           ...data,
-        }).type
-      ).toEqual(type)
+        }).type,
+      ).toEqual(type),
     ));
 });
