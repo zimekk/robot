@@ -1106,7 +1106,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.6.0(@types/pg@8.11.6)(pg@8.11.6)
+        version: 7.6.1(@types/pg@8.11.6)(pg@8.11.6)
       pg:
         specifier: ^8.11.0
         version: 8.11.6
@@ -5245,8 +5245,8 @@ packages:
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
 
-  node-pg-migrate@7.6.0:
-    resolution: {integrity: sha512-w4xYMxYzvNxRWCCzD3pIxTzc9Mq6Hsy9C8rUU9phCxBnYkyO47uExQsMhxqLLjYt9Qhbel26UrrcO89gRWIGIw==}
+  node-pg-migrate@7.6.1:
+    resolution: {integrity: sha512-CUocdo8kh25QZU2MeCjss2/OQ/Jq8ejCeilpja1MVOgk2c03r4U7vux9fAZCfrVg0YASwnhnpjz+rSK4tAVB2w==}
     engines: {node: '>=18.19.0'}
     hasBin: true
     peerDependencies:
@@ -11248,7 +11248,7 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.6.0(@types/pg@8.11.6)(pg@8.11.6):
+  node-pg-migrate@7.6.1(@types/pg@8.11.6)(pg@8.11.6):
     dependencies:
       pg: 8.11.6
       yargs: 17.7.2
