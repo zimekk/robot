@@ -13,7 +13,7 @@ services:
     image: redis:7.4-alpine
     network_mode: bridge
   sql:
-    image: postgres:16.3-alpine
+    image: postgres:16.4-alpine
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
