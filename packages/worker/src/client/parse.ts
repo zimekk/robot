@@ -1,4 +1,4 @@
-import Queue from "bull";
+import type Queue from "bull";
 import { format, sub } from "date-fns";
 import { headingDistanceTo } from "geolocation-utils";
 import { days } from "milliseconds";
