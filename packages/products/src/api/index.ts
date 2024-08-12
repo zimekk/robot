@@ -2,7 +2,7 @@ import { Router } from "express";
 import { diffString } from "json-diff";
 import { z } from "zod";
 import { query } from "@dev/sql";
-import { DiffSchema, PaginationState, Schema } from "../schema";
+import { DiffSchema, type PaginationState, Schema } from "../schema";
 
 const PagerSchema = z.object({
   start: z.coerce.number().default(0),

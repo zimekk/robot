@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from "react";
+import React, { type ReactNode, useMemo } from "react";
 import styled from "styled-components";
 
 const StyledHeatMap = styled.div`
@@ -47,16 +47,16 @@ export function HeatMap({ list }: { list: Item[] }) {
         .filter(({ timestamp }) => timestamp !== undefined)
         .map(
           ({ timestamp }) =>
-            Math.floor((timestamp as number) / 3_600_000 + 2) % 24
+            Math.floor((timestamp as number) / 3_600_000 + 2) % 24,
         )
         .reduce(
           (intervals, value) =>
             Object.assign(intervals, {
               [value]: (intervals[value] || 0) + 1,
             }),
-          {} as Record<number, number>
+          {} as Record<number, number>,
         ),
-    [list]
+    [list],
   );
 
   const { heatMin, heatMax } = useMemo(
@@ -67,9 +67,9 @@ export function HeatMap({ list }: { list: Item[] }) {
             heatMin: Math.min(value, result.heatMin),
             heatMax: Math.max(value, result.heatMax),
           }),
-        { heatMin: 1, heatMax: 0 }
+        { heatMin: 1, heatMax: 0 },
       ),
-    [heatMap]
+    [heatMap],
   );
 
   return (
