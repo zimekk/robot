@@ -6,6 +6,7 @@ const Spinner = () => <span>Loading...</span>;
 
 const PAGES = Object.freeze({
   hello: lazy(() => import("./Hello")),
+  bikes: lazy(() => import("@dev/bikes")),
   depots: lazy(() => import("@dev/depots")),
   euro: lazy(() => import("@dev/euro")),
   expert: lazy(() => import("@dev/expert")),
@@ -34,7 +35,7 @@ const PAGES = Object.freeze({
 const getPage = (location: { hash: string }) => {
   const [, hash] = decodeURI(location.hash).match(/^#([-\w]+)/) || [];
   return ((keys) => (keys.includes(hash) ? hash : keys[0]))(
-    Object.keys(PAGES)
+    Object.keys(PAGES),
   ) as keyof typeof PAGES;
 };
 
@@ -43,7 +44,7 @@ export default hot(function App() {
 
   useEffect(() =>
     // location is an object like window.location
-    history.listen(({ location }) => setPage(getPage(location)))
+    history.listen(({ location }) => setPage(getPage(location))),
   );
 
   const Page = PAGES[page];

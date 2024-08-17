@@ -173,6 +173,13 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     const json = JSON.parse((await page.evaluate(e)) as string);
                     console.log({ json });
                     resolve({ url: res.url(), json });
+                  } else if (url.match("pl/sport-hobby/")) {
+                    console.log(res.url());
+                    const e = "__PRERENDERED_STATE__";
+                    console.log(["page.evaluate"], e);
+                    const json = JSON.parse((await page.evaluate(e)) as string);
+                    console.log({ json });
+                    resolve({ url: res.url(), json });
                   } else if (url.match("/maps/dir/")) {
                     console.log(res.url());
                     if (res.url().match("//consent\\.")) {

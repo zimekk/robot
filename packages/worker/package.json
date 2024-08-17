@@ -31,6 +31,7 @@
   "dependencies": {
     "@bull-board/api": "^5.2.0",
     "@bull-board/express": "^5.2.0",
+    "@dev/bikes": "workspace:*",
     "@dev/chrome": "workspace:*",
     "@dev/depots": "workspace:*",
     "@dev/euro": "workspace:*",

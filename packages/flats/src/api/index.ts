@@ -42,40 +42,42 @@ export const update = async (
         },
       },
     }) =>
-      ads.reduce(
-        (result, item) =>
-          result.then(async () => {
-            const { id } = item;
-            console.log({ id, item });
-            const result = await query(
-              "SELECT * FROM flats WHERE item=$1 ORDER BY created DESC LIMIT 1",
-              [id],
-            );
-            if (result.rowCount && result.rowCount > 0) {
-              const { id, data } = result.rows[0];
-              const diff = diffString(
-                DiffSchema.parse(data),
-                DiffSchema.parse(item),
+      ads
+        .reduce(
+          (result, item) =>
+            result.then(async () => {
+              const { id } = item;
+              console.log({ id, item });
+              const result = await query(
+                "SELECT * FROM flats WHERE item=$1 ORDER BY created DESC LIMIT 1",
+                [id],
               );
-              console.info({ id, diff });
-              if (!diff) {
-                await query(
-                  "UPDATE flats SET checked=CURRENT_TIMESTAMP WHERE id=$1",
-                  [id],
+              if (result.rowCount && result.rowCount > 0) {
+                const { id, data } = result.rows[0];
+                const diff = diffString(
+                  DiffSchema.parse(data),
+                  DiffSchema.parse(item),
                 );
-                return;
+                console.info({ id, diff });
+                if (!diff) {
+                  await query(
+                    "UPDATE flats SET checked=CURRENT_TIMESTAMP WHERE id=$1",
+                    [id],
+                  );
+                  return;
+                }
+                // await query(
+                //   "UPDATE flats SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
+                //   [item, id]
+                // );
+                // return;
               }
-              // await query(
-              //   "UPDATE flats SET updated=CURRENT_TIMESTAMP, data=$1 WHERE id=$2",
-              //   [item, id]
-              // );
-              // return;
-            }
-            await query("INSERT INTO flats (item, data) VALUES ($1, $2)", [
-              id,
-              item,
-            ]);
-          }),
-        Promise.resolve(),
-      ),
+              await query("INSERT INTO flats (item, data) VALUES ($1, $2)", [
+                id,
+                item,
+              ]);
+            }),
+          Promise.resolve(),
+        )
+        .then(() => []),
   ).parseAsync({ json });

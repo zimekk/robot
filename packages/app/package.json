@@ -27,6 +27,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@dev/bikes": "workspace:*",
     "@dev/depots": "workspace:*",
     "@dev/euro": "workspace:*",
     "@dev/expert": "workspace:*",

@@ -34,6 +34,7 @@ RUN npm i -g pnpm
 WORKDIR $WORKDIR
 COPY package.json pnpm-*.yaml ./
 COPY packages/app/package.json packages/app/
+COPY packages/bikes/package.json packages/bikes/
 COPY packages/chrome/package.json packages/chrome/
 COPY packages/components/package.json packages/components/
 COPY packages/depots/package.json packages/depots/

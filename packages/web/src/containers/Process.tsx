@@ -501,21 +501,35 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
       )
       .concat(
         [
-          "hale-magazyny/wynajem/mazowieckie",
-          // "hale-magazyny/wynajem/stare-babice",
-          // "hale-magazyny/wynajem/zielonki-parcela",
+          "hale-magazyny/wynajem/mazowieckie/",
+          // "hale-magazyny/wynajem/stare-babice/",
+          // "hale-magazyny/wynajem/zielonki-parcela/",
           "mieszkania/sprzedaz/warszawa/?search%5Bdistrict_id%5D=373&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_enum_rooms%5D%5B0%5D=one",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=373&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_enum_rooms%5D%5B0%5D=one",
           "mieszkania/sprzedaz/warszawa/?search%5Bdistrict_id%5D=353&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_float_m:from%5D=70&search%5Bfilter_enum_rooms%5D%5B0%5D=three",
           "mieszkania/wynajem/warszawa/?search%5Bdistrict_id%5D=353&search%5Bfilter_enum_builttype%5D%5B0%5D=blok&search%5Bfilter_float_m:from%5D=70&search%5Bfilter_enum_rooms%5D%5B0%5D=three",
         ]
-          .map((cat) => `https://www.olx.pl/nieruchomosci/${cat}/`)
+          .map((cat) => `https://www.olx.pl/nieruchomosci/${cat}`)
           .map((url, i) => ({
             data: {
               url,
             },
             opts: {
               repeat: { cron: `${i} 9,18 * * *` },
+            },
+          })),
+      )
+      .concat(
+        [
+          "rowery/rowery-dzieciece/warszawa/?search%5Bfilter_enum_brand%5D%5B0%5D=scott&search%5Bfilter_enum_wheelsize%5D%5B0%5D=24",
+        ]
+          .map((cat) => `https://www.olx.pl/sport-hobby/${cat}`)
+          .map((url, i) => ({
+            data: {
+              url,
+            },
+            opts: {
+              repeat: { cron: `${i} 11 * * *` },
             },
           })),
       )
@@ -678,8 +692,10 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
           8,
           // 10, 30,
           33, 34, 35, 36, 37, 43, 44, 73, 74, 75, 77, 79, 80, 82, 84, 91, 103,
-          104, 105, 106, 107, 112, 113, 114, 117, 119, 121, 122, 123, 124, 126,
-          127, 128, 129,
+          104,
+          // 105,
+          106, 107, 112, 113, 114, 117, 119, 121, 122, 123, 124, 126, 127, 128,
+          129,
           // 130, 131,
           132,
         ]

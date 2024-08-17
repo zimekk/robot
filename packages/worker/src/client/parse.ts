@@ -88,6 +88,8 @@ export default async (
         return require("@dev/vehicles/api")
           .update(id, data, returnvalue)
           .then(() => []);
+      } else if (type === Type.BIKES) {
+        return require("@dev/bikes/api").update(id, data, returnvalue);
       } else if (type === Type.DEPOT) {
         return require("@dev/depots/api")
           .update(id, data, returnvalue)
@@ -97,9 +99,7 @@ export default async (
       } else if (type === Type.EXPERT) {
         return require("@dev/expert/api").update(id, data, returnvalue);
       } else if (type === Type.FLATS) {
-        return require("@dev/flats/api")
-          .update(id, data, returnvalue)
-          .then(() => []);
+        return require("@dev/flats/api").update(id, data, returnvalue);
       } else if (type === Type.FUNDS) {
         return require("@dev/funds/api")
           .update(id, data, returnvalue)

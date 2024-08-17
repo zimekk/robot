@@ -8,6 +8,7 @@ import { z } from "zod";
 
 export const router = Router()
   .use("/api/data.json", (_req, res) => res.json({ hello: "Hello" }))
+  .use(require("@dev/bikes/api").router())
   .use(require("@dev/depots/api").router())
   .use(require("@dev/euro/api").router())
   .use(require("@dev/expert/api").router())
@@ -47,9 +48,9 @@ export const server = () => {
       .use(router)
       .use(
         express.static(
-          resolve(dirname(require.resolve("@dev/web/package")), "public")
-        )
-      )
+          resolve(dirname(require.resolve("@dev/web/package")), "public"),
+        ),
+      ),
   );
   server.listen({ port }, () => {
     const { port } = server.address() as AddressInfo;

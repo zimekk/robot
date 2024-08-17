@@ -16,6 +16,7 @@ import OtomotoOfferTransform from "./otomoto/offer"; // Schema as OtomotoOfferSc
 export const Type = {
   AUTOS: "AUTOS",
   AUTOS_ITEM: "AUTOS_ITEM",
+  BIKES: "BIKES",
   DEPOT: "DEPOT",
   DIRECTIONS: "DIRECTIONS",
   EURO: "EURO",
@@ -106,6 +107,7 @@ export const getTypeByUrl = (url: string) =>
   Object.entries({
     [Type.AUTOS]: new RegExp("pl_PL/search"),
     [Type.AUTOS_ITEM]: new RegExp("pl_PL/vehicle/"),
+    [Type.BIKES]: new RegExp("pl/sport-hobby/"),
     [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
     [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
     // [Type.EURO]: new RegExp("com.pl/rest/api/products/search"),
@@ -181,6 +183,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.AUTOS_ITEM),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.BIKES),
     }),
     JsonSchema.extend({
       type: z.literal(Type.DEPOT),
@@ -352,6 +357,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
         }),
       ),
     }),
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.BIKES),
+    returnvalue: require("@dev/bikes/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.DEPOT),
