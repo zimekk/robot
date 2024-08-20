@@ -282,18 +282,20 @@ const JsonSchema = z.object({
     }),
     filteredCounts: z.number().nullable().array().or(z.record(z.number())),
   }),
-  categories: z.object({
-    list: z.record(CategorySchema),
-    counts: z.number().nullable().array().or(z.record(z.number())),
-    promos: z.array(
-      z.object({
-        icon: z.object({ image_url: z.string(), big_image_url: z.string() }),
-        name: z.string(),
-        link: z.object({ url: z.string(), is_external: z.boolean() }),
-      }),
-    ),
-  }),
-  cookies: z.object({}),
+  categories: z
+    .object({
+      list: z.record(CategorySchema),
+      counts: z.number().nullable().array().or(z.record(z.number())),
+      promos: z.array(
+        z.object({
+          icon: z.object({ image_url: z.string(), big_image_url: z.string() }),
+          name: z.string(),
+          link: z.object({ url: z.string(), is_external: z.boolean() }),
+        }),
+      ),
+    })
+    .optional(),
+  cookies: z.object({}).optional(),
 });
 
 export const DataSchema = AdSchema;
