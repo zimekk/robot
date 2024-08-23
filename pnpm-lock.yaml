@@ -1515,7 +1515,7 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^5.2.0
-        version: 5.21.2(@bull-board/ui@5.21.4)
+        version: 5.21.4(@bull-board/ui@5.21.4)
       '@bull-board/express':
         specifier: ^5.2.0
         version: 5.21.4
@@ -2304,11 +2304,6 @@ packages:
 
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
-
-  '@bull-board/api@5.21.2':
-    resolution: {integrity: sha512-L0TugClSJ5+DG6qTSM3TDHy9IPiKponFEzIGqCBR9+nGgp3BGzVsr7RXXcvOoMQ1O4aq7xBeUjnmrcQsjWOx3w==}
-    peerDependencies:
-      '@bull-board/ui': 5.21.2
 
   '@bull-board/api@5.21.4':
     resolution: {integrity: sha512-mPWYIe7ucSKjvJuMGaYhY2A8miirFHtOnvhywxgXZi4342QiqfQCN/ZJiGqCWXN6yIzOQszopePlgemETupoaA==}
@@ -3234,11 +3229,6 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.23.2:
-    resolution: {integrity: sha512-qkqSyistMYdxAcw+CzbZwlBy8AGmS/eEWs+sEV5TnLRGDOL+C5M2EnH6tlZyg0YoAxGJAFKh61En9BR941GnHA==}
-    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
-    hasBin: true
-
   browserslist@4.23.3:
     resolution: {integrity: sha512-btwCFJVjI4YWDNfau8RhZ+B1Q/VLoUITrm3RlP6y1tYGWIOa+InuYiRGXUBXo8nA1qKmHMyLB/iVQg5TT4eFoA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -3297,9 +3287,6 @@ packages:
 
   camelize@1.0.1:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
-
-  caniuse-lite@1.0.30001641:
-    resolution: {integrity: sha512-Phv5thgl67bHYo1TtMY/MurjkHhV4EDaCosezRXgZ8jzA/Ub+wjxAvbGvjoFENStinwi5kCyOYV3mi5tOGykwA==}
 
   caniuse-lite@1.0.30001651:
     resolution: {integrity: sha512-9Cf+Xv1jJNe1xPZLGuUXLNkE1BoDkqRqYyFJ9TDYSqhduqA4hu4oR9HluGoWYQC/aj8WHjsGVV+bwkh0+tegRg==}
@@ -3758,9 +3745,6 @@ packages:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
     engines: {node: '>=0.10.0'}
     hasBin: true
-
-  electron-to-chromium@1.4.827:
-    resolution: {integrity: sha512-VY+J0e4SFcNfQy19MEoMdaIcZLmDCprqvBtkii1WTCTQHpRvf5N8+3kTYCgL/PcntvwQvmMJWTuDPsq+IlhWKQ==}
 
   electron-to-chromium@1.5.13:
     resolution: {integrity: sha512-lbBcvtIJ4J6sS4tb5TLp1b4LyfCdMkwStzXPyAgVgTRAsep4bvrAGaBOP7ZJtQMNJpSQ9SqG4brWOroNaQtm7Q==}
@@ -5245,9 +5229,6 @@ packages:
     peerDependenciesMeta:
       '@types/pg':
         optional: true
-
-  node-releases@2.0.14:
-    resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
 
   node-releases@2.0.18:
     resolution: {integrity: sha512-d9VeXT4SJ7ZeOqGX6R5EM022wpL+eWPooLI+5UpWn2jCT1aosUQEhQP214x33Wkwx3JQMvIm+tIoVOdodFS40g==}
@@ -7597,11 +7578,6 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@5.21.2(@bull-board/ui@5.21.4)':
-    dependencies:
-      '@bull-board/ui': 5.21.4
-      redis-info: 3.1.0
-
   '@bull-board/api@5.21.4(@bull-board/ui@5.21.4)':
     dependencies:
       '@bull-board/ui': 5.21.4
@@ -8833,13 +8809,6 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.23.2:
-    dependencies:
-      caniuse-lite: 1.0.30001641
-      electron-to-chromium: 1.4.827
-      node-releases: 2.0.14
-      update-browserslist-db: 1.1.0(browserslist@4.23.2)
-
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001651
@@ -8904,8 +8873,6 @@ snapshots:
   camelcase@6.3.0: {}
 
   camelize@1.0.1: {}
-
-  caniuse-lite@1.0.30001641: {}
 
   caniuse-lite@1.0.30001651: {}
 
@@ -9357,8 +9324,6 @@ snapshots:
   ejs@3.1.10:
     dependencies:
       jake: 10.9.2
-
-  electron-to-chromium@1.4.827: {}
 
   electron-to-chromium@1.5.13: {}
 
@@ -11113,8 +11078,6 @@ snapshots:
     optionalDependencies:
       '@types/pg': 8.11.6
 
-  node-releases@2.0.14: {}
-
   node-releases@2.0.18: {}
 
   nodemailer@6.9.14: {}
@@ -12454,12 +12417,6 @@ snapshots:
   universalify@2.0.1: {}
 
   unpipe@1.0.0: {}
-
-  update-browserslist-db@1.1.0(browserslist@4.23.2):
-    dependencies:
-      browserslist: 4.23.2
-      escalade: 3.1.2
-      picocolors: 1.0.1
 
   update-browserslist-db@1.1.0(browserslist@4.23.3):
     dependencies:
