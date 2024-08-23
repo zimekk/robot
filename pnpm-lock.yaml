@@ -1515,10 +1515,10 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^5.2.0
-        version: 5.21.2(@bull-board/ui@5.18.0)
+        version: 5.21.2(@bull-board/ui@5.21.4)
       '@bull-board/express':
         specifier: ^5.2.0
-        version: 5.18.0
+        version: 5.21.4
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2305,21 +2305,21 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@5.18.0':
-    resolution: {integrity: sha512-aaTWQEJOoWmw1j7KbbJeyZHxgTlaIp/AEo7GsgOET8slngcUt7YPBJxjH5Qt7EFW5z3BE1hqTEsjE2mFqQ7jdQ==}
-    peerDependencies:
-      '@bull-board/ui': 5.18.0
-
   '@bull-board/api@5.21.2':
     resolution: {integrity: sha512-L0TugClSJ5+DG6qTSM3TDHy9IPiKponFEzIGqCBR9+nGgp3BGzVsr7RXXcvOoMQ1O4aq7xBeUjnmrcQsjWOx3w==}
     peerDependencies:
       '@bull-board/ui': 5.21.2
 
-  '@bull-board/express@5.18.0':
-    resolution: {integrity: sha512-aXZDpvQOurx4kdmVweHb1yrrCaC1ZwaAN6QR3vRBHs3MpnIfAFdiB3neA9q16E6Qfbvq52ylL6qQXNMKs4T3og==}
+  '@bull-board/api@5.21.4':
+    resolution: {integrity: sha512-mPWYIe7ucSKjvJuMGaYhY2A8miirFHtOnvhywxgXZi4342QiqfQCN/ZJiGqCWXN6yIzOQszopePlgemETupoaA==}
+    peerDependencies:
+      '@bull-board/ui': 5.21.4
 
-  '@bull-board/ui@5.18.0':
-    resolution: {integrity: sha512-JY5ZrsKi+Q7zkjIacgaaFPyDvusIFKARKJ+Q4aV+z4ZINAepTp351B7CjrxrZvjITQjl4KFei3L3elzOeT8QmQ==}
+  '@bull-board/express@5.21.4':
+    resolution: {integrity: sha512-naB1h6edTfw698x1W2MKMd8yc49Vu6X+SyJr48FGX2O0x4oeYKZHf2ZfSs6zMVnCMnsycoASiGck085np/9d0w==}
+
+  '@bull-board/ui@5.21.4':
+    resolution: {integrity: sha512-z2otIDhN4EpKRXeBjZZrqbOPtX5pFwkeEs6uGG77/4m6bSjUl+RTRFpzBSVxrwctqxge+S+CNOCmfDiDMGqi8Q==}
 
   '@commitlint/cli@19.4.0':
     resolution: {integrity: sha512-sJX4J9UioVwZHq7JWM9tjT5bgWYaIN3rC4FP7YwfEwBYiIO+wMyRttRvQLNkow0vCdM0D67r9NEWU0Ui03I4Eg==}
@@ -3122,8 +3122,8 @@ packages:
     resolution: {integrity: sha512-x1FCFnFifvYDDzTaLII71vG5uvDwgtmDTEVWAxrgeiR8VjMONcCXJx7E+USjDtHlwFmt9MysbqgF9b9Vjr6w+w==}
     engines: {node: '>=4'}
 
-  async@3.2.5:
-    resolution: {integrity: sha512-baNZyqaaLhyLVKm/DlvdW051MSgO6b8eVfIezl9E5PqWxFgzLm/wQntEW4zOytVburDEr0JlALEpdOFwvErLsg==}
+  async@3.2.6:
+    resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
 
   available-typed-arrays@1.0.7:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
@@ -4708,8 +4708,8 @@ packages:
     resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
 
-  jake@10.9.1:
-    resolution: {integrity: sha512-61btcOHNnLnsOdtLgA5efqQWjnSi/vow5HbI7HMdKKWqvrKR1bLK3BPlJn9gcSaP2ewuamUSMB5XEy76KUIS2w==}
+  jake@10.9.2:
+    resolution: {integrity: sha512-2P4SQ0HrLQ+fw6llpLnOaGAvN2Zu6778SJMrCUwns4fOoG9ayrTiZk3VV8sCPkVZF8ab0zksVpS8FDY5pRCNBA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7597,28 +7597,28 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@5.18.0(@bull-board/ui@5.18.0)':
+  '@bull-board/api@5.21.2(@bull-board/ui@5.21.4)':
     dependencies:
-      '@bull-board/ui': 5.18.0
+      '@bull-board/ui': 5.21.4
       redis-info: 3.1.0
 
-  '@bull-board/api@5.21.2(@bull-board/ui@5.18.0)':
+  '@bull-board/api@5.21.4(@bull-board/ui@5.21.4)':
     dependencies:
-      '@bull-board/ui': 5.18.0
+      '@bull-board/ui': 5.21.4
       redis-info: 3.1.0
 
-  '@bull-board/express@5.18.0':
+  '@bull-board/express@5.21.4':
     dependencies:
-      '@bull-board/api': 5.18.0(@bull-board/ui@5.18.0)
-      '@bull-board/ui': 5.18.0
+      '@bull-board/api': 5.21.4(@bull-board/ui@5.21.4)
+      '@bull-board/ui': 5.21.4
       ejs: 3.1.10
       express: 4.19.2
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@5.18.0':
+  '@bull-board/ui@5.21.4':
     dependencies:
-      '@bull-board/api': 5.18.0(@bull-board/ui@5.18.0)
+      '@bull-board/api': 5.21.4(@bull-board/ui@5.21.4)
 
   '@commitlint/cli@19.4.0(@types/node@22.5.0)(typescript@5.5.4)':
     dependencies:
@@ -8670,7 +8670,7 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
-  async@3.2.5: {}
+  async@3.2.6: {}
 
   available-typed-arrays@1.0.7:
     dependencies:
@@ -9356,7 +9356,7 @@ snapshots:
 
   ejs@3.1.10:
     dependencies:
-      jake: 10.9.1
+      jake: 10.9.2
 
   electron-to-chromium@1.4.827: {}
 
@@ -10442,9 +10442,9 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jake@10.9.1:
+  jake@10.9.2:
     dependencies:
-      async: 3.2.5
+      async: 3.2.6
       chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
