@@ -1146,7 +1146,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.6.1(@types/pg@8.11.6)(pg@8.12.0)
+        version: 7.6.1(@types/pg@8.11.7)(pg@8.12.0)
       pg:
         specifier: ^8.11.0
         version: 8.12.0
@@ -1156,7 +1156,7 @@ importers:
         version: 6.4.15
       '@types/pg':
         specifier: ^8.6.6
-        version: 8.11.6
+        version: 8.11.7
 
   packages/status:
     dependencies:
@@ -2735,11 +2735,14 @@ packages:
   '@types/node@22.5.0':
     resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
 
+  '@types/node@22.5.1':
+    resolution: {integrity: sha512-KkHsxej0j9IW1KKOOAA/XBA0z08UFSrRQHErzEfA3Vgq57eXIMYboIlHJuYIfd+lwCQjtKqUu3UnmKbtUc9yRw==}
+
   '@types/nodemailer@6.4.15':
     resolution: {integrity: sha512-0EBJxawVNjPkng1zm2vopRctuWVCxk34JcIlRuXSf54habUWdz1FB7wHDqOqvDa8Mtpt0Q3LTXQkAs2LNyK5jQ==}
 
-  '@types/pg@8.11.6':
-    resolution: {integrity: sha512-/2WmmBXHLsfRqzfHW7BNZ8SbYzE8OSk7i3WjFYvfgRHj7S1xj+16Je5fUKv3lVdVzk/zn9TXOqf+avFCFIE0yQ==}
+  '@types/pg@8.11.7':
+    resolution: {integrity: sha512-k4VGqp1LQzJP5pSK2TR3bJGr9CnErXeRubUEtJu+l1hFGbUwKyMZEjLAlWpfGkrZAatz0O4jP4YPqDepv8CRbQ==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -8088,7 +8091,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.1
 
   '@types/cors@2.8.17':
     dependencies:
@@ -8180,13 +8183,17 @@ snapshots:
     dependencies:
       undici-types: 6.19.8
 
+  '@types/node@22.5.1':
+    dependencies:
+      undici-types: 6.19.8
+
   '@types/nodemailer@6.4.15':
     dependencies:
       '@types/node': 22.5.0
 
-  '@types/pg@8.11.6':
+  '@types/pg@8.11.7':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.1
       pg-protocol: 1.6.1
       pg-types: 4.0.2
 
@@ -8252,7 +8259,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.1
     optional: true
 
   '@typescript-eslint/eslint-plugin@8.3.0(@typescript-eslint/parser@8.3.0(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.1(jiti@1.21.6))(typescript@5.5.4)':
@@ -11074,12 +11081,12 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.6.1(@types/pg@8.11.6)(pg@8.12.0):
+  node-pg-migrate@7.6.1(@types/pg@8.11.7)(pg@8.12.0):
     dependencies:
       pg: 8.12.0
       yargs: 17.7.2
     optionalDependencies:
-      '@types/pg': 8.11.6
+      '@types/pg': 8.11.7
 
   node-releases@2.0.18: {}
 
