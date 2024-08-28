@@ -1,4 +1,4 @@
-FROM node:18.20.4-alpine
+FROM node:18.20.4-alpine AS base
 
 # https://pptr.dev/troubleshooting#running-on-alpine
 # Installs latest Chromium (100) package.
@@ -29,46 +29,27 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true \
 # USER pptruser
 
 ENV WORKDIR=/app
-RUN npm i -g pnpm
 
+# https://pnpm.io/docker#example-3-build-on-cicd
+# ENV PNPM_HOME="/pnpm"
+# ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+FROM base AS prod
 WORKDIR $WORKDIR
-COPY package.json pnpm-*.yaml ./
-COPY packages/app/package.json packages/app/
-COPY packages/bikes/package.json packages/bikes/
-COPY packages/chrome/package.json packages/chrome/
-COPY packages/components/package.json packages/components/
-COPY packages/depots/package.json packages/depots/
-COPY packages/euro/package.json packages/euro/
-COPY packages/expert/package.json packages/expert/
-COPY packages/flats/package.json packages/flats/
-COPY packages/fuels/package.json packages/fuels/
-COPY packages/funds/package.json packages/funds/
-COPY packages/gratka/package.json packages/gratka/
-COPY packages/moto/package.json packages/moto/
-COPY packages/notify/package.json packages/notify/
-COPY packages/plots/package.json packages/plots/
-COPY packages/prods/package.json packages/prods/
-COPY packages/products/package.json packages/products/
-COPY packages/promo/package.json packages/promo/
-COPY packages/props/package.json packages/props/
-COPY packages/rates/package.json packages/rates/
-COPY packages/roads/package.json packages/roads/
-COPY packages/rossm/package.json packages/rossm/
-COPY packages/rynek/package.json packages/rynek/
-COPY packages/salom/package.json packages/salom/
-COPY packages/schema/package.json packages/schema/
-COPY packages/shots/package.json packages/shots/
-COPY packages/sql/package.json packages/sql/
-COPY packages/status/package.json packages/status/
-COPY packages/stock/package.json packages/stock/
-COPY packages/thule/package.json packages/thule/
-COPY packages/vehicles/package.json packages/vehicles/
-COPY packages/web/package.json packages/web/
-COPY packages/worker/package.json packages/worker/
-COPY packages/worker/bin packages/worker/bin/
-RUN pnpm i --frozen-lockfile
+COPY pnpm-lock.yaml .
+# RUN pnpm fetch --prod
+RUN pnpm fetch
 
-COPY . ./
-RUN pnpm build && pnpm prune --prod --config.ignore-scripts=true
+COPY . .
+RUN pnpm install --offline --config.ignore-scripts=true
+RUN pnpm build
+RUN pnpm prune --prod --config.ignore-scripts=true
+
+FROM base
+WORKDIR $WORKDIR
+# COPY --from=prod /app/node_modules /app/node_modules
+# COPY --from=prod /app/dist /app/dist
+COPY --from=prod $WORKDIR .
 
 CMD ["pnpm", "serve"]
