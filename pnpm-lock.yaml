@@ -1596,7 +1596,7 @@ importers:
         version: link:../vehicles
       bull:
         specifier: ^4.10.4
-        version: 4.16.0
+        version: 4.16.1
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -3250,8 +3250,8 @@ packages:
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
 
-  bull@4.16.0:
-    resolution: {integrity: sha512-dgHRLULPexLkpm9wP/7F7Vlf2fdvmffdwhv3Bqu5lFhO+XDDJ4yGqlTPE61Jj1zM8CgchLmJEgIfe7y69jtuOg==}
+  bull@4.16.1:
+    resolution: {integrity: sha512-uqtXwJRA9+02sIkVkY5T2V/iPoxHhqK1QIFzBFC+w6iBq4r4Dod9pPiSUr5A+sK1F90kiKlCig7YeGDDYG2DbQ==}
     engines: {node: '>=12'}
 
   bundle-name@4.1.0:
@@ -5038,8 +5038,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  luxon@3.4.4:
-    resolution: {integrity: sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==}
+  luxon@3.5.0:
+    resolution: {integrity: sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==}
     engines: {node: '>=12'}
 
   make-dir@4.0.0:
@@ -8836,7 +8836,7 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bull@4.16.0:
+  bull@4.16.1:
     dependencies:
       cron-parser: 4.9.0
       get-port: 5.1.1
@@ -9094,7 +9094,7 @@ snapshots:
 
   cron-parser@4.9.0:
     dependencies:
-      luxon: 3.4.4
+      luxon: 3.5.0
 
   cross-fetch@4.0.0:
     dependencies:
@@ -10926,7 +10926,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  luxon@3.4.4: {}
+  luxon@3.5.0: {}
 
   make-dir@4.0.0:
     dependencies:
