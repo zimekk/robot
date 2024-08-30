@@ -1442,7 +1442,7 @@ importers:
         version: 7.8.1
       styled-components:
         specifier: ^6.0.0
-        version: 6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@18.3.1)
@@ -6089,8 +6089,8 @@ packages:
     peerDependencies:
       webpack: ^5.27.0
 
-  styled-components@6.1.12:
-    resolution: {integrity: sha512-n/O4PzRPhbYI0k1vKKayfti3C/IGcPf+DqcrOB7O/ab9x4u/zjqraneT5N45+sIe87cxrCApXM8Bna7NYxwoTA==}
+  styled-components@6.1.13:
+    resolution: {integrity: sha512-M0+N2xSnAtwcVAQeFEsGWFFxXDftHUD7XrKla06QbpUMmbmtFBMMTcKWvFXtWxuD5qQkB8iU5gk6QASlx2ZRMw==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
@@ -8688,7 +8688,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   camelcase@5.3.1: {}
 
@@ -9119,7 +9119,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   dot-prop@5.3.0:
     dependencies:
@@ -10717,7 +10717,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   lru-cache@10.4.3: {}
 
@@ -10743,7 +10743,7 @@ snapshots:
 
   memfs@4.8.0:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   meow@12.1.1: {}
 
@@ -10853,7 +10853,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   node-fetch@2.7.0:
     dependencies:
@@ -11031,7 +11031,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   parent-module@1.0.1:
     dependencies:
@@ -11051,7 +11051,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   path-exists@4.0.0: {}
 
@@ -11887,7 +11887,7 @@ snapshots:
     dependencies:
       webpack: 5.94.0(webpack-cli@5.1.4)
 
-  styled-components@6.1.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/unitless': 0.8.1
@@ -11920,7 +11920,7 @@ snapshots:
   synckit@0.9.1:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   tapable@2.2.1: {}
 
@@ -12109,7 +12109,7 @@ snapshots:
       fast-glob: 3.3.2
       minimatch: 9.0.5
       normalize-path: 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
       tsutils: 3.21.0(typescript@5.5.4)
       typescript: 5.5.4
 
