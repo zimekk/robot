@@ -2,6 +2,7 @@
   "name": "@dev/sql",
   "version": "1.0.0",
   "license": "MIT",
+  "private": true,
   "publishConfig": {
     "access": "public"
   },

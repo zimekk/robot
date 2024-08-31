@@ -1,0 +1,32 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      # https://docs.github.com/en/actions/guides/building-and-testing-nodejs#installing-dependencies
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.x"
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "9.x"
+          run_install: false
+      - name: Authenticate with private NPM registry
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+      - name: Ensure access
+        run: pnpm whoami --registry https://npm.pkg.github.com/
+      # - name: Config git user
+      #   run: |
+      #     git config --global user.name "${{ github.actor }}"
+      #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Publish packages
+        run: pnpm publish:ci

@@ -2,6 +2,7 @@
   "name": "@dev/chrome",
   "version": "1.0.0",
   "license": "MIT",
+  "private": true,
   "publishConfig": {
     "access": "public"
   },
