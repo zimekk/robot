@@ -48,7 +48,7 @@ export const ProductSchema = z.object({
   }),
   producer: z.object({ id: z.string(), name: z.string() }),
   isEsd: z.boolean(),
-  esdType: z.string(),
+  esdType: z.string().optional(),
   isGiftCard: z.boolean().optional(),
   productLink: z.string(),
   photo: PhotoSchema,
