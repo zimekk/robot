@@ -74,11 +74,11 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm -r run test",
     "update:dedupe": "pnpm dedupe",
     "update:latest": "pnpm -r up -i",
-    "publish:ci": "pnpm -r publish --no-git-checks",
     "prepare": "husky"
   },
   "resolutions": {},
   "devDependencies": {
+    "@changesets/cli": "^2.27.7",
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
     "@typescript-eslint/eslint-plugin": "^8.3.0",

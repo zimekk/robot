@@ -28,5 +28,13 @@ jobs:
       #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Install dependencies
         run: pnpm install
-      - name: Publish packages
-        run: pnpm publish:ci
+      # - name: Publish packages
+      #   run: pnpm publish:ci
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # This expects you to have a script called release which does a build for your packages and calls changeset publish
+          publish: pnpm publish -r
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
