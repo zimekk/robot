@@ -34,7 +34,7 @@ jobs:
         with:
           title: "chore: release"
           commit: "chore: release"
-          version: pnpm changeset-conventional && changeset version
+          version: pnpm changeset version && pnpm changeset tag
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: pnpm publish -r --access public
         env:
