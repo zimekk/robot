@@ -130,7 +130,7 @@ export const CategorySchema = z.object({
   iconName: z.string(),
   level: z.number(),
   displayOrder: z.number(),
-  children: z.array(z.number()),
+  children: z.number().array(),
   path: z.string(),
   type: z.string(),
   isAdding: z.boolean(),
