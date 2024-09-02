@@ -1,4 +1,4 @@
-name: Release
+name: Version or Publish
 on:
   push:
     branches:
@@ -22,10 +22,6 @@ jobs:
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
       - name: Ensure access
         run: pnpm whoami --registry https://npm.pkg.github.com/
-      # - name: Config git user
-      #   run: |
-      #     git config --global user.name "${{ github.actor }}"
-      #     git config --global user.email "${{ github.actor }}@users.noreply.github.com"
       - name: Install dependencies
         run: pnpm install
       - name: Create Release Pull Request or Publish to npm
@@ -34,7 +30,7 @@ jobs:
         with:
           title: "chore: release"
           commit: "chore: release"
-          version: pnpm changeset version && pnpm changeset tag
+          version: pnpm ci:version
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
           publish: pnpm publish -r --access public
         env:

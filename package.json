@@ -72,6 +72,7 @@
     "serve": "pnpm --filter=@dev/app run serve",
     "start": "pnpm --filter=@dev/web run start",
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm -r run test",
+    "ci:version": "changeset-conventional && changeset version && changeset tag",
     "update:dedupe": "pnpm dedupe",
     "update:latest": "pnpm -r up -i",
     "prepare": "husky"
