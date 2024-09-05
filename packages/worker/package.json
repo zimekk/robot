@@ -57,7 +57,7 @@
     "@dev/stock": "workspace:*",
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
-    "bull": "^4.16.1",
+    "bull": "^4.16.2",
     "cross-fetch": "^4.0.0",
     "date-fns": "^3.0.0",
     "dotenv": "^16.0.3",

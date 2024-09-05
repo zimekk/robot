@@ -21,7 +21,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "nodemailer": "^6.9.2",
+    "nodemailer": "^6.9.15",
     "zod": "^3.21.4"
   },
   "devDependencies": {
