@@ -50,7 +50,11 @@ const AdSchema = z
         name: z.string(),
         type: z.string(),
         value: z.string(),
-        normalizedValue: z.string(),
+        normalizedValue: z
+          .string()
+          .array()
+          .transform((list) => list.join("_"))
+          .or(z.string()),
       }),
     ),
     itemCondition: z.string(),
