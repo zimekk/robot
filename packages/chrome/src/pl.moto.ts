@@ -27,13 +27,20 @@ export const scrap = async (page: Page, url: string) =>
       }
     })
     .on("response", async (res: HTTPResponse) => {
-      console.log(res.url());
+      console.log([res.url(), res.status()]);
     })
     .goto(url, {
       waitUntil: "networkidle2",
       // timeout: 60_000,
     })
     .then(async () => {
+      console.log(await page.title());
+
+      let _ = `[...document.querySelectorAll('script')].map(script =>script.id).filter(Boolean)`;
+      // const _ = `JSON.parse(document.querySelector('script#__NEXT_DATA__').textContent.substr(0, 100))`;
+      // const _ = `document.querySelector('script#__NEXT_DATA__').textContent`;
+      console.log(await page.evaluate(_));
+
       // const e = "__NEXT_DATA__";
       const e = `[document.querySelector('script#__NEXT_DATA__')].map(e => JSON.parse(e.textContent))[0]`;
       console.log(["page.evaluate"], e);
