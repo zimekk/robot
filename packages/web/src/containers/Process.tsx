@@ -665,6 +665,7 @@ export default function Process({ getDelayed }: { getDelayed: () => void }) {
         ]
           .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
           .map((url, i) => ({
+            blocked: true,
             data: {
               url,
             },

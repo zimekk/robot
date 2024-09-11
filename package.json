@@ -67,7 +67,7 @@
     "build": "pnpm -r run build",
     "clean": "rm -rf packages/*/public packages/*/lib",
     "coverage": "pnpm -r run coverage",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .json,.js,.jsx,.ts,.tsx",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .js,.jsx,.ts,.tsx",
     "reset": "rm -rf node_modules packages/*/node_modules",
     "serve": "pnpm --filter=@dev/app run serve",
     "start": "pnpm --filter=@dev/web run start",

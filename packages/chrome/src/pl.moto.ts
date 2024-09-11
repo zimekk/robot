@@ -36,7 +36,7 @@ export const scrap = async (page: Page, url: string) =>
     .then(async () => {
       console.log(await page.title());
 
-      let _ = `[...document.querySelectorAll('script')].map(script =>script.id).filter(Boolean)`;
+      const _ = `[...document.querySelectorAll('script')].map(script =>script.id).filter(Boolean)`;
       // const _ = `JSON.parse(document.querySelector('script#__NEXT_DATA__').textContent.substr(0, 100))`;
       // const _ = `document.querySelector('script#__NEXT_DATA__').textContent`;
       console.log(await page.evaluate(_));
