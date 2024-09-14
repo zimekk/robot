@@ -20,64 +20,88 @@ export const PhotoSchema = z.object({
   urlTemplate: z.string().optional(),
 });
 
-export const ProductSchema = z.object({
-  featureSummary: z.string().array().optional(),
-  featureSummaryStructured: z
-    .object({
-      shortName: z.string(),
-      description: z.string().nullable(),
-      valueSeparator: z.string(),
-      valueGroups: z
-        .object({ shortName: z.string(), description: z.string().nullable() })
-        .array(),
-    })
-    .array()
-    .optional(),
-  availabilityStatus: z.enum(["Available", "Unavailable"]).optional(),
-  producerCode: z.string().optional(),
-  freeInstallment: z.boolean().optional(),
-  installmentMinimum: z.number().optional(),
-  alternativeGroupId: z.string().optional(),
-  alternativeProducts: z.unknown().array().optional(),
-  mark: z.string().optional(),
-  oldPrice: z.number().optional(),
-  priceInfo: z.object({
-    price: z.number(),
-    oldPrice: z.number().nullable(),
-    isPriceVisible: z.boolean(),
-  }),
-  producer: z.object({ id: z.string(), name: z.string() }),
-  isEsd: z.boolean(),
-  esdType: z.string().optional(),
-  isGiftCard: z.boolean().optional(),
-  productLink: z.string(),
-  photo: PhotoSchema,
-  rating: z.number().optional(),
-  ratingCount: z.number().optional(),
-  ratingFivePoints: z.number().optional(),
-  commentsCount: z.number().optional(),
-  commentsRatingFivePoints: z.number().optional(),
-  freeShipping: z.boolean().optional(),
-  id: z.string(),
-  name: z.string(),
-  price: z.number(),
-  promotionInfo: z
-    .object({
-      code: z.null(),
-      discountedPrice: z.number(),
-      promotionEndDate: z.string(),
-      customerLimit: z.number(),
-      promotionStartDate: z.string(),
-    })
-    .optional(),
-  category: z.object({
+export const ProductSchema = z
+  .object({
+    featureSummary: z.string().array().optional(),
+    featureSummaryStructured: z
+      .object({
+        shortName: z.string(),
+        description: z.string().nullable(),
+        valueSeparator: z.string(),
+        valueGroups: z
+          .object({ shortName: z.string(), description: z.string().nullable() })
+          .array(),
+      })
+      .array()
+      .optional(),
+    availabilityStatus: z.enum(["Available", "Unavailable"]).optional(),
+    producerCode: z.string().optional(),
+    freeInstallment: z.boolean().optional(),
+    installmentMinimum: z.number().optional(),
+    alternativeGroupId: z.string().optional(),
+    alternativeProducts: z.unknown().array().optional(),
+    mark: z.string().optional(),
+    oldPrice: z.number().optional(),
+    priceInfo: z.object({
+      price: z.number(),
+      oldPrice: z.number().nullable(),
+      isPriceVisible: z.boolean(),
+    }),
+    producer: z.object({ id: z.string(), name: z.string() }),
+    isEsd: z.boolean(),
+    esdType: z.string().optional(),
+    isGiftCard: z.boolean().optional(),
+    productLink: z.string(),
+    photo: PhotoSchema,
+    rating: z.number().optional(),
+    ratingCount: z.number().optional(),
+    ratingFivePoints: z.number().optional(),
+    commentsCount: z.number().optional(),
+    commentsRatingFivePoints: z.number().optional(),
+    freeShipping: z.boolean().optional(),
     id: z.string(),
-    parentGroupId: z.string().optional(),
-  }),
-  questionsAndAnswers: z.boolean().optional(),
-  promotionGainValue: z.unknown().nullable().optional(),
-  isFetching: z.boolean(),
-});
+    name: z.string(),
+    price: z.number(),
+    promotionInfo: z
+      .object({
+        code: z.null(),
+        discountedPrice: z.number(),
+        promotionEndDate: z.string(),
+        customerLimit: z.number(),
+        promotionStartDate: z.string(),
+      })
+      .optional(),
+    category: z.object({
+      id: z.string(),
+      parentGroupId: z.string().optional(),
+    }),
+    questionsAndAnswers: z.boolean().optional(),
+    promotionGainValue: z.unknown().nullable().optional(),
+    isFetching: z.boolean(),
+  })
+  .extend({
+    photos: PhotoSchema.array().optional(),
+    comments: z.unknown().array().optional(),
+    departmentsAvailability: z.unknown().array().optional(),
+    shipmentCosts: z.unknown().array().optional(),
+    productDescription: z.string().optional(),
+    banners: z.unknown().array().optional(),
+    isExtendedConfiguration: z.boolean().optional(),
+    isAvailableInDepartments: z.boolean().optional(),
+    leasingInfo: z.unknown().array().optional(),
+    productMarksExtended: z.unknown().array().optional(),
+    movies: z.unknown().array().optional(),
+    galleryItemsCount: z.number().optional(),
+    hasPromotionPrices: z.boolean().optional(),
+    minPriceInfo: z.unknown().optional(),
+    secondaryCategory: z.unknown().array().optional(),
+    commentStatistics: z.unknown(),
+    features: z.unknown().array().optional(),
+    complementaryProducts: z.unknown().array().optional(),
+    orderIn: z.string().optional(),
+    timeToBuy: z.string().optional(),
+    onlineAvailability: z.unknown(),
+  });
 // .strict();
 
 export const DataSchema = ProductSchema;
@@ -103,9 +127,11 @@ export interface Item {
 
 const JsonSchema = z.object({
   app: z.object({
-    listing: z.object({
-      paginationState: PaginationSchema,
-    }),
+    listing: z
+      .object({
+        paginationState: PaginationSchema,
+      })
+      .optional(),
     products: z.record(ProductSchema.strict()),
   }),
 });

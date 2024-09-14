@@ -60,10 +60,7 @@ export const update = async (
   Schema.transform(
     ({
       json: {
-        app: {
-          listing: { paginationState },
-          products,
-        },
+        app: { listing, products },
       },
     }) =>
       Object.values(products)
@@ -106,8 +103,8 @@ export const update = async (
           Promise.resolve(),
         )
         .then(() => {
-          const nextPage = getNextPage(url, { paginationState });
-          console.log({ paginationState, nextPage });
+          const nextPage = listing && getNextPage(url, listing);
+          console.log({ listing, nextPage });
           return nextPage ? [{ url: nextPage }] : [];
         }),
   ).parseAsync({ json });
