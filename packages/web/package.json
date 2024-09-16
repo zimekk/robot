@@ -46,7 +46,7 @@
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
     "chunk": "^0.0.3",
-    "date-fns": "^3.0.0",
+    "date-fns": "^4.0.0",
     "history": "^5.3.0",
     "milliseconds": "^1.0.3",
     "pretty-bytes": "^6.1.0",
