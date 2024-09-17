@@ -13,17 +13,19 @@ const OfferSchema = z.object({
       addressLocality: z.string(),
       addressRegion: z.string(),
     }),
-    geo: z.object({
-      "@type": z.literal("GeoCoordinates"),
-      latitude: z.number(),
-      longitude: z.number(),
-    }),
+    geo: z
+      .object({
+        "@type": z.literal("GeoCoordinates"),
+        latitude: z.number(),
+        longitude: z.number(),
+      })
+      .optional(),
   }),
   url: z.string(),
   name: z.string().optional(),
   availability: z.string(),
   priceCurrency: z.string(),
-  price: z.number(),
+  price: z.coerce.number(),
 });
 
 const WebPageSchema = z.object({
@@ -36,8 +38,8 @@ const WebPageSchema = z.object({
     "@type": z.literal("AggregateOffer"),
     priceCurrency: z.literal("PLN"),
     offerCount: z.number(),
-    lowPrice: z.number(),
-    highPrice: z.number(),
+    lowPrice: z.coerce.number(),
+    highPrice: z.coerce.number(),
     businessFunction: z.string(),
     offers: OfferSchema.transform(
       ({ itemOffered, name = itemOffered.name, ...rest }) => ({
