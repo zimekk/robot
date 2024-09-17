@@ -1,3 +1,4 @@
+.changeset
 .git
 .github
 .husky
@@ -5,6 +6,7 @@ Dockerfile
 LICENSE
 Makefile
 README.md
+backup
 docker-compose.*
 packages/*/lib
 packages/*/public
