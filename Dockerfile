@@ -31,8 +31,8 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true \
 ENV WORKDIR=/app
 
 # https://pnpm.io/docker#example-3-build-on-cicd
-# ENV PNPM_HOME="/pnpm"
-# ENV PATH="$PNPM_HOME:$PATH"
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 FROM base AS prod
