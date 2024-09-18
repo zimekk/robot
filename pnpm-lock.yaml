@@ -1536,7 +1536,7 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^5.21.4
-        version: 5.21.7(@bull-board/ui@5.21.7)
+        version: 5.22.0(@bull-board/ui@5.21.7)
       '@bull-board/express':
         specifier: ^5.21.4
         version: 5.21.7
@@ -2304,6 +2304,11 @@ packages:
     peerDependencies:
       '@bull-board/ui': 5.21.7
 
+  '@bull-board/api@5.22.0':
+    resolution: {integrity: sha512-ESvmeM7CWxBrkbVrqsleCBDmZBVUPUFtR5GtbvgqOwuB76rTZLDjfEqs8mzi2nOmqZYYh6NuXw/DvrKNoOBs+A==}
+    peerDependencies:
+      '@bull-board/ui': 5.22.0
+
   '@bull-board/express@5.21.7':
     resolution: {integrity: sha512-rH9Zqm5ZgcoeKvIa3rABkCI5E2+9O3Y8fKlqUGXE6wDMzc5GKlmCAQ21rRuXXEs/FpchF5QPW62oIVehAcKTyA==}
 
@@ -2780,6 +2785,9 @@ packages:
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  '@types/estree@1.0.6':
+    resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
   '@types/express-serve-static-core@4.17.43':
     resolution: {integrity: sha512-oaYtiBirUOPQGSWNGPWnzyAFJ0BP3cwvN4oWZQY+zUBwpVIGsKUkpBpSztp74drYcjavs7SKFZ4DX1V2QeN8rg==}
@@ -7731,6 +7739,11 @@ snapshots:
       '@bull-board/ui': 5.21.7
       redis-info: 3.1.0
 
+  '@bull-board/api@5.22.0(@bull-board/ui@5.21.7)':
+    dependencies:
+      '@bull-board/ui': 5.21.7
+      redis-info: 3.1.0
+
   '@bull-board/express@5.21.7':
     dependencies:
       '@bull-board/api': 5.21.7(@bull-board/ui@5.21.7)
@@ -8477,11 +8490,14 @@ snapshots:
 
   '@types/eslint@8.56.10':
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
     optional: true
 
   '@types/estree@1.0.5': {}
+
+  '@types/estree@1.0.6':
+    optional: true
 
   '@types/express-serve-static-core@4.17.43':
     dependencies:
