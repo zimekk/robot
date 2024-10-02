@@ -217,13 +217,13 @@ importers:
     dependencies:
       puppeteer:
         specifier: ^23.3.0
-        version: 23.4.1(typescript@5.6.2)
+        version: 23.5.0(typescript@5.6.2)
       puppeteer-extra:
         specifier: ^3.3.6
-        version: 3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))
+        version: 3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))
       puppeteer-extra-plugin-stealth:
         specifier: ^2.11.2
-        version: 2.11.2(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
+        version: 2.11.2(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
       zod:
         specifier: ^3.21.4
         version: 3.23.8
@@ -3453,8 +3453,8 @@ packages:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
 
-  chromium-bidi@0.6.5:
-    resolution: {integrity: sha512-RuLrmzYrxSb0s9SgpB+QN5jJucPduZQ/9SIe76MDxYJuecPW5mxMdacJ1f4EtgiV+R0p3sCkznTMvH0MPGFqjA==}
+  chromium-bidi@0.8.0:
+    resolution: {integrity: sha512-uJydbGdTw0DEUjhoogGveneJVWX/9YuqkWePzMmkBYwtdAqo5d3J/ovNKFr+/2hWXYmYCr6it8mSSTIj6SS6Ug==}
     peerDependencies:
       devtools-protocol: '*'
 
@@ -5859,8 +5859,8 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  puppeteer-core@23.4.1:
-    resolution: {integrity: sha512-uCxGtn8VE9PlKhdFJX/zZySi9K3Ufr3qUZe28jxJoZUqiMJOi+SFh2zhiFDSjWqZIDkc0FtnaCC+rewW3MYXmg==}
+  puppeteer-core@23.5.0:
+    resolution: {integrity: sha512-+5ed+625GuQ2emRHqYec8khT9LP14FWzv8hYl0HiM6hnnlNzdVU9uDJIPHeCPLIWxq15ost9MeF8kBk4R3eiFw==}
     engines: {node: '>=18'}
 
   puppeteer-extra-plugin-stealth@2.11.2:
@@ -5926,8 +5926,8 @@ packages:
       puppeteer-core:
         optional: true
 
-  puppeteer@23.4.1:
-    resolution: {integrity: sha512-+wWfWTkQ8L9IB/3OVGSUp37c0eQ5za/85KdX+LAq2wTZkMdocgYGMCs+/91e2f/RXIYzve4x/uGxN8zG2sj8+w==}
+  puppeteer@23.5.0:
+    resolution: {integrity: sha512-jnUx5M0YtFva7vXr39qqsxgB46JiwXJavuM1Hgsqbd9WWiGTEUt9klGpTxyHi+ZQf3NUgleDhNsnI10IK8Ebsg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -9386,7 +9386,7 @@ snapshots:
 
   chrome-trace-event@1.0.4: {}
 
-  chromium-bidi@0.6.5(devtools-protocol@0.0.1342118):
+  chromium-bidi@0.8.0(devtools-protocol@0.0.1342118):
     dependencies:
       devtools-protocol: 0.0.1342118
       mitt: 3.0.1
@@ -12029,10 +12029,10 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  puppeteer-core@23.4.1:
+  puppeteer-core@23.5.0:
     dependencies:
       '@puppeteer/browsers': 2.4.0
-      chromium-bidi: 0.6.5(devtools-protocol@0.0.1342118)
+      chromium-bidi: 0.8.0(devtools-protocol@0.0.1342118)
       debug: 4.3.7
       devtools-protocol: 0.0.1342118
       typed-query-selector: 2.12.0
@@ -12042,66 +12042,66 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  puppeteer-extra-plugin-stealth@2.11.2(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))):
+  puppeteer-extra-plugin-stealth@2.11.2(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))):
     dependencies:
       debug: 4.3.7
-      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
-      puppeteer-extra-plugin-user-preferences: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
+      puppeteer-extra-plugin-user-preferences: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
     optionalDependencies:
-      puppeteer-extra: 3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))
+      puppeteer-extra: 3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))
     transitivePeerDependencies:
       - supports-color
 
-  puppeteer-extra-plugin-user-data-dir@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))):
+  puppeteer-extra-plugin-user-data-dir@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))):
     dependencies:
       debug: 4.3.7
       fs-extra: 10.1.0
-      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
       rimraf: 3.0.2
     optionalDependencies:
-      puppeteer-extra: 3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))
+      puppeteer-extra: 3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))
     transitivePeerDependencies:
       - supports-color
 
-  puppeteer-extra-plugin-user-preferences@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))):
+  puppeteer-extra-plugin-user-preferences@2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))):
     dependencies:
       debug: 4.3.7
       deepmerge: 4.3.1
-      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
-      puppeteer-extra-plugin-user-data-dir: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)))
+      puppeteer-extra-plugin: 3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
+      puppeteer-extra-plugin-user-data-dir: 2.4.1(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)))
     optionalDependencies:
-      puppeteer-extra: 3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))
+      puppeteer-extra: 3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))
     transitivePeerDependencies:
       - supports-color
 
-  puppeteer-extra-plugin@3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))):
+  puppeteer-extra-plugin@3.2.3(puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))):
     dependencies:
       '@types/debug': 4.1.12
       debug: 4.3.7
       merge-deep: 3.0.3
     optionalDependencies:
-      puppeteer-extra: 3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2))
+      puppeteer-extra: 3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2))
     transitivePeerDependencies:
       - supports-color
 
-  puppeteer-extra@3.3.6(puppeteer-core@23.4.1)(puppeteer@23.4.1(typescript@5.6.2)):
+  puppeteer-extra@3.3.6(puppeteer-core@23.5.0)(puppeteer@23.5.0(typescript@5.6.2)):
     dependencies:
       '@types/debug': 4.1.12
       debug: 4.3.7
       deepmerge: 4.3.1
     optionalDependencies:
-      puppeteer: 23.4.1(typescript@5.6.2)
-      puppeteer-core: 23.4.1
+      puppeteer: 23.5.0(typescript@5.6.2)
+      puppeteer-core: 23.5.0
     transitivePeerDependencies:
       - supports-color
 
-  puppeteer@23.4.1(typescript@5.6.2):
+  puppeteer@23.5.0(typescript@5.6.2):
     dependencies:
       '@puppeteer/browsers': 2.4.0
-      chromium-bidi: 0.6.5(devtools-protocol@0.0.1342118)
+      chromium-bidi: 0.8.0(devtools-protocol@0.0.1342118)
       cosmiconfig: 9.0.0(typescript@5.6.2)
       devtools-protocol: 0.0.1342118
-      puppeteer-core: 23.4.1
+      puppeteer-core: 23.5.0
       typed-query-selector: 2.12.0
     transitivePeerDependencies:
       - bufferutil
