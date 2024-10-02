@@ -55,6 +55,7 @@ const Advert = z
           "make",
           "mileage",
           "model",
+          "show_pir",
           "version",
           "year",
         ]),
