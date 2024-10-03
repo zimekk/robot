@@ -26,7 +26,7 @@
     "jsondiffpatch": "^0.6.0"
   },
   "devDependencies": {
-    "@types/node": "^18.19.47",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "@types/styled-components": "^5.1.26"
