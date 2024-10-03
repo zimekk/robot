@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@bull-board/api": "^6.0.0",
-    "@bull-board/express": "^5.21.4",
+    "@bull-board/express": "^6.0.0",
     "@dev/bikes": "workspace:*",
     "@dev/chrome": "workspace:*",
     "@dev/depots": "workspace:*",
