@@ -1167,7 +1167,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.7.0(@types/pg@8.11.10)(pg@8.13.0)
+        version: 7.7.1(@types/pg@8.11.10)(pg@8.13.0)
       pg:
         specifier: ^8.12.0
         version: 8.13.0
@@ -5514,8 +5514,8 @@ packages:
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
 
-  node-pg-migrate@7.7.0:
-    resolution: {integrity: sha512-TUkdiy1YIofPKX5/kOBdKrmOcABngOJvnN/NWlWq2as86uU5v1kmL5zfqmjeuTAClZk7Rn4EXA2V06b4zcrk7w==}
+  node-pg-migrate@7.7.1:
+    resolution: {integrity: sha512-wi+zKn+sBWqFUKnViPxHbnriZpGmUJQDhfN06URffYVPBIqS9quuqIfb8wbahiiJIPYWlOluJ18wsWPMYGM7Cg==}
     engines: {node: '>=18.19.0'}
     hasBin: true
     peerDependencies:
@@ -5668,8 +5668,8 @@ packages:
     resolution: {integrity: sha512-5NPgf87AT2STgwa2ntRMr45jTKrYBGkVU36yT0ig/n/GMAa3oPqhZfIQ2kMEimReg0+t9kZViDVZ83qfVUlckg==}
     engines: {node: '>= 14'}
 
-  package-json-from-dist@1.0.0:
-    resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
+  package-json-from-dist@1.0.1:
+    resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
   package-manager-detector@0.2.0:
     resolution: {integrity: sha512-E385OSk9qDcXhcM9LNSe4sdhx8a9mAPrZ4sMLW+tmxl5ZuGtPUcdFu+MPP2jbgiWAZ6Pfe5soGFMd+0Db5Vrog==}
@@ -10704,7 +10704,7 @@ snapshots:
       jackspeak: 4.0.2
       minimatch: 10.0.1
       minipass: 7.1.2
-      package-json-from-dist: 1.0.0
+      package-json-from-dist: 1.0.1
       path-scurry: 2.0.0
 
   glob@7.2.3:
@@ -11852,7 +11852,7 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.7.0(@types/pg@8.11.10)(pg@8.13.0):
+  node-pg-migrate@7.7.1(@types/pg@8.11.10)(pg@8.13.0):
     dependencies:
       glob: 11.0.0
       pg: 8.13.0
@@ -12016,7 +12016,7 @@ snapshots:
       degenerator: 5.0.1
       netmask: 2.0.2
 
-  package-json-from-dist@1.0.0: {}
+  package-json-from-dist@1.0.1: {}
 
   package-manager-detector@0.2.0: {}
 
