@@ -35,13 +35,18 @@ export const router = () =>
         .then(({ type, blob }) => res.type(type).end(blob))
         .catch(next),
     )
-    .get("/rossm", (req, res, next) =>
+    .get("/rossm/:item?", (req, res, next) =>
       PagerSchema.parseAsync(req.query)
         .then(({ start, limit }) =>
-          query(
-            "SELECT * FROM rossm ORDER BY created DESC LIMIT $1 OFFSET $2",
-            [limit, start],
-          ),
+          req.params.item
+            ? query(
+                "SELECT * FROM rossm WHERE item=$3 ORDER BY created DESC LIMIT $1 OFFSET $2",
+                [limit, start, req.params.item],
+              )
+            : query(
+                "SELECT * FROM rossm ORDER BY created DESC LIMIT $1 OFFSET $2",
+                [limit, start],
+              ),
         )
         .then((data) => data.rows)
         .then((result) => res.json({ result }))
