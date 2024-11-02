@@ -23,6 +23,7 @@
   "dependencies": {
     "@dev/bikes": "workspace:*",
     "@dev/depots": "workspace:*",
+    "@dev/dyson": "workspace:*",
     "@dev/euro": "workspace:*",
     "@dev/expert": "workspace:*",
     "@dev/flats": "workspace:*",

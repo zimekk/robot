@@ -19,6 +19,7 @@ export const Type = {
   BIKES: "BIKES",
   DEPOT: "DEPOT",
   DIRECTIONS: "DIRECTIONS",
+  DYSON: "DYSON",
   EURO: "EURO",
   EXPERT: "EXPERT",
   FLATS: "FLATS",
@@ -110,6 +111,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.BIKES]: new RegExp("pl/sport-hobby/"),
     [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
     [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
+    [Type.DYSON]: new RegExp("pl/produkty/pielegnacja-podlog"),
     // [Type.EURO]: new RegExp("com.pl/rest/api/products/search"),
     [Type.EURO]: new RegExp("euro.com.pl/"),
     [Type.EXPERT]: new RegExp("expert.pl/"),
@@ -192,6 +194,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.DIRECTIONS),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.DYSON),
     }),
     JsonSchema.extend({
       type: z.literal(Type.EURO),
@@ -369,6 +374,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.DIRECTIONS),
     returnvalue: DirectionsReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.DYSON),
+    returnvalue: require("@dev/dyson/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.EURO),

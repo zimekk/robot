@@ -8,6 +8,7 @@ const PAGES = Object.freeze({
   hello: lazy(() => import("./Hello")),
   bikes: lazy(() => import("@dev/bikes")),
   depots: lazy(() => import("@dev/depots")),
+  dyson: lazy(() => import("@dev/dyson")),
   euro: lazy(() => import("@dev/euro")),
   expert: lazy(() => import("@dev/expert")),
   flats: lazy(() => import("@dev/flats")),

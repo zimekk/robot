@@ -94,6 +94,8 @@ export default async (
         return require("@dev/depots/api")
           .update(id, data, returnvalue)
           .then(() => []);
+      } else if (type === Type.DYSON) {
+        return require("@dev/dyson/api").update(id, data, returnvalue);
       } else if (type === Type.EURO) {
         return require("@dev/euro/api").update(id, data, returnvalue);
       } else if (type === Type.EXPERT) {
