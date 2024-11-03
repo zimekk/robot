@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const Result = z.object({
   productSKU: z.string(),
-  bvProductSku: z.string(),
+  bvProductSku: z.string().optional(),
   productName: z.string(),
   stockStatus: z.string(),
   productId: z.string(),
@@ -10,9 +10,9 @@ const Result = z.object({
   saleprice: z.string(),
   primaryImageUrl: z.string(),
   badge: z.object({ theme: z.string(), text: z.string() }),
-  review: z.object({ number: z.number(), stars: z.coerce.string() }),
+  review: z.object({ number: z.coerce.number(), stars: z.coerce.number() }),
   promotionalPriceCopy: z.string().optional(),
-  parents: z.array(z.string()),
+  parents: z.string().array().optional(),
 });
 
 export const JsonSchema = z.object({

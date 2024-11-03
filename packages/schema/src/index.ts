@@ -111,7 +111,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.BIKES]: new RegExp("pl/sport-hobby/"),
     [Type.DEPOT]: new RegExp("pl/nieruchomosci/hale-magazyny/"),
     [Type.DIRECTIONS]: new RegExp("com/maps/dir/"),
-    [Type.DYSON]: new RegExp("pl/produkty/pielegnacja-podlog"),
+    [Type.DYSON]: new RegExp("yson.pl/produkty/"),
     // [Type.EURO]: new RegExp("com.pl/rest/api/products/search"),
     [Type.EURO]: new RegExp("euro.com.pl/"),
     [Type.EXPERT]: new RegExp("expert.pl/"),
