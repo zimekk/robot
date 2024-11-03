@@ -287,19 +287,21 @@ const JsonSchema = z.object({
     })
     .optional(),
   marketplace: z.object({ regions: z.array(z.unknown()) }),
-  metaData: z.object({
-    title: z.string(),
-    description: z.string(),
-    canonical: z.string(),
-    next: z.string(),
-    robots: z.string(),
-    ogDescription: z.string(),
-    ogTitle: z.string(),
-    ogType: z.string(),
-    ogUrl: z.string(),
-    dimensionRegion: z.string(),
-    lang: z.string(),
-  }),
+  metaData: z
+    .object({
+      title: z.string(),
+      description: z.string(),
+      canonical: z.string(),
+      next: z.string(),
+      robots: z.string(),
+      ogDescription: z.string(),
+      ogTitle: z.string(),
+      ogType: z.string(),
+      ogUrl: z.string(),
+      dimensionRegion: z.string(),
+      lang: z.string(),
+    })
+    .partial(),
   newsletter: z.object({
     unsubscribe: z.object({
       email: z.null(),
