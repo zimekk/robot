@@ -23,7 +23,7 @@ export function Fieldset({
 
   const handleExpand = useCallback<MouseEventHandler>(
     (e) => (e.preventDefault(), setExpanded((expanded) => !expanded)),
-    []
+    [],
   );
   return (
     <StyledFieldset>

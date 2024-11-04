@@ -5,7 +5,7 @@ import { hot } from "react-hot-loader/root";
 const Spinner = () => <span>Loading...</span>;
 
 const PAGES = Object.freeze({
-  hello: lazy(() => import("./Hello")),
+  scrap: lazy(() => import("@dev/scrap")),
   bikes: lazy(() => import("@dev/bikes")),
   depots: lazy(() => import("@dev/depots")),
   dyson: lazy(() => import("@dev/dyson")),

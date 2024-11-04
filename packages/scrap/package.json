@@ -1,0 +1,38 @@
+{
+  "name": "@dev/scrap",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@dev/schema": "workspace:*",
+    "chunk": "^0.0.3",
+    "date-fns": "^4.0.0",
+    "milliseconds": "^1.0.3",
+    "pretty-bytes": "^6.1.0",
+    "react": "^18.3.1",
+    "rxjs": "^7.8.1",
+    "styled-components": "^6.0.0",
+    "use-asset": "^1.0.4",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/milliseconds": "^1.0.0",
+    "@types/react": "^18.3.4",
+    "@types/styled-components": "^5.1.26"
+  }
+}

@@ -53,9 +53,9 @@ export default function Entries() {
       setSelected((selected) =>
         !target.checked
           ? selected.filter((n) => n !== target.value)
-          : selected.concat(target.value)
+          : selected.concat(target.value),
       ),
-    []
+    [],
   );
 
   const filters$ = useMemo(() => new Subject<typeof filters>(), []);
@@ -67,13 +67,13 @@ export default function Entries() {
           JSON.stringify({
             ...match,
             query: query.toLowerCase().trim(),
-          })
+          }),
         ),
         distinctUntilChanged(),
-        debounceTime(400)
+        debounceTime(400),
       )
       .subscribe((filters) =>
-        setFilters((queries) => ({ ...queries, ...JSON.parse(filters) }))
+        setFilters((queries) => ({ ...queries, ...JSON.parse(filters) })),
       );
     return () => subscription.unsubscribe();
   }, [filters$]);
@@ -88,10 +88,10 @@ export default function Entries() {
       entries.filter(
         (item) =>
           (filters.type === "" || filters.type === item.type) &&
-          (filters.query === "" || item.data.url.includes(filters.query))
+          (filters.query === "" || item.data.url.includes(filters.query)),
       )
     ),
-    [entries, filters]
+    [entries, filters],
   );
 
   console.log(list);
@@ -110,9 +110,9 @@ export default function Entries() {
               Object.assign(grouped, {
                 [group]: (grouped[group] || []).concat(item),
               }))(item[match.groupBy as keyof typeof GROUP_BY]),
-          {}
+          {},
         ),
-    [list, match.groupBy]
+    [list, match.groupBy],
   );
 
   const onSelectGroup = useCallback<MouseEventHandler<HTMLAnchorElement>>(
@@ -120,16 +120,16 @@ export default function Entries() {
       event.preventDefault(),
       ((ids) =>
         setSelected((selected) =>
-          selected.filter((id) => !ids.includes(id)).concat(ids)
+          selected.filter((id) => !ids.includes(id)).concat(ids),
         ))(
         event.target instanceof HTMLAnchorElement &&
           event.target.dataset &&
           event.target.dataset.group
           ? grouped[event.target.dataset.group].map((item) => item.id)
-          : []
+          : [],
       )
     ),
-    [grouped]
+    [grouped],
   );
 
   const fetchEntries = useCallback(
@@ -139,7 +139,7 @@ export default function Entries() {
           (response) => (
             setBytes(Number(response.headers.get("content-length"))),
             response.json()
-          )
+          ),
         )
         .then((list) =>
           pager.data
@@ -154,19 +154,19 @@ export default function Entries() {
                         type: z.string(),
                         error: z.string().default(String(error)),
                       }).parseAsync(item)
-                    )
-                  )
-                )
-              )
+                    ),
+                  ),
+                ),
+              ),
         )
         .then(setEntries)
         .then(() => (setLoading(false), setSelected([]))),
-    []
+    [],
   );
 
   const selectedIds = useMemo(
     () => list.map((item) => item.id).filter((id) => selected.includes(id)),
-    [list, selected]
+    [list, selected],
   );
 
   const scrollTarget = useRef<HTMLFieldSetElement>(null);
@@ -186,7 +186,7 @@ export default function Entries() {
                   start: 0,
                   limit: Number(target.value),
                 })),
-              []
+              [],
             )}
           >
             {[1, 5, 10, 25, 50, 100, 250, 500, 1000].map((value) => (
@@ -206,7 +206,7 @@ export default function Entries() {
                   ...pager,
                   start: pager.start - pager.limit,
                 })),
-              []
+              [],
             )}
           >
             &lsaquo;
@@ -219,7 +219,7 @@ export default function Entries() {
                   ...pager,
                   start: Number(target.value),
                 })),
-              []
+              [],
             )}
           >
             {[...Array(PAGES + 1)]
@@ -239,7 +239,7 @@ export default function Entries() {
                   ...pager,
                   start: pager.start + pager.limit,
                 })),
-              []
+              [],
             )}
           >
             &rsaquo;
@@ -258,7 +258,7 @@ export default function Entries() {
                   ...pager,
                   data: target.checked,
                 })),
-              []
+              [],
             )}
           />
           <span>data</span>
@@ -273,7 +273,7 @@ export default function Entries() {
                   ...pager,
                   returnvalue: target.checked,
                 })),
-              []
+              [],
             )}
           />
           <span>returnvalue</span>
@@ -286,7 +286,7 @@ export default function Entries() {
                 ...pager,
                 start: 0,
                 limit: 5,
-              })
+              }),
             )
           }
         >
@@ -300,7 +300,7 @@ export default function Entries() {
                 ...pager,
                 start: 0,
                 limit: 10,
-              })
+              }),
             )
           }
         >
@@ -314,7 +314,7 @@ export default function Entries() {
                 ...pager,
                 start: 0,
                 limit: 100,
-              })
+              }),
             )
           }
         >
@@ -328,7 +328,7 @@ export default function Entries() {
                 ...pager,
                 start: 3000,
                 limit: 100,
-              })
+              }),
             )
           }
         >
@@ -342,7 +342,7 @@ export default function Entries() {
                 ...pager,
                 start: 5000,
                 limit: 100,
-              })
+              }),
             )
           }
         >
@@ -361,7 +361,7 @@ export default function Entries() {
                   ...match,
                   groupBy: target.value,
                 })),
-              []
+              [],
             )}
           >
             {Object.entries(GROUP_BY).map(([value, label]) => (
@@ -381,7 +381,7 @@ export default function Entries() {
                   ...match,
                   type: target.value,
                 })),
-              []
+              [],
             )}
           >
             {options.type.map((value) => (
@@ -402,7 +402,7 @@ export default function Entries() {
                   ...match,
                   query: target.value,
                 })),
-              []
+              [],
             )}
           />
         </label>
@@ -420,9 +420,9 @@ export default function Entries() {
                   setSelected((selected) =>
                     selected
                       .filter((id) => !listIds.includes(id))
-                      .concat(target.checked ? listIds : [])
+                      .concat(target.checked ? listIds : []),
                   ))(list.map((item) => item.id)),
-              [list]
+              [list],
             )}
           />
         </label>
@@ -435,11 +435,11 @@ export default function Entries() {
                 .then((response) => response.json())
                 .then(() =>
                   setEntries((entries) =>
-                    entries.filter(({ id }) => !selected.includes(id))
-                  )
+                    entries.filter(({ id }) => !selected.includes(id)),
+                  ),
                 )
                 .then(() => setSelected([])),
-            [selected]
+            [selected],
           )}
         >
           delete
@@ -497,7 +497,7 @@ export default function Entries() {
                             })
                             .parse(item),
                       null,
-                      2
+                      2,
                     )}
                   </pre>
                   {error && selected.includes(item.id) && <pre>{error}</pre>}
@@ -511,20 +511,22 @@ export default function Entries() {
         <div>
           <button
             disabled={loading}
-            onClick={() => (
-              // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=code-frontend#parameters
-              scrollTarget.current?.scrollIntoView({
-                behavior: "auto",
-                block: "start",
-                inline: "nearest",
-              }),
-              setPager((pager) =>
-                ((pager) => (fetchEntries(pager), pager))({
-                  ...pager,
-                  start: pager.start + pager.limit,
-                })
+            onClick={() =>
+              (
+                // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=code-frontend#parameters
+                scrollTarget.current?.scrollIntoView({
+                  behavior: "auto",
+                  block: "start",
+                  inline: "nearest",
+                }),
+                setPager((pager) =>
+                  ((pager) => (fetchEntries(pager), pager))({
+                    ...pager,
+                    start: pager.start + pager.limit,
+                  }),
+                )
               )
-            )}
+            }
           >
             next &rsaquo;
           </button>
