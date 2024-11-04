@@ -42,6 +42,7 @@
     "@dev/shots": "workspace:*",
     "@dev/status": "workspace:*",
     "@dev/stock": "workspace:*",
+    "@dev/taurus": "workspace:*",
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
     "node-html-parser": "^6.1.5",

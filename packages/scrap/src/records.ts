@@ -1001,6 +1001,23 @@ export const records = [
       })),
   )
   .concat(
+    [
+      "bagazniki-i-uchwyty/bagazniki-rowerowe/bagazniki-rowerowe-na-dach?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6343",
+      "bagazniki-i-uchwyty/bagazniki-rowerowe/bagazniki-rowerowe-na-hak?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6344",
+      "bagazniki-i-uchwyty/boxy-i-kosze/boxy-dachowe?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6348",
+      "dopasuj-bagaznik/szukaj?trunk%5Bsalons%5D%5B0%5D=&trunk%5BsetBrand%5D%5B0%5D=6721&trunk%5BpriceMin%5D=&trunk%5BpriceMax%5D=&trunk%5Bbrand%5D=AUDI&trunk%5Byear%5D=2023&trunk%5Bmodel%5D=A6+Avant+%28C8%29&trunk%5Bversion%5D=5+drzwi+kombi+-+reling+zintegrowany&trunk%5Bsort%5D=price_asc",
+    ]
+      .map((path) => `https://www.taurus.info.pl/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: { cron: `${i + 1} 8 * * *` },
+        },
+      })),
+  )
+  .concat(
     chunk(
       [
         // "592143",

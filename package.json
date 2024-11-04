@@ -65,6 +65,7 @@
   "packageManager": "pnpm@9.12.3",
   "scripts": {
     "build": "pnpm -r run build",
+    "chrome": "pnpm --filter=@dev/worker run chrome",
     "clean": "rm -rf packages/*/public packages/*/lib",
     "coverage": "pnpm -r run coverage",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext .js,.jsx,.ts,.tsx",

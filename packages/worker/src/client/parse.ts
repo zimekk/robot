@@ -263,6 +263,8 @@ export default async (
           .then(() => []);
       } else if (type === Type.STOCK) {
         return require("@dev/stock/api").update(id, data, returnvalue);
+      } else if (type === Type.TAURUS) {
+        return require("@dev/taurus/api").update(id, data, returnvalue);
       } else if (type === Type.THULE) {
         return require("@dev/thule/api")
           .update(id, data, returnvalue)

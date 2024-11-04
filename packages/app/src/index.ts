@@ -31,6 +31,7 @@ export const router = Router()
   .use(require("@dev/shots/api").router())
   .use(require("@dev/status/api").router())
   .use(require("@dev/stock/api").router())
+  .use(require("@dev/taurus/api").router())
   .use(require("@dev/thule/api").router())
   .use(require("@dev/vehicles/api").router())
   .use(require("@dev/worker").router());

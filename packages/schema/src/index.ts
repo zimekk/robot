@@ -50,6 +50,7 @@ export const Type = {
   STOCK: "STOCK",
   ROSSM: "ROSSM",
   THULE: "THULE",
+  TAURUS: "TAURUS",
   UNKNOWN: "UNKNOWN",
 } as const;
 
@@ -142,6 +143,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.STATUS]: new RegExp(/^\/status/),
     [Type.STOCK]: new RegExp("bmw.cloud/similarity"),
     [Type.ROSSM]: new RegExp("smann.pl/szukaj"),
+    [Type.TAURUS]: new RegExp("taurus.info.pl/"),
     [Type.THULE]: new RegExp("thule.com/pl-pl/"),
     [Type.UNKNOWN]: new RegExp(""),
   })
@@ -334,6 +336,9 @@ export const EntrySchema = z.preprocess(
       }),
     }),
     JsonSchema.extend({
+      type: z.literal(Type.TAURUS),
+    }),
+    JsonSchema.extend({
       type: z.literal(Type.THULE),
     }),
     JsonSchema.extend({
@@ -523,6 +528,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.STOCK),
     returnvalue: require("@dev/stock/schema").Schema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.TAURUS),
+    returnvalue: require("@dev/taurus/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.THULE),

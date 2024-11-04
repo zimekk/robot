@@ -28,6 +28,7 @@ const PAGES = Object.freeze({
   salom: lazy(() => import("@dev/salom")),
   shots: lazy(() => import("@dev/shots")),
   stock: lazy(() => import("@dev/stock")),
+  taurus: lazy(() => import("@dev/taurus")),
   thule: lazy(() => import("@dev/thule")),
   vehicles: lazy(() => import("@dev/vehicles")),
   status: lazy(() => import("@dev/status")),
