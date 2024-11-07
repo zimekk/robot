@@ -29,7 +29,7 @@ export const post = (path: string, data?: object, base = API_URL) =>
   });
 
 const TYPE = ["repeatable", "delayed"] as const;
-const DELAY = [5, 10, 15, 30] as const;
+const DELAY = [1, 5, 10, 15, 30] as const;
 
 const scrap = async (item: object, text: string) =>
   (console.info([text], { item }), post("scrap", item, ""))
