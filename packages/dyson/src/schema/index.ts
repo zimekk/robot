@@ -21,13 +21,16 @@ export const JsonSchema = z.object({
 
 export const DataSchema = Result;
 
-export const DiffSchema = DataSchema.pick({
-  productName: true,
-  stockStatus: true,
-  productId: true,
-  fullPrice: true,
-  saleprice: true,
+export const DiffSchema = DataSchema.omit({
+  review: true,
 });
+// .pick({
+//   productName: true,
+//   stockStatus: true,
+//   productId: true,
+//   fullPrice: true,
+//   saleprice: true,
+// });
 
 export interface Item {
   id: number;

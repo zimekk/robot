@@ -1,9 +1,9 @@
 import { Router } from "express";
-// import { notify } from "@dev/notify";
+import { diffString } from "json-diff";
 import { z } from "zod";
 import { query } from "@dev/sql";
 import { PREFIX } from "../constants";
-import { Schema } from "../schema";
+import { DiffSchema, Schema } from "../schema";
 
 const PagerSchema = z.object({
   start: z.coerce.number().default(0),
@@ -50,10 +50,13 @@ export const update = async (
               [id],
             );
             if (result.rowCount && result.rowCount > 0) {
-              const { id } = result.rows[0];
-              // const diff = diffString(data, item);
-              // console.info({ id, diff });
-              if (id) {
+              const { id, data } = result.rows[0];
+              const diff = diffString(
+                DiffSchema.parse(data),
+                DiffSchema.parse(item),
+              );
+              console.info({ id, diff });
+              if (!diff) {
                 await query(
                   "UPDATE dyson SET checked=CURRENT_TIMESTAMP WHERE id=$1",
                   [id],
