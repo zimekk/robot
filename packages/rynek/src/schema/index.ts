@@ -85,7 +85,7 @@ const Offer = z.object({
   type: z.number(),
   vendor: z.object({
     id: z.number(),
-    configuration: z.object({ application_external_api: z.null() }),
+    configuration: z.object({ application_external_api: z.null() }).optional(),
     logo: z.object({
       v_log_80x60: z.string(),
       v_log_120x90: z.string(),
