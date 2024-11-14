@@ -64,6 +64,7 @@ const Advert = z
         __typename: z.enum(["AdvertParameter"]),
       })
       .array(),
+    sellerUUID: z.string().optional(),
     sellerLink: z.object({
       id: z.string(),
       name: z.string().nullable(),
