@@ -281,6 +281,7 @@ export const records = [
     },
   },
   {
+    blocked: true,
     data: {
       url: "https://www.al.to/promocje",
     },
@@ -299,6 +300,7 @@ export const records = [
     },
   },
   {
+    blocked: true,
     data: {
       url: "https://www.al.to/goracy_strzal",
     },
@@ -331,6 +333,7 @@ export const records = [
       ["X5_G05", "X5M_F95"],
       ["X6_G06", "X6M_F96", "X7_G07"],
     ].map((value, i) => ({
+      blocked: true,
       data: {
         url: `https://rvm-prod.aws.bmw.cloud/similarity-search/v2/search?countries=PL&consumer=stockLocator_PL&maxResults=${
           4 * 6
