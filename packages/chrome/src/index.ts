@@ -73,6 +73,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
     return import("./pl.mann")
       .then(({ scrap }) => scrap(page, url))
       .finally(() => browser.close());
+  } else if (url.match("(al.to|kom.pl)/.+/c/")) {
+    return import("./pl.xkom")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
   }
 
   return await Promise.all([
@@ -146,13 +150,6 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
                     const s = "script#__NEXT_DATA__";
                     console.log(["page.waitForSelector"], s);
                     const e = "__NEXT_DATA__";
-                    console.log(["page.evaluate"], e);
-                    const json = (await page.evaluate(e)) as object;
-                    console.log({ json });
-                    resolve({ url: res.url(), json });
-                  } else if (url.match("(al.to|kom.pl)/.+/c/")) {
-                    console.log(res.url());
-                    const e = "__INITIAL_STATE__";
                     console.log(["page.evaluate"], e);
                     const json = (await page.evaluate(e)) as object;
                     console.log({ json });
