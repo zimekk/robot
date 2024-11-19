@@ -30,6 +30,7 @@
     "@dev/gratka": "workspace:*",
     "@dev/moto": "workspace:*",
     "@dev/plots": "workspace:*",
+    "@dev/polling": "workspace:*",
     "@dev/prods": "workspace:*",
     "@dev/products": "workspace:*",
     "@dev/promo": "workspace:*",
