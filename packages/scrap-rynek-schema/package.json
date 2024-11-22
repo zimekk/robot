@@ -1,0 +1,38 @@
+{
+  "name": "@zimekk/scrap-rynek-schema",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zimekk/robot.git",
+    "directory": "packages/scrap-rynek-schema"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "type-coverage && tsc --noEmit",
+    "prepack": "build",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}

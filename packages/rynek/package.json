@@ -25,6 +25,7 @@
   "dependencies": {
     "@dev/components": "workspace:*",
     "@dev/sql": "workspace:*",
+    "@zimekk/scrap-rynek-schema": "workspace:*",
     "express": "^4.18.2",
     "json-diff": "^1.0.3",
     "use-asset": "^1.0.4",
