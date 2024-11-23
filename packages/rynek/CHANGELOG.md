@@ -1,5 +1,16 @@
 # @dev/rynek
 
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies [24df704]
+- Updated dependencies [24df704]
+- Updated dependencies [24df704]
+- Updated dependencies [24df704]
+- Updated dependencies [24df704]
+  - @zimekk/scrap-rynek-schema@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes
