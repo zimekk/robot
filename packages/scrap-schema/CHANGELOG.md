@@ -1,5 +1,12 @@
 # @zimekk/scrap-schema
 
+## 1.0.3
+
+### Patch Changes
+
+- 167ae1d: chore: release
+- 167ae1d: fix(scrap, scrap-schema): scrap records
+
 ## 1.0.2
 
 ### Patch Changes
