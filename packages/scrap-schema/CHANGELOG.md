@@ -1,5 +1,15 @@
 # @zimekk/scrap-schema
 
+## 1.0.5
+
+### Patch Changes
+
+- 24df704: chore: release
+- 24df704: fix(scrap-rynek-schema, scrap-schema): prepack scripts
+- 24df704: chore: release
+- 24df704: chore: release
+- 24df704: fix(scrap, scrap-schema): scrap records
+
 ## 1.0.4
 
 ### Patch Changes

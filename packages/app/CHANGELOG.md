@@ -1,5 +1,16 @@
 # @dev/app
 
+## 1.0.5
+
+### Patch Changes
+
+- @dev/rynek@1.0.3
+- @dev/bikes@1.0.5
+- @dev/dyson@1.0.5
+- @dev/taurus@1.0.5
+- @dev/web@1.0.5
+- @dev/worker@1.0.5
+
 ## 1.0.4
 
 ### Patch Changes
