@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc",
     "coverage": "type-coverage && tsc --noEmit",
-    "prepack": "build",
+    "prepack": "pnpm build",
     "test": "jest",
     "test:watch": "jest --watch"
   },
