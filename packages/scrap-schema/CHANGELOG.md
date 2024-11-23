@@ -1,5 +1,14 @@
 # @zimekk/scrap-schema
 
+## 1.0.4
+
+### Patch Changes
+
+- 84b4038: chore: release
+- 84b4038: fix(scrap, scrap-schema): scrap records
+- 84b4038: chore: release
+- 84b4038: fix(scrap-rynek-schema, scrap-schema): prepack scripts
+
 ## 1.0.3
 
 ### Patch Changes
