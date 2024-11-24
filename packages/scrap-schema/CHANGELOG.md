@@ -1,5 +1,11 @@
 # @zimekk/scrap-schema
 
+## 1.0.7
+
+### Patch Changes
+
+- 8db7709: fix(scrap-schema): export schema
+
 ## 1.0.6
 
 ### Patch Changes

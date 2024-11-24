@@ -1,5 +1,14 @@
 # @dev/app
 
+## 1.0.7
+
+### Patch Changes
+
+- @dev/bikes@1.0.7
+- @dev/dyson@1.0.7
+- @dev/web@1.0.7
+- @dev/worker@1.0.7
+
 ## 1.0.6
 
 ### Patch Changes
