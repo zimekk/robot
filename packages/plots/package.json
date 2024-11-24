@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@dev/sql": "workspace:*",
+    "@zimekk/scrap-schema": "workspace:^",
     "express": "^4.18.2",
     "use-asset": "^1.0.4",
     "zod": "^3.21.4"

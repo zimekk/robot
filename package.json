@@ -73,6 +73,7 @@
     "serve": "pnpm --filter=@dev/app run serve",
     "start": "pnpm --filter=@dev/web run start",
     "test": "NODE_OPTIONS=--experimental-vm-modules pnpm -r run test",
+    "ci:publish": "changeset tag && pnpm publish -r --access public",
     "ci:version": "changeset version",
     "update:dedupe": "pnpm dedupe",
     "update:latest": "pnpm -r up -i",

@@ -28,6 +28,7 @@ export const AdSchema = z.object({
     b2c_ad_page: z.boolean(),
     premium_ad_page: z.boolean(),
   }),
+  externalUrl: z.string().optional(),
   delivery: z.object({
     rock: z.object({
       offer_id: z.null(),

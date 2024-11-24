@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CategorySchema } from "@dev/plots/schema";
+import { CategorySchema } from "@zimekk/scrap-schema";
 
 const AdSchema = z
   .object({

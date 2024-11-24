@@ -449,6 +449,9 @@ importers:
       '@dev/sql':
         specifier: workspace:*
         version: link:../sql
+      '@zimekk/scrap-schema':
+        specifier: workspace:^
+        version: link:../scrap-schema
       express:
         specifier: ^4.18.2
         version: 4.21.1
@@ -665,6 +668,9 @@ importers:
       '@dev/sql':
         specifier: workspace:*
         version: link:../sql
+      '@zimekk/scrap-schema':
+        specifier: workspace:^
+        version: link:../scrap-schema
       express:
         specifier: ^4.18.2
         version: 4.21.1
