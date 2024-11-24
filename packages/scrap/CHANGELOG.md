@@ -1,5 +1,11 @@
 # @dev/scrap
 
+## 1.0.7
+
+### Patch Changes
+
+- @dev/schema@1.0.9
+
 ## 1.0.6
 
 ### Patch Changes

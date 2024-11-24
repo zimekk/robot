@@ -1,5 +1,12 @@
 # @dev/plots
 
+## 1.0.2
+
+### Patch Changes
+
+- Updated dependencies [16c2d5b]
+  - @zimekk/scrap-schema@1.0.9
+
 ## 1.0.1
 
 ### Patch Changes

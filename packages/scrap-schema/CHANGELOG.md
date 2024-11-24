@@ -1,5 +1,11 @@
 # @zimekk/scrap-schema
 
+## 1.0.9
+
+### Patch Changes
+
+- 16c2d5b: fix(scrap-schema): data schema
+
 ## 1.0.8
 
 ### Patch Changes

@@ -1,5 +1,18 @@
 # @dev/app
 
+## 1.0.9
+
+### Patch Changes
+
+- @dev/bikes@1.0.9
+- @dev/dyson@1.0.9
+- @dev/flats@1.0.2
+- @dev/plots@1.0.2
+- @dev/web@1.0.9
+- @dev/worker@1.0.9
+- @dev/depots@1.0.2
+- @dev/stock@1.0.2
+
 ## 1.0.8
 
 ### Patch Changes
