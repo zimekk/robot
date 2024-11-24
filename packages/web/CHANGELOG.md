@@ -1,5 +1,18 @@
 # @dev/web
 
+## 1.0.8
+
+### Patch Changes
+
+- @dev/bikes@1.0.8
+- @dev/dyson@1.0.8
+- @dev/flats@1.0.1
+- @dev/plots@1.0.1
+- @dev/app@1.0.8
+- @dev/depots@1.0.1
+- @dev/stock@1.0.1
+- @dev/scrap@1.0.6
+
 ## 1.0.7
 
 ### Patch Changes

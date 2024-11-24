@@ -1,5 +1,14 @@
 # @dev/dyson
 
+## 1.0.8
+
+### Patch Changes
+
+- Updated dependencies [a09df4f]
+- Updated dependencies [a09df4f]
+- Updated dependencies [a09df4f]
+  - @zimekk/scrap-schema@1.0.8
+
 ## 1.0.7
 
 ### Patch Changes
