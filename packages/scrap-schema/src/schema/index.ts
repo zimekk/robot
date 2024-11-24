@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const AdSchema = z.object({
+export const AdSchema = z.object({
   id: z.number(),
   title: z.string(),
   description: z.string(),
@@ -141,7 +141,7 @@ export const CategorySchema = z.object({
   img: z.string().optional(),
 });
 
-const JsonSchema = z.object({
+export const JsonSchema = z.object({
   listing: z.object({
     listing: z.object({
       pageNumber: z.number(),
