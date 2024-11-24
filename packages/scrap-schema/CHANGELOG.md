@@ -1,5 +1,13 @@
 # @zimekk/scrap-schema
 
+## 1.0.8
+
+### Patch Changes
+
+- a09df4f: fix(scrap-schema): export schema
+- a09df4f: refactor(flats, plots): share schema
+- a09df4f: chore: release
+
 ## 1.0.7
 
 ### Patch Changes

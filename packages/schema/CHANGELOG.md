@@ -1,5 +1,16 @@
 # @dev/schema
 
+## 1.0.8
+
+### Patch Changes
+
+- @dev/bikes@1.0.8
+- @dev/dyson@1.0.8
+- @dev/flats@1.0.1
+- @dev/plots@1.0.1
+- @dev/depots@1.0.1
+- @dev/stock@1.0.1
+
 ## 1.0.7
 
 ### Patch Changes
