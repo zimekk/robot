@@ -1,5 +1,17 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.4
+
+### Patch Changes
+
+- 10d101e: refactor(rynek, scrap-rynek-schema): separate scrap
+- 10d101e: chore: release
+- 10d101e: fix(scrap-rynek-schema, scrap-schema): prepack scripts
+- 10d101e: chore: release
+- 10d101e: chore: release
+- 10d101e: fix(scrap-rynek-schema): clean script and prepack with types
+- 10d101e: docs(scrap-rynek-schema, scrap-schema): add readme
+
 ## 1.0.3
 
 ### Patch Changes

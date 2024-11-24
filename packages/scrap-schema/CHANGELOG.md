@@ -1,5 +1,17 @@
 # @zimekk/scrap-schema
 
+## 1.0.6
+
+### Patch Changes
+
+- 10d101e: chore: release
+- 10d101e: fix(scrap, scrap-schema): scrap records
+- 10d101e: fix(scrap-rynek-schema, scrap-schema): prepack scripts
+- 10d101e: chore: release
+- 10d101e: chore: release
+- 10d101e: chore: release
+- 10d101e: docs(scrap-rynek-schema, scrap-schema): add readme
+
 ## 1.0.5
 
 ### Patch Changes

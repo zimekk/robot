@@ -1,5 +1,18 @@
 # @dev/taurus
 
+## 1.0.6
+
+### Patch Changes
+
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+  - @zimekk/scrap-schema@1.0.6
+
 ## 1.0.5
 
 ### Patch Changes
