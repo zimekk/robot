@@ -1,5 +1,18 @@
 # @dev/rynek
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+- Updated dependencies [10d101e]
+  - @zimekk/scrap-rynek-schema@1.0.4
+
 ## 1.0.3
 
 ### Patch Changes
