@@ -142,6 +142,8 @@ export const CategorySchema = z.object({
   img: z.string().optional(),
 });
 
+export const DataSchema = AdSchema;
+
 export const JsonSchema = z.object({
   listing: z.object({
     listing: z.object({
