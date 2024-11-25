@@ -1006,6 +1006,9 @@ export const records = [
   )
   .concat(
     [
+      "bagazniki-i-uchwyty/bagazniki-rowerowe/akcesoria-do-bagaznikow-rowerowych?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=epos&search%5Bcategory%5D=6346",
+      "bagazniki-i-uchwyty/boxy-i-kosze/akcesoria-do-boxow-i-koszy-bagazowych?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=box&search%5Bcategory%5D=6351",
+      "bagazniki-i-uchwyty/boxy-i-kosze/akcesoria-do-boxow-i-koszy-bagazowych?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=gopack&search%5Bcategory%5D=6351",
       "bagazniki-i-uchwyty/bagazniki-rowerowe/bagazniki-rowerowe-na-dach?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6343",
       "bagazniki-i-uchwyty/bagazniki-rowerowe/bagazniki-rowerowe-na-hak?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6344",
       "bagazniki-i-uchwyty/bagazniki-sportowe-do-przewozenia-sprzetu-zimowego-i-wodnego/bagazniki-do-nart-i-desek-snowboardowych?search%5Bsort%5D=&search%5Bsalons%5D%5B%5D=&search%5BproductBrandField%5D%5B%5D=6721&search%5BpriceMin%5D=&search%5BpriceMax%5D=&search%5Btitle%5D=&search%5Bcategory%5D=6353",
