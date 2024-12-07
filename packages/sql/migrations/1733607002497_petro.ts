@@ -3,7 +3,7 @@ import type { ColumnDefinitions, MigrationBuilder } from "node-pg-migrate";
 export const shorthands: ColumnDefinitions | undefined = undefined;
 
 export async function up(pgm: MigrationBuilder): Promise<void> {
-  pgm.createTable("taurus", {
+  pgm.createTable("petro", {
     id: "id",
     item: { type: "varchar(128)", notNull: true },
     data: { type: "jsonb", notNull: true },
@@ -25,5 +25,5 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 }
 
 export async function down(pgm: MigrationBuilder): Promise<void> {
-  // pgm.dropTable("taurus");
+  // pgm.dropTable("petro");
 }

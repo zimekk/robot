@@ -160,6 +160,8 @@ export default async (
         //     .filter(limiter(jobs, days(7)))
         //     .slice(0, 150)
         // );
+      } else if (type === Type.PETRO) {
+        return require("@dev/petro/api").update(id, data, returnvalue);
       } else if (type === Type.PLOTS) {
         return require("@dev/plots/api").update(id, data, returnvalue);
       } else if (type === Type.PRODUCTS2) {
