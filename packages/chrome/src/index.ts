@@ -69,6 +69,10 @@ export async function chrome(url = "https://zimekk.github.io/robot/") {
     return import("./pl.moto")
       .then(({ scrap }) => scrap(page, url))
       .finally(() => browser.close());
+  } else if (url.match("star.pl/")) {
+    return import("./pl.petrostar")
+      .then(({ scrap }) => scrap(page, url))
+      .finally(() => browser.close());
   } else if (url.match("smann.pl/szukaj\\?")) {
     return import("./pl.mann")
       .then(({ scrap }) => scrap(page, url))

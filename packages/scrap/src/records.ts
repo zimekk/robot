@@ -956,6 +956,27 @@ export const records = [
   )
   .concat(
     [
+      "akcesoria/uszczelki/elring-korek-spustowy-567640,p782501600",
+      "filtry/filtry-oleju/mann-filter/wklady/mann-hu-6013z-filtr-oleju,p659782143",
+      "kosmetyki/pielegnacja-karoserii-i-szyb/cleantech/cleantech-glass-cleaner-plyn-do-szyb",
+      "kosmetyki/pielegnacja-skory/czyszczenie-skory/colourlock-chusteczka-do-czyszczenia-skory,p627294063",
+      "kosmetyki/pielegnacja-skory/renowacja-skory/colourlock-zestaw-do-czyszczenia-i-konserwacji-skorzanej-tapicerki-soft,p576031109",
+      "oleje/oleje-silnikowe/millers-oils/xf/millers-xf-premium-c5-vw-0w20",
+      "plyny/plyny-do-spryskiwaczy/zimowe/shell/shell-zimowy-plyn-do-spryskiwaczy-koncentrat",
+      "plyny/pozostale/woda-demineralizowana-destylowana",
+    ]
+      .map((path) => `https://www.petrostar.pl/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: { cron: `${i + 1} * * * *` },
+        },
+      })),
+  )
+  .concat(
+    [
       "CategoryId=13176&BrandIds=2855", // Szampony do włosów / L'BIOTICA BIOVAX
       "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
       "CategoryId=8324&BrandIds=10531", // Pranie i płukanie / PERWOLL
