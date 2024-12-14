@@ -695,6 +695,11 @@ export const records = [
         "9PN4DRJDLZT7",
         "BQDSKNRCXKKL",
         "9MTK0S8CQ0QV",
+        "9MVK78MGD737",
+        "9NL9Z324KJ0N",
+        "9PLVVTDHS1P0",
+        "9NMCDQ6RCJKH",
+        "9P2VGCTBMM52",
       ],
       5,
     )
@@ -814,6 +819,7 @@ export const records = [
     ]
       .map((path) => `https://www.al.to/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
@@ -978,6 +984,7 @@ export const records = [
   .concat(
     [
       "CategoryId=13176&BrandIds=2855", // Szampony do włosów / L'BIOTICA BIOVAX
+      "CategoryId=19152&BrandIds=4119", // Akcesoria kuchenne / FLINK&SAUBER
       "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
       "CategoryId=8324&BrandIds=10531", // Pranie i płukanie / PERWOLL
       "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
