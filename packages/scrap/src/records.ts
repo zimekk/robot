@@ -695,6 +695,11 @@ export const records = [
         "9PN4DRJDLZT7",
         "BQDSKNRCXKKL",
         "9MTK0S8CQ0QV",
+        "9MVK78MGD737",
+        "9NL9Z324KJ0N",
+        "9PLVVTDHS1P0",
+        "9NMCDQ6RCJKH",
+        "9P2VGCTBMM52",
       ],
       5,
     )
@@ -814,6 +819,7 @@ export const records = [
     ]
       .map((path) => `https://www.al.to/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
@@ -978,6 +984,7 @@ export const records = [
   .concat(
     [
       "CategoryId=13176&BrandIds=2855", // Szampony do włosów / L'BIOTICA BIOVAX
+      "CategoryId=19152&BrandIds=4119", // Akcesoria kuchenne / FLINK&SAUBER
       "CategoryId=8305&BrandIds=6254", // Dzbanki i filtry / RUBIN
       "CategoryId=8324&BrandIds=10531", // Pranie i płukanie / PERWOLL
       "CategoryId=8339&BrandIds=4081", // Środki do zmywarki / FINISH
@@ -1038,6 +1045,7 @@ export const records = [
       // "dopasuj-bagaznik/szukaj?trunk%5Bsalons%5D%5B0%5D=&trunk%5BsetBrand%5D%5B0%5D=6721&trunk%5BpriceMin%5D=&trunk%5BpriceMax%5D=&trunk%5Bbrand%5D=AUDI&trunk%5Byear%5D=2023&trunk%5Bmodel%5D=A6+Avant+%28C8%29&trunk%5Bversion%5D=5+drzwi+kombi+-+reling+zintegrowany&trunk%5Bsort%5D=price_asc",
       "dopasuj-bagaznik/szukaj/zestaw/?trunk%5Bsalons%5D%5B0%5D=&trunk%5BsetBrand%5D%5B0%5D=6721&trunk%5BpriceMin%5D=&trunk%5BpriceMax%5D=&trunk%5Bbrand%5D=AUDI&trunk%5Byear%5D=2023&trunk%5Bmodel%5D=A6+Avant+%28C8%29&trunk%5Bversion%5D=5+drzwi+kombi+-+reling+zintegrowany&trunk%5Bsort%5D=price_asc&singleTrunk%5Bmain%5D=TH%2F721400&singleTrunk%5Bparts%5D%5B0%5D=TH%2F721400&singleTrunk%5Bparts%5D%5B1%5D=TH%2F721400&singleTrunk%5Bparts%5D%5B2%5D=TH%2F186050&singleTrunk%5Bparts%5D%5B3%5D=TH%2F720600",
       "dopasuj-bagaznik/szukaj/zestaw/?trunk%5Bsalons%5D%5B0%5D=&trunk%5BsetBrand%5D%5B0%5D=6721&trunk%5BpriceMin%5D=&trunk%5BpriceMax%5D=&trunk%5Bbrand%5D=AUDI&trunk%5Byear%5D=2023&trunk%5Bmodel%5D=A6+Avant+%28C8%29&trunk%5Bversion%5D=5+drzwi+kombi+-+reling+zintegrowany&trunk%5Bsort%5D=price_asc&singleTrunk%5Bmain%5D=TH%2F721420&singleTrunk%5Bparts%5D%5B0%5D=TH%2F721420&singleTrunk%5Bparts%5D%5B1%5D=TH%2F721420&singleTrunk%5Bparts%5D%5B2%5D=TH%2F186050&singleTrunk%5Bparts%5D%5B3%5D=TH%2F720600",
+      "dopasuj-lancuchy/szukaj?chains%5Bsalons%5D%5B%5D=&chains%5BsetBrand%5D%5B%5D=6676&chains%5BpriceMin%5D=&chains%5BpriceMax%5D=&chains%5BsearchType%5D=&chains%5BcarBrand%5D=Audi&chains%5BcarModel%5D=A6+%282018%29+I+A6+Avant+%282018%29&chains%5BcarTireSize%5D=245%2F45-19&chains%5Bsort%5D=price_asc",
     ]
       .map((path) => `https://www.taurus.info.pl/${path}`)
       .map((url, i) => ({
