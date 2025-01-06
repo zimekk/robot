@@ -1,5 +1,12 @@
 # @dev/rynek
 
+## 1.0.5
+
+### Patch Changes
+
+- Updated dependencies [8760fb2]
+  - @zimekk/scrap-rynek-schema@1.0.5
+
 ## 1.0.4
 
 ### Patch Changes
