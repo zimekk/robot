@@ -581,7 +581,7 @@ const JsonSchema = z.object({
       area: z.object({ lower: z.string(), upper: z.string() }),
       distance: z.string(),
     }),
-    currentTab: z.number(),
+    currentTab: z.number().optional(),
     fetchAllRequest: z.number(),
     regions: z.array(z.unknown()),
     fetchRegionsRequest: z.number(),
