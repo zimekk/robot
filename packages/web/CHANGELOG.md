@@ -1,5 +1,13 @@
 # @dev/web
 
+## 1.0.10
+
+### Patch Changes
+
+- @dev/rynek@1.0.5
+- @dev/app@1.0.10
+- @dev/scrap@1.0.8
+
 ## 1.0.9
 
 ### Patch Changes

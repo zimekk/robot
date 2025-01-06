@@ -1,6 +1,6 @@
 {
   "name": "@dev/web",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "license": "UNLICENSED",
   "private": true,
   "eslintConfig": {

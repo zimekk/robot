@@ -1,5 +1,11 @@
 # @dev/schema
 
+## 1.0.10
+
+### Patch Changes
+
+- @dev/rynek@1.0.5
+
 ## 1.0.9
 
 ### Patch Changes

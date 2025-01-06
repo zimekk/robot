@@ -1,5 +1,11 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.5
+
+### Patch Changes
+
+- 8760fb2: fix(scrap-rynek-schema): schema optional field
+
 ## 1.0.4
 
 ### Patch Changes
