@@ -977,7 +977,9 @@ export const records = [
       "kosmetyki/pielegnacja-skory/czyszczenie-skory/colourlock-chusteczka-do-czyszczenia-skory,p627294063",
       "kosmetyki/pielegnacja-skory/renowacja-skory/colourlock-zestaw-do-czyszczenia-i-konserwacji-skorzanej-tapicerki-soft,p576031109",
       "oleje/oleje-silnikowe/millers-oils/xf/millers-xf-premium-c5-vw-0w20",
+      "plyny/plyny-do-spryskiwaczy/zimowe/orlen/orlen-sylen-plyn-zimowy-do-spryskiwaczy",
       "plyny/plyny-do-spryskiwaczy/zimowe/shell/shell-zimowy-plyn-do-spryskiwaczy-koncentrat",
+      "plyny/plyny-do-spryskiwaczy/zimowe/sonax/sonax-xtreme-zimowy-plyn-do-spryskiwaczy",
       "plyny/pozostale/woda-demineralizowana-destylowana",
     ]
       .map((path) => `https://www.petrostar.pl/${path}`)
