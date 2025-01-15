@@ -1754,7 +1754,7 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^6.0.0
-        version: 6.2.0(@bull-board/ui@6.0.1)
+        version: 6.6.2(@bull-board/ui@6.0.1)
       '@bull-board/express':
         specifier: ^6.0.0
         version: 6.0.1
@@ -2504,10 +2504,10 @@ packages:
     peerDependencies:
       '@bull-board/ui': 6.0.1
 
-  '@bull-board/api@6.2.0':
-    resolution: {integrity: sha512-8u/dWS0YLs7vpjB1u+rSquoE6tWdti0DpUsId5sXijwaD8hg1cufa0/vjksBQpU/7WQ6KJZniQwSPSva30bOVA==}
+  '@bull-board/api@6.6.2':
+    resolution: {integrity: sha512-et9f9EYsQpMcql7ASc5n0d30/ePri0pS3Cyq3QsVSYWiyr8BeibdL+XAWmZmqluLL8YI4UQrirbvKgOoCPzcPA==}
     peerDependencies:
-      '@bull-board/ui': 6.2.0
+      '@bull-board/ui': 6.6.2
 
   '@bull-board/express@6.0.1':
     resolution: {integrity: sha512-+NJYg9kvmxwbNj7nG9Mhr5edSU1U1Rx/KuzMDOjaEanrBigh8AcSH3Dwgu6zQy6T5qRvXyQpzLmUwS21Gzq9Mg==}
@@ -8257,7 +8257,7 @@ snapshots:
       '@bull-board/ui': 6.0.1
       redis-info: 3.1.0
 
-  '@bull-board/api@6.2.0(@bull-board/ui@6.0.1)':
+  '@bull-board/api@6.6.2(@bull-board/ui@6.0.1)':
     dependencies:
       '@bull-board/ui': 6.0.1
       redis-info: 3.1.0
