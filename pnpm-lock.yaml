@@ -170,7 +170,7 @@ importers:
         version: 16.4.5
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       zod:
         specifier: ^3.21.4
         version: 3.23.8
@@ -198,7 +198,7 @@ importers:
         version: link:../scrap-schema
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -282,7 +282,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -325,7 +325,7 @@ importers:
         version: link:../scrap-schema
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -368,7 +368,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -411,7 +411,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -460,7 +460,7 @@ importers:
         version: link:../scrap-schema
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -503,7 +503,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -546,7 +546,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -589,7 +589,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -629,7 +629,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -676,7 +676,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -713,7 +713,7 @@ importers:
         version: link:../scrap-schema
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -753,7 +753,7 @@ importers:
         version: 3.0.2
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
@@ -802,7 +802,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -845,7 +845,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -888,7 +888,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -931,7 +931,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -971,7 +971,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1014,7 +1014,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1060,7 +1060,7 @@ importers:
         version: 4.0.0
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1106,7 +1106,7 @@ importers:
         version: link:../scrap-rynek-schema
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1146,7 +1146,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1329,7 +1329,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1391,7 +1391,7 @@ importers:
         version: 1.11.13
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       nodemailer:
         specifier: ^6.9.15
         version: 6.9.16
@@ -1446,7 +1446,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1486,7 +1486,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1520,7 +1520,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1560,7 +1560,7 @@ importers:
         version: link:../sql
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       json-diff:
         specifier: ^1.0.3
         version: 1.0.6
@@ -1856,7 +1856,7 @@ importers:
         version: 16.4.5
       express:
         specifier: ^4.18.2
-        version: 4.21.1
+        version: 4.21.2
       geolocation-utils:
         specifier: ^1.2.5
         version: 1.2.5
@@ -4475,8 +4475,8 @@ packages:
     resolution: {integrity: sha512-2Zks0hf1VLFYI1kbh0I5jP3KHHyCHpkfyHBzsSXRFgl/Bg9mWYfMW8oD+PdMPlEwy5HNsR9JutYy6pMeOh61nw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  express@4.21.1:
-    resolution: {integrity: sha512-YSFlK1Ee0/GC8QaO91tHcDxJiE/X4FbpAyQWkxAvG6AXCuR65YzK8ua6D9hvi/TzUfZMpc+BwuM1IPw8fmQBiQ==}
+  express@4.21.2:
+    resolution: {integrity: sha512-28HqgMZAmih1Czt9ny7qr6ek2qddF4FclbMzwhCREB6OFfH+rXAnuNCwo1/wFvrtbgsQDb4kSbX9de9lFbrXnA==}
     engines: {node: '>= 0.10.0'}
 
   extendable-error@0.1.7:
@@ -4673,10 +4673,6 @@ packages:
   get-east-asian-width@1.2.0:
     resolution: {integrity: sha512-2nk+7SIVb14QrgXFHcm84tD4bKQz0RxPuMT8Ag5KPOq7J5fEmAg0UbXdTOSHqNuHSU28k55qnceesxXRZGzKWA==}
     engines: {node: '>=18'}
-
-  get-intrinsic@1.2.4:
-    resolution: {integrity: sha512-5uYhsJH8VJBTv7oslg4BznJYhDoRI6waYCxMmCdnTrcCrHA/fCFKoTFz2JKKE0HdDFUF7/oQuhzumXJK7paBRQ==}
-    engines: {node: '>= 0.4'}
 
   get-intrinsic@1.2.7:
     resolution: {integrity: sha512-VW6Pxhsrk0KAOqs3WEd0klDiF/+V7gQOpAvY1jVU/LHmaD/kQO4523aiJuikX/QAKYiW6x8Jh+RJej1almdtCA==}
@@ -6037,8 +6033,8 @@ packages:
     resolution: {integrity: sha512-ypGJsmGtdXUOeM5u93TyeIEfEhM6s+ljAhrk5vAvSx8uyY/02OvrZnA0YNGUrPXfpJMgI1ODd3nwz8Npx4O4cg==}
     engines: {node: 20 || >=22}
 
-  path-to-regexp@0.1.10:
-    resolution: {integrity: sha512-7lf7qcQidTku0Gu3YDPc8DJ1q7OOucfa/BSsIwjuh56VU7katFvuM8hULfkwB3Fns/rsVF7PwPKVw1sl5KQS9w==}
+  path-to-regexp@0.1.12:
+    resolution: {integrity: sha512-RA1GjUVMnvYFxuqovrEqZoxxW5NUZqbwKtYz/Tt7nXerk0LbLblQmrsgdeOxV5SFHf0UDggjS/bSeOZwt1pmEQ==}
 
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
@@ -6683,10 +6679,6 @@ packages:
 
   side-channel-weakmap@1.0.2:
     resolution: {integrity: sha512-WPS/HvHQTYnHisLo9McqBHOJk2FkHO/tlpvldyrnem4aeQp4hai3gythswg6p01oSoTl58rcpiFAjF2br2Ak2A==}
-    engines: {node: '>= 0.4'}
-
-  side-channel@1.0.6:
-    resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
     engines: {node: '>= 0.4'}
 
   side-channel@1.1.0:
@@ -8277,7 +8269,7 @@ snapshots:
       '@bull-board/api': 6.0.1(@bull-board/ui@6.0.1)
       '@bull-board/ui': 6.0.1
       ejs: 3.1.10
-      express: 4.21.1
+      express: 4.21.2
     transitivePeerDependencies:
       - supports-color
 
@@ -8944,7 +8936,7 @@ snapshots:
 
   '@puppeteer/browsers@2.4.1':
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0
       extract-zip: 2.0.1
       progress: 2.0.3
       proxy-agent: 6.4.0
@@ -9425,7 +9417,7 @@ snapshots:
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
@@ -10826,7 +10818,7 @@ snapshots:
       jest-message-util: 29.7.0
       jest-util: 29.7.0
 
-  express@4.21.1:
+  express@4.21.2:
     dependencies:
       accepts: 1.3.8
       array-flatten: 1.1.1
@@ -10847,7 +10839,7 @@ snapshots:
       methods: 1.1.2
       on-finished: 2.4.1
       parseurl: 1.3.3
-      path-to-regexp: 0.1.10
+      path-to-regexp: 0.1.12
       proxy-addr: 2.0.7
       qs: 6.13.0
       range-parser: 1.2.1
@@ -10872,7 +10864,7 @@ snapshots:
 
   extract-zip@2.0.1:
     dependencies:
-      debug: 4.3.7
+      debug: 4.4.0
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -11069,14 +11061,6 @@ snapshots:
 
   get-east-asian-width@1.2.0: {}
 
-  get-intrinsic@1.2.4:
-    dependencies:
-      es-errors: 1.3.0
-      function-bind: 1.1.2
-      has-proto: 1.2.0
-      has-symbols: 1.1.0
-      hasown: 2.0.2
-
   get-intrinsic@1.2.7:
     dependencies:
       call-bind-apply-helpers: 1.0.1
@@ -11123,7 +11107,7 @@ snapshots:
     dependencies:
       basic-ftp: 5.0.5
       data-uri-to-buffer: 6.0.2
-      debug: 4.3.7
+      debug: 4.4.0
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - supports-color
@@ -11311,7 +11295,7 @@ snapshots:
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.7
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
@@ -11338,7 +11322,7 @@ snapshots:
   https-proxy-agent@7.0.5:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.7
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
@@ -12554,7 +12538,7 @@ snapshots:
     dependencies:
       '@tootallnate/quickjs-emscripten': 0.23.0
       agent-base: 7.1.1
-      debug: 4.3.7
+      debug: 4.4.0
       get-uri: 6.0.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
@@ -12614,7 +12598,7 @@ snapshots:
       lru-cache: 11.0.2
       minipass: 7.1.2
 
-  path-to-regexp@0.1.10: {}
+  path-to-regexp@0.1.12: {}
 
   path-type@4.0.0: {}
 
@@ -12801,7 +12785,7 @@ snapshots:
   proxy-agent@6.4.0:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.7
+      debug: 4.4.0
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
       lru-cache: 7.18.3
@@ -12826,7 +12810,7 @@ snapshots:
     dependencies:
       '@puppeteer/browsers': 2.4.1
       chromium-bidi: 0.8.0(devtools-protocol@0.0.1367902)
-      debug: 4.3.7
+      debug: 4.4.0
       devtools-protocol: 0.0.1367902
       typed-query-selector: 2.12.0
       ws: 8.18.0
@@ -12912,7 +12896,7 @@ snapshots:
 
   qs@6.13.0:
     dependencies:
-      side-channel: 1.0.6
+      side-channel: 1.1.0
 
   queue-microtask@1.2.3: {}
 
@@ -13309,13 +13293,6 @@ snapshots:
       object-inspect: 1.13.3
       side-channel-map: 1.0.1
 
-  side-channel@1.0.6:
-    dependencies:
-      call-bind: 1.0.7
-      es-errors: 1.3.0
-      get-intrinsic: 1.2.4
-      object-inspect: 1.13.2
-
   side-channel@1.1.0:
     dependencies:
       es-errors: 1.3.0
@@ -13355,7 +13332,7 @@ snapshots:
   socks-proxy-agent@8.0.4:
     dependencies:
       agent-base: 7.1.1
-      debug: 4.3.7
+      debug: 4.4.0
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
@@ -14008,7 +13985,7 @@ snapshots:
       colorette: 2.0.20
       compression: 1.7.4
       connect-history-api-fallback: 2.0.0
-      express: 4.21.1
+      express: 4.21.2
       graceful-fs: 4.2.11
       html-entities: 2.5.2
       http-proxy-middleware: 2.0.6(@types/express@4.17.21)
