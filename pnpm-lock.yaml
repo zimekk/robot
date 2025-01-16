@@ -1057,7 +1057,7 @@ importers:
         version: link:../sql
       cross-fetch:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.1.0
       express:
         specifier: ^4.18.2
         version: 4.21.2
@@ -1847,7 +1847,7 @@ importers:
         version: 4.16.5
       cross-fetch:
         specifier: ^4.0.0
-        version: 4.0.0
+        version: 4.1.0
       date-fns:
         specifier: ^4.0.0
         version: 4.1.0
@@ -3836,8 +3836,8 @@ packages:
     resolution: {integrity: sha512-p0SaNjrHOnQeR8/VnfGbmg9te2kfyYSQ7Sc/j/6DtPL3JQvKxmjO9TSjNFpujqV3vEYYBvNNvXSxzyksBWAx1Q==}
     engines: {node: '>=12.0.0'}
 
-  cross-fetch@4.0.0:
-    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
+  cross-fetch@4.1.0:
+    resolution: {integrity: sha512-uKm5PU+MHTootlWEY+mZ4vvXoCn4fLQxT9dSc1sXVMSFkINTJVN8cAQROpwcKm8bJ/c7rgZVIBWzH5T78sNZZw==}
 
   cross-spawn@5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==}
@@ -9974,7 +9974,7 @@ snapshots:
     dependencies:
       luxon: 3.5.0
 
-  cross-fetch@4.0.0:
+  cross-fetch@4.1.0:
     dependencies:
       node-fetch: 2.7.0
     transitivePeerDependencies:
