@@ -46,7 +46,7 @@
     "@dev/taurus": "workspace:*",
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
-    "node-html-parser": "^6.1.5",
+    "node-html-parser": "^7.0.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
