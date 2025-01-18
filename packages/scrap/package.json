@@ -24,7 +24,7 @@
     "date-fns": "^4.0.0",
     "milliseconds": "^1.0.3",
     "pretty-bytes": "^6.1.0",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
     "rxjs": "^7.8.1",
     "styled-components": "^6.0.0",
     "use-asset": "^1.0.4",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/milliseconds": "^1.0.0",
-    "@types/react": "^18.3.4",
+    "@types/react": "^19.0.0",
     "@types/styled-components": "^5.1.26"
   }
 }
