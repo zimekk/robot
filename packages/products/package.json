@@ -34,12 +34,12 @@
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.1",
     "@types/json-diff": "^1.0.0",
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/styled-components": "^5.1.26"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.2.0 || ^19.0.0",
+    "react-dom": "^18.2.0 || ^19.0.0"
   }
 }
