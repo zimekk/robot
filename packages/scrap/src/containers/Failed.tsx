@@ -95,6 +95,11 @@ function Failed({
     [list, selected],
   );
 
+  const topIds = useMemo(
+    () => list.map((item) => item.id).filter((_id, key) => key < 10),
+    [list],
+  );
+
   return (
     <Fieldset legend="failed">
       <div style={{ float: "right" }}>
@@ -184,6 +189,23 @@ function Failed({
           )}
         >
           retry
+        </button>
+        <button
+          disabled={topIds.length === 0 || loading}
+          onClick={useCallback(
+            () =>
+              (setLoading(true), post("failed/retry", { selected: topIds }))
+                .then((response) => response.json())
+                .then(() =>
+                  setFailed((failed) =>
+                    failed.filter(({ id }) => !topIds.includes(id)),
+                  ),
+                )
+                .then(() => setLoading(false)),
+            [topIds],
+          )}
+        >
+          {`retry top ${topIds.length}`}
         </button>
         <button disabled={loading} onClick={useCallback(getFailed, [])}>
           refresh
