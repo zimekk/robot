@@ -103,7 +103,7 @@ function Failed({
   return (
     <Fieldset legend="failed">
       <div style={{ float: "right" }}>
-        {["al.to"].map((query, index) => (
+        {["al.to", "petrostar.pl"].map((query, index) => (
           <span key={index}>
             {index > 0 ? ` | ` : ``}
             <a
