@@ -479,7 +479,9 @@ const JsonSchema = z.object({
         requestState: z.number(),
       })
       .optional(),
-    region: z.object({ data: z.array(z.unknown()), requestState: z.number() }),
+    region: z
+      .object({ data: z.array(z.unknown()), requestState: z.number() })
+      .optional(),
     selectedRegion: SelectedRegion.array(),
   }),
   offersNearby: z.object({
