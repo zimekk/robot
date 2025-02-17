@@ -117,15 +117,24 @@ export default async (
           .update(
             id,
             Object.assign(
+              data.url.match(/ursynow/)
+                ? {
+                    station_id: 0,
+                    x: 52.154332124889,
+                    y: 21.042253017076,
+                    address: "Warszawa, Ciszewskiego 15",
+                  }
+                : {
+                    station_id: 1,
+                    x: 52.20043314659687,
+                    y: 20.93752741813659,
+                    address: "Warszawa, Jutrzenki 156",
+                  },
               {
-                station_id: 0,
-                x: 52.154332124889,
-                y: 21.042253017076,
                 network_id: 119,
                 network_name: "Leclerc Ursynów",
                 map_img:
                   "https://www.autocentrum.pl/system/assets/images/fuel-station/network/map/no-map-45x60.png",
-                address: "Warszawa, Ciszewskiego 15",
               },
               data,
             ),

@@ -310,14 +310,6 @@ export const records = [
   },
   {
     data: {
-      url: "https://ursynow.leclerc.pl/",
-    },
-    opts: {
-      repeat: { cron: "0 8,10,14,18,20 * * *" },
-    },
-  },
-  {
-    data: {
       url: "https://www.xbox.com/pl-PL/xbox-game-pass",
     },
     opts: {
@@ -325,6 +317,18 @@ export const records = [
     },
   },
 ]
+  .concat(
+    ["jerozolimskie", "ursynow"]
+      .map((cat) => `https://${cat}.leclerc.pl/`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: { cron: `${i} 8,10,14,18,20 * * *` },
+        },
+      })),
+  )
   .concat(
     [
       ["5_G30", "5_G31", "M5_F90"],
