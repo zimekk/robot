@@ -593,7 +593,9 @@ export const records = [
       "honda/accord/seg-combi?search%5Bfilter_enum_generation%5D=gen-viii-2008",
       // "honda/jazz?search%5Bfilter_enum_generation%5D=gen-ii-2002-2008-jazz",
       "mini/cooper-s--john-cooper-works",
+      "nowe/volvo/xc-90",
       "porsche/macan",
+      "volvo/ex90",
       "volvo/xc-60?search%5Bfilter_enum_generation%5D=gen-ii-2017",
     ]
       .map((cat) => `https://www.otomoto.pl/osobowe/${cat}`)
