@@ -110,6 +110,7 @@ const Advert = z
         __typename: z.enum(["PriceEvaluation"]),
       })
       .optional(),
+    valueAddedServices: z.unknown(),
     __typename: z.enum(["Advert"]),
   })
   .strict();
