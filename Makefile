@@ -6,6 +6,9 @@ exec:
 fetch:
 	git fetch origin main && git reset --hard origin
 
+import:
+	packages/sql/scripts/import.sh
+
 logs:
 	docker-compose logs -f --tail=25 app
 
