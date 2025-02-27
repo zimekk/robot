@@ -43,8 +43,8 @@ export const ProductSchema = z
     mark: z.string().optional(),
     oldPrice: z.number().optional(),
     priceInfo: z.object({
-      price: z.number(),
-      oldPrice: z.number().nullable(),
+      price: z.number().optional(),
+      oldPrice: z.number().nullable().optional(),
       isPriceVisible: z.boolean(),
     }),
     producer: z.object({ id: z.string(), name: z.string() }),
@@ -101,6 +101,14 @@ export const ProductSchema = z
     orderIn: z.string().optional(),
     timeToBuy: z.string().optional(),
     onlineAvailability: z.unknown(),
+  })
+  .extend({
+    isPriceVisible: z.boolean().optional(),
+    productId: z.number().optional(),
+    productName: z.string().optional(),
+    group: z.unknown().optional(),
+    parentCategory: z.unknown().optional(),
+    productParameters: z.unknown().optional(),
   });
 // .strict();
 
