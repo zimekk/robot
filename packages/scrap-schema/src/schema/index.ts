@@ -203,7 +203,7 @@ export const JsonSchema = z.object({
         region_id: z.number(),
         city_id: z.number().optional(),
         filter_refiners: z.string(),
-        facets: z.string(),
+        facets: z.string().optional(),
       }),
       requestParams: z.object({
         page: z.number(),
