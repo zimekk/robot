@@ -48,7 +48,7 @@ export const ProductSchema = z
       isPriceVisible: z.boolean(),
     }),
     producer: z.object({ id: z.string(), name: z.string() }),
-    isEsd: z.boolean(),
+    isEsd: z.boolean().optional(),
     esdType: z.string().optional(),
     isGiftCard: z.boolean().optional(),
     productLink: z.string(),
