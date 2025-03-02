@@ -16,10 +16,11 @@ export const scrap = async (page: Page, url: string) =>
           }
         })
         .on("response", async (res: HTTPResponse) => {
+          // console.log(res.url())
           if (
             (({ pathname, searchParams }) =>
               pathname === "/products/v4/api/Products" &&
-              Number(searchParams.get("pageSize")) > 1)(new URL(res.url()))
+              Number(searchParams.get("pageSize")) >= 1)(new URL(res.url()))
           ) {
             const headers = res.headers();
             console.log(["resolve.json"], res.url(), headers);
@@ -29,7 +30,7 @@ export const scrap = async (page: Page, url: string) =>
     ),
     page.goto(url, {
       waitUntil: "networkidle2",
-      // timeout: 60_000,
+      timeout: 15_000,
     }),
   ])
     .then(async ([json]) => {
