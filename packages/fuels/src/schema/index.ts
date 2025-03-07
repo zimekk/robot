@@ -50,6 +50,7 @@ export const StationSchema = z.object({
             "on b7": "on",
             "on max": "on+",
             "pb95 e10": "pb",
+            pb98: "pb+",
             "pb98 e5": "pb+",
           })[value as string] || value,
         z.enum(TYPES),

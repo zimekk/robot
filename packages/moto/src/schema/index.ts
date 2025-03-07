@@ -84,7 +84,8 @@ const Advert = z
         searchUrl: z.any(),
         __typename: z.enum(["BrandProgram"]),
       })
-      .strict(),
+      .strict()
+      .nullable(),
     dealer4thPackage: z
       .object({
         package: z.object({
