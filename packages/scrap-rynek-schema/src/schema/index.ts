@@ -766,7 +766,7 @@ const JsonSchema = z.object({
       rankings: z.null(),
       vendor: z.null(),
       vendorRequest: z.number(),
-      count: z.null(),
+      count: z.null().optional(),
     }),
     nearbyRegionVendors: z
       .object({

@@ -31,13 +31,14 @@ export const AdSchema = z.object({
   externalUrl: z.string().optional(),
   delivery: z.object({
     rock: z.object({
-      offer_id: z.null(),
+      offer_id: z.string().nullable(),
       active: z.boolean(),
       mode: z.string(),
     }),
   }),
   createdTime: z.string(),
   lastRefreshTime: z.string(),
+  pushupTime: z.string().optional(),
   validToTime: z.string(),
   isActive: z.boolean(),
   status: z.string(),
@@ -142,6 +143,22 @@ export const CategorySchema = z.object({
   img: z.string().optional(),
 });
 
+const LocationSchema = z.object({
+  city: z.string().nullable(),
+  cityId: z.number().nullable(),
+  description: z.string(),
+  district: z.string().nullable(),
+  districtId: z.number().nullable(),
+  region: z.string().nullable(),
+  regionId: z.number().nullable(),
+  title: z.string(),
+  lat: z.number().nullable(),
+  lon: z.number().nullable(),
+  geoDescription: z.string(),
+  radius: z.number(),
+  zoom: z.number(),
+});
+
 export const DataSchema = AdSchema;
 
 export const JsonSchema = z.object({
@@ -163,7 +180,7 @@ export const JsonSchema = z.object({
           })
           .nullable(),
         favSearchNewAds: z.unknown().array(),
-        location: z.null(),
+        location: LocationSchema.nullable(),
         facets: z.object({
           district: z
             .object({
@@ -227,8 +244,42 @@ export const JsonSchema = z.object({
           ads: z.object({}).array(),
         })
         .nullable(),
+      locationNames: z
+        .object({
+          city: z
+            .object({
+              id: z.number(),
+              name: z.string(),
+              normalized_name: z.string(),
+              lat: z.number(),
+              lon: z.number(),
+            })
+            .optional(),
+          municipality: z.object({ name: z.string() }).optional(),
+          county: z.object({ name: z.string() }).optional(),
+          region: z.object({
+            id: z.number(),
+            name: z.string(),
+            normalized_name: z.string(),
+          }),
+        })
+        .optional(),
     }),
   }),
+  categories: z
+    .object({
+      list: z.record(CategorySchema),
+      counts: z.number().nullable().array().or(z.record(z.number())),
+      promos: z.array(
+        z.object({
+          icon: z.object({ image_url: z.string(), big_image_url: z.string() }),
+          name: z.string(),
+          link: z.object({ url: z.string(), is_external: z.boolean() }),
+        }),
+      ),
+    })
+    .optional(),
+  cookies: z.object({}).optional(),
 });
 
 export const Schema = z.object({

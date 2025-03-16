@@ -1,5 +1,8 @@
 default:	fetch up migrate prune
 
+config:
+	docker-compose config
+
 exec:
 	docker-compose exec app sh
 
