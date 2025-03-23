@@ -251,7 +251,7 @@ importers:
     dependencies:
       jsondiffpatch:
         specifier: ^0.6.0
-        version: 0.6.1
+        version: 0.6.2
       react:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.0.0
@@ -5294,8 +5294,8 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
-  jsondiffpatch@0.6.1:
-    resolution: {integrity: sha512-nJvYbsHeyxNknqobJARodMt/ea/1v0xUuHCw8YSl+7iwwEo8q1YV3i5IpADdJNaJz0l8yqTeOpkZHaULStU8kw==}
+  jsondiffpatch@0.6.2:
+    resolution: {integrity: sha512-c4RkbPb6RXWjkhirwcKK87PuZCITdGRN1usrW4pXKEkwp7Gqf+0pSwQHoh/LtlYNHcxzoF6kok2/EFe6KL0qqQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -11551,10 +11551,9 @@ snapshots:
 
   json5@2.2.3: {}
 
-  jsondiffpatch@0.6.1:
+  jsondiffpatch@0.6.2:
     dependencies:
       '@types/diff-match-patch': 1.0.36
-      chalk: 5.4.1
       diff-match-patch: 1.0.5
 
   jsonfile@4.0.0:
