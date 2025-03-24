@@ -104,6 +104,7 @@ export const ProductSchema = z
   })
   .extend({
     isPriceVisible: z.boolean().optional(),
+    markText: z.string().optional(),
     productId: z.number().optional(),
     productName: z.string().optional(),
     group: z.unknown().optional(),
