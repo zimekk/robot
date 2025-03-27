@@ -12,7 +12,8 @@ export const DataSchema = AdSchema.extend({
         .string()
         .array()
         .transform((list) => list.join("_"))
-        .or(z.string()),
+        .or(z.string())
+        .optional(),
     }),
   ),
 });

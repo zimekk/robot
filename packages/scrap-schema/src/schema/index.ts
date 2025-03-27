@@ -28,7 +28,7 @@ export const AdSchema = z.object({
     b2c_ad_page: z.boolean(),
     premium_ad_page: z.boolean(),
   }),
-  externalUrl: z.string().optional(),
+  externalUrl: z.string().nullable().optional(),
   delivery: z.object({
     rock: z.object({
       offer_id: z.string().nullable(),
@@ -38,7 +38,7 @@ export const AdSchema = z.object({
   }),
   createdTime: z.string(),
   lastRefreshTime: z.string(),
-  pushupTime: z.string().optional(),
+  pushupTime: z.string().nullable().optional(),
   validToTime: z.string(),
   isActive: z.boolean(),
   status: z.string(),
@@ -48,7 +48,7 @@ export const AdSchema = z.object({
       name: z.string(),
       type: z.string(),
       value: z.string(),
-      normalizedValue: z.string(),
+      normalizedValue: z.string().optional(),
     })
     .array(),
   itemCondition: z.string(),
@@ -111,10 +111,10 @@ export const AdSchema = z.object({
   }),
   shop: z.object({ subdomain: z.string().nullable() }),
   safedeal: z.object({
-    weight: z.number(),
+    weight: z.number().optional(),
     weight_grams: z.number(),
-    status: z.string(),
-    safedeal_blocked: z.boolean(),
+    status: z.string().optional(),
+    safedeal_blocked: z.boolean().optional(),
     allowed_quantity: z.unknown().array(),
   }),
   searchReason: z.string(),
@@ -233,7 +233,7 @@ export const JsonSchema = z.object({
         }),
       }),
       categoryId: z.number(),
-      categories: z.null(),
+      categories: z.null().optional(),
       viewType: z.string(),
       expansionListing: z
         .object({
