@@ -23,7 +23,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "jsondiffpatch": "^0.6.0"
+    "jsondiffpatch": "^0.7.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.9",
