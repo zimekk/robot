@@ -204,7 +204,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -291,7 +291,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -334,7 +334,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -377,7 +377,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -420,7 +420,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -469,7 +469,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -515,7 +515,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -555,7 +555,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -598,7 +598,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -635,7 +635,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -719,7 +719,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -762,7 +762,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -811,7 +811,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -854,7 +854,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -897,7 +897,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -940,7 +940,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -980,7 +980,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1023,7 +1023,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1069,7 +1069,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1115,7 +1115,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1155,7 +1155,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1338,7 +1338,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1406,7 +1406,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       ssl-checker:
         specifier: ^2.0.8
         version: 2.0.10
@@ -1455,7 +1455,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1529,7 +1529,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -1569,7 +1569,7 @@ importers:
         version: 19.1.0
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.0.0(react@19.0.0)
+        version: 19.0.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
@@ -12497,6 +12497,11 @@ snapshots:
   react-dom@19.0.0(react@19.0.0):
     dependencies:
       react: 19.0.0
+      scheduler: 0.25.0
+
+  react-dom@19.0.0(react@19.1.0):
+    dependencies:
+      react: 19.1.0
       scheduler: 0.25.0
 
   react-dom@19.1.0(react@19.1.0):
