@@ -226,7 +226,13 @@ const JsonSchema = z.object({
       articlesCount: z.null(),
     }),
   }),
-  notifications: z.array(z.unknown()),
+  notifications: z.array(z.unknown()).or(
+    z
+      .object({
+        list: z.array(z.unknown()),
+      })
+      .passthrough(),
+  ),
   application: z.object({}),
   backToUrl: z.object({ url: z.string(), text: z.string() }),
   favourite: z.object({
