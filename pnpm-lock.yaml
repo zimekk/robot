@@ -1369,7 +1369,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^7.0.0
-        version: 7.9.1(@types/pg@8.15.0)(pg@8.15.6)
+        version: 7.9.1(@types/pg@8.15.1)(pg@8.15.6)
       pg:
         specifier: ^8.12.0
         version: 8.15.6
@@ -1379,7 +1379,7 @@ importers:
         version: 6.4.17
       '@types/pg':
         specifier: ^8.11.7
-        version: 8.15.0
+        version: 8.15.1
 
   packages/status:
     dependencies:
@@ -3106,8 +3106,8 @@ packages:
   '@types/nodemailer@6.4.17':
     resolution: {integrity: sha512-I9CCaIp6DTldEg7vyUTZi8+9Vo0hi1/T8gv3C89yk1rSAAzoKQ8H8ki/jBYJSFoH/BisgLP8tkZMlQ91CIquww==}
 
-  '@types/pg@8.15.0':
-    resolution: {integrity: sha512-JFxVIO0hZCbQXQGbRBQjbRWNCG3CujfEUBD4Ny2l0QqDyE0vqAPiMSyx0AIszMS0KdLZxz2GxZUUF3FBUXhOXA==}
+  '@types/pg@8.15.1':
+    resolution: {integrity: sha512-YKHrkGWBX5+ivzvOQ66I0fdqsQTsvxqM0AGP2i0XrVZ9DP5VA/deEbTf7VuLPGpY7fJB9uGbkZ6KjVhuHcrTkQ==}
 
   '@types/qs@6.9.18':
     resolution: {integrity: sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==}
@@ -9097,7 +9097,7 @@ snapshots:
     dependencies:
       '@types/node': 22.15.17
 
-  '@types/pg@8.15.0':
+  '@types/pg@8.15.1':
     dependencies:
       '@types/node': 22.15.17
       pg-protocol: 1.7.1
@@ -12201,13 +12201,13 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@7.9.1(@types/pg@8.15.0)(pg@8.15.6):
+  node-pg-migrate@7.9.1(@types/pg@8.15.1)(pg@8.15.6):
     dependencies:
       glob: 11.0.1
       pg: 8.15.6
       yargs: 17.7.2
     optionalDependencies:
-      '@types/pg': 8.15.0
+      '@types/pg': 8.15.1
 
   node-releases@2.0.19: {}
 
