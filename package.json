@@ -93,7 +93,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.35.2",
     "husky": "^9.1.5",
-    "lint-staged": "^15.0.2",
+    "lint-staged": "^16.0.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.1",
     "type-coverage": "^2.25.3",
