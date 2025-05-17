@@ -279,7 +279,7 @@ const JsonSchema = z.object({
       form: z.object({
         formValues: z.object({ category: z.string(), subcategory: z.string() }),
       }),
-      map: z.object({ data: z.null(), requestState: z.number() }),
+      map: z.object({ data: z.null(), requestState: z.number() }).optional(),
       propertiesCount: z.number(),
       propertiesCountRequestState: z.number(),
     }),
@@ -477,7 +477,9 @@ const JsonSchema = z.object({
       error: z.null(),
       propertiesCount: z.number(),
     }),
-    selectedOffer: z.object({ data: z.null(), requestState: z.number() }),
+    selectedOffer: z
+      .object({ data: z.null(), requestState: z.number() })
+      .optional(),
     selectedProperty: z.object({ data: z.null(), requestState: z.number() }),
     applicationSentOffers: z
       .object({
