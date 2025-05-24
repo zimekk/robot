@@ -139,6 +139,7 @@ const UrqlState = z
         __typename: z.enum(["AdvertSearchOutput"]),
       })
       .transform(({ edges }) => edges)
+      .nullable()
       .optional(),
   })
   .transform(({ advertSearch }) => advertSearch);
