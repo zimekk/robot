@@ -62,7 +62,7 @@
   "lint-staged": {
     "*.{json,js,jsx,md,scss,ts,tsx,css,yml,yaml}": "prettier --write"
   },
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "build": "pnpm -r run build",
     "chrome": "pnpm --filter=@dev/worker run chrome",
