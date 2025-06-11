@@ -1,4 +1,6 @@
-default:	fetch up migrate prune
+# branch = main
+
+default: fetch up migrate prune
 
 config:
 	docker-compose config
@@ -7,7 +9,7 @@ exec:
 	docker-compose exec app sh
 
 fetch:
-	git fetch origin main && git reset --hard origin
+	git fetch origin && git reset --hard origin
 
 import:
 	packages/sql/scripts/import.sh
@@ -19,7 +21,7 @@ migrate:
 	docker-compose exec app pnpm --filter=@dev/sql run migrate:up
 
 prune:
-	docker system prune
+	docker ps -a && docker system prune
 
 ps:
 	docker-compose ps
