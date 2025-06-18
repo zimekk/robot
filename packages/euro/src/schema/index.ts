@@ -151,6 +151,7 @@ const Result = z.object({
     })
     .nullable(),
   deliveryPriceMessage: z.string().nullable(),
+  forceOutlet: z.boolean().optional(),
   freeDeliveryDate: z.string().nullable().optional(),
   instalment: Instalment.nullable(),
   identifiers: z.object({

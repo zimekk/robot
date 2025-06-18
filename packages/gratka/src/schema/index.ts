@@ -4,7 +4,7 @@ const OfferSchema = z.object({
   "@type": z.literal("Offer"),
   itemOffered: z.object({
     "@type": z.literal("Place"),
-    description: z.string(),
+    description: z.string().optional(),
     name: z.string().optional(),
     image: z.string().optional(),
     address: z.object({
