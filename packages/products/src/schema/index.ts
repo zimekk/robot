@@ -37,6 +37,15 @@ export const ProductSchema = z
     availabilityStatus: z.enum(["Available", "Unavailable"]).optional(),
     producerCode: z.string().optional(),
     freeInstallment: z.boolean().optional(),
+    badges: z
+      .object({
+        id: z.number(),
+        promoLabel: z.string(),
+        promoIcon: z.string(),
+        promoVariant: z.string(),
+      })
+      .array()
+      .optional(),
     installmentMinimum: z.number().optional(),
     alternativeGroupId: z.string().optional(),
     alternativeProducts: z.unknown().array().optional(),
