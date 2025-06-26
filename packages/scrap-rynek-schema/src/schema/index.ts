@@ -104,7 +104,7 @@ const Offer = z.object({
     slug: z.string(),
   }),
   website: z.string().nullable(),
-  change_color: z.boolean(),
+  change_color: z.boolean().optional(),
 });
 
 const SelectedRegion = z.object({

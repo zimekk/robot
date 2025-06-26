@@ -76,7 +76,7 @@ export const ProductSchema = z
         code: z.null(),
         discountedPrice: z.number(),
         promotionEndDate: z.string(),
-        customerLimit: z.number(),
+        customerLimit: z.number().nullable(),
         promotionStartDate: z.string(),
       })
       .optional(),
