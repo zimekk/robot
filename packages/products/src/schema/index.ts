@@ -119,6 +119,15 @@ export const ProductSchema = z
     group: z.unknown().optional(),
     parentCategory: z.unknown().optional(),
     productParameters: z.unknown().optional(),
+    productPromotionInfo: z
+      .object({
+        code: z.unknown(),
+        discountedPrice: z.number(),
+        promotionEndDate: z.string(),
+        customerLimit: z.number(),
+        promotionStartDate: z.string(),
+      })
+      .optional(),
   });
 // .strict();
 

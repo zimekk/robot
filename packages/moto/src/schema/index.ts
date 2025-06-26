@@ -52,6 +52,7 @@ const Advert = z
           "engine_power",
           "fuel_type",
           "gearbox",
+          "lease-url",
           "make",
           "mileage",
           "model",
