@@ -1,5 +1,19 @@
 # @dev/app
 
+## 1.0.11
+
+### Patch Changes
+
+- @dev/bikes@1.0.10
+- @dev/dyson@1.0.10
+- @dev/flats@1.0.3
+- @dev/plots@1.0.3
+- @dev/rynek@1.0.6
+- @dev/web@1.0.11
+- @dev/worker@1.0.11
+- @dev/depots@1.0.3
+- @dev/stock@1.0.3
+
 ## 1.0.10
 
 ### Patch Changes

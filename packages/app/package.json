@@ -1,6 +1,6 @@
 {
   "name": "@dev/app",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "lib",
   "license": "MIT",
   "private": true,
