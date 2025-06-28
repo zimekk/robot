@@ -1,5 +1,15 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.6
+
+### Patch Changes
+
+- 17085b3: fix(scrap-rynek-schema): schema
+- 17085b3: fix(scrap-rynek-schema): schema optional field
+- 17085b3: fix(flats, plots, scrap-schema): schema
+- 17085b3: fix(scrap-rynek-schema): schema
+- 17085b3: fix(products, scrap-rynek-schema): schema
+
 ## 1.0.5
 
 ### Patch Changes

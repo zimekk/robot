@@ -1,5 +1,13 @@
 # @zimekk/scrap-schema
 
+## 1.0.10
+
+### Patch Changes
+
+- 17085b3: fix(scrap, scrap-schema): optional facets
+- 17085b3: fix(scrap-schema): schema
+- 17085b3: fix(flats, plots, scrap-schema): schema
+
 ## 1.0.9
 
 ### Patch Changes
