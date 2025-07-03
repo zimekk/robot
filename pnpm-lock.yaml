@@ -1754,7 +1754,7 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^6.0.0
-        version: 6.9.6(@bull-board/ui@6.9.6)
+        version: 6.11.0(@bull-board/ui@6.9.6)
       '@bull-board/express':
         specifier: ^6.0.0
         version: 6.9.6
@@ -2566,6 +2566,11 @@ packages:
 
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+
+  '@bull-board/api@6.11.0':
+    resolution: {integrity: sha512-HLbIuXIthrgeVRmN7Vec9/7ZKWx8i1xTC6Nzi//l7ua+Xu5wn6f/aZllUNVzty5ilLTHqWFkfVOwpuN91o7yxA==}
+    peerDependencies:
+      '@bull-board/ui': 6.11.0
 
   '@bull-board/api@6.9.6':
     resolution: {integrity: sha512-k1h35Q+y5hdf9UoPhp6mLG5+QM9AHP8luyggxEJ+/ZkoSMJ0h45HjHhqbexEAzdgsVN7lncXNLNn6myKwwcjkw==}
@@ -8422,6 +8427,11 @@ snapshots:
     optional: true
 
   '@bcoe/v8-coverage@0.2.3': {}
+
+  '@bull-board/api@6.11.0(@bull-board/ui@6.9.6)':
+    dependencies:
+      '@bull-board/ui': 6.9.6
+      redis-info: 3.1.0
 
   '@bull-board/api@6.9.6(@bull-board/ui@6.9.6)':
     dependencies:
