@@ -29,6 +29,6 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "dotenv": "^16.0.3"
+    "dotenv": "^17.0.0"
   }
 }
