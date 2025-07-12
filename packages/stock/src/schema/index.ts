@@ -418,7 +418,7 @@ export const ItemSchema = z.object({
   data: Vehicle.extend({
     documentId: z.string(),
     media: z.object({
-      cosyImages: z.record(z.string()),
+      cosyImages: z.record(z.string(), z.string()),
       eveCpMedia: z
         .object({
           configId: z.string(),
@@ -438,7 +438,7 @@ export const ItemSchema = z.object({
             longitude: z.number(),
           })
           .optional(),
-        addressLocale: z.unknown({}).optional(),
+        addressLocale: z.unknown().optional(),
         destinationLocationDomesticDealerNumber: z.string().optional(),
         distributionMot: z.string().optional(),
         expectedDeliveryDate: z.string().optional(),
@@ -546,7 +546,7 @@ export const ItemSchema = z.object({
         //       })
         //       .array(),
         //     driveType: z.string(),
-        equipments: z.record(Equipment),
+        equipments: z.record(z.string(), Equipment),
         //     is48Volt: z.boolean(),
         //     marketingDriveType: z.string(),
         model: z.object({

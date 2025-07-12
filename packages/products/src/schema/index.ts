@@ -159,7 +159,7 @@ const JsonSchema = z.object({
         paginationState: PaginationSchema,
       })
       .optional(),
-    products: z.record(ProductSchema.strict()),
+    products: z.record(z.string(), ProductSchema.strict()),
   }),
 });
 

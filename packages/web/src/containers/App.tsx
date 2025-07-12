@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import history from "history/browser";
-import { hot } from "react-hot-loader/root";
+// import { hot } from "react-hot-loader/root";
 
 const Spinner = () => <span>Loading...</span>;
 
@@ -43,7 +43,7 @@ const getPage = (location: { hash: string }) => {
   ) as keyof typeof PAGES;
 };
 
-export default hot(function App() {
+export default (function App() {
   const [page, setPage] = useState(getPage(history.location));
 
   useEffect(() =>

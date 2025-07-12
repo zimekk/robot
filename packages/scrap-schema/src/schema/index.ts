@@ -268,8 +268,12 @@ export const JsonSchema = z.object({
   }),
   categories: z
     .object({
-      list: z.record(CategorySchema),
-      counts: z.number().nullable().array().or(z.record(z.number())),
+      list: z.record(z.string(), CategorySchema),
+      counts: z
+        .number()
+        .nullable()
+        .array()
+        .or(z.record(z.string(), z.number())),
       promos: z.array(
         z.object({
           icon: z.object({ image_url: z.string(), big_image_url: z.string() }),

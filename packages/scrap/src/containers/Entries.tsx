@@ -143,7 +143,7 @@ export default function Entries() {
         )
         .then((list) =>
           pager.data
-            ? z.any({}).array().parseAsync(list)
+            ? z.any().array().parseAsync(list)
             : Promise.all(
                 list.map((item: unknown, key: number) =>
                   EntriesSchema.parseAsync(item).catch(
@@ -512,8 +512,8 @@ export default function Entries() {
           <button
             disabled={loading}
             onClick={() =>
+              // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=code-frontend#parameters
               (
-                // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView?ref=code-frontend#parameters
                 scrollTarget.current?.scrollIntoView({
                   behavior: "auto",
                   block: "start",

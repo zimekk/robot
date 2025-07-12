@@ -226,7 +226,7 @@ const JsonSchema = z.object({
         }),
       }),
       proximitySearch: z.boolean(),
-      messages: z.record(z.string()),
+      messages: z.record(z.string(), z.string()),
       footer: z.string(),
       porscheIdLoginEnabled: z.boolean(),
       legalDisclaimer: z.null(),
@@ -239,7 +239,7 @@ const JsonSchema = z.object({
     __N_SSP: z.boolean(),
   }),
   page: z.string(),
-  query: z.record(z.string()),
+  query: z.record(z.string(), z.string()),
   buildId: z.string(),
   runtimeConfig: z.object({}),
   isFallback: z.boolean(),
@@ -254,6 +254,6 @@ export default z.object({
       props: {
         pageProps: { fallback },
       },
-    }) => fallback
+    }) => fallback,
   ),
 });

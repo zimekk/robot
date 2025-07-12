@@ -99,7 +99,7 @@ export const ReturnSchema = z.object({
 export const CompletedSchema = z
   .object({
     data: z.object({ url: z.string() }),
-    opts: OptsSchema.default({}),
+    opts: OptsSchema.default({ delay: 0 }),
   })
   .transform(({ data: { url }, opts: { timestamp = Date.now() } }) => ({
     timestamp,
@@ -153,25 +153,27 @@ export const getTypeByUrl = (url: string) =>
     ?.shift() as string;
 
 export const EntrySchema = z.preprocess(
-  z
-    .object({
-      id: z.string(),
-      data: z
-        .object({
-          url: z.string(),
-        })
-        .passthrough(),
-      opts: z.any(),
-      returnvalue: z.object({
-        html: z.any(),
-        json: z.any(),
-      }),
-    })
-    .passthrough()
-    .transform((item) => ({
-      type: getTypeByUrl(item.data.url),
-      ...item,
-    })).parse,
+  (value) =>
+    z
+      .object({
+        id: z.string(),
+        data: z
+          .object({
+            url: z.string(),
+          })
+          .passthrough(),
+        opts: z.any(),
+        returnvalue: z.object({
+          html: z.any(),
+          json: z.any(),
+        }),
+      })
+      .passthrough()
+      .transform((item) => ({
+        type: getTypeByUrl(item.data.url),
+        ...item,
+      }))
+      .parse(value),
   z.discriminatedUnion("type", [
     JsonSchema.extend({
       type: z.literal(Type.AUTOS),
@@ -548,7 +550,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   }),
   ReturnSchema.extend({
     type: z.literal(Type.UNKNOWN),
-    returnvalue: z.any({}),
+    returnvalue: z.any(),
   }),
 ]);
 
