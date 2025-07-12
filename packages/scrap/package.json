@@ -24,15 +24,15 @@
     "date-fns": "^4.0.0",
     "milliseconds": "^1.0.3",
     "pretty-bytes": "^7.0.0",
-    "react": "^19.0.0",
+    "react": "^19.1.0",
     "rxjs": "^7.8.1",
-    "styled-components": "^6.0.0",
+    "styled-components": "^6.1.19",
     "use-asset": "^1.0.4",
-    "zod": "^3.21.4"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/milliseconds": "^1.0.0",
-    "@types/react": "^19.0.0",
+    "@types/react": "^19.1.8",
     "@types/styled-components": "^5.1.26"
   }
 }
