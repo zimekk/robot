@@ -1,5 +1,13 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.7
+
+### Patch Changes
+
+- dd1d352: fix(deps): update latest
+- dd1d352: fix(scrap-rynek-schema): schema
+- dd1d352: fix(deps): update dependency zod to v4
+
 ## 1.0.6
 
 ### Patch Changes

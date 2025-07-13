@@ -1,5 +1,12 @@
 # @zimekk/scrap-schema
 
+## 1.0.11
+
+### Patch Changes
+
+- dd1d352: fix(deps): update latest
+- dd1d352: fix(deps): update dependency zod to v4
+
 ## 1.0.10
 
 ### Patch Changes
