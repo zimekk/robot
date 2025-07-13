@@ -8,7 +8,7 @@ const DetailsSchema = z
         countryCode: z.string().nullable(),
         isLive: z.boolean(),
         orderIndex: z.number(),
-      })
+      }),
     ),
     defaultCurrency: z.object({
       code: z.string(),
@@ -32,7 +32,7 @@ const DetailsSchema = z
         orderIndex: z.null(),
       })
       .nullable(),
-    config: z.record(z.string().or(z.string().array())),
+    config: z.record(z.string(), z.string().or(z.string().array())),
     // config: z.object({
     //   "Hotel.CheckinAfter": z.string(),
     //   "Hotel.CheckoutBefore": z.string(),
@@ -67,9 +67,9 @@ const DetailsSchema = z
           z.object({
             locale: z.string(),
             messages: z.array(
-              z.object({ fieldName: z.string(), value: z.string() })
+              z.object({ fieldName: z.string(), value: z.string() }),
             ),
-          })
+          }),
         )
         .nullable(),
       discount: z.object({ amount: z.number(), method: z.string() }).nullable(),
@@ -79,9 +79,9 @@ const DetailsSchema = z
         z.object({
           locale: z.string(),
           messages: z.array(
-            z.object({ fieldName: z.string(), value: z.string() })
+            z.object({ fieldName: z.string(), value: z.string() }),
           ),
-        })
+        }),
       )
       .nullable(),
     hasVouchers: z.boolean(),
@@ -89,9 +89,9 @@ const DetailsSchema = z
       z.object({
         locale: z.string(),
         messages: z.array(
-          z.object({ fieldName: z.string(), value: z.string() })
+          z.object({ fieldName: z.string(), value: z.string() }),
         ),
-      })
+      }),
     ),
     address: z.object({
       name: z.null(),

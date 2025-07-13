@@ -7,6 +7,6 @@ export const Schema = z.object({
   $list: ItemSchema.array(),
   $count: z.object({
     $total: z.number(),
-    genericEquipment: z.record(z.number()),
+    genericEquipment: z.record(z.string(), z.number()),
   }),
 });

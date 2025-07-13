@@ -28,7 +28,7 @@
     "rxjs": "^7.8.1",
     "styled-components": "^6.1.19",
     "use-asset": "^1.0.4",
-    "zod": "^3.25.76"
+    "zod": "^4.0.0"
   },
   "devDependencies": {
     "@types/milliseconds": "^1.0.0",

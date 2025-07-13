@@ -5,6 +5,7 @@ const JsonSchema = z.object({
   props: z.object({
     pageProps: z.object({
       urqlState: z.record(
+        z.string(),
         z.object({
           data: z.string(),
         }),
