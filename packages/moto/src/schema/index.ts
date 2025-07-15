@@ -83,6 +83,7 @@ const Advert = z
         logo: z.any(),
         name: z.any(),
         searchUrl: z.any(),
+        url: z.any(),
         __typename: z.enum(["BrandProgram"]),
       })
       .strict()
