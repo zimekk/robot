@@ -201,13 +201,13 @@ importers:
         version: 4.21.2
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -288,13 +288,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -331,13 +331,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -374,13 +374,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -417,13 +417,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -466,13 +466,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -512,13 +512,13 @@ importers:
         version: 7.0.1
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -552,13 +552,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -595,13 +595,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -632,13 +632,13 @@ importers:
         version: 4.21.2
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -682,10 +682,10 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -716,13 +716,13 @@ importers:
         version: 4.21.2
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -759,13 +759,13 @@ importers:
         version: 1.5.4
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -808,13 +808,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -851,13 +851,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -894,13 +894,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -937,13 +937,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -977,13 +977,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1020,13 +1020,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1066,13 +1066,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1112,13 +1112,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1152,13 +1152,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1286,16 +1286,16 @@ importers:
         version: 7.0.0
       react:
         specifier: ^19.1.0
-        version: 19.1.0
+        version: 19.1.1
       rxjs:
         specifier: ^7.8.1
         version: 7.8.2
       styled-components:
         specifier: ^6.1.19
-        version: 6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1335,13 +1335,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1403,7 +1403,7 @@ importers:
         version: 9.2.0
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
@@ -1412,7 +1412,7 @@ importers:
         version: 2.0.10
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1452,13 +1452,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1492,10 +1492,10 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1526,13 +1526,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1566,13 +1566,13 @@ importers:
         version: 1.0.6
       react:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.1.0(react@19.1.0)
       use-asset:
         specifier: ^1.0.4
-        version: 1.0.4(react@19.1.0)
+        version: 1.0.4(react@19.1.1)
       zod:
         specifier: ^4.0.0
         version: 4.0.10
@@ -1690,10 +1690,10 @@ importers:
         version: 5.3.0
       react:
         specifier: ^19.1.0
-        version: 19.1.0
+        version: 19.1.1
       react-dom:
         specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
+        version: 19.1.1(react@19.1.1)
     devDependencies:
       '@babel/core':
         specifier: ^7.28.0
@@ -1733,7 +1733,7 @@ importers:
         version: 5.6.3(webpack@5.100.2)
       react-hot-loader:
         specifier: ^4.13.1
-        version: 4.13.1(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 4.13.1(@types/react@19.1.8)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       style-loader:
         specifier: ^4.0.0
         version: 4.0.0(webpack@5.100.2)
@@ -6390,6 +6390,11 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
+  react-dom@19.1.1:
+    resolution: {integrity: sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==}
+    peerDependencies:
+      react: ^19.1.1
+
   react-hot-loader@4.13.1:
     resolution: {integrity: sha512-ZlqCfVRqDJmMXTulUGic4lN7Ic1SXgHAFw7y/Jb7t25GBgTR0fYAJ8uY4mrpxjRyWGWmqw77qJQGnYbzCvBU7g==}
     engines: {node: '>= 6'}
@@ -6412,6 +6417,10 @@ packages:
 
   react@19.1.0:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
+    engines: {node: '>=0.10.0'}
+
+  react@19.1.1:
+    resolution: {integrity: sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==}
     engines: {node: '>=0.10.0'}
 
   read-yaml-file@1.1.0:
@@ -12822,15 +12831,20 @@ snapshots:
       react: 19.1.0
       scheduler: 0.26.0
 
-  react-hot-loader@4.13.1(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-dom@19.1.1(react@19.1.1):
+    dependencies:
+      react: 19.1.1
+      scheduler: 0.26.0
+
+  react-hot-loader@4.13.1(@types/react@19.1.8)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       fast-levenshtein: 2.0.6
       global: 4.4.0
       hoist-non-react-statics: 3.3.2
       loader-utils: 2.0.4
       prop-types: 15.8.1
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
       react-lifecycles-compat: 3.0.4
       shallowequal: 1.1.0
       source-map: 0.7.4
@@ -12844,6 +12858,8 @@ snapshots:
   react-lifecycles-compat@3.0.4: {}
 
   react@19.1.0: {}
+
+  react@19.1.1: {}
 
   read-yaml-file@1.1.0:
     dependencies:
@@ -13380,7 +13396,7 @@ snapshots:
     dependencies:
       webpack: 5.100.2(webpack-cli@5.1.4)
 
-  styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@emotion/is-prop-valid': 1.2.2
       '@emotion/unitless': 0.8.1
@@ -13388,8 +13404,8 @@ snapshots:
       css-to-react-native: 3.2.0
       csstype: 3.1.3
       postcss: 8.4.49
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
       shallowequal: 1.1.0
       stylis: 4.3.2
       tslib: 2.6.2
@@ -13756,10 +13772,10 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  use-asset@1.0.4(react@19.1.0):
+  use-asset@1.0.4(react@19.1.1):
     dependencies:
       fast-deep-equal: 3.1.3
-      react: 19.1.0
+      react: 19.1.1
 
   util-deprecate@1.0.2: {}
 
