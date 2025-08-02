@@ -3,6 +3,7 @@ import { EnvironmentPlugin } from "webpack";
 import {
   type Configuration,
   type ExpressRequestHandler,
+  type Middleware,
 } from "webpack-dev-server";
 import { type CallableOption } from "webpack-cli";
 // import CopyWebpackPlugin from "copy-webpack-plugin";
@@ -50,7 +51,7 @@ const middleware: ExpressRequestHandler = (_req, res) => {
 export default (async (
   { WEBPACK_SERVE } = {},
   { mode },
-  _dev = mode === "development"
+  _dev = mode === "development",
 ) =>
   Object.assign(
     {
@@ -120,9 +121,11 @@ export default (async (
             setupMiddlewares: (
               ({ router }) =>
               (middlewares) =>
-                middlewares.concat(router).concat(middleware)
+                middlewares
+                  .concat(router as unknown as Middleware)
+                  .concat(middleware)
             )(await import("@dev/app")),
           } as Configuration,
         }
-      : {}
+      : {},
   )) as CallableOption;
