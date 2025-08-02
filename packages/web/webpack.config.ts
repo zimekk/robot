@@ -5,7 +5,7 @@ import {
   type ExpressRequestHandler,
   type Middleware,
 } from "webpack-dev-server";
-import { type CallableOption } from "webpack-cli";
+import { type CallableWebpackConfiguration } from "webpack-cli";
 // import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import env from "dotenv";
@@ -128,4 +128,4 @@ export default (async (
           } as Configuration,
         }
       : {},
-  )) as CallableOption;
+  )) as CallableWebpackConfiguration;
