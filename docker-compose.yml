@@ -10,7 +10,7 @@ services:
       - sql
     network_mode: bridge
   redis:
-    image: redis:8.0-alpine
+    image: redis:8.2-alpine
     network_mode: bridge
   sql:
     image: postgres:17.5-alpine
