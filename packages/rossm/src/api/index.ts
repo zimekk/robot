@@ -35,7 +35,7 @@ export const router = () =>
         .then(({ type, blob }) => res.type(type).end(blob))
         .catch(next),
     )
-    .get("/rossm/{:item}", (req, res, next) =>
+    .get("/rossm{/:item}", (req, res, next) =>
       PagerSchema.parseAsync(req.query)
         .then(({ start, limit }) =>
           req.params.item
