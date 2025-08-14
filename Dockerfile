@@ -33,6 +33,7 @@ ENV WORKDIR=/app
 # https://pnpm.io/docker#example-3-build-on-cicd
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+# ENV CI=1
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 RUN corepack enable
 
@@ -40,6 +41,7 @@ FROM base AS prod
 WORKDIR $WORKDIR
 COPY pnpm-lock.yaml .
 # RUN pnpm fetch --prod
+# RUN env
 RUN pnpm fetch
 
 COPY . .

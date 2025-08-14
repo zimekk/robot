@@ -1,6 +1,7 @@
 # branch = main
 
-default: fetch up migrate prune
+# default: fetch up migrate prune
+default: fetch up prune
 
 config:
 	docker-compose config
