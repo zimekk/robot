@@ -203,7 +203,7 @@ export default async (
               date <
               format(
                 sub(new Date(), {
-                  days: 7,
+                  days: 7, //
                 }),
                 "yyyy-MM-dd",
               )

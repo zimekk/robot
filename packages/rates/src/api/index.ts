@@ -7,12 +7,12 @@ export const router = () =>
   Router()
     .get("/rates", (_req, res, next) =>
       query("SELECT * FROM rates ORDER BY created DESC", [])
-        .then((data) => (console.log(data), res.json({ result: data.rows })))
+        .then((data) => res.json({ result: data.rows }))
         .catch(next),
     )
     .get("/rates/delete", (req, res, next) =>
       query("DELETE FROM rates WHERE id=$1", [req.query.id])
-        .then((data) => (console.log(data), res.json({ status: "ok" })))
+        .then((data) => res.json({ status: "ok" }))
         .catch(next),
     );
 
