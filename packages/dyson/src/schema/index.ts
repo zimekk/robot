@@ -9,7 +9,7 @@ const Result = z.object({
   fullPrice: z.string(),
   saleprice: z.string(),
   primaryImageUrl: z.string(),
-  badge: z.object({ theme: z.string(), text: z.string() }),
+  badge: z.object({ theme: z.string().or(z.boolean()), text: z.string() }),
   review: z.object({ number: z.coerce.number(), stars: z.coerce.number() }),
   promotionalPriceCopy: z.string().optional(),
   parents: z.string().array().optional(),
