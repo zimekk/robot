@@ -47,7 +47,7 @@ RUN pnpm fetch
 COPY . .
 RUN pnpm install --offline --config.ignore-scripts=true
 RUN pnpm build
-RUN pnpm prune --prod --config.ignore-scripts=true
+# RUN pnpm prune --prod --config.ignore-scripts=true
 
 FROM base
 WORKDIR $WORKDIR
