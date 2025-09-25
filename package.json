@@ -82,8 +82,8 @@
   "resolutions": {},
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
     "changeset-conventional-commits": "^0.2.5",
