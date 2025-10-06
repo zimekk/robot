@@ -59,7 +59,7 @@ const Offer = z.object({
     stats: z.object({ promotions_count_total: z.number() }),
   }),
   slug: z.string(),
-  sort_distance: z.null(),
+  sort_distance: z.number().nullable(),
   stats: z.object({
     distance_from_region: z.object({
       center: z.boolean(),
