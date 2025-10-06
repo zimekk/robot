@@ -1,5 +1,11 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.8
+
+### Patch Changes
+
+- 1fa965f: fix(scrap-rynek-schema): schema
+
 ## 1.0.7
 
 ### Patch Changes
