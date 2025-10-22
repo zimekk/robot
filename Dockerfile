@@ -1,4 +1,4 @@
-FROM node:22.20.0-alpine AS base
+FROM node:22.21.0-alpine AS base
 
 # https://pptr.dev/troubleshooting#running-on-alpine
 # Installs latest Chromium (100) package.
