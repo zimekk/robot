@@ -264,7 +264,7 @@ const JsonSchema = z.object({
     requestState: z.number(),
   }),
   isApplicationSent: z.boolean().optional(),
-  isAuthenticated: z.boolean(),
+  isAuthenticated: z.boolean().optional(),
   investmentOffer: z.object({
     articles: z.array(z.unknown()),
     stats: z.null(),
@@ -472,8 +472,8 @@ const JsonSchema = z.object({
   }),
   offerListMap: z.object({
     list: z.object({
-      offers: z.array(z.unknown()),
-      count: z.number(),
+      offers: z.array(z.unknown()).optional(),
+      count: z.number().optional(),
       requestState: z.number(),
       latestQuery: z.object({}),
       error: z.null(),
@@ -632,22 +632,24 @@ const JsonSchema = z.object({
     .optional(),
   ui: z.object({ bottomFixedElementHeight: z.null() }),
   user: z.object({
-    profile: z.object({
-      data: z.null(),
-      requestState: z.number(),
-      patchUserForm: z
-        .object({
-          formValues: z.object({
-            name: z.string(),
-            email: z.string(),
-            phone: z.string(),
-            sex: z.string(),
-          }),
-          request: z.number(),
-          errors: z.null(),
-        })
-        .optional(),
-    }),
+    profile: z
+      .object({
+        data: z.null(),
+        requestState: z.number(),
+        patchUserForm: z
+          .object({
+            formValues: z.object({
+              name: z.string(),
+              email: z.string(),
+              phone: z.string(),
+              sex: z.string(),
+            }),
+            request: z.number(),
+            errors: z.null(),
+          })
+          .optional(),
+      })
+      .optional(),
     hidden: z
       .object({
         fetchRequest: z.number(),
