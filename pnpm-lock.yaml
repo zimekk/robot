@@ -1369,7 +1369,7 @@ importers:
     dependencies:
       node-pg-migrate:
         specifier: ^8.0.0
-        version: 8.0.3(@types/pg@8.15.5)(pg@8.16.3)
+        version: 8.0.3(@types/pg@8.15.6)(pg@8.16.3)
       pg:
         specifier: ^8.16.3
         version: 8.16.3
@@ -1379,7 +1379,7 @@ importers:
         version: 7.0.3
       '@types/pg':
         specifier: ^8.15.4
-        version: 8.15.5
+        version: 8.15.6
 
   packages/status:
     dependencies:
@@ -3457,8 +3457,8 @@ packages:
   '@types/nodemailer@7.0.3':
     resolution: {integrity: sha512-fC8w49YQ868IuPWRXqPfLf+MuTRex5Z1qxMoG8rr70riqqbOp2F5xgOKE9fODEBPzpnvjkJXFgK6IL2xgMSTnA==}
 
-  '@types/pg@8.15.5':
-    resolution: {integrity: sha512-LF7lF6zWEKxuT3/OR8wAZGzkg4ENGXFNyiV/JeOt9z5B+0ZVwbql9McqX5c/WStFq1GaGso7H1AzP/qSzmlCKQ==}
+  '@types/pg@8.15.6':
+    resolution: {integrity: sha512-NoaMtzhxOrubeL/7UZuNTrejB4MPAJ0RpxZqXQf2qXuVlTPuG6Y8p4u9dKRaue4yjmC7ZhzVO2/Yyyn25znrPQ==}
 
   '@types/qs@6.14.0':
     resolution: {integrity: sha512-eOunJqu0K1923aExK6y8p6fsihYEn/BYuQ4g0CxAAgFc4b/ZLN4CrsRZ55srTdqoiLzU2B2evC+apEIxprEzkQ==}
@@ -10330,7 +10330,7 @@ snapshots:
     transitivePeerDependencies:
       - aws-crt
 
-  '@types/pg@8.15.5':
+  '@types/pg@8.15.6':
     dependencies:
       '@types/node': 24.9.2
       pg-protocol: 1.10.3
@@ -13593,13 +13593,13 @@ snapshots:
 
   node-int64@0.4.0: {}
 
-  node-pg-migrate@8.0.3(@types/pg@8.15.5)(pg@8.16.3):
+  node-pg-migrate@8.0.3(@types/pg@8.15.6)(pg@8.16.3):
     dependencies:
       glob: 11.0.1
       pg: 8.16.3
       yargs: 17.7.2
     optionalDependencies:
-      '@types/pg': 8.15.5
+      '@types/pg': 8.15.6
 
   node-releases@2.0.23: {}
 
