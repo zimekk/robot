@@ -25,18 +25,18 @@
   "dependencies": {
     "@dev/components": "workspace:*",
     "@dev/sql": "workspace:*",
-    "express": "^5.0.0",
+    "express": "^5.2.1",
     "json-diff": "^1.0.3",
     "use-asset": "^1.0.4",
-    "zod": "^4.0.0"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0",
+    "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/json-diff": "^1.0.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@types/styled-components": "^5.1.26"
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/styled-components": "^5.1.36"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",

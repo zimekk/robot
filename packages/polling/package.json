@@ -26,16 +26,16 @@
     "@dev/sql": "workspace:*",
     "date-fns": "^4.0.0",
     "duration-fns": "^3.0.2",
-    "express": "^5.0.0",
+    "express": "^5.2.1",
     "qrcode": "^1.5.4",
     "use-asset": "^1.0.4",
-    "zod": "^4.0.0"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@types/styled-components": "^5.1.26"
+    "@types/express": "^5.0.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/styled-components": "^5.1.36"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",

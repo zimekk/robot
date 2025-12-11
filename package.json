@@ -81,20 +81,20 @@
   },
   "resolutions": {},
   "devDependencies": {
-    "@changesets/cli": "^2.29.5",
-    "@commitlint/cli": "^20.0.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.36.0",
-    "@typescript-eslint/parser": "^8.36.0",
+    "@changesets/cli": "^2.29.8",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
+    "@typescript-eslint/parser": "^8.49.0",
     "changeset-conventional-commits": "^0.2.5",
-    "eslint": "^9.31.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jest": "^29.0.0",
+    "eslint-plugin-jest": "^29.2.1",
     "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-react": "^7.37.5",
     "husky": "^9.1.5",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.6.2",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "ts-node": "^10.9.1",
     "type-coverage": "^2.25.3",
     "typescript": "^5.8.3"
@@ -102,6 +102,6 @@
   "dependencies": {
     "@types/jest": "^30.0.0",
     "jest": "^30.0.0",
-    "ts-jest": "^29.4.0"
+    "ts-jest": "^29.4.6"
   }
 }

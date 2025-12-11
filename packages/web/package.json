@@ -49,8 +49,8 @@
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
     "history": "^5.3.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
@@ -58,17 +58,17 @@
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
     "@types/node": "^24.0.0",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.0.0",
     "dotenv": "^17.0.0",
-    "html-webpack-plugin": "^5.5.1",
+    "html-webpack-plugin": "^5.6.5",
     "react-hot-loader": "^4.13.1",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.4.2",
-    "webpack": "^5.100.1",
+    "webpack": "^5.103.0",
     "webpack-cli": "^6.0.0",
     "webpack-dev-server": "^5.2.2"
   },

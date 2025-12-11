@@ -47,7 +47,7 @@
     "@dev/thule": "workspace:*",
     "@dev/vehicles": "workspace:*",
     "node-html-parser": "^7.0.0",
-    "zod": "^4.0.0"
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@types/node": "^24.0.0"
