@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/milliseconds": "^1.0.0",
+    "@types/node": "^24.0.0",
     "@types/react": "^19.2.7",
     "@types/styled-components": "^5.1.36"
   }
