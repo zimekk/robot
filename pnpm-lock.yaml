@@ -1292,7 +1292,7 @@ importers:
         version: 7.8.2
       styled-components:
         specifier: ^6.1.19
-        version: 6.3.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.3)
@@ -7286,12 +7286,15 @@ packages:
     peerDependencies:
       webpack: ^5.27.0
 
-  styled-components@6.3.6:
-    resolution: {integrity: sha512-eRtK6PXWk3juH+8X9cyfItRk6a0JM+0Cw2gSr9jM3T3WeErb+UPObTRkVCHAv9maYfvPof77h1wq3325I0iI7w==}
+  styled-components@6.3.8:
+    resolution: {integrity: sha512-Kq/W41AKQloOqKM39zfaMdJ4BcYDw/N5CIq4/GTI0YjU6pKcZ1KKhk6b4du0a+6RA9pIfOP/eu94Ge7cu+PDCA==}
     engines: {node: '>= 16'}
     peerDependencies:
       react: '>= 16.8.0'
       react-dom: '>= 16.8.0'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   stylis@4.3.6:
     resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
@@ -14717,7 +14720,7 @@ snapshots:
     dependencies:
       webpack: 5.104.1(webpack-cli@6.0.1)
 
-  styled-components@6.3.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  styled-components@6.3.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@emotion/is-prop-valid': 1.4.0
       '@emotion/unitless': 0.10.0
@@ -14726,10 +14729,11 @@ snapshots:
       csstype: 3.2.3
       postcss: 8.4.49
       react: 19.2.3
-      react-dom: 19.2.3(react@19.2.3)
       shallowequal: 1.1.0
       stylis: 4.3.6
       tslib: 2.8.1
+    optionalDependencies:
+      react-dom: 19.2.3(react@19.2.3)
 
   stylis@4.3.6: {}
 
