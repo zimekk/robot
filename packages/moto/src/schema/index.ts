@@ -115,6 +115,7 @@ const Advert = z
       })
       .optional(),
     valueAddedServices: z.unknown(),
+    isPremiumTopAd: z.unknown().nullable(),
     __typename: z.enum(["Advert"]),
   })
   .strict();
