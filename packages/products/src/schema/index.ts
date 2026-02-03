@@ -46,6 +46,13 @@ export const ProductSchema = z
       })
       .array()
       .optional(),
+    installmentOffer: z
+      .object({
+        text: z.string().nullable(),
+        creditLineId: z.number(),
+        paymentMethodId: z.string(),
+      })
+      .optional(),
     installmentMinimum: z.number().optional(),
     alternativeGroupId: z.string().optional(),
     alternativeProducts: z.unknown().array().optional(),
