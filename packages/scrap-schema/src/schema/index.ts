@@ -171,7 +171,7 @@ export const JsonSchema = z.object({
       ads: AdSchema.array(),
       metaData: z.object({
         searchId: z.string(),
-        spellCheckerQuery: z.null(),
+        spellCheckerQuery: z.null().optional(),
         searchSuggestion: z
           .object({
             type: z.enum(["extended_distance", "no_results_distance"]),
@@ -219,7 +219,7 @@ export const JsonSchema = z.object({
         category_id: z.number(),
         region_id: z.number(),
         city_id: z.number().optional(),
-        filter_refiners: z.string(),
+        filter_refiners: z.string().optional(),
         facets: z.string().optional(),
       }),
       requestParams: z.object({
@@ -227,10 +227,12 @@ export const JsonSchema = z.object({
         categoryPath: z.string(),
         query: z.string(),
         params: z.object({}),
-        options: z.object({
-          spellCheckerDisabledByExperiment: z.boolean(),
-          mWebAdlimitPerPageVariant: z.string().optional(),
-        }),
+        options: z
+          .object({
+            spellCheckerDisabledByExperiment: z.boolean(),
+            mWebAdlimitPerPageVariant: z.string().optional(),
+          })
+          .optional(),
       }),
       categoryId: z.number(),
       categories: z.null().optional(),
