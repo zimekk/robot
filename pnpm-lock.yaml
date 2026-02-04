@@ -204,7 +204,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -291,7 +291,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -334,7 +334,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -377,7 +377,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -420,7 +420,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -469,7 +469,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -515,7 +515,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -555,7 +555,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -598,7 +598,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -635,7 +635,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -659,8 +659,8 @@ importers:
   packages/notify:
     dependencies:
       nodemailer:
-        specifier: ^7.0.11
-        version: 7.0.13
+        specifier: ^8.0.0
+        version: 8.0.0
       zod:
         specifier: ^4.1.13
         version: 4.3.6
@@ -719,7 +719,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -762,7 +762,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -811,7 +811,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -854,7 +854,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -897,7 +897,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -940,7 +940,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -980,7 +980,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1023,7 +1023,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1069,7 +1069,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1115,7 +1115,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1155,7 +1155,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1341,7 +1341,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1396,8 +1396,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       nodemailer:
-        specifier: ^7.0.11
-        version: 7.0.13
+        specifier: ^8.0.0
+        version: 8.0.0
       pretty-bytes:
         specifier: ^7.0.0
         version: 7.1.0
@@ -1409,7 +1409,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       ssl-checker:
         specifier: ^2.0.8
         version: 2.0.10
@@ -1458,7 +1458,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1532,7 +1532,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -1572,7 +1572,7 @@ importers:
         version: 19.2.4
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.3)
+        version: 19.2.3(react@19.2.4)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.4)
@@ -5933,8 +5933,8 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
-  nodemailer@7.0.13:
-    resolution: {integrity: sha512-PNDFSJdP+KFgdsG3ZzMXCgquO7I6McjY2vlqILjtJd0hy8wEvtugS9xKRF2NWlPNGxvLCXlTNIae4serI7dinw==}
+  nodemailer@8.0.0:
+    resolution: {integrity: sha512-xvVJf/f0bzmNpnRIbhCp/IKxaHgJ6QynvUbLXzzMRPG3LDQr5oXkYuw4uDFyFYs8cge8agwwrJAXZsd4hhMquw==}
     engines: {node: '>=6.0.0'}
 
   normalize-path@3.0.0:
@@ -12460,7 +12460,7 @@ snapshots:
 
   node-releases@2.0.27: {}
 
-  nodemailer@7.0.13: {}
+  nodemailer@8.0.0: {}
 
   normalize-path@3.0.0: {}
 
@@ -12985,6 +12985,11 @@ snapshots:
   react-dom@19.2.3(react@19.2.3):
     dependencies:
       react: 19.2.3
+      scheduler: 0.27.0
+
+  react-dom@19.2.3(react@19.2.4):
+    dependencies:
+      react: 19.2.4
       scheduler: 0.27.0
 
   react-dom@19.2.4(react@19.2.4):
