@@ -205,6 +205,15 @@ export const router = () => {
         worker.queue.removeJobs(id).then(() => res.json({ status: "ok" })),
       ),
     )
+    .get("/promote/:id", async (req, res) =>
+      Promise.resolve(req.params).then(({ id }) =>
+        worker.queue
+          .getJob(id)
+          .then((item) => item?.promote())
+          .then(() => ({ status: "ok" }))
+          .then((json) => res.send(json)),
+      ),
+    )
     .get("/:type/:id/", async (req, res) =>
       Promise.resolve(req.params).then(({ id, type = "" }) =>
         worker.queue

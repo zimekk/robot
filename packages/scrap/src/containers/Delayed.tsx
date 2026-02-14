@@ -166,8 +166,12 @@ function Delayed({
                 onChange={onSelect}
               />
               <span>{item.id}</span>
-            </label>{" "}
-            | <a href={item.data.url}>open</a> |{" "}
+            </label>
+            {" | "}
+            <a href={item.data.url}>open</a>
+            {" | "}
+            <a href={`${API_URL}promote/${item.id}`}>promote</a>
+            {" | "}
             <a href={`${API_URL}delete/${item.id}`}>delete</a>
           </div>
           <pre>
