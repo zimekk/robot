@@ -1757,10 +1757,10 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^6.15.0
-        version: 6.18.2(@bull-board/ui@6.18.1)
+        version: 6.18.2(@bull-board/ui@6.18.2)
       '@bull-board/express':
         specifier: ^6.15.0
-        version: 6.18.1
+        version: 6.18.2
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2536,21 +2536,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@6.18.1':
-    resolution: {integrity: sha512-R20GBIHtHnmgHB2hameWfTW3S0LpBd+bt7Jb5uCat7X7wWQtN8nc+3Rvlt5lkDzUYRdHORSZrSRDRVGw8TPe2Q==}
-    peerDependencies:
-      '@bull-board/ui': 6.18.1
-
   '@bull-board/api@6.18.2':
     resolution: {integrity: sha512-WXqn6avFehO6y1qIt8jjcaUxz9JWjmtxCM2v3MjBlJbUTtzoZyFeokrZWrVIbH7wvMLTZJTOh2Ya1Epoo3t9Ig==}
     peerDependencies:
       '@bull-board/ui': 6.18.2
 
-  '@bull-board/express@6.18.1':
-    resolution: {integrity: sha512-t3zBDx39HgSWcqeEHUhU5m51BvvDQjM1TerSkyFqLMnJ3QclpBuXwFU4IAC52rnefX+/+uQU0NAS/Lu6cbcAoA==}
+  '@bull-board/express@6.18.2':
+    resolution: {integrity: sha512-nik5pMkhVoluX6JtFD1zRaladc+yGJ9AYsLP2lMHqBaq8UlBxulwDIY4eMIDoL2ZJnKRoh6zGmo14U+f9dkF0A==}
 
-  '@bull-board/ui@6.18.1':
-    resolution: {integrity: sha512-zQMDFJXblhxeQ0g0QgudFCpuM4kN7m+BeNTgJdcP/2hAX+JnwbHbOS7OVamaQDWppCSoVzppUSuSLXIAmwSTcA==}
+  '@bull-board/ui@6.18.2':
+    resolution: {integrity: sha512-vSd5YiYceypWDeMN/eju61EzU384QNTz2lVfgxX7WH4Dn4S/o7r03frsrHJfDMv7VM95aeyfOGaFJTLruTPw7Q==}
 
   '@changesets/apply-release-plan@7.0.14':
     resolution: {integrity: sha512-ddBvf9PHdy2YY0OUiEl3TV78mH9sckndJR14QAt87KLEbIov81XO0q0QAmvooBxXlqRRP8I9B7XOzZwQG7JkWA==}
@@ -8325,28 +8320,23 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@6.18.1(@bull-board/ui@6.18.1)':
+  '@bull-board/api@6.18.2(@bull-board/ui@6.18.2)':
     dependencies:
-      '@bull-board/ui': 6.18.1
+      '@bull-board/ui': 6.18.2
       redis-info: 3.1.0
 
-  '@bull-board/api@6.18.2(@bull-board/ui@6.18.1)':
+  '@bull-board/express@6.18.2':
     dependencies:
-      '@bull-board/ui': 6.18.1
-      redis-info: 3.1.0
-
-  '@bull-board/express@6.18.1':
-    dependencies:
-      '@bull-board/api': 6.18.1(@bull-board/ui@6.18.1)
-      '@bull-board/ui': 6.18.1
+      '@bull-board/api': 6.18.2(@bull-board/ui@6.18.2)
+      '@bull-board/ui': 6.18.2
       ejs: 3.1.10
       express: 5.2.1
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@6.18.1':
+  '@bull-board/ui@6.18.2':
     dependencies:
-      '@bull-board/api': 6.18.1(@bull-board/ui@6.18.1)
+      '@bull-board/api': 6.18.2(@bull-board/ui@6.18.2)
 
   '@changesets/apply-release-plan@7.0.14':
     dependencies:
