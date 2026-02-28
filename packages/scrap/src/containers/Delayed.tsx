@@ -98,6 +98,25 @@ function Delayed({
 
   return (
     <Fieldset legend="delayed">
+      <div style={{ float: "right" }}>
+        {["euro", "petrostar.pl", "rossmann.pl"].map((query, index) => (
+          <span key={index}>
+            {index > 0 ? ` | ` : ``}
+            <a
+              href="#"
+              onClick={(e) => (
+                e.preventDefault(),
+                setMatch((match) => ({
+                  ...match,
+                  query,
+                }))
+              )}
+            >
+              {query}
+            </a>
+          </span>
+        ))}
+      </div>
       {/* <pre>{JSON.stringify(delayed, null, 2)}</pre> */}
       <div>
         <label>
