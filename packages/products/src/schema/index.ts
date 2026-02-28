@@ -119,6 +119,7 @@ export const ProductSchema = z
     onlineAvailability: z.unknown(),
   })
   .extend({
+    energyClass: z.string().optional(),
     isPriceVisible: z.boolean().optional(),
     markText: z.string().optional(),
     productId: z.number().optional(),
