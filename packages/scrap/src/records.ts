@@ -847,6 +847,7 @@ export const records = [
       "akcesoria-do-stacji-zasilania,r2.bhtml",
       // "category=archiwizacja-danych1&__=WD",
       "archiwizacja-danych1,_WD.bhtml",
+      "blendery,_Bosch:wmf.bhtml",
       "chlodziarki-do-wina-do-zabudowy,_Franke:Siemens.bhtml",
       // "category=czysciki-parowe&__=Karcher",
       "czysciki-parowe,_Karcher.bhtml",
