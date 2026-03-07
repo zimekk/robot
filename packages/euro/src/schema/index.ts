@@ -17,182 +17,190 @@ const Instalment = z.object({
   usingDiscountedPrice: z.boolean(),
 });
 
-const Result = z.object({
-  name: z.string(),
-  baseAttributes: z.array(
-    z.object({
-      name: z.string(),
-      attributes: z.array(
-        z.object({
-          name: z.string(),
-          value: z.array(
-            z.object({
-              name: z.string(),
-              definitionId: z.number().nullable(),
-              url: z.null(),
-            }),
-          ),
-          definitionId: z.number().nullable(),
-        }),
-      ),
-    }),
-  ),
-  prices: z.object({
-    mainPrice: z.number(),
-    promotionalPrice: z
-      .object({
-        price: z.number(),
-        fromDatetime: z.string(),
-        toDatetime: z.string(),
-      })
-      .nullable(),
-    voucherDiscountedPrice: z.number().nullable(),
-    lowestPrice: z.object({ price: z.number().nullable(), show: z.boolean() }),
-  }),
-  images: z
-    .object({
-      url: z.string(),
-      type: z.enum([
-        "BIG_PHOTO",
-        "CARD_PHOTO",
-        "CMS_PHOTO",
-        "DETAILS_PHOTO",
-        "ICON_PHOTO",
-        "ORIGINAL_PHOTO",
-        "PHOTO",
-        "SUITE_PHOTO",
-      ]),
-    })
-    .array(),
-  productGroupName: z.string(),
-  productType: z.string(),
-  promotionStickers: z.unknown().array().optional(),
-  deliveryAvailability: z.object({
-    shopDeliveryAvailability: DeliveryAvailability.nullable(),
-    homeDeliveryAvailability: DeliveryAvailability.nullable(),
-    commonDeliveryAvailability: DeliveryAvailability.nullable(),
-    reserveAndCollectAvailable: z.boolean(),
-  }),
-  labels: z.array(
-    z.object({
-      name: z.string().nullable(),
-      color: z.string().nullable(),
-      backgroundColor: z.string().nullable(),
-    }),
-  ),
-  brand: z.string(),
-  brandLogo: z.null(),
-  variantBasicData: z.object({
-    variantGroups: z.array(
+const Result = z
+  .object({
+    name: z.string(),
+    baseAttributes: z.array(
       z.object({
-        variantGroupName: z.string(),
-        variants: z.array(
+        name: z.string(),
+        attributes: z.array(
           z.object({
-            variantValue: z.string(),
-            currentProduct: z.boolean(),
-            colorCodes: z.string().array().nullable(),
+            name: z.string(),
+            value: z.array(
+              z.object({
+                name: z.string(),
+                definitionId: z.number().nullable(),
+                url: z.null(),
+              }),
+            ),
+            definitionId: z.number().nullable(),
           }),
         ),
       }),
     ),
-  }),
-  outletDetails: z
-    .object({
-      deliveryAvailability: z.object({
-        shopDeliveryAvailability: DeliveryAvailability,
-        homeDeliveryAvailability: DeliveryAvailability,
-        commonDeliveryAvailability: z.null(),
-        reserveAndCollectAvailable: z.boolean(),
-      }),
-      outletCategories: z.array(
-        z.object({
-          categoryName: z.string(),
-          categoryDescription: z.string(),
-          categoryId: z.number(),
-          price: z.number(),
-          instalment: Instalment.nullable(),
-        }),
-      ),
-    })
-    .nullable(),
-  opinionsSummary: z.object({
-    averageGrade: z.number(),
-    opinionsNumber: z.number(),
-  }),
-  splitPayment: z.boolean(),
-  productName: z.string(),
-  energyLabel: z
-    .object({
-      energyClass: z.object({
-        value: z.string(),
-        type: z.string(),
-        scale: z.string().nullable(),
-      }),
-      oldEnergyClassLabel: z.string().nullable(),
-      energyInformationCardUrl: z.string().nullable(),
-      definitionId: z.number().nullable(),
-    })
-    .nullable(),
-  productAdvertisingPlacements: z.array(z.unknown()),
-  voucherDetails: z
-    .object({
-      voucherName: z.string().nullable(),
-      voucherCode: z.string(),
-      automatic: z.boolean(),
-      beginTime: z.string(),
-      endTime: z.string(),
-      usageLimit: z
+    prices: z.object({
+      mainPrice: z.number(),
+      promotionalPrice: z
         .object({
-          remainingUsageLimit: z.number(),
-          totalUsageLimit: z.number(),
+          price: z.number(),
+          fromDatetime: z.string(),
+          toDatetime: z.string(),
         })
         .nullable(),
-      description: z.string(),
-    })
-    .nullable(),
-  deliveryPriceMessage: z.string().nullable(),
-  forceOutlet: z.boolean().optional(),
-  freeDeliveryDate: z.string().nullable().optional(),
-  instalment: Instalment.nullable(),
-  identifiers: z.object({
-    plu: z.string(),
-    productLinkName: z.string(),
-    productGroupLinkName: z.string(),
-    huCode: z.null(),
-  }),
-  presentationBox: z
-    .object({
-      backgroundColor: z.string().nullable(),
-      promotionBackgroundColor: z.string().nullable(),
-      promotionTextColor: z.string().nullable(),
-      infoTextColor: z.string().nullable(),
-      voucherCodeTextColor: z.string().nullable(),
-      dateTextColor: z.string().nullable(),
-      gaugeBackgroundColor: z.string().nullable(),
-      gaugeBorderColor: z.string().nullable(),
-      discountedPriceColor: z.string().nullable(),
-      priceColor: z.string().nullable(),
-      boxBorderColor: z.string().nullable(),
-      tabTextColor: z.string().nullable(),
-    })
-    .nullable(),
-  productLinks: z.array(z.unknown()),
-  callCenterPhoneNumber: z.string(),
-  paymentTypeDescriptions: z.array(z.unknown()),
-  videos: z.array(z.unknown()),
-  relatedPromotion: z.null(),
-  holidayStatus: z
-    .object({
-      name: z.string(),
-      descriptions: z.unknown().array(),
-    })
-    .nullable()
-    .optional(),
-  eanCodes: z.string().array().optional(),
-  symkar: z.string().optional(),
-  scores: z.unknown().optional(),
-  stockDetails: z.unknown().optional(),
-});
+      voucherDiscountedPrice: z.number().nullable(),
+      lowestPrice: z.object({
+        price: z.number().nullable(),
+        show: z.boolean(),
+      }),
+    }),
+    images: z
+      .object({
+        url: z.string(),
+        type: z.enum([
+          "BIG_PHOTO",
+          "CARD_PHOTO",
+          "CMS_PHOTO",
+          "DETAILS_PHOTO",
+          "ICON_PHOTO",
+          "ORIGINAL_PHOTO",
+          "PHOTO",
+          "SUITE_PHOTO",
+        ]),
+      })
+      .array(),
+    productGroupName: z.string(),
+    productType: z.string(),
+    promotionStickers: z.unknown().array().optional(),
+    deliveryAvailability: z.object({
+      shopDeliveryAvailability: DeliveryAvailability.nullable(),
+      homeDeliveryAvailability: DeliveryAvailability.nullable(),
+      commonDeliveryAvailability: DeliveryAvailability.nullable(),
+      reserveAndCollectAvailable: z.boolean(),
+    }),
+    labels: z.array(
+      z.object({
+        name: z.string().nullable(),
+        color: z.string().nullable(),
+        backgroundColor: z.string().nullable(),
+      }),
+    ),
+    brand: z.string(),
+    brandLogo: z.null(),
+    variantBasicData: z.object({
+      variantGroups: z.array(
+        z.object({
+          variantGroupName: z.string(),
+          variants: z.array(
+            z.object({
+              variantValue: z.string(),
+              currentProduct: z.boolean(),
+              colorCodes: z.string().array().nullable(),
+            }),
+          ),
+        }),
+      ),
+    }),
+    outletDetails: z
+      .object({
+        deliveryAvailability: z.object({
+          shopDeliveryAvailability: DeliveryAvailability,
+          homeDeliveryAvailability: DeliveryAvailability,
+          commonDeliveryAvailability: z.null(),
+          reserveAndCollectAvailable: z.boolean(),
+        }),
+        outletCategories: z.array(
+          z.object({
+            categoryName: z.string(),
+            categoryDescription: z.string(),
+            categoryId: z.number(),
+            price: z.number(),
+            instalment: Instalment.nullable(),
+          }),
+        ),
+      })
+      .nullable(),
+    opinionsSummary: z.object({
+      averageGrade: z.number(),
+      opinionsNumber: z.number(),
+    }),
+    splitPayment: z.boolean(),
+    productName: z.string(),
+    energyLabel: z
+      .object({
+        energyClass: z.object({
+          value: z.string(),
+          type: z.string(),
+          scale: z.string().nullable(),
+        }),
+        oldEnergyClassLabel: z.string().nullable(),
+        energyInformationCardUrl: z.string().nullable(),
+        definitionId: z.number().nullable(),
+      })
+      .nullable(),
+    productAdvertisingPlacements: z.array(z.unknown()),
+    voucherDetails: z
+      .object({
+        voucherName: z.string().nullable(),
+        voucherCode: z.string(),
+        automatic: z.boolean(),
+        beginTime: z.string(),
+        endTime: z.string(),
+        usageLimit: z
+          .object({
+            remainingUsageLimit: z.number(),
+            totalUsageLimit: z.number(),
+          })
+          .nullable(),
+        description: z.string(),
+      })
+      .nullable(),
+    deliveryPriceMessage: z.string().nullable(),
+    forceOutlet: z.boolean().optional(),
+    freeDeliveryDate: z.string().nullable().optional(),
+    instalment: Instalment.nullable(),
+    identifiers: z.object({
+      plu: z.string(),
+      productLinkName: z.string(),
+      productGroupLinkName: z.string(),
+      huCode: z.null(),
+    }),
+    presentationBox: z
+      .object({
+        backgroundColor: z.string().nullable(),
+        promotionBackgroundColor: z.string().nullable(),
+        promotionTextColor: z.string().nullable(),
+        infoTextColor: z.string().nullable(),
+        voucherCodeTextColor: z.string().nullable(),
+        dateTextColor: z.string().nullable(),
+        gaugeBackgroundColor: z.string().nullable(),
+        gaugeBorderColor: z.string().nullable(),
+        discountedPriceColor: z.string().nullable(),
+        priceColor: z.string().nullable(),
+        boxBorderColor: z.string().nullable(),
+        tabTextColor: z.string().nullable(),
+      })
+      .nullable(),
+    productLinks: z.array(z.unknown()),
+    callCenterPhoneNumber: z.string(),
+    paymentTypeDescriptions: z.array(z.unknown()),
+    videos: z.array(z.unknown()),
+    relatedPromotion: z.null(),
+    holidayStatus: z
+      .object({
+        name: z.string(),
+        descriptions: z.unknown().array(),
+      })
+      .nullable()
+      .optional(),
+    eanCodes: z.string().array().optional(),
+    symkar: z.string().optional(),
+    scores: z.unknown().optional(),
+    stockDetails: z.unknown().optional(),
+  })
+  .extend({
+    analytics: z.unknown().optional(),
+    availabilityStatusMessage: z.unknown().optional(),
+  });
 
 export const JsonSchema = z.object({
   productsCount: z.number(),
