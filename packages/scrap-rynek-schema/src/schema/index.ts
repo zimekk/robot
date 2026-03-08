@@ -235,7 +235,7 @@ const JsonSchema = z.object({
       })
       .passthrough(),
   ),
-  application: z.object({}),
+  application: z.object({}).optional(),
   backToUrl: z.object({ url: z.string(), text: z.string() }),
   favourite: z.object({
     fetchRequest: z.number(),
