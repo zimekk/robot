@@ -1,5 +1,12 @@
 # @zimekk/scrap-schema
 
+## 1.0.12
+
+### Patch Changes
+
+- cd28df0: fix(scrap-schema): schema
+- cd28df0: fix(deps): update latest
+
 ## 1.0.11
 
 ### Patch Changes
