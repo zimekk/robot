@@ -25,6 +25,7 @@
   "dependencies": {
     "@dev/components": "workspace:*",
     "@dev/sql": "workspace:*",
+    "@zimekk/scrap-props-schema": "workspace:^",
     "express": "^5.2.1",
     "json-diff": "^1.0.3",
     "use-asset": "^1.0.4",
