@@ -1,5 +1,12 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.9
+
+### Patch Changes
+
+- cd28df0: fix(scrap-rynek-schema): schema
+- cd28df0: fix(deps): update latest
+
 ## 1.0.8
 
 ### Patch Changes
