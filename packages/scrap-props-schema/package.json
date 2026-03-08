@@ -1,0 +1,37 @@
+{
+  "name": "@zimekk/scrap-props-schema",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:zimekk/robot.git",
+    "directory": "packages/scrap-props-schema"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf lib",
+    "coverage": "type-coverage && tsc --noEmit",
+    "prepack": "tsc --declaration",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "zod": "^4.1.13"
+  }
+}
