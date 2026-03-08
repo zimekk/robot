@@ -1,5 +1,11 @@
 # @zimekk/scrap-props-schema
 
+## 1.0.3
+
+### Patch Changes
+
+- 1d9c093: fix(scrap-props-schema): schema
+
 ## 1.0.2
 
 ### Patch Changes
