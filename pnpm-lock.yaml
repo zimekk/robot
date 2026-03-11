@@ -1766,10 +1766,10 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^6.15.0
-        version: 6.20.3(@bull-board/ui@6.20.3)
+        version: 6.20.5(@bull-board/ui@6.20.5)
       '@bull-board/express':
         specifier: ^6.15.0
-        version: 6.20.3
+        version: 6.20.5
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2549,16 +2549,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@6.20.3':
-    resolution: {integrity: sha512-cDrsJJsmF4DbbY8/5oHxO4qFtyFjxexsWQKHowsud/8H4mtZN7MZg4fCmNzfaxc9Ov7V6r9Y9F5G2Mq6t7ZEJg==}
+  '@bull-board/api@6.20.5':
+    resolution: {integrity: sha512-tKKwGWtVBL7YL5lAgrBaOGEVtOAOpevhQFKj94cnVHD/yhXRaHr9LSTKbat21kkG2/fl95YWU6Gegzs4QIlImQ==}
     peerDependencies:
-      '@bull-board/ui': 6.20.3
+      '@bull-board/ui': 6.20.5
 
-  '@bull-board/express@6.20.3':
-    resolution: {integrity: sha512-S6BGeSf/PLwjx5W1IrKxoV8G6iiMmLqT/pldZ6BiC1IDldedisTtAdL1z117swXPv1H7/3hy0vr03dUr8bUCPg==}
+  '@bull-board/express@6.20.5':
+    resolution: {integrity: sha512-1xOgyAhSZZ/dPe2SVbJadge5tqA1dlzQcDcCUkZlhtXV4LkXeH8Gx+mMoLYTsyGjJhFxckQA/f9zXcxoXP34DQ==}
 
-  '@bull-board/ui@6.20.3':
-    resolution: {integrity: sha512-oANyYoW0X+xd0j/09DRyh3u7Q3wqBtXiLEWyZUJIi/Bjp/hINwiw20RwWuRcaFkqkFylEJL9l+pjmeSA9X5L2A==}
+  '@bull-board/ui@6.20.5':
+    resolution: {integrity: sha512-JYuMImdQYmEicnwyeV5CIfRW9EP0kiIuKHV1cQu4KIhNl0Y7LX+ivjrVXloVhNGZeTaajrkxzTY9OnZvYnGLOA==}
 
   '@changesets/apply-release-plan@7.1.0':
     resolution: {integrity: sha512-yq8ML3YS7koKQ/9bk1PqO0HMzApIFNwjlwCnwFEXMzNe8NpzeeYYKCmnhWJGkN8g7E51MnWaSbqRcTcdIxUgnQ==}
@@ -4754,9 +4754,8 @@ packages:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
     engines: {node: '>=16.0.0'}
 
-  filelist@1.0.5:
-    resolution: {integrity: sha512-ct/ckWBV/9Dg3MlvCXsLcSUyoWwv9mCKqlhLNB2DAuXR/NZolSXlQqP5dyy6guWlPXBhodZyZ5lGPQcbQDxrEQ==}
-    engines: {node: 20 || >=22}
+  filelist@1.0.6:
+    resolution: {integrity: sha512-5giy2PkLYY1cP39p17Ech+2xlpTRL9HLspOfEgm0L6CwBXBTgsK5ou0JtzYuepxkaQ/tvhCFIJ5uXo0OrM2DxA==}
 
   fill-range@7.1.1:
     resolution: {integrity: sha512-YsGpe3WHLK8ZYi4tWDg2Jy3ebRz2rXowDxnld4bkQB00cc/1Zw9AWnC0i9ztDJitivtQvaI9KaLyKrc+hBW0yg==}
@@ -5845,6 +5844,10 @@ packages:
 
   minimatch@3.1.5:
     resolution: {integrity: sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==}
+
+  minimatch@5.1.9:
+    resolution: {integrity: sha512-7o1wEA2RyMP7Iu7GNba9vc0RWWGACJOCZBJX2GJWip0ikV+wcOsgVuY9uE8CPiyQhkGFSlhuSkZPavN7u1c2Fw==}
+    engines: {node: '>=10'}
 
   minimatch@9.0.9:
     resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
@@ -8325,23 +8328,23 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@6.20.3(@bull-board/ui@6.20.3)':
+  '@bull-board/api@6.20.5(@bull-board/ui@6.20.5)':
     dependencies:
-      '@bull-board/ui': 6.20.3
+      '@bull-board/ui': 6.20.5
       redis-info: 3.1.0
 
-  '@bull-board/express@6.20.3':
+  '@bull-board/express@6.20.5':
     dependencies:
-      '@bull-board/api': 6.20.3(@bull-board/ui@6.20.3)
-      '@bull-board/ui': 6.20.3
+      '@bull-board/api': 6.20.5(@bull-board/ui@6.20.5)
+      '@bull-board/ui': 6.20.5
       ejs: 3.1.10
       express: 5.2.1
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@6.20.3':
+  '@bull-board/ui@6.20.5':
     dependencies:
-      '@bull-board/api': 6.20.3(@bull-board/ui@6.20.3)
+      '@bull-board/api': 6.20.5(@bull-board/ui@6.20.5)
 
   '@changesets/apply-release-plan@7.1.0':
     dependencies:
@@ -11098,9 +11101,9 @@ snapshots:
     dependencies:
       flat-cache: 4.0.1
 
-  filelist@1.0.5:
+  filelist@1.0.6:
     dependencies:
-      minimatch: 10.2.4
+      minimatch: 5.1.9
 
   fill-range@7.1.1:
     dependencies:
@@ -11779,7 +11782,7 @@ snapshots:
   jake@10.9.4:
     dependencies:
       async: 3.2.6
-      filelist: 1.0.5
+      filelist: 1.0.6
       picocolors: 1.1.1
 
   jest-changed-files@30.2.0:
@@ -12406,6 +12409,10 @@ snapshots:
   minimatch@3.1.5:
     dependencies:
       brace-expansion: 1.1.12
+
+  minimatch@5.1.9:
+    dependencies:
+      brace-expansion: 2.0.2
 
   minimatch@9.0.9:
     dependencies:
