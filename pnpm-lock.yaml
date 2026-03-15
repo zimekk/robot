@@ -35,7 +35,7 @@ importers:
         version: 8.57.0(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       changeset-conventional-commits:
         specifier: ^1.0.0
-        version: 1.0.0
+        version: 1.0.1
       eslint:
         specifier: ^9.39.1
         version: 9.39.4(jiti@2.6.1)
@@ -2610,17 +2610,11 @@ packages:
   '@changesets/logger@0.1.1':
     resolution: {integrity: sha512-OQtR36ZlnuTxKqoW4Sv6x5YIhOmClRd5pWsjZsddYxpWs517R0HkyiefQPIytCVh4ZcC5x9XaG8KTdd5iRQUfg==}
 
-  '@changesets/parse@0.4.2':
-    resolution: {integrity: sha512-Uo5MC5mfg4OM0jU3up66fmSn6/NE9INK+8/Vn/7sMVcdWg46zfbvvUSjD9EMonVqPi9fbrJH9SXHn48Tr1f2yA==}
-
   '@changesets/parse@0.4.3':
     resolution: {integrity: sha512-ZDmNc53+dXdWEv7fqIUSgRQOLYoUom5Z40gmLgmATmYR9NbL6FJJHwakcCpzaeCy+1D0m0n7mT4jj2B/MQPl7A==}
 
   '@changesets/pre@2.0.2':
     resolution: {integrity: sha512-HaL/gEyFVvkf9KFg6484wR9s0qjAXlZ8qWPDkTyKF6+zqjBe/I2mygg3MbpZ++hdi0ToqNUF8cjj7fBy0dg8Ug==}
-
-  '@changesets/read@0.6.6':
-    resolution: {integrity: sha512-P5QaN9hJSQQKJShzzpBT13FzOSPyHbqdoIBUd2DJdgvnECCyO6LmAOWSV+O8se2TaZJVwSXjL+v9yhb+a9JeJg==}
 
   '@changesets/read@0.6.7':
     resolution: {integrity: sha512-D1G4AUYGrBEk8vj8MGwf75k9GpN6XL3wg8i42P2jZZwFLXnlr2Pn7r9yuQNbaMCarP7ZQWNJbV6XLeysAIMhTA==}
@@ -3991,8 +3985,8 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  changeset-conventional-commits@1.0.0:
-    resolution: {integrity: sha512-EpAwObsARWmt415kCrXSYYMp2LHa9SES5b8E3e/+meeZG02M3+kU4eqcq/FluKKplrgbO6cyuu5Fnc0B79iwSw==}
+  changeset-conventional-commits@1.0.1:
+    resolution: {integrity: sha512-byZh6rfMBpLWGGXLW/mgXkYzjoMOT2x8Bpt5YqqFEi488emlDXfe5Vml3nqkZ7rXJSipxy7Yr0kIIGKTWmCscw==}
     engines: {node: '>=22', pnpm: '>=10'}
     hasBin: true
 
@@ -4789,9 +4783,9 @@ packages:
       picomatch:
         optional: true
 
-  figlet@1.8.0:
-    resolution: {integrity: sha512-chzvGjd+Sp7KUvPHZv6EXV5Ir3Q7kYNpCr4aHrRW79qFtTefmQZNny+W1pW9kf5zeE6dikku2W50W/wAH2xWgw==}
-    engines: {node: '>= 0.4.0'}
+  figlet@1.11.0:
+    resolution: {integrity: sha512-EEx3OS/l2bFqcUNN2NM9FPJp8vAMrgbCxsbl2hbcJNNxOEwVe3mEzrhan7TbJQViZa8mMqhihlbCaqD+LyYKTQ==}
+    engines: {node: '>= 17.0.0'}
     hasBin: true
 
   file-entry-cache@8.0.0:
@@ -8536,11 +8530,6 @@ snapshots:
     dependencies:
       picocolors: 1.1.1
 
-  '@changesets/parse@0.4.2':
-    dependencies:
-      '@changesets/types': 6.1.0
-      js-yaml: 4.1.1
-
   '@changesets/parse@0.4.3':
     dependencies:
       '@changesets/types': 6.1.0
@@ -8552,16 +8541,6 @@ snapshots:
       '@changesets/types': 6.1.0
       '@manypkg/get-packages': 1.1.3
       fs-extra: 7.0.1
-
-  '@changesets/read@0.6.6':
-    dependencies:
-      '@changesets/git': 3.0.4
-      '@changesets/logger': 0.1.1
-      '@changesets/parse': 0.4.2
-      '@changesets/types': 6.1.0
-      fs-extra: 7.0.1
-      p-filter: 2.1.0
-      picocolors: 1.1.1
 
   '@changesets/read@0.6.7':
     dependencies:
@@ -10277,14 +10256,14 @@ snapshots:
 
   chalk@5.6.2: {}
 
-  changeset-conventional-commits@1.0.0:
+  changeset-conventional-commits@1.0.1:
     dependencies:
-      '@changesets/read': 0.6.6
+      '@changesets/read': 0.6.7
       '@changesets/types': 6.1.0
       '@changesets/write': 0.4.0
       '@manypkg/get-packages': 3.1.0
       chalk: 5.6.2
-      figlet: 1.8.0
+      figlet: 1.11.0
 
   char-regex@1.0.2: {}
 
@@ -11218,7 +11197,9 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.3
 
-  figlet@1.8.0: {}
+  figlet@1.11.0:
+    dependencies:
+      commander: 14.0.3
 
   file-entry-cache@8.0.0:
     dependencies:
