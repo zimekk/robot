@@ -660,7 +660,7 @@ importers:
     dependencies:
       nodemailer:
         specifier: ^8.0.0
-        version: 8.0.2
+        version: 8.0.3
       zod:
         specifier: ^4.1.13
         version: 4.3.6
@@ -1406,7 +1406,7 @@ importers:
         version: 5.2.1
       nodemailer:
         specifier: ^8.0.0
-        version: 8.0.2
+        version: 8.0.3
       pretty-bytes:
         specifier: ^7.0.0
         version: 7.1.0
@@ -6018,8 +6018,8 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
-  nodemailer@8.0.2:
-    resolution: {integrity: sha512-zbj002pZAIkWQFxyAaqoxvn+zoIwRnS40hgjqTXudKOOJkiFFgBeNqjgD3/YCR12sZnrghWYBY+yP1ZucdDRpw==}
+  nodemailer@8.0.3:
+    resolution: {integrity: sha512-JQNBqvK+bj3NMhUFR3wmCl3SYcOeMotDiwDBvIoCuQdF0PvlIY0BH+FJ2CG7u4cXKPChplE78oowlH/Otsc4ZQ==}
     engines: {node: '>=6.0.0'}
 
   normalize-path@3.0.0:
@@ -12618,7 +12618,7 @@ snapshots:
 
   node-releases@2.0.27: {}
 
-  nodemailer@8.0.2: {}
+  nodemailer@8.0.3: {}
 
   normalize-path@3.0.0: {}
 
