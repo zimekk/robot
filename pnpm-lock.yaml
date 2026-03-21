@@ -35,7 +35,7 @@ importers:
         version: 8.57.1(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       changeset-conventional-commits:
         specifier: ^1.0.0
-        version: 1.0.1
+        version: 1.0.3
       eslint:
         specifier: ^9.39.1
         version: 9.39.4(jiti@2.6.1)
@@ -3985,8 +3985,8 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  changeset-conventional-commits@1.0.1:
-    resolution: {integrity: sha512-byZh6rfMBpLWGGXLW/mgXkYzjoMOT2x8Bpt5YqqFEi488emlDXfe5Vml3nqkZ7rXJSipxy7Yr0kIIGKTWmCscw==}
+  changeset-conventional-commits@1.0.3:
+    resolution: {integrity: sha512-+3R5R7P+RTJdbMPUqL8LqEC7l486qpkjc6JfTOfJS6ll6Ijo9XHVxUyXFr+AxlQQaK2E+jMgsbDDmGcQbtWVEw==}
     engines: {node: '>=22', pnpm: '>=10'}
     hasBin: true
 
@@ -10256,7 +10256,7 @@ snapshots:
 
   chalk@5.6.2: {}
 
-  changeset-conventional-commits@1.0.1:
+  changeset-conventional-commits@1.0.3:
     dependencies:
       '@changesets/read': 0.6.7
       '@changesets/types': 6.1.0
