@@ -140,6 +140,10 @@ const Advert = z
     isPremiumTopAd: z.unknown().nullable(),
     __typename: z.enum(["Advert"]),
   })
+  .extend({
+    standId: z.unknown().optional(),
+    seller: z.unknown().optional(),
+  })
   .strict();
 
 export type DataType = z.infer<typeof Advert>;
