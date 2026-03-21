@@ -67,6 +67,7 @@ export const ProductSchema = z
     isEsd: z.boolean().optional(),
     esdType: z.string().optional(),
     isGiftCard: z.boolean().optional(),
+    isOnlyShippingFromDepartment: z.boolean().optional(),
     productLink: z.string(),
     photo: PhotoSchema,
     rating: z.number().optional(),

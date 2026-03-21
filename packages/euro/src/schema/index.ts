@@ -198,6 +198,7 @@ const Result = z
     stockDetails: z.unknown().optional(),
   })
   .extend({
+    activationVoucher: z.boolean().optional(),
     analytics: z.unknown().optional(),
     availabilityStatusMessage: z.unknown().optional(),
   });
