@@ -858,7 +858,7 @@ export const records = [
       // "category=etui-do-telefonow&__=Apple",
       "etui-do-telefonow,_Apple.bhtml",
       // "category=fotele-i-stojaki-do-kierownicy&__=Asus,sparco",
-      "fotele-i-stojaki-do-kierownicy,_Asus:sparco.bhtml",
+      // "fotele-i-stojaki-do-kierownicy,_Asus:sparco.bhtml",
       // "category=foto-i-kamery&searchString=LP-E12",
       "search/foto-i-kamery.bhtml?keyword=lp-e12",
       // "category=gilotyny-i-trymery",

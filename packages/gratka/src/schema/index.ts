@@ -11,7 +11,7 @@ const OfferSchema = z.object({
       "@type": z.literal("PostalAddress"),
       addressCountry: z.string(),
       addressLocality: z.string(),
-      addressRegion: z.string(),
+      addressRegion: z.string().optional(),
     }),
     geo: z
       .object({
@@ -38,8 +38,8 @@ const WebPageSchema = z.object({
     "@type": z.literal("AggregateOffer"),
     priceCurrency: z.literal("PLN"),
     offerCount: z.number(),
-    lowPrice: z.coerce.number(),
-    highPrice: z.coerce.number(),
+    lowPrice: z.coerce.number().optional(),
+    highPrice: z.coerce.number().optional(),
     businessFunction: z.string(),
     offers: OfferSchema.transform(
       ({ itemOffered, name = itemOffered.name, ...rest }) => ({
