@@ -102,6 +102,9 @@ importers:
       '@dev/moto':
         specifier: workspace:*
         version: link:../moto
+      '@dev/offer':
+        specifier: workspace:*
+        version: link:../offer
       '@dev/petro':
         specifier: workspace:*
         version: link:../petro
@@ -669,6 +672,40 @@ importers:
         specifier: ^7.0.4
         version: 7.0.11
 
+  packages/offer:
+    dependencies:
+      '@dev/sql':
+        specifier: workspace:*
+        version: link:../sql
+      express:
+        specifier: ^5.2.1
+        version: 5.2.1
+      json-diff:
+        specifier: ^1.0.3
+        version: 1.0.6
+      react:
+        specifier: ^18.2.0 || ^19.0.0
+        version: 19.2.4
+      use-asset:
+        specifier: ^1.0.4
+        version: 1.0.4(react@19.2.4)
+      zod:
+        specifier: ^4.1.13
+        version: 4.3.6
+    devDependencies:
+      '@types/express':
+        specifier: ^5.0.6
+        version: 5.0.6
+      '@types/json-diff':
+        specifier: ^1.0.0
+        version: 1.0.3
+      '@types/react':
+        specifier: ^19.2.7
+        version: 19.2.14
+      '@types/styled-components':
+        specifier: ^5.1.36
+        version: 5.1.36
+
   packages/petro:
     dependencies:
       '@dev/sql':
@@ -1211,6 +1248,9 @@ importers:
       '@dev/moto':
         specifier: workspace:*
         version: link:../moto
+      '@dev/offer':
+        specifier: workspace:*
+        version: link:../offer
       '@dev/petro':
         specifier: workspace:*
         version: link:../petro
@@ -1640,6 +1680,9 @@ importers:
       '@dev/moto':
         specifier: workspace:*
         version: link:../moto
+      '@dev/offer':
+        specifier: workspace:*
+        version: link:../offer
       '@dev/petro':
         specifier: workspace:*
         version: link:../petro
@@ -1803,6 +1846,9 @@ importers:
       '@dev/moto':
         specifier: workspace:*
         version: link:../moto
+      '@dev/offer':
+        specifier: workspace:*
+        version: link:../offer
       '@dev/petro':
         specifier: workspace:*
         version: link:../petro
@@ -9465,7 +9511,7 @@ snapshots:
 
   '@types/serve-index@1.9.4':
     dependencies:
-      '@types/express': 4.17.25
+      '@types/express': 5.0.6
 
   '@types/serve-static@1.15.10':
     dependencies:

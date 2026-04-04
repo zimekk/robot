@@ -30,6 +30,7 @@ export const Type = {
   HOTSHOT: "HOTSHOT",
   LECLERC: "LECLERC",
   MACAN: "MACAN",
+  OFFER: "OFFER",
   PLOTS: "PLOTS",
   PROMO: "PROMO",
   PROMO_ITEM: "PROMO_ITEM",
@@ -125,6 +126,7 @@ export const getTypeByUrl = (url: string) =>
     [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal|al.to/goracy_strzal"),
     [Type.LECLERC]: new RegExp("leclerc.pl/"),
     [Type.MACAN]: new RegExp("porsche.com/"),
+    [Type.OFFER]: new RegExp("botland.com.pl/|senetic.pl/"),
     [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
     [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
     [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
@@ -228,6 +230,9 @@ export const EntrySchema = z.preprocess(
     }),
     JsonSchema.extend({
       type: z.literal(Type.MACAN),
+    }),
+    JsonSchema.extend({
+      type: z.literal(Type.OFFER),
     }),
     JsonSchema.extend({
       type: z.literal(Type.PETRO),
@@ -432,6 +437,10 @@ export const EntriesSchema = z.discriminatedUnion("type", [
   ReturnSchema.extend({
     type: z.literal(Type.MACAN),
     returnvalue: MacanReturnSchema,
+  }),
+  ReturnSchema.extend({
+    type: z.literal(Type.OFFER),
+    returnvalue: require("@dev/offer/schema").Schema,
   }),
   ReturnSchema.extend({
     type: z.literal(Type.PETRO),

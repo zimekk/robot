@@ -1,0 +1,41 @@
+{
+  "name": "@dev/offer",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "private": true,
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "type-coverage && tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@dev/sql": "workspace:*",
+    "express": "^5.2.1",
+    "json-diff": "^1.0.3",
+    "use-asset": "^1.0.4",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/json-diff": "^1.0.0",
+    "@types/react": "^19.2.7",
+    "@types/styled-components": "^5.1.36"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0 || ^19.0.0"
+  }
+}
