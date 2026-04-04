@@ -28,7 +28,7 @@
     "nodemailer": "^8.0.0",
     "pretty-bytes": "^7.0.0",
     "pretty-ms": "^9.0.0",
-    "ssl-checker": "^2.0.8",
+    "ssl-checker": "^3.0.0",
     "use-asset": "^1.0.4",
     "zod": "^4.1.13"
   },
