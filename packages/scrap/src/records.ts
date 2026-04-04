@@ -1080,6 +1080,73 @@ export const records = [
       })),
   )
   .concat(
+    [
+      "UA-G3-B",
+      "UA-LOCK-ELECTRIC",
+      "UDM-PRO",
+      "UDM-SE",
+      "UNAS-PRO-4",
+      "UNVR",
+      "UVC-G4_DOORBELL_PRO",
+      "UVC-G4_DOORBELL_PRO_POE_KIT-WHITE",
+      "UVC-G6-BULLET-W",
+      "UVC-G6-TURRET-W",
+      "U7-IW",
+      "U7-PRO",
+      "USW-PRO-24-POE",
+      "USW-PRO-48-POE",
+      "USW-PRO-MAX-24-POE",
+      "USW-PRO-MAX-48-POE",
+    ]
+      .map((path) => `https://www.senetic.pl/product/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: { cron: `${i + 1} 5 * * *` },
+        },
+      })),
+  )
+  .concat(
+    [
+      "moduly-i-zestawy-raspberry-pi-zero/20347-raspberry-pi-zero-2-w-512mb-ram-wifi-bt-42-5056561800004.html",
+      "moduly-i-zestawy-raspberry-pi-zero/25407-raspberry-pi-zero-2-wh-512mb-ram-wifi-bt-42-ze-zlaczami-5056561800011.html",
+      "moduly-i-zestawy-raspberry-pi-5/25860-raspberry-pi-5-16gb-5056561803333.html",
+      "moduly-i-zestawy-raspberry-pi-5/23905-raspberry-pi-5-8gb-5056561803326.html",
+      "moduly-i-zestawy-raspberry-pi-5/23948-zestaw-z-raspberry-pi-5-wifi-8gb-ram-32gb-microsd-oficjalne-akcesoria-5904422387495.html",
+      "moduly-i-zestawy-raspberry-pi-5/25891-zestaw-z-raspberry-pi-5-wifi-16gb-ram-32gb-microsd-oficjalne-akcesoria-5904422387136.html",
+      "moduly-i-zestawy-raspberry-pi-5/23904-raspberry-pi-5-4gb-5056561803319.html",
+      "zasilacze-do-raspberry-pi-5/23907-raspberry-pi-27w-usb-c-power-supply-oficjalny-zasilacz-usb-c-51v-5a-do-raspberry-pi-5-czarny-5056561803418.html",
+      "karty-pamieci-i-dyski-do-raspberry-pi-5/25482-raspberry-pi-dysk-ssd-nvme-512gb-5056561805030.html",
+      "karty-pamieci-i-dyski-do-raspberry-pi-5/27539-raspberry-pi-dysk-ssd-nvme-1tb-5056561804996.html",
+      "wyswietlacze-raspberry-pi/25487-raspberry-pi-touch-display-2-ekran-dotykowy-7-1280x720px-pojemnosciowy-dsi-do-raspberry-pi-5056561803937.html",
+      "raspberry-pi-hat-komunikacja/13066-tv-hat-tuner-dvb-t-nakladka-z-dekoderem-dla-raspberry-pi-4b3b3bzero-5056561800134.html",
+      "raspberry-pi-hat-nakladki-pci-express/24601-raspberry-pi-m2-hat-nakladka-do-dyskow-nvme-i-akcesoriow-m2-do-raspberry-pi-5-5056561803463.html",
+      "raspberry-pi-hat-nakladki-pci-express/25484-raspberry-pi-ssd-kit-512gb-zestaw-z-dyskiem-ssd-do-raspberry-pi-5-5056561805023.html",
+      "rozszerzenia-gpio-i-nakladki-hat-do-raspberry-pi-5/27040-raspberry-pi-m2-hat-compact-nakladka-do-dyskow-nvme-i-akcesoriow-m2-do-raspberry-pi-5-5056561805863.html",
+      "raspberry-pi-cm5/25745-raspberry-pi-compute-module-5-io-board-r2-plytka-rozszerzen-do-raspberry-pi-cm5-5056561805047.html",
+      "raspberry-pi-cm5/25774-raspberry-pi-cm5-compute-module-5-16gb-ram-32gb-emmc-wifibluetooth-cm5116032-5904422386801.html",
+      "raspberry-pi-cm5/25774-raspberry-pi-cm5-compute-module-5-16gb-ram-32gb-emmc-wifibluetooth-cm5116032-5904422386801.html",
+      "raspberry-pi-cm5/25773-raspberry-pi-cm5-compute-module-5-16gb-ram-16gb-emmc-wifibluetooth-cm5116016-5904422386788.html",
+      "raspberry-pi-cm5/25760-raspberry-pi-cm5-compute-module-5-16gb-ram-cm5016000-5904422386870.html",
+      "raspberry-pi-cm5/25761-raspberry-pi-cm5-compute-module-5-16gb-ram-16gb-emmc-cm5016016-5904422386962.html",
+      "raspberry-pi-cm5/25762-raspberry-pi-cm5-compute-module-5-16gb-ram-32gb-emmc-cm5016032-5904422387020.html",
+      "raspberry-pi-cm5/25763-raspberry-pi-cm5-compute-module-5-16gb-ram-64gb-emmc-cm5016064-5904422386887.html",
+      "raspberry-pi-cm5/25772-raspberry-pi-cm5-compute-module-5-16gb-ram-wifibluetooth-cm5116000-5904422386764.html",
+      "raspberry-pi-cm5/25775-raspberry-pi-cm5-compute-module-5-16gb-ram-64gb-emmc-wifibluetooth-cm5116064-5904422386856.html",
+    ]
+      .map((path) => `https://botland.com.pl/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: { cron: `${i + 1} 6 * * *` },
+        },
+      })),
+  )
+  .concat(
     chunk(
       [
         // "592143",
