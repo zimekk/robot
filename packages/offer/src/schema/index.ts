@@ -11,7 +11,7 @@ const ItemSchema = z.object({
   sku: z.string(),
   url: z.string().optional(),
   offers: z.object({
-    availability: z.string(),
+    availability: z.string().optional(),
     price: z.number(),
     priceCurrency: z.string(),
     // priceValidUntil: z.string().optional(),

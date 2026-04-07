@@ -106,7 +106,8 @@ export const scrap = async (page: Page, url: string) =>
                   availability: z
                     .string()
                     .array()
-                    .transform(([s]) => s.split("/").pop()),
+                    .transform(([s]) => s.split("/").pop())
+                    .optional(),
                 })
                 .loose(),
               type: z
@@ -115,7 +116,8 @@ export const scrap = async (page: Page, url: string) =>
                 .transform(([s]) => s),
             })
             .array()
-            .transform(([s]) => s.properties),
+            .transform(([s]) => s.properties)
+            .optional(),
           brand: z
             .object({
               properties: z

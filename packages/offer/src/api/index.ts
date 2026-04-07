@@ -14,6 +14,21 @@ export const router = () =>
   Router().use(
     `/${PREFIX}`,
     Router()
+      .get("/history", (req, res, next) =>
+        z
+          .object({
+            item: z.string(),
+          })
+          .parseAsync(req.query)
+          .then(({ item }) =>
+            query("SELECT * FROM offer WHERE item=$1 ORDER BY created DESC", [
+              item,
+            ]),
+          )
+          .then((data) => data.rows)
+          .then((result) => res.json({ result }))
+          .catch(next),
+      )
       .get("/", (req, res, next) =>
         PagerSchema.parseAsync(req.query)
           .then(({ start, limit }) =>

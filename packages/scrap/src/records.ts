@@ -1269,22 +1269,22 @@ export const records = [
       // "osadasniezka",
       // "willabelweder",
       // "zamekksiezagora",
-    ]
-      .map((name) => [
-        // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
-        // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
-        `https://booking.profitroom.com/api/${name}/details`,
-        // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
-      ])
-      .flat()
-      .map((url, i) => ({
-        data: {
-          url,
-        },
-        opts: {
-          repeat: { cron: `${i} 18 * * *` },
-        },
-      })),
+    ],
+    // .map((name) => [
+    //   // `https://booking.profitroom.com/pl/${name}/home?currency=PLN`,
+    //   // `https://booking.profitroom.com/pl/${name}/pricelist/offers/?check-in=2023-01-16&check-out=2023-01-22&currency=PLN&r1_adults=2&r1_child5-12=2`,
+    //   `https://booking.profitroom.com/api/${name}/details`,
+    //   // `https://booking.profitroom.com/api/${name}/availability?checkIn=2023-02-13&checkOut=2023-02-19&occupancy%5B0%5D%5Badults%5D=2&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BminAge%5D=5&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5BmaxAge%5D=12&occupancy%5B0%5D%5Bchildren%5D%5B0%5D%5Bcount%5D=2`,
+    // ])
+    // .flat()
+    // .map((url, i) => ({
+    //   data: {
+    //     url,
+    //   },
+    //   opts: {
+    //     repeat: { cron: `${i} 18 * * *` },
+    //   },
+    // })),
   )
   .concat(
     [
@@ -1296,25 +1296,25 @@ export const records = [
       // [52.202, 21.1559, "transit"],
       // [52.201, 21.1294],
       // [52.201, 21.1294, "transit"],
-    ]
-      // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
-      .map(
-        ([lat, lng, travelmode = "driving"]) =>
-          // `https://www.google.com/maps/dir/${lat},${lng}/52.2268,20.9921/data=!4m2!4m1!3e0`
-          `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
-            [lat, lng].join(","),
-          )}&destination=${encodeURIComponent(
-            [52.2268, 20.9921].join(","),
-          )}&travelmode=${encodeURIComponent(travelmode)}&hl=pl`,
-      )
-      .map((url, i) => ({
-        data: {
-          url,
-        },
-        opts: {
-          repeat: { cron: `${i} 19 * * *` },
-        },
-      })),
+    ],
+    // https://developers.google.com/maps/documentation/distance-matrix/distance-matrix#optional-parameters
+    // .map(
+    //   ([lat, lng, travelmode = "driving"]) =>
+    //     // `https://www.google.com/maps/dir/${lat},${lng}/52.2268,20.9921/data=!4m2!4m1!3e0`
+    //     `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(
+    //       [lat, lng].join(","),
+    //     )}&destination=${encodeURIComponent(
+    //       [52.2268, 20.9921].join(","),
+    //     )}&travelmode=${encodeURIComponent(travelmode)}&hl=pl`,
+    // )
+    // .map((url, i) => ({
+    //   data: {
+    //     url,
+    //   },
+    //   opts: {
+    //     repeat: { cron: `${i} 19 * * *` },
+    //   },
+    // })),
   )
   .concat(
     ["ab75c33d-3a26-4342-b36a-6e5fef0a3ac3"]
