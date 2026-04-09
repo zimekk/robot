@@ -1809,10 +1809,10 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^6.15.0
-        version: 6.20.6(@bull-board/ui@6.20.6)
+        version: 6.21.0(@bull-board/ui@6.21.0)
       '@bull-board/express':
         specifier: ^6.15.0
-        version: 6.20.6
+        version: 6.21.0
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2611,16 +2611,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@6.20.6':
-    resolution: {integrity: sha512-B/9OlKWJ/He421Lyuc7htMpKN4R8hcNu5uoIRiyh9y9J0kMOfxfs82GKXdfR9R0595LvAcCOSvjn8EtWHXesTA==}
+  '@bull-board/api@6.21.0':
+    resolution: {integrity: sha512-5bX3U8baU4OulDLeXwqWI6/FZolpi1APfoJVXndR4fKdmuYr9cdbH8cg7juublfzX01T+3zoiZkveX7iD5y8gA==}
     peerDependencies:
-      '@bull-board/ui': 6.20.6
+      '@bull-board/ui': 6.21.0
 
-  '@bull-board/express@6.20.6':
-    resolution: {integrity: sha512-QBOjhi3jR4qIJvLCo++DdL0CyG4umiFXBCPJYr74DmRN41m27rDS3NSf7ceHdbQr9Ol8mw3xbVqGLn50x3QdWQ==}
+  '@bull-board/express@6.21.0':
+    resolution: {integrity: sha512-es5UhfDvF6YOa34mKUWUmopxmcLbNNCx5SlgeeyWQgs6WkMqahZ5kve7YCgclQomHdsycJIL3wCktXnTEQ6wRg==}
 
-  '@bull-board/ui@6.20.6':
-    resolution: {integrity: sha512-nEXRgMHHd48ssINgvDqT7b4p/+57XRf3CUcTGQ7UIJb4F7n/kRRj8+ZQvQmMFsYGdNmbNU2eNheQ05vXSYiqdQ==}
+  '@bull-board/ui@6.21.0':
+    resolution: {integrity: sha512-SemKRipdrZVqboae/Xhl7CTdIwWJ+F3G/DEP7XHi1Qt1kXZUIKJkySXlFHILunygCiHRpCJ6/Ax/XNdHI/n3QA==}
 
   '@changesets/apply-release-plan@7.1.0':
     resolution: {integrity: sha512-yq8ML3YS7koKQ/9bk1PqO0HMzApIFNwjlwCnwFEXMzNe8NpzeeYYKCmnhWJGkN8g7E51MnWaSbqRcTcdIxUgnQ==}
@@ -5808,8 +5808,8 @@ packages:
   lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   log-update@6.1.0:
     resolution: {integrity: sha512-9ie8ItPR6tjY5uYJh8K/Zrv/RMZ5VOlOWvtZdEHYSTFKZfIBPQa9tOAEeAWhd+AnIneLJ22w5fjOYtoutpWq5w==}
@@ -8466,23 +8466,23 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@6.20.6(@bull-board/ui@6.20.6)':
+  '@bull-board/api@6.21.0(@bull-board/ui@6.21.0)':
     dependencies:
-      '@bull-board/ui': 6.20.6
+      '@bull-board/ui': 6.21.0
       redis-info: 3.1.0
 
-  '@bull-board/express@6.20.6':
+  '@bull-board/express@6.21.0':
     dependencies:
-      '@bull-board/api': 6.20.6(@bull-board/ui@6.20.6)
-      '@bull-board/ui': 6.20.6
+      '@bull-board/api': 6.21.0(@bull-board/ui@6.21.0)
+      '@bull-board/ui': 6.21.0
       ejs: 3.1.10
       express: 5.2.1
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@6.20.6':
+  '@bull-board/ui@6.21.0':
     dependencies:
-      '@bull-board/api': 6.20.6(@bull-board/ui@6.20.6)
+      '@bull-board/api': 6.21.0(@bull-board/ui@6.21.0)
 
   '@changesets/apply-release-plan@7.1.0':
     dependencies:
@@ -12490,7 +12490,7 @@ snapshots:
 
   lodash@4.17.21: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.1: {}
 
   log-update@6.1.0:
     dependencies:
@@ -13308,7 +13308,7 @@ snapshots:
 
   redis-info@3.1.0:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   redis-parser@3.0.0:
     dependencies:
