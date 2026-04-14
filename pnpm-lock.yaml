@@ -207,7 +207,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -294,7 +294,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -337,7 +337,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -380,7 +380,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -423,7 +423,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -472,7 +472,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -518,7 +518,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -558,7 +558,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -601,7 +601,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -638,7 +638,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -756,7 +756,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -799,7 +799,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -848,7 +848,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -891,7 +891,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -934,7 +934,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -980,7 +980,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1020,7 +1020,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1063,7 +1063,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1109,7 +1109,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1155,7 +1155,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1195,7 +1195,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1390,7 +1390,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1458,7 +1458,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       ssl-checker:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1507,7 +1507,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1581,7 +1581,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1621,7 +1621,7 @@ importers:
         version: 19.2.5
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.3(react@19.2.4)
+        version: 19.2.3(react@19.2.5)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -1808,11 +1808,11 @@ importers:
   packages/worker:
     dependencies:
       '@bull-board/api':
-        specifier: ^6.15.0
-        version: 6.21.3(@bull-board/ui@6.21.3)
+        specifier: ^7.0.0
+        version: 7.0.0(@bull-board/ui@7.0.0)
       '@bull-board/express':
-        specifier: ^6.15.0
-        version: 6.21.3
+        specifier: ^7.0.0
+        version: 7.0.0
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2611,16 +2611,16 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@6.21.3':
-    resolution: {integrity: sha512-FoQO+0MgZsPrQX9WLZx0KpINamJY48FUU+OyMcZxx9mQWCwsdak45V/uBgQrTYB3GaF5oGA0SxPXEp4RHwj36A==}
+  '@bull-board/api@7.0.0':
+    resolution: {integrity: sha512-ISNspLHVmUWUSq/eLw+wd1FuBBUnqpLbYP2xUNmehpfKhS+NoZWMbBvqjUYVeE/HLfUkRcR1edzMKpl5n9zlSw==}
     peerDependencies:
-      '@bull-board/ui': 6.21.3
+      '@bull-board/ui': 7.0.0
 
-  '@bull-board/express@6.21.3':
-    resolution: {integrity: sha512-9tE5osCSjjDYCJtTt/bOeXGbykPlhiIKtlGG3/YPCuvQ3qkYrjdBiXSzEUXGqqgX6Kf4HVri/UuY8gy99g/A7w==}
+  '@bull-board/express@7.0.0':
+    resolution: {integrity: sha512-3Tc/EyU5PQMTcTzcafFSrmRDiEbJBEU/EaVQ5OVYcuJ7DZCp5Pkvm0/2VtaCe2uywdtwn0ZaynlSIpB27FKX6A==}
 
-  '@bull-board/ui@6.21.3':
-    resolution: {integrity: sha512-s/PLBJab8cnoQAGVqjQb0v4oGe0KgB4aQ5G5g93doxzXB/D+wkXNL9P9+zLWLldBJXE57jL4CR99ttDCIiyNHw==}
+  '@bull-board/ui@7.0.0':
+    resolution: {integrity: sha512-AnKeklpDn0iMFgu4ukDU6uTNmw4oudl07G4k2Fh95SknKDrXSiWRV0N1TGUawMqyfG1Yi5P/W/8d7raBq/Uw6w==}
 
   '@changesets/apply-release-plan@7.1.0':
     resolution: {integrity: sha512-yq8ML3YS7koKQ/9bk1PqO0HMzApIFNwjlwCnwFEXMzNe8NpzeeYYKCmnhWJGkN8g7E51MnWaSbqRcTcdIxUgnQ==}
@@ -6579,10 +6579,6 @@ packages:
     resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
     engines: {node: '>=0.10.0'}
 
-  react@19.2.4:
-    resolution: {integrity: sha512-9nfp2hYpCwOjAN+8TZFGhtWEwgvWHXqESH8qT89AT/lWklpLON22Lc8pEtnpsZz7VmawabSU0gCjnj8aC0euHQ==}
-    engines: {node: '>=0.10.0'}
-
   react@19.2.5:
     resolution: {integrity: sha512-llUJLzz1zTUBrskt2pwZgLq59AemifIftw4aB7JxOqf1HY2FDaGDxgwpAPVzHU1kdWabH7FauP4i1oEeer2WCA==}
     engines: {node: '>=0.10.0'}
@@ -8462,23 +8458,23 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@6.21.3(@bull-board/ui@6.21.3)':
+  '@bull-board/api@7.0.0(@bull-board/ui@7.0.0)':
     dependencies:
-      '@bull-board/ui': 6.21.3
+      '@bull-board/ui': 7.0.0
       redis-info: 3.1.0
 
-  '@bull-board/express@6.21.3':
+  '@bull-board/express@7.0.0':
     dependencies:
-      '@bull-board/api': 6.21.3(@bull-board/ui@6.21.3)
-      '@bull-board/ui': 6.21.3
+      '@bull-board/api': 7.0.0(@bull-board/ui@7.0.0)
+      '@bull-board/ui': 7.0.0
       ejs: 5.0.2
       express: 5.2.1
     transitivePeerDependencies:
       - supports-color
 
-  '@bull-board/ui@6.21.3':
+  '@bull-board/ui@7.0.0':
     dependencies:
-      '@bull-board/api': 6.21.3(@bull-board/ui@6.21.3)
+      '@bull-board/api': 7.0.0(@bull-board/ui@7.0.0)
 
   '@changesets/apply-release-plan@7.1.0':
     dependencies:
@@ -13212,9 +13208,9 @@ snapshots:
       react: 19.2.3
       scheduler: 0.27.0
 
-  react-dom@19.2.3(react@19.2.4):
+  react-dom@19.2.3(react@19.2.5):
     dependencies:
-      react: 19.2.4
+      react: 19.2.5
       scheduler: 0.27.0
 
   react-dom@19.2.5(react@19.2.5):
@@ -13244,8 +13240,6 @@ snapshots:
   react-lifecycles-compat@3.0.4: {}
 
   react@19.2.3: {}
-
-  react@19.2.4: {}
 
   react@19.2.5: {}
 
@@ -13340,7 +13334,7 @@ snapshots:
       css-select: 4.3.0
       dom-converter: 0.2.0
       htmlparser2: 6.1.0
-      lodash: 4.17.21
+      lodash: 4.18.1
       strip-ansi: 6.0.1
 
   require-directory@2.1.1: {}
