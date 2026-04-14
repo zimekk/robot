@@ -35,7 +35,7 @@ importers:
         version: 8.58.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3)
       changeset-conventional-commits:
         specifier: ^1.0.0
-        version: 1.0.3
+        version: 1.0.4
       eslint:
         specifier: ^9.39.1
         version: 9.39.4(jiti@2.6.1)
@@ -3034,8 +3034,8 @@ packages:
     resolution: {integrity: sha512-0TbBVyvPrP7xGYBI/cP8UP+yl/z+HtbTttAD7FMAJgn/kXOTwh5/60TsqP9ZYY710forNfyV0N8P/IE/ujGZJg==}
     engines: {node: '>=20.0.0'}
 
-  '@manypkg/tools@2.1.0':
-    resolution: {integrity: sha512-0FOIepYR4ugPYaHwK7hDeHDkfPOBVvayt9QpvRbi2LT/h2b0GaE/gM9Gag7fsnyYyNaTZ2IGyOuVg07IYepvYQ==}
+  '@manypkg/tools@2.1.1':
+    resolution: {integrity: sha512-CEFCOGzhFdx5sIehISBRS9Ev5D1Zp+24YT1uyOkaEcY8uAKeK+kA58NChYfUwXmAFerm3zWZWYhQViUf8XhQcg==}
     engines: {node: '>=20.0.0'}
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3':
@@ -4027,8 +4027,8 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  changeset-conventional-commits@1.0.3:
-    resolution: {integrity: sha512-+3R5R7P+RTJdbMPUqL8LqEC7l486qpkjc6JfTOfJS6ll6Ijo9XHVxUyXFr+AxlQQaK2E+jMgsbDDmGcQbtWVEw==}
+  changeset-conventional-commits@1.0.4:
+    resolution: {integrity: sha512-OAOjdGPKjjdd7SZGOPt54xOnpLt+G2P38d9DsuKnMrlIf4PAHmSRk9OJE5r84pJMNbBIWo8DacPE+83/Bd7aNQ==}
     engines: {node: '>=22', pnpm: '>=10'}
     hasBin: true
 
@@ -9133,7 +9133,7 @@ snapshots:
 
   '@manypkg/find-root@3.1.0':
     dependencies:
-      '@manypkg/tools': 2.1.0
+      '@manypkg/tools': 2.1.1
 
   '@manypkg/get-packages@1.1.3':
     dependencies:
@@ -9147,9 +9147,9 @@ snapshots:
   '@manypkg/get-packages@3.1.0':
     dependencies:
       '@manypkg/find-root': 3.1.0
-      '@manypkg/tools': 2.1.0
+      '@manypkg/tools': 2.1.1
 
-  '@manypkg/tools@2.1.0':
+  '@manypkg/tools@2.1.1':
     dependencies:
       jju: 1.4.0
       js-yaml: 4.1.1
@@ -10310,7 +10310,7 @@ snapshots:
 
   chalk@5.6.2: {}
 
-  changeset-conventional-commits@1.0.3:
+  changeset-conventional-commits@1.0.4:
     dependencies:
       '@changesets/read': 0.6.7
       '@changesets/types': 6.1.0
