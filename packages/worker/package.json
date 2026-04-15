@@ -30,8 +30,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@bull-board/api": "^6.15.0",
-    "@bull-board/express": "^6.15.0",
+    "@bull-board/api": "^7.0.0",
+    "@bull-board/express": "^7.0.0",
     "@dev/bikes": "workspace:*",
     "@dev/chrome": "workspace:*",
     "@dev/depots": "workspace:*",
