@@ -44,6 +44,17 @@ const Advert = z
         __typename: z.enum(["Price"]),
       })
       .strict(),
+    priceDrop: z
+      .object({
+        __typename: z.enum(["AdPriceDrop"]),
+        percentage: z.number(),
+        lowestPrice: z.object({
+          __typename: z.enum(["AdPrice"]),
+          currencyCode: z.enum(["EUR", "PLN"]),
+          minorAmount: z.number(),
+        }),
+      })
+      .nullable(),
     parameters: z
       .object({
         key: z.enum([
