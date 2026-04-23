@@ -1461,7 +1461,7 @@ importers:
         version: 19.2.3(react@19.2.5)
       ssl-checker:
         specifier: ^3.0.0
-        version: 3.0.0
+        version: 3.0.1
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.5)
@@ -6927,8 +6927,8 @@ packages:
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
-  ssl-checker@3.0.0:
-    resolution: {integrity: sha512-b0QgrkdEXbIiNVb5lPa0PmHF9cJozzWA+NiTJsd1LsIG81Tfr2KYQoX0yfytEvoCHJE/EbbIolMS/vsE7vUJeA==}
+  ssl-checker@3.0.1:
+    resolution: {integrity: sha512-Hy91BXQFwQWXsjSOvGRjPUBf6EjEzOjUQL0AWEEb1NarwdePZ9YgZghOGemc1TWdeebDckh4eo/9jT08CAokIg==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -13681,7 +13681,7 @@ snapshots:
 
   sprintf-js@1.0.3: {}
 
-  ssl-checker@3.0.0: {}
+  ssl-checker@3.0.1: {}
 
   stack-utils@2.0.6:
     dependencies:
