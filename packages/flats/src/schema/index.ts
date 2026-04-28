@@ -1,22 +1,5 @@
 import { z } from "zod";
-import { AdSchema, JsonSchema } from "@zimekk/scrap-schema";
-
-export const DataSchema = AdSchema.extend({
-  params: z.array(
-    z.object({
-      key: z.string(),
-      name: z.string(),
-      type: z.string(),
-      value: z.string(),
-      normalizedValue: z
-        .string()
-        .array()
-        .transform((list) => list.join("_"))
-        .or(z.string())
-        .optional(),
-    }),
-  ),
-});
+import { DataSchema, JsonSchema } from "@zimekk/scrap-schema";
 
 export const DiffSchema = DataSchema.strip()
   .extend({

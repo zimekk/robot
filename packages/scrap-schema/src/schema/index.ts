@@ -48,7 +48,12 @@ export const AdSchema = z.object({
       name: z.string(),
       type: z.string(),
       value: z.string(),
-      normalizedValue: z.string().optional(),
+      normalizedValue: z
+        .string()
+        .array()
+        .transform((list) => list.join("_"))
+        .or(z.string())
+        .optional(),
     })
     .array(),
   itemCondition: z.string(),
