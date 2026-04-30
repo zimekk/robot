@@ -958,7 +958,13 @@ export const records = [
           url,
         },
         opts: {
-          repeat: { cron: `${i + 1} 9,16 * * *` },
+          repeat: {
+            cron: ((m, hs) =>
+              `${m % 60} ${hs.map((h) => h + Math.floor(m / 60)).join(",")} * * *`)(
+              i,
+              [9, 16],
+            ),
+          },
         },
       })),
   )
@@ -1149,7 +1155,9 @@ export const records = [
           url,
         },
         opts: {
-          repeat: { cron: `${i + 1} 5 * * *` },
+          repeat: {
+            cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(i, 5),
+          },
         },
       })),
   )
@@ -1196,7 +1204,12 @@ export const records = [
           url,
         },
         opts: {
-          repeat: { cron: `${i + 1} 6 * * *` },
+          repeat: {
+            cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(
+              i + 15,
+              6,
+            ),
+          },
         },
       })),
   )
