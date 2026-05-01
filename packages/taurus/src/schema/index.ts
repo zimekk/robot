@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const Result = z.object({
-  brand: z.string(),
+  brand: z.string().nullable(),
   category: z.string(),
   id: z.number(),
   image: z.string(),
