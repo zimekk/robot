@@ -1214,6 +1214,25 @@ export const records = [
       })),
   )
   .concat(
+    [
+      "przedpokoj/przedpokoj/lawka-do-przedpokoju/lawka-bislev-tkanina-ciemnopiaskowy",
+    ]
+      .map((path) => `https://jysk.pl/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: {
+            cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(
+              i + 15,
+              3,
+            ),
+          },
+        },
+      })),
+  )
+  .concat(
     chunk(
       [
         // "592143",

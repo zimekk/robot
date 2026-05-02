@@ -1,3 +1,3 @@
-describe("taurus", () => {
+describe("offer", () => {
   xit("test", () => {});
 });
