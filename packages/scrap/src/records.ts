@@ -1224,6 +1224,20 @@ export const records = [
         },
         opts: {
           repeat: {
+            cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(i, 3),
+          },
+        },
+      })),
+  )
+  .concat(
+    ["product-pol-2026-Ukosnica-Makita-LH1040.html"]
+      .map((path) => `https://domitech.pl/${path}`)
+      .map((url, i) => ({
+        data: {
+          url,
+        },
+        opts: {
+          repeat: {
             cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(
               i + 15,
               3,

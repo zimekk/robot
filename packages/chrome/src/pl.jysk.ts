@@ -29,74 +29,83 @@ export const scrap = async (page: Page, url: string) =>
       console.log(properties);
 
       const item = await z
-        .object({
-          url: z
-            .string()
-            .array()
-            .transform(([s]) => s)
-            .optional(),
-          image: z
-            .string()
-            .array()
-            .transform(([s]) => s),
-          name: z
-            .string()
-            .array()
-            .transform(([s]) => s)
-            .or(z.string())
-            .transform((s) => s.trim()),
-          sku: z
-            .string()
-            .array()
-            .transform(([s]) => s)
-            .or(z.string())
-            .transform((s) => s.trim()),
-          description: z
-            .string()
-            .array()
-            .transform(([s]) => s.trim())
-            .nullable(),
-          offers: z
-            .object({
-              price: z
-                .string()
-                .array()
-                .transform(([s]) => s)
-                .or(z.string())
-                .transform((s) => Number(s)),
-              priceValidUntil: z
-                .string()
-                .array()
-                .transform(([s]) => s)
-                .or(z.string()),
-              priceCurrency: z
-                .string()
-                .array()
-                .transform(([s]) => s)
-                .or(z.string()),
-              url: z
-                .string()
-                .array()
-                .transform(([s]) => s)
-                .or(z.string()),
-              availability: z
-                .string()
-                .array()
-                .transform(([s]) => s.split("/").pop())
-                .optional(),
-            })
-            .optional(),
-          brand: z
-            .object({
-              name: z
-                .string()
-                .array()
-                .transform(([s]) => s)
-                .or(z.string())
-                .default("JYSK"),
-            })
-            .transform(({ name }) => name),
-        })
+        .preprocess(
+          ({ offers, productID, sku = productID, ...product }: any) => ({
+            sku,
+            ...product,
+            offers: Array.isArray(offers) ? offers[0] : offers,
+          }),
+          z.object({
+            url: z
+              .string()
+              .array()
+              .transform(([s]) => s)
+              .optional(),
+            image: z
+              .string()
+              .array()
+              .transform(([s]) => s)
+              .or(z.string()),
+            name: z
+              .string()
+              .array()
+              .transform(([s]) => s)
+              .or(z.string()),
+            sku: z
+              .string()
+              .array()
+              .transform(([s]) => s)
+              .or(z.string()),
+            description: z
+              .string()
+              .array()
+              .transform(([s]) => s)
+              .or(z.string().nullable()),
+            offers: z
+              .object({
+                price: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string())
+                  .transform((s) => Number(s)),
+                priceValidUntil: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string())
+                  .optional(),
+                priceCurrency: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string()),
+                url: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string()),
+                availability: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string())
+                  .transform((s) => s.split("/").pop())
+                  .optional(),
+              })
+              .optional(),
+            brand: z
+              .object({
+                name: z
+                  .string()
+                  .array()
+                  .transform(([s]) => s)
+                  .or(z.string())
+                  .default("JYSK"),
+              })
+              .transform(({ name }) => name),
+          }),
+        )
         .parseAsync(properties);
 
       console.log(item);

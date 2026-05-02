@@ -126,7 +126,9 @@ export const getTypeByUrl = (url: string) =>
     [Type.HOTSHOT]: new RegExp("x-kom.pl/goracy_strzal|al.to/goracy_strzal"),
     [Type.LECLERC]: new RegExp("leclerc.pl/"),
     [Type.MACAN]: new RegExp("porsche.com/"),
-    [Type.OFFER]: new RegExp("botland.com.pl/|jysk.pl/|senetic.pl/"),
+    [Type.OFFER]: new RegExp(
+      "botland.com.pl/|domitech.pl/|jysk.pl/|senetic.pl/",
+    ),
     [Type.PLOTS]: new RegExp("pl/d/nieruchomosci/dzialki/"),
     [Type.PRODUCTS]: new RegExp("x-kom.pl/szukaj|al.to/szukaj"),
     [Type.PRODUCTS2]: new RegExp("(al.to|kom.pl)/.+/c/"),
