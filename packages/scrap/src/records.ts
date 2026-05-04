@@ -1215,7 +1215,13 @@ export const records = [
   )
   .concat(
     [
+      "jadalnia/krzesla-do-jadalni/krzeslo-guderup-naturalny-dab-naturalny",
+      "ogrod/dekoracje-ogrodowe/palenisko-rosenfink-s59xw16cm-czarny",
+      "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja",
+      "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja-0",
       "przedpokoj/przedpokoj/lawka-do-przedpokoju/lawka-bislev-tkanina-ciemnopiaskowy",
+      "salon/kanapy/sofa-modulowa-skejby-2-miejscowa-tkanina-bezowy",
+      "salon/kanapy/sofa-modulowa-skejby-3-miejscowa-tkanina-bezowy",
     ]
       .map((path) => `https://jysk.pl/${path}`)
       .map((url, i) => ({
@@ -1230,7 +1236,27 @@ export const records = [
       })),
   )
   .concat(
-    ["product-pol-2026-Ukosnica-Makita-LH1040.html"]
+    [
+      "product-pol-344-Wkretarka-do-GK-Bosch-GSR-18V-EC-TE.html",
+      "product-pol-6922-Odkurzacz-Makita-VC4210L.html",
+      "product-pol-10581-Wkretarka-do-GK-Makita-DFR550RFE.html",
+      "product-pol-10583-Wkretarka-do-GK-Makita-DFS452RFE.html",
+      "product-pol-11698-Przyssawka-do-plytek-RUBI-vacuum-SC-200.html",
+      "product-pol-11886-Szlifierka-do-gipsu-Makita-DSL800RTEU.html",
+      "product-pol-14323-Przecinarka-do-plytek-Makita-CC301DSMJ.html",
+      "product-pol-17206-Zaglebiarka-Makita-DSP600-z-zestawem-zasilajacym-walizka-i-szyna.html",
+      "product-pol-18458-Przecinarka-diamentowa-Makita-DCC500Z.html",
+      "product-pol-18460-Akumulatorowa-przycinarka-diamentowa-MAKITA-DCC500RTE.html",
+      "product-pol-19739-Akumulatorowy-wieloliniowy-laser-krzyzowy-SK700GD-Makita-zielony.html",
+      "product-pol-23890-Zestaw-poziomic-Stabila-SA19714.html",
+      "product-pol-23976-Przyssawka-do-plytek-Rubi-21951.html",
+      "product-pol-27437-Wkretarka-do-GK-Bosch-GTB-185-Li.html",
+      "product-pol-27578-Urzadzenie-RUBI-TILE-GAP-CLOSER.html",
+      "product-pol-42011-Pas-narzedziowy-Makita-E-15235.html",
+      "product-pol-43796-Wkretarka-do-GK-Makita-DFR551RTJ.html",
+      "product-pol-44324-Detektor-cyfrowy-Bosch-Truvo-06036812Z0.html",
+      "product-pol-45912-Detektor-Bosch-UniversalDetect-06036813Z0.html",
+    ]
       .map((path) => `https://domitech.pl/${path}`)
       .map((url, i) => ({
         data: {
@@ -1241,6 +1267,30 @@ export const records = [
             cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(
               i + 15,
               3,
+            ),
+          },
+        },
+      })),
+  )
+  .concat(
+    [
+      "30938,szukacz-par-przewodow-z-testerem-kabli-rj45-rj12-rj11-lokalizator-kabli-wire-tracker-uni-t-ut682",
+      "31330,probnik-napiecia-1000v-z-bezdotykowym-detektorem-ip67-uni-t-ut12e-eu",
+      "33991,tester-kabli-sieciowych-lan-rj45-rj12-rj11-z-diodami-led-uni-t-ut681l",
+      "41703,probnik-napiecia-1000v-z-bezdotykowym-detektorem-uni-t-ut12d-eu",
+      "93043,detektor-przewodow-metali-i-drewna-w-scianie-uni-t-ut387e",
+    ]
+      .map((path) => `https://www.speckable.pl/pl/product/${path}`)
+      .map((url, i) => ({
+        blocked: true,
+        data: {
+          url,
+        },
+        opts: {
+          repeat: {
+            cron: ((m, h) => `${m % 60} ${h + Math.floor(m / 60)} * * *`)(
+              i + 30,
+              4,
             ),
           },
         },

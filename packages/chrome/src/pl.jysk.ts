@@ -84,7 +84,7 @@ export const scrap = async (page: Page, url: string) =>
                   .string()
                   .array()
                   .transform(([s]) => s)
-                  .or(z.string()),
+                  .or(z.string().default(url)),
                 availability: z
                   .string()
                   .array()
@@ -103,7 +103,8 @@ export const scrap = async (page: Page, url: string) =>
                   .or(z.string())
                   .default("JYSK"),
               })
-              .transform(({ name }) => name),
+              .transform(({ name }) => name)
+              .or(z.string()),
           }),
         )
         .parseAsync(properties);
