@@ -112,12 +112,12 @@ export const ProductSchema = z
     hasPromotionPrices: z.boolean().optional(),
     minPriceInfo: z.unknown().optional(),
     secondaryCategory: z.unknown().array().optional(),
-    commentStatistics: z.unknown(),
+    commentStatistics: z.unknown().optional(),
     features: z.unknown().array().optional(),
     complementaryProducts: z.unknown().array().optional(),
     orderIn: z.string().optional(),
     timeToBuy: z.string().optional(),
-    onlineAvailability: z.unknown(),
+    onlineAvailability: z.unknown().optional(),
   })
   .extend({
     energyClass: z.string().optional(),
