@@ -34,6 +34,7 @@ ENV WORKDIR=/app
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 # ENV CI=1
+ENV CI=true
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 RUN corepack enable
 
@@ -45,7 +46,8 @@ COPY pnpm-lock.yaml .
 RUN pnpm fetch
 
 COPY . .
-RUN pnpm install --offline --config.ignore-scripts=true
+RUN pnpm install --prefer-offline --config.ignore-scripts=true
+# RUN pnpm install --offline --config.ignore-scripts=true
 RUN pnpm build
 # RUN pnpm prune --prod --config.ignore-scripts=true
 

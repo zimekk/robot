@@ -54,7 +54,8 @@ const Advert = z
           minorAmount: z.number(),
         }),
       })
-      .nullable(),
+      .nullable()
+      .optional(),
     parameters: z
       .object({
         key: z.enum([
