@@ -62,7 +62,7 @@ export const Type = {
 
 export const DataSchema = z.object({
   url: z.string(),
-  body: z.object({}).passthrough().optional(),
+  body: z.object({}).loose().optional(),
 });
 
 export const OptsSchema = z.object({
@@ -82,9 +82,9 @@ const JsonSchema = z.object({
   data: z.object({
     url: z.string(),
   }),
-  opts: z.any(),
+  opts: z.any().optional(),
   returnvalue: z.object({
-    json: z.any(),
+    json: z.any().optional(),
   }),
   timestamp: z.number().optional(),
 });
@@ -165,14 +165,14 @@ export const EntrySchema = z.preprocess(
           .object({
             url: z.string(),
           })
-          .passthrough(),
-        opts: z.any(),
+          .loose(),
+        opts: z.any().optional(),
         returnvalue: z.object({
-          html: z.any(),
-          json: z.any(),
+          html: z.any().optional(),
+          json: z.any().optional(),
         }),
       })
-      .passthrough()
+      .loose()
       .transform((item) => ({
         type: getTypeByUrl(item.data.url),
         ...item,
@@ -187,7 +187,7 @@ export const EntrySchema = z.preprocess(
         })
         .extend({
           body: z.object({
-            $match: z.object({}).passthrough(),
+            $match: z.object({}).loose(),
             $skip: z.number(),
             $limit: z.number(),
           }),
@@ -485,7 +485,7 @@ export const EntriesSchema = z.discriminatedUnion("type", [
     type: z.literal(Type.OTOMOTO_OFFER),
     returnvalue: z.object({
       // json: OtomotoOfferSchema,
-      json: z.any(),
+      json: z.any().optional(),
     }),
   }),
   ReturnSchema.extend({
@@ -569,7 +569,7 @@ export const DelayedSchema = z
   .object({
     id: z.string(),
     name: z.string(),
-    data: z.object({ url: z.string() }).passthrough(),
+    data: z.object({ url: z.string() }).loose(),
     opts: OptsSchema.extend({
       removeOnComplete: z.union([z.boolean(), z.number()]).optional(),
       repeat: z
