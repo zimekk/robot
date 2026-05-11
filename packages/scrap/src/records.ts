@@ -1259,6 +1259,7 @@ export const records = [
     ]
       .map((path) => `https://domitech.pl/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },

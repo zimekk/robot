@@ -103,7 +103,10 @@ const JsonSchema = z
       .object({
         pageProps: z.object({
           featureFlags: z.any().transform(() => null),
-          translations: z.any().optional().transform(() => null),
+          translations: z
+            .any()
+            .optional()
+            .transform(() => null),
           tracking: z.any().transform(() => null),
           // data: z.any().transform(() => null),
           ad: z

@@ -7,7 +7,10 @@ export const Schema = z
       .object({
         pageProps: z.object({
           featureFlags: z.any().transform(() => null),
-          translations: z.any().optional().transform(() => null),
+          translations: z
+            .any()
+            .optional()
+            .transform(() => null),
           tracking: z.any().transform(() => null),
           // data: z.any().transform(() => null),
           ad: z
@@ -39,6 +42,6 @@ export const Schema = z
 
 export default ({ html }: { html: string }) => ({
   json: Schema.parse(
-    JSON.parse(parse(html).querySelector("script#__NEXT_DATA__")?.text || "{}")
+    JSON.parse(parse(html).querySelector("script#__NEXT_DATA__")?.text || "{}"),
   ),
 });
