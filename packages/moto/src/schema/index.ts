@@ -142,6 +142,7 @@ const Advert = z
       })
       .strict()
       .nullable(),
+    originAdId: z.any().optional(),
     priceEvaluation: z
       .object({
         indicator: z.enum(["ABOVE", "BELOW", "IN", "NONE"]),
