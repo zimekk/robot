@@ -1087,6 +1087,13 @@ export const records = [
   )
   .concat(
     [
+      "EAV-BRIDGE",
+      "HDWG51CUZSVA",
+      "HDWG51EUZSVA",
+      "HDWG51GUZSVA",
+      "HDWG51JUZSVA",
+      "HDWG62AUZSVA",
+      "HDWG62CUZSVA",
       "HDWT720UZSVA",
       "HDWT840UZSVA",
       "HDWT860UZSVA",
@@ -1094,12 +1101,6 @@ export const records = [
       "MN10ADA600S",
       "MN10ADA800S",
       "MN10ADA10TS",
-      "HDWG51CUZSVA",
-      "HDWG51EUZSVA",
-      "HDWG51GUZSVA",
-      "HDWG51JUZSVA",
-      "HDWG62AUZSVA",
-      "HDWG62CUZSVA",
       "U-CABLE-C6-CMP",
       "U-CABLE-C6-CMR",
       "U-RACK-6U-TL",
