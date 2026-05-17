@@ -82,7 +82,8 @@ export const scrap = async (page: Page, url: string) =>
           description: z
             .string()
             .array()
-            .transform(([s]) => s.trim()),
+            .transform(([s]) => s.trim())
+            .optional(),
           offers: z
             .object({
               properties: z

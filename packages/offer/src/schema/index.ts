@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const ItemSchema = z.object({
   brand: z.string(),
-  description: z.string().nullable(),
+  description: z.string().nullable().default(null),
   gtin: z.string().optional(),
   gtin13: z.string().optional(),
   image: z.string().optional(),
