@@ -10,7 +10,7 @@ jobs:
       # https://docs.github.com/en/actions/guides/building-and-testing-nodejs#installing-dependencies
       - uses: actions/checkout@v6
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         with:
           run_install: false
       - name: Use Node.js
