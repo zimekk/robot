@@ -137,6 +137,10 @@ export const ProductSchema = z
         promotionStartDate: z.string(),
       })
       .optional(),
+  })
+  .extend({
+    allCommentsCount: z.number().optional(),
+    substituteProducts: z.unknown().array().optional(),
   });
 // .strict();
 
