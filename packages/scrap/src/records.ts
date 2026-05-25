@@ -1219,15 +1219,19 @@ export const records = [
       "jadalnia/krzesla-do-jadalni/krzeslo-guderup-naturalny-dab-naturalny",
       "lazienka/maty-lazienkowe/mata-lazienkowa-dalstorp-50x80-bezowy",
       "lazienka/maty-lazienkowe/mata-lazienkowa-storfors-60x110-naturalny",
+      "lazienka/wyposazenie-lazienki/dozowniki-mydla/dozownik-mydla-husby-z-czujnikiem-szary",
       "ogrod/dekoracje-ogrodowe/palenisko-rosenfink-s59xw16cm-czarny",
       "ogrod/akcesoria-ogrodowe/donice-ogrodowe/donica-ogrodowa-stork-s28-24-przydymiony-fiolet-2-szt-zest",
       "ogrod/akcesoria-ogrodowe/donice-ogrodowe/doniczka-svartbak-s40xw35-naturalny",
       "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja",
       "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja-0",
       "przechowywanie/przechowywanie-rozne/stolik-lydum-s34xw46-bezowy-wlokno-cementowe",
+      "przechowywanie/regaly/regal-herning-5-polek-bialy",
+      "przechowywanie/regaly/regal-lyngerup-4-polki-kolor-cieply-dab",
       "przedpokoj/przedpokoj/lawka-do-przedpokoju/lawka-bislev-tkanina-ciemnopiaskowy",
       "salon/kanapy/sofa-modulowa-skejby-2-miejscowa-tkanina-bezowy",
       "salon/kanapy/sofa-modulowa-skejby-3-miejscowa-tkanina-bezowy",
+      "salon/stoliki-kawowe-i-boczne/stolik-kawowy-lydum-s60-bezowy-wlokno-cementowe",
     ]
       .map((path) => `https://jysk.pl/${path}`)
       .map((url, i) => ({
