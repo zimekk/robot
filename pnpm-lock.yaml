@@ -1440,7 +1440,7 @@ importers:
         version: link:../sql
       dayjs:
         specifier: ^1.11.19
-        version: 1.11.20
+        version: 1.11.21
       express:
         specifier: ^5.2.1
         version: 5.2.1
@@ -4287,8 +4287,8 @@ packages:
   date-fns@4.3.0:
     resolution: {integrity: sha512-OYcL+3N/jyWbYdFGqoMAhytDgxP9pbYPUUiRCOgn4Fewaadk9l/Wam4Avciiyp2BgkpfQyBV9B+ehnVJych+eQ==}
 
-  dayjs@1.11.20:
-    resolution: {integrity: sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==}
+  dayjs@1.11.21:
+    resolution: {integrity: sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA==}
 
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -10408,7 +10408,7 @@ snapshots:
 
   date-fns@4.3.0: {}
 
-  dayjs@1.11.20: {}
+  dayjs@1.11.21: {}
 
   debug@2.6.9:
     dependencies:
