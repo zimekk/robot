@@ -954,6 +954,7 @@ export const records = [
           `https://www.euro.com.pl/${path}`,
       )
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
