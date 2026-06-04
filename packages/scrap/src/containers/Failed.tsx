@@ -100,10 +100,31 @@ function Failed({
     [list],
   );
 
+  const queries = useMemo(
+    () =>
+      Object.entries(
+        failed.reduce(
+          (queries, item) =>
+            Object.assign(
+              queries,
+              item.data.url
+                ? (({ host }) => ({
+                    [host]: ((count = 0) => count + 1)(queries[host]),
+                  }))(new URL(item.data.url))
+                : {},
+            ),
+          {} as Record<string, number>,
+        ),
+      )
+        .sort(([_a, a], [_b, b]) => b - a)
+        .slice(0, 3),
+    [failed],
+  );
+
   return (
     <Fieldset legend="failed">
       <div style={{ float: "right" }}>
-        {["al.to", "olx", "petrostar.pl", "rossmann.pl"].map((query, index) => (
+        {queries.map(([query, count], index) => (
           <span key={index}>
             {index > 0 ? ` | ` : ``}
             <a
@@ -117,7 +138,8 @@ function Failed({
               )}
             >
               {query}
-            </a>
+            </a>{" "}
+            ({count})
           </span>
         ))}
       </div>
