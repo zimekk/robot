@@ -1,5 +1,11 @@
 # @zimekk/scrap-schema
 
+## 1.0.13
+
+### Patch Changes
+
+- cf70b85: fix(flats, scrap-schema): schema
+
 ## 1.0.12
 
 ### Patch Changes

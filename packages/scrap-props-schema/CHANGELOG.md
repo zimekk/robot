@@ -1,5 +1,12 @@
 # @zimekk/scrap-props-schema
 
+## 1.0.4
+
+### Patch Changes
+
+- cf70b85: fix(schema): add type
+- cf70b85: fix(moto): schema
+
 ## 1.0.3
 
 ### Patch Changes
