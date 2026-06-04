@@ -1,5 +1,11 @@
 # @zimekk/scrap-rynek-schema
 
+## 1.0.11
+
+### Patch Changes
+
+- cf70b85: fix(scrap-rynek-schema): schema
+
 ## 1.0.10
 
 ### Patch Changes
