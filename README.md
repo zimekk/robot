@@ -81,3 +81,16 @@ docker-compose exec app yarn workspace @dev/sql run migrate:up
 docker-compose logs -f --tail=25 app
 docker-compose exec app sh
 ```
+
+## release
+
+```sh
+pnpm changeset-conventional
+git status
+git add .changeset/
+git diff HEAD
+git status
+git commit -m "chore: release"
+git push
+#git commit --amend --no-edit  && git push -f
+```
