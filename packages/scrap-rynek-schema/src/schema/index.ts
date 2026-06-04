@@ -517,7 +517,7 @@ const JsonSchema = z.object({
     requestState: z.number(),
     latestQuery: z.object({}),
     error: z.null(),
-    form: z.object({ formValues: z.object({ type: z.string() }) }),
+    form: z.object({ formValues: z.object({ type: z.string().optional() }) }),
   }),
   partnersList: z.object({ list: z.array(z.unknown()) }),
   property: z.object({
