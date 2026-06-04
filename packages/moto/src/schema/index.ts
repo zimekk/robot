@@ -101,18 +101,20 @@ const Advert = z
       })
       .array(),
     sellerUUID: z.string().optional(),
-    sellerLink: z.object({
-      id: z.string(),
-      name: z.string().nullable(),
-      websiteUrl: z.string().nullable(),
-      logo: z
-        .object({
-          x1: z.string(),
-          __typename: z.enum(["Image"]),
-        })
-        .nullable(),
-      __typename: z.enum(["AdvertSellerLink"]),
-    }),
+    sellerLink: z
+      .object({
+        id: z.string(),
+        name: z.string().nullable(),
+        websiteUrl: z.string().nullable(),
+        logo: z
+          .object({
+            x1: z.string(),
+            __typename: z.enum(["Image"]),
+          })
+          .nullable(),
+        __typename: z.enum(["AdvertSellerLink"]),
+      })
+      .nullable(),
     brandProgram: z
       .object({
         logo: z.any(),

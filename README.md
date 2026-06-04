@@ -90,7 +90,7 @@ git status
 git add .changeset/
 git diff HEAD
 git status
-git commit -m "chore: release"
+git commit -m "chore: changesets"
 git push
 #git commit --amend --no-edit  && git push -f
 ```
