@@ -1002,6 +1002,7 @@ export const records = [
     ]
       .map((path) => `https://www.petrostar.pl/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
@@ -1202,6 +1203,7 @@ export const records = [
     ]
       .map((path) => `https://botland.com.pl/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
@@ -1236,6 +1238,7 @@ export const records = [
     ]
       .map((path) => `https://jysk.pl/${path}`)
       .map((url, i) => ({
+        blocked: true,
         data: {
           url,
         },
