@@ -141,6 +141,10 @@ export const ProductSchema = z
   .extend({
     allCommentsCount: z.number().optional(),
     substituteProducts: z.unknown().array().optional(),
+  })
+  .extend({
+    descriptiveProductName: z.string().optional(),
+    productType: z.string().optional(),
   });
 // .strict();
 
