@@ -1229,12 +1229,14 @@ export const records = [
       "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja",
       "ogrod/meble-ogrodowe/krzesla-ogrodowe/metalowe-i-plecione-krzesla-ogrodowe/krzeslo-ogrodowe-gilja-0",
       "przechowywanie/przechowywanie-rozne/stolik-lydum-s34xw46-bezowy-wlokno-cementowe",
+      "przechowywanie/regaly/regal-astrup-6-polek-czarny",
       "przechowywanie/regaly/regal-herning-5-polek-bialy",
       "przechowywanie/regaly/regal-lyngerup-4-polki-kolor-cieply-dab",
       "przedpokoj/przedpokoj/lawka-do-przedpokoju/lawka-bislev-tkanina-ciemnopiaskowy",
       "salon/kanapy/sofa-modulowa-skejby-2-miejscowa-tkanina-bezowy",
       "salon/kanapy/sofa-modulowa-skejby-3-miejscowa-tkanina-bezowy",
       "salon/stoliki-kawowe-i-boczne/stolik-kawowy-lydum-s60-bezowy-wlokno-cementowe",
+      "salon/stoliki-kawowe-i-boczne/zestaw-stolikow-munkebo-s55-s45-kolor-naturalny-dab-2szt",
     ]
       .map((path) => `https://jysk.pl/${path}`)
       .map((url, i) => ({
