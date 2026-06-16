@@ -25,7 +25,7 @@
     "@dev/sql": "workspace:*",
     "dayjs": "^1.11.19",
     "express": "^5.2.1",
-    "nodemailer": "^8.0.0",
+    "nodemailer": "^9.0.0",
     "pretty-bytes": "^7.0.0",
     "pretty-ms": "^9.0.0",
     "ssl-checker": "^3.0.0",
