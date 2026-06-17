@@ -1794,7 +1794,7 @@ importers:
         version: 4.0.0(webpack@5.107.2)
       ts-loader:
         specifier: ^9.4.2
-        version: 9.6.0(loader-utils@2.0.4)(typescript@5.9.3)(webpack@5.107.2)
+        version: 9.6.1(loader-utils@2.0.4)(typescript@5.9.3)(webpack@5.107.2)
       webpack:
         specifier: ^5.103.0
         version: 5.107.2(postcss@8.5.15)(webpack-cli@6.0.1)
@@ -4467,8 +4467,8 @@ packages:
     engines: {node: '>=0.12.18'}
     hasBin: true
 
-  electron-to-chromium@1.5.372:
-    resolution: {integrity: sha512-M3yhbAlilnwqC8D21t28UCDGHyitShTmmLRU/H+b74P6Ski16Nb9HONYEaVpMj/pwC7BEo5B95FpjODLCWbtfA==}
+  electron-to-chromium@1.5.373:
+    resolution: {integrity: sha512-G2Hym8JIf/QreuseqkDibgH8Ci8KfJzqGDKdakbhSx9UltwRBH2cBLAWU/lBX0sCdv0TlhyxQyDCnSfxgMWsjA==}
 
   emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -4495,8 +4495,8 @@ packages:
     resolution: {integrity: sha512-xYcDWrpELkFzz9SpZ3PlI6Eu6eD93Yf0WLDRxikGhWJ3MAir2SNZTIVCVZqZ/NUyx8AdMc2gT9C0gPiw18kG+A==}
     engines: {node: '>=10.13.0'}
 
-  enhanced-resolve@5.22.1:
-    resolution: {integrity: sha512-6QEuw3zoX1SJQc7b87aBXke/no+mG2bTBgw29gWMQonLmpEkWoCAVkl+M49e48AZlWzxiDzDZzYdp6kobcyLww==}
+  enhanced-resolve@5.24.0:
+    resolution: {integrity: sha512-SkE2t82KlkkxQRVMVLAGKxLfORGQfrkx5dkj+vlgXRVNEdPc4eZcR+J/Fvj8C+yKSFH5L0q3NFlyufOVQnCcYQ==}
     engines: {node: '>=10.13.0'}
 
   enquirer@2.4.1:
@@ -7059,8 +7059,8 @@ packages:
       jest-util:
         optional: true
 
-  ts-loader@9.6.0:
-    resolution: {integrity: sha512-dsJO0S+T7grTDWTc4a0nTygXGjKncVUpx8Y+af8EvI/D5WgTJby5UEk5eoMCB9EcLQmnvitqh99MqtjtHgAwFQ==}
+  ts-loader@9.6.1:
+    resolution: {integrity: sha512-8FMHnmxtpncUAu0ZjkqpXnOTlwc9eY95esH8WVN94guTPPdkg2ofVdiVM5j8L2lmjiGerXd56zXb/D2JyVQPLg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       loader-utils: '*'
@@ -8491,7 +8491,7 @@ snapshots:
   '@commitlint/is-ignored@21.0.2':
     dependencies:
       '@commitlint/types': 21.0.1
-      semver: 7.8.1
+      semver: 7.8.4
 
   '@commitlint/lint@21.0.2':
     dependencies:
@@ -9522,7 +9522,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.59.4
       debug: 4.4.3
       minimatch: 10.2.5
-      semver: 7.8.1
+      semver: 7.8.4
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@5.9.3)
       typescript: 5.9.3
@@ -10074,7 +10074,7 @@ snapshots:
     dependencies:
       baseline-browser-mapping: 2.10.37
       caniuse-lite: 1.0.30001799
-      electron-to-chromium: 1.5.372
+      electron-to-chromium: 1.5.373
       node-releases: 2.0.47
       update-browserslist-db: 1.2.3(browserslist@4.28.2)
 
@@ -10573,7 +10573,7 @@ snapshots:
 
   ejs@6.0.1: {}
 
-  electron-to-chromium@1.5.372: {}
+  electron-to-chromium@1.5.373: {}
 
   emittery@0.13.1: {}
 
@@ -10592,7 +10592,7 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.3.3
 
-  enhanced-resolve@5.22.1:
+  enhanced-resolve@5.24.0:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.3
@@ -11942,7 +11942,7 @@ snapshots:
       jest-message-util: 30.4.1
       jest-util: 30.4.1
       pretty-format: 30.4.1
-      semver: 7.8.1
+      semver: 7.8.4
       synckit: 0.11.13
     transitivePeerDependencies:
       - supports-color
@@ -13513,12 +13513,12 @@ snapshots:
       babel-jest: 30.4.1(@babel/core@7.29.7)
       jest-util: 30.4.1
 
-  ts-loader@9.6.0(loader-utils@2.0.4)(typescript@5.9.3)(webpack@5.107.2):
+  ts-loader@9.6.1(loader-utils@2.0.4)(typescript@5.9.3)(webpack@5.107.2):
     dependencies:
       chalk: 4.1.2
-      enhanced-resolve: 5.22.1
+      enhanced-resolve: 5.24.0
       micromatch: 4.0.8
-      semver: 7.8.1
+      semver: 7.8.4
       source-map: 0.7.6
       typescript: 5.9.3
       webpack: 5.107.2(postcss@8.5.15)(webpack-cli@6.0.1)
