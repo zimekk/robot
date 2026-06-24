@@ -512,7 +512,7 @@ importers:
         version: 1.0.6
       node-html-parser:
         specifier: ^8.0.0
-        version: 8.0.2
+        version: 8.0.3
       react:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.2.7
@@ -1301,7 +1301,7 @@ importers:
         version: link:../vehicles
       node-html-parser:
         specifier: ^8.0.0
-        version: 8.0.2
+        version: 8.0.3
       zod:
         specifier: ^4.1.13
         version: 4.4.3
@@ -1923,7 +1923,7 @@ importers:
         version: 1.0.3
       node-html-parser:
         specifier: ^8.0.0
-        version: 8.0.2
+        version: 8.0.3
       zod:
         specifier: ^4.1.13
         version: 4.4.3
@@ -6006,8 +6006,8 @@ packages:
     resolution: {integrity: sha512-s+w+rBWnpTMwSFbaE0UXsRlg7hU4FjekKU4eyAih5T8nJuNZT1nNsskXpxmeqSK9UzkBl6UgRlnKc8hz8IEqOw==}
     hasBin: true
 
-  node-html-parser@8.0.2:
-    resolution: {integrity: sha512-fhG4Ne6moYy00jI3SkBEJzEa/pMX/RLLxnvlvu8x0OvsiegHdw5Q8brbe+AhZHqHFi2PZnSYObQ/x+cQXuNg0Q==}
+  node-html-parser@8.0.3:
+    resolution: {integrity: sha512-ilV20e83nDfiFoEyhlvgqks23Hmy6pySF6UNb8DpgmxnTbXDGgShYKzH2+7ctJK42LXyo+IFOgxCkXmmbacm8w==}
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -12578,7 +12578,7 @@ snapshots:
       detect-libc: 2.1.2
     optional: true
 
-  node-html-parser@8.0.2:
+  node-html-parser@8.0.3:
     dependencies:
       css-select: 5.2.2
       entities: 8.0.0
