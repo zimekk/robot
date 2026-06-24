@@ -145,6 +145,9 @@ export const ProductSchema = z
   .extend({
     descriptiveProductName: z.string().optional(),
     productType: z.string().optional(),
+  })
+  .extend({
+    fullName: z.string().optional(),
   });
 // .strict();
 
