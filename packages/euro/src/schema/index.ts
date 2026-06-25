@@ -201,6 +201,16 @@ const Result = z
     activationVoucher: z.boolean().optional(),
     analytics: z.unknown().optional(),
     availabilityStatusMessage: z.unknown().optional(),
+  })
+  .extend({
+    priceLabel: z
+      .object({
+        labelText: z.string().nullable(),
+        discountAmount: z.number().nullable(),
+        labelPhotoPath: z.string().nullable(),
+      })
+      .nullable()
+      .optional(),
   });
 
 export const JsonSchema = z.object({
