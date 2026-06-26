@@ -148,6 +148,22 @@ export const ProductSchema = z
   })
   .extend({
     fullName: z.string().optional(),
+  })
+  .extend({
+    codePromotionInfo: z
+      .object({
+        code: z.string(),
+        discountedPrice: z.number(),
+        promotionEndDate: z.string(),
+        customerLimit: z.number(),
+        promotionStartDate: z.string(),
+        discountedInstallmentOffer: z.object({
+          text: z.string(),
+          creditLineId: z.number(),
+          paymentMethodId: z.string(),
+        }),
+      })
+      .optional(),
   });
 // .strict();
 
