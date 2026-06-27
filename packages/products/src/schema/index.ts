@@ -81,7 +81,7 @@ export const ProductSchema = z
     price: z.number(),
     promotionInfo: z
       .object({
-        code: z.null(),
+        code: z.string().nullable(),
         discountedPrice: z.number(),
         promotionEndDate: z.string(),
         customerLimit: z.number().nullable(),
