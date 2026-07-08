@@ -157,11 +157,13 @@ export const ProductSchema = z
         promotionEndDate: z.string(),
         customerLimit: z.number(),
         promotionStartDate: z.string(),
-        discountedInstallmentOffer: z.object({
-          text: z.string(),
-          creditLineId: z.number(),
-          paymentMethodId: z.string(),
-        }),
+        discountedInstallmentOffer: z
+          .object({
+            text: z.string(),
+            creditLineId: z.number(),
+            paymentMethodId: z.string(),
+          })
+          .optional(),
       })
       .optional(),
   });

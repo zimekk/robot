@@ -39,6 +39,7 @@ const Advert = z
           __typename: z.enum(["Money"]),
         }),
         badges: z.any(),
+        isGross: z.boolean().optional(),
         grossPrice: z.any(),
         netPrice: z.any(),
         __typename: z.enum(["Price"]),
