@@ -97,7 +97,7 @@
     "prettier": "^3.7.4",
     "ts-node": "^10.9.1",
     "type-coverage": "^2.25.3",
-    "typescript": "^5.8.3"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
     "@types/jest": "^30.0.0",
