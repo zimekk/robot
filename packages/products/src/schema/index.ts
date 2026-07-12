@@ -89,7 +89,7 @@ export const ProductSchema = z
       })
       .optional(),
     category: z.object({
-      id: z.string(),
+      id: z.string().optional(),
       parentGroupId: z.string().optional(),
     }),
     questionsAndAnswers: z.boolean().optional(),
