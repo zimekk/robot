@@ -58,11 +58,13 @@ export const ProductSchema = z
     alternativeProducts: z.unknown().array().optional(),
     mark: z.string().optional(),
     oldPrice: z.number().optional(),
-    priceInfo: z.object({
-      price: z.number().optional(),
-      oldPrice: z.number().nullable().optional(),
-      isPriceVisible: z.boolean(),
-    }),
+    priceInfo: z
+      .object({
+        price: z.number().optional(),
+        oldPrice: z.number().nullable().optional(),
+        isPriceVisible: z.boolean(),
+      })
+      .optional(),
     producer: z.object({ id: z.string(), name: z.string() }),
     isEsd: z.boolean().optional(),
     esdType: z.string().optional(),
