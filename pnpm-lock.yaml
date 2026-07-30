@@ -207,7 +207,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -294,7 +294,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -337,7 +337,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -380,7 +380,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -423,7 +423,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -472,7 +472,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -511,14 +511,14 @@ importers:
         specifier: ^1.0.3
         version: 1.0.6
       node-html-parser:
-        specifier: ^8.0.0
-        version: 8.0.4
+        specifier: ^9.0.0
+        version: 9.0.1
       react:
         specifier: ^18.2.0 || ^19.0.0
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -558,7 +558,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -601,7 +601,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -638,7 +638,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -756,7 +756,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -799,7 +799,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -848,7 +848,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -891,7 +891,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -934,7 +934,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -980,7 +980,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1020,7 +1020,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1063,7 +1063,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1109,7 +1109,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1155,7 +1155,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1195,7 +1195,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1300,8 +1300,8 @@ importers:
         specifier: workspace:*
         version: link:../vehicles
       node-html-parser:
-        specifier: ^8.0.0
-        version: 8.0.4
+        specifier: ^9.0.0
+        version: 9.0.1
       zod:
         specifier: ^4.1.13
         version: 4.4.3
@@ -1390,7 +1390,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1458,7 +1458,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       ssl-checker:
         specifier: ^3.0.0
         version: 3.0.1
@@ -1507,7 +1507,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1581,7 +1581,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1621,7 +1621,7 @@ importers:
         version: 19.2.8
       react-dom:
         specifier: ^18.2.0 || ^19.0.0
-        version: 19.2.7(react@19.2.7)
+        version: 19.2.7(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -1922,8 +1922,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       node-html-parser:
-        specifier: ^8.0.0
-        version: 8.0.4
+        specifier: ^9.0.0
+        version: 9.0.1
       zod:
         specifier: ^4.1.13
         version: 4.4.3
@@ -5851,8 +5851,8 @@ packages:
     resolution: {integrity: sha512-s+w+rBWnpTMwSFbaE0UXsRlg7hU4FjekKU4eyAih5T8nJuNZT1nNsskXpxmeqSK9UzkBl6UgRlnKc8hz8IEqOw==}
     hasBin: true
 
-  node-html-parser@8.0.4:
-    resolution: {integrity: sha512-w2YxujN/TqrSIWGVNW/fVgKKfAyQeHMXCvnKZI0owLnfP0tfjdLecUoy9zhOMZGoEFk6eP5qSDyvUarjPl3bwQ==}
+  node-html-parser@9.0.1:
+    resolution: {integrity: sha512-QrdiYYm1NnLRXsMXThUgVcF/syWfWIgHFmy8hylWMGFbHFtnRuXLBxxGQvIm3xaIJMUDJ0ayOmT/FGJYT3pZIw==}
 
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
@@ -11891,7 +11891,7 @@ snapshots:
       detect-libc: 2.1.2
     optional: true
 
-  node-html-parser@8.0.4:
+  node-html-parser@9.0.1:
     dependencies:
       css-select: 5.2.2
       entities: 8.0.0
@@ -12357,6 +12357,11 @@ snapshots:
   react-dom@19.2.7(react@19.2.7):
     dependencies:
       react: 19.2.7
+      scheduler: 0.27.0
+
+  react-dom@19.2.7(react@19.2.8):
+    dependencies:
+      react: 19.2.8
       scheduler: 0.27.0
 
   react-dom@19.2.8(react@19.2.8):
