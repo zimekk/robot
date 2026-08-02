@@ -110,7 +110,7 @@ function Failed({
               item.data.url
                 ? (({ host }) => ({
                     [host]: ((count = 0) => count + 1)(queries[host]),
-                  }))(new URL(item.data.url))
+                  }))(new URL(item.data.url, document.location.origin))
                 : {},
             ),
           {} as Record<string, number>,
