@@ -1335,7 +1335,7 @@ importers:
         version: 7.8.2
       styled-components:
         specifier: ^6.1.19
-        version: 6.4.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        version: 6.5.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       use-asset:
         specifier: ^1.0.4
         version: 1.0.4(react@19.2.8)
@@ -6733,8 +6733,8 @@ packages:
     peerDependencies:
       webpack: ^5.27.0
 
-  styled-components@6.4.4:
-    resolution: {integrity: sha512-tJk5CmKUPMDoTsZQ8m0hHInBk9HFKUPSusqmbBuefDX+yUbMBWea2Ob/wdXFyHW8XZqXkprJscysAdKeGWNqlA==}
+  styled-components@6.5.0:
+    resolution: {integrity: sha512-WLnTRAIRJsmCQfPXoEDDd1YMML+ImxQ8YGVVg60FALxsn/rpWiQWSJCZDNfu/buAcBFnTUr8ev6CBR8rb7xLiQ==}
     engines: {node: '>= 16'}
     peerDependencies:
       css-to-react-native: '>= 3.2.0'
@@ -12826,7 +12826,7 @@ snapshots:
     dependencies:
       webpack: 5.109.2(clean-css@5.3.3)(html-minifier-terser@6.1.0)(postcss@8.5.16)(uglify-js@3.19.3)(webpack-cli@6.0.1)
 
-  styled-components@6.4.4(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  styled-components@6.5.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@emotion/is-prop-valid': 1.4.0
       csstype: 3.2.3
