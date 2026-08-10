@@ -1468,7 +1468,7 @@ export const records = [
         url,
       },
       opts: {
-        repeat: { cron: `${i + 15} 9 * * *` },
+        repeat: { cron: `${i + 15} 7,9,11,17,19,21 * * *` },
       },
     })),
   );
