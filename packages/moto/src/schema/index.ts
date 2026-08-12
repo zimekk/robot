@@ -154,6 +154,7 @@ const Advert = z
       .optional(),
     valueAddedServices: z.unknown(),
     isPremiumTopAd: z.unknown().nullable(),
+    showBigAdCard: z.boolean().optional(),
     __typename: z.enum(["Advert"]),
   })
   .extend({
