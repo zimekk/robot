@@ -151,6 +151,7 @@ const Advert = z
         indicator: z.enum(["ABOVE", "BELOW", "IN", "NONE"]),
         __typename: z.enum(["PriceEvaluation"]),
       })
+      .nullable()
       .optional(),
     valueAddedServices: z.unknown(),
     isPremiumTopAd: z.unknown().nullable(),
