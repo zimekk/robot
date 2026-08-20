@@ -1809,10 +1809,10 @@ importers:
     dependencies:
       '@bull-board/api':
         specifier: ^9.0.0
-        version: 9.2.0(@bull-board/ui@9.2.0(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
+        version: 9.3.2(@bull-board/ui@9.3.2(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
       '@bull-board/express':
         specifier: ^9.0.0
-        version: 9.2.0(bull@4.16.5(supports-color@8.1.1))(supports-color@8.1.1)
+        version: 9.3.2(bull@4.16.5(supports-color@8.1.1))(supports-color@8.1.1)
       '@dev/bikes':
         specifier: workspace:*
         version: link:../bikes
@@ -2645,10 +2645,10 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@bull-board/api@9.2.0':
-    resolution: {integrity: sha512-xrt/oUFP3lixjQW5MSAw1wY60ek9gYQu2LtLWminlNp/Crn8XrM6zCk9ibfHRV/SlJkxfqaEmOkjMAYeDKEB5g==}
+  '@bull-board/api@9.3.2':
+    resolution: {integrity: sha512-VVfSozBRTjuwFPbns8/t+0rIogiG6j6US9bACQPqJzSEbbbucRFyZIIszwPJHNEe2F+c2TJrMHpipS20YjhgXA==}
     peerDependencies:
-      '@bull-board/ui': 9.2.0
+      '@bull-board/ui': 9.3.2
       bull: ^4.16.5
       bullmq: ^5.79.2 || ^6.0.0
     peerDependenciesMeta:
@@ -2657,11 +2657,11 @@ packages:
       bullmq:
         optional: true
 
-  '@bull-board/express@9.2.0':
-    resolution: {integrity: sha512-T37n9x7bdGXy4njeAeUdXPluMM5GJELH+JWx0TVcGFLKcwOgHV4EAmen669v2aeqvG79rOToU5RIGCrWfSCSNQ==}
+  '@bull-board/express@9.3.2':
+    resolution: {integrity: sha512-vKAKyUzyq4DgpE7200sM0S2cCuYBy+Kt3aXCv8E7pu/lX1zftVps2CiKA6jtkXB1Eg+bFZorTGcAZvo87MAibg==}
 
-  '@bull-board/ui@9.2.0':
-    resolution: {integrity: sha512-jhFYk1m0i4/GRjkFoZkZIF15lhBnvGCwtds7TD5YEdD6EojxAefAXVsTAzyDxrA/tghO7K1h5TG3QYxGAaAp8Q==}
+  '@bull-board/ui@9.3.2':
+    resolution: {integrity: sha512-NRU/Vv9N8IqxXSroFGulyH08euPCOv+b556F1S6T/aHEjXND822b0T4/agCZ12smMsIf6siGPlCa1+oWO36RKw==}
 
   '@changesets/apply-release-plan@8.0.0':
     resolution: {integrity: sha512-kUd2pbf1w5/AYmBMb0Tt+rkIPCjFJdT0SZMrkOjJT/WV/QbtmvkyB5jkV0oaNPheavprZk+SfUiozUti7TIL2w==}
@@ -4678,6 +4678,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -8111,17 +8112,17 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@bull-board/api@9.2.0(@bull-board/ui@9.2.0(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))':
+  '@bull-board/api@9.3.2(@bull-board/ui@9.3.2(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))':
     dependencies:
-      '@bull-board/ui': 9.2.0(bull@4.16.5(supports-color@8.1.1))
+      '@bull-board/ui': 9.3.2(bull@4.16.5(supports-color@8.1.1))
       redis-info: 3.1.0
     optionalDependencies:
       bull: 4.16.5(supports-color@8.1.1)
 
-  '@bull-board/express@9.2.0(bull@4.16.5(supports-color@8.1.1))(supports-color@8.1.1)':
+  '@bull-board/express@9.3.2(bull@4.16.5(supports-color@8.1.1))(supports-color@8.1.1)':
     dependencies:
-      '@bull-board/api': 9.2.0(@bull-board/ui@9.2.0(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
-      '@bull-board/ui': 9.2.0(bull@4.16.5(supports-color@8.1.1))
+      '@bull-board/api': 9.3.2(@bull-board/ui@9.3.2(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
+      '@bull-board/ui': 9.3.2(bull@4.16.5(supports-color@8.1.1))
       ejs: 6.0.1
       express: 5.2.1(supports-color@8.1.1)
     transitivePeerDependencies:
@@ -8129,9 +8130,9 @@ snapshots:
       - bullmq
       - supports-color
 
-  '@bull-board/ui@9.2.0(bull@4.16.5(supports-color@8.1.1))':
+  '@bull-board/ui@9.3.2(bull@4.16.5(supports-color@8.1.1))':
     dependencies:
-      '@bull-board/api': 9.2.0(@bull-board/ui@9.2.0(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
+      '@bull-board/api': 9.3.2(@bull-board/ui@9.3.2(bull@4.16.5(supports-color@8.1.1)))(bull@4.16.5(supports-color@8.1.1))
     transitivePeerDependencies:
       - bull
       - bullmq
