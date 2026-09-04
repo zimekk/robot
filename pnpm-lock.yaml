@@ -223,7 +223,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -270,7 +270,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -313,7 +313,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -356,7 +356,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -399,7 +399,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -442,7 +442,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -491,7 +491,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -537,7 +537,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -577,7 +577,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -620,7 +620,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -654,7 +654,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -772,7 +772,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -815,7 +815,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -867,7 +867,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -913,7 +913,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -953,7 +953,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -999,7 +999,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1039,7 +1039,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1082,7 +1082,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1128,7 +1128,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1174,7 +1174,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1214,7 +1214,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1412,7 +1412,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1480,7 +1480,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1526,7 +1526,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1600,7 +1600,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1640,7 +1640,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       '@types/styled-components':
         specifier: ^5.1.36
         version: 5.1.36
@@ -1770,7 +1770,7 @@ importers:
         version: 19.2.18
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.5(@types/react@19.2.18)
+        version: 19.2.7(@types/react@19.2.18)
       babel-loader:
         specifier: ^10.0.0
         version: 10.1.1(@babel/core@8.0.1)(webpack@5.110.3)
@@ -3447,8 +3447,8 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-dom@19.2.5':
-    resolution: {integrity: sha512-fMPwH9v7r/pp43yUd2/Mbiex5KouJwwR3dzHkhLREUC6764VyDsqxhAxv6OFEYR1RhjOyD1naqba8ECDBe7ZQg==}
+  '@types/react-dom@19.2.7':
+    resolution: {integrity: sha512-I8bPpDLcHBv1qiIiXDCy71Rt8eQDKJP0sMSWJphDdAcdqiJ1sGpZamavoEIRZmYzjia9LuEb2HlYdDpmoENpvQ==}
     peerDependencies:
       '@types/react': ^19.2.0
 
@@ -9236,7 +9236,7 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@19.2.5(@types/react@19.2.18)':
+  '@types/react-dom@19.2.7(@types/react@19.2.18)':
     dependencies:
       '@types/react': 19.2.18
 
