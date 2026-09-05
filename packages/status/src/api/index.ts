@@ -130,7 +130,7 @@ export const status = async (data: SchemaType) =>
     ),
     urlCheck(),
   ]).then(async ([total, ssl, url]) => {
-    if (total > 95) {
+    if (total > 90) {
       await notify({ total });
     }
     if (ssl.length > 0) {
