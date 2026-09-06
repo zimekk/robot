@@ -168,6 +168,9 @@ export const ProductSchema = z
           .optional(),
       })
       .optional(),
+  })
+  .extend({
+    webUrl: z.string().optional(),
   });
 // .strict();
 
