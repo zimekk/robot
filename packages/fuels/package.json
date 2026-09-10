@@ -27,7 +27,7 @@
     "@dev/sql": "workspace:*",
     "express": "^5.2.1",
     "json-diff": "^1.0.3",
-    "node-html-parser": "^8.0.0",
+    "node-html-parser": "^9.0.0",
     "use-asset": "^1.0.4",
     "zod": "^4.1.13"
   },
