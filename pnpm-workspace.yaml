@@ -4,3 +4,4 @@ allowBuilds:
   msgpackr-extract: false
   puppeteer: false
   unrs-resolver: false
+ignoreWorkspaceCycles: true
