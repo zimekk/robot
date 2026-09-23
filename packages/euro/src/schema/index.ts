@@ -211,6 +211,9 @@ const Result = z
       })
       .nullable()
       .optional(),
+  })
+  .extend({
+    durabilityGuarantee: z.unknown().nullable().optional(),
   });
 
 export const JsonSchema = z.object({
