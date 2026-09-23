@@ -3,7 +3,7 @@ import { z } from "zod";
 const MoneyType = z.object({
   value: z.number(),
   currency: z.enum(["EUR", "PLN", "USD"]),
-  __typename: z.literal("Money"),
+  __typename: z.literal("Money").optional(),
 });
 
 const Ad = z.object({
@@ -24,7 +24,7 @@ const Ad = z.object({
       slug: z.string(),
       type: z.string(),
       imageUrl: z.string().nullable(),
-      __typename: z.string(),
+      __typename: z.string().optional(),
       highlightedAds: z.boolean(),
       brandingVisible: z.boolean(),
     })
@@ -34,30 +34,35 @@ const Ad = z.object({
     .object({
       large: z.string(),
       medium: z.string(),
-      __typename: z.string(),
+      __typename: z.string().optional(),
     })
     .array(),
   location: z.object({
     address: z.object({
-      city: z.object({ name: z.string(), __typename: z.string() }),
+      city: z.object({ name: z.string(), __typename: z.string() }).nullable(),
       street: z
         .object({
           name: z.string(),
-          number: z.string(),
-          __typename: z.literal("Street"),
+          number: z.string().nullable(),
+          __typename: z.literal("Street").optional(),
         })
         .nullable(),
-      province: z.object({ name: z.string(), __typename: z.string() }),
-      __typename: z.string(),
+      province: z
+        .object({ name: z.string(), __typename: z.string() })
+        .nullable(),
+      __typename: z.string().optional(),
     }),
-    __typename: z.string(),
-    mapDetails: z.object({ radius: z.number(), __typename: z.string() }),
+    __typename: z.string().optional(),
+    mapDetails: z.object({
+      radius: z.number(),
+      __typename: z.string().optional(),
+    }),
     reverseGeocoding: z
       .object({
         locations: z
           .object({ fullName: z.string(), __typename: z.string() })
           .array(),
-        __typename: z.string(),
+        __typename: z.string().optional(),
       })
       .nullable()
       .optional(),
@@ -85,7 +90,7 @@ const Ad = z.object({
   // investmentState: z.null(),
   dateCreatedFirst: z.string().optional(),
   isExclusiveOffer: z.boolean().optional(),
-  shortDescription: z.string().optional(),
+  shortDescription: z.string().nullable().optional(),
   areaInSquareMeters: z.number().nullable().optional(),
   pricePerSquareMeter: MoneyType.nullable(),
   // totalPossibleImages: z.number(),
