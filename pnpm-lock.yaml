@@ -821,7 +821,7 @@ importers:
     dependencies:
       nodemailer:
         specifier: ^10.0.0
-        version: 10.1.2
+        version: 10.2.0
       zod:
         specifier: ^4.1.13
         version: 4.6.7
@@ -1604,7 +1604,7 @@ importers:
         version: 5.3.0(supports-color@8.1.1)
       nodemailer:
         specifier: ^10.0.0
-        version: 10.1.2
+        version: 10.2.0
       pretty-bytes:
         specifier: ^7.0.0
         version: 7.2.0
@@ -6246,8 +6246,8 @@ packages:
     resolution: {integrity: sha512-wRNIrw4DmVLKQlbgOMdkMx27Wrpzes2hh5Jtbi2bjPd+4wJstWIqP5A+lscnqbm0xxmT5Bpg8Lec5ItEBwx6BQ==}
     engines: {node: '>=18'}
 
-  nodemailer@10.1.2:
-    resolution: {integrity: sha512-rnQn9Rzh8RAwcp42MVsIvxbsv6YZ2a2/av+uyJ/LPU1+2QSlrRgFsWWZTKenyRUqkIl8urOI0c4+CEcmFdsvQw==}
+  nodemailer@10.2.0:
+    resolution: {integrity: sha512-/XyGw6kX2stMdKGUJdAQmYAeY1FscWfdRydfd2NtK3A3KDfUUXCqZzExSNAt2xhh90X2qLCR+o2Gd48YPJcJwA==}
     engines: {node: '>=20.0.0'}
 
   normalize-path@3.0.0:
@@ -7133,10 +7133,13 @@ packages:
     resolution: {integrity: sha512-drKKsqvDBxVRn4ySU67iQ5nQBuo/1xyYeBfdhDde112PkqrS3+95KPnpDs5hFRcmrW+q6+gbyywYYYR14oWFtw==}
     engines: {node: '>= 16'}
     peerDependencies:
+      css-to-react-native: '>= 3.2.0'
       react: '>= 16.8.0'
       react-dom: '>= 16.8.0'
       react-native: '>= 0.68.0'
     peerDependenciesMeta:
+      css-to-react-native:
+        optional: true
       react-dom:
         optional: true
       react-native:
@@ -12548,7 +12551,7 @@ snapshots:
 
   node-releases@2.0.51: {}
 
-  nodemailer@10.1.2: {}
+  nodemailer@10.2.0: {}
 
   normalize-path@3.0.0: {}
 
