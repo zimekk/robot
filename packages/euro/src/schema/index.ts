@@ -214,6 +214,9 @@ const Result = z
   })
   .extend({
     durabilityGuarantee: z.unknown().nullable().optional(),
+  })
+  .extend({
+    leasing: z.boolean().optional(),
   });
 
 export const JsonSchema = z.object({
