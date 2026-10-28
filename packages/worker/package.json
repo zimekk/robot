@@ -74,7 +74,7 @@
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/milliseconds": "^1.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0"
   }

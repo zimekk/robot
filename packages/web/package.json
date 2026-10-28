@@ -58,7 +58,7 @@
     "@babel/preset-env": "^8.0.0",
     "@babel/preset-react": "^8.0.0",
     "@babel/preset-typescript": "^8.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "babel-loader": "^10.0.0",
