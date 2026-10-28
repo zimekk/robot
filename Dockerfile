@@ -31,12 +31,16 @@ ENV PUPPETEER_SKIP_DOWNLOAD=true \
 ENV WORKDIR=/app
 
 # https://pnpm.io/docker#example-3-build-on-cicd
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+# RUN npx get-pnpm
+# ENV PNPM_HOME="/pnpm"
+# ENV PATH="$PNPM_HOME:$PATH"
 # ENV CI=1
-ENV CI=true
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-RUN corepack enable
+# ENV CI=true
+# ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+# RUN corepack enable
+# https://pnpm.io/docker#adding-pnpm-to-your-own-image
+COPY --from=ghcr.io/pnpm/pnpm:12-alpine /opt/pnpm /opt/pnpm
+RUN for bin in pnpm pn pnpx pnx; do ln -s "/opt/pnpm/$bin" "/usr/local/bin/$bin"; done
 
 FROM base AS prod
 WORKDIR $WORKDIR
