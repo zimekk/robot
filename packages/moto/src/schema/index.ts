@@ -162,6 +162,20 @@ const Advert = z
     standId: z.unknown().optional(),
     seller: z.unknown().optional(),
   })
+  .extend({
+    generatedVideos: z
+      .object({
+        url: z.string(),
+        params: z.object({
+          videoType: z.enum(["FULL", "PREVIEW"]),
+          orientation: z.enum(["HORIZONTAL"]),
+          __typename: z.enum(["VideoParams"]),
+        }),
+        __typename: z.enum(["GeneratedVideo"]),
+      })
+      .array()
+      .optional(),
+  })
   .strict();
 
 export type DataType = z.infer<typeof Advert>;
