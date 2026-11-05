@@ -174,6 +174,14 @@ export const ProductSchema = z
   })
   .extend({
     isOutlet: z.boolean().optional(),
+  })
+  .extend({
+    promotionCounter: z
+      .object({
+        sold: z.number(),
+        left: z.number(),
+      })
+      .optional(),
   });
 // .strict();
 
